@@ -1,15 +1,21 @@
 namespace: "hanwha"
-fullnameOverride: foundationweb
+fullnameOverride: imagename
 
 image:
   replicaCount: 1
-  repository: ghcr.io/htaic/foundationweb
+  repository: ghcr.io/htaic/imagename
   pullPolicy: Always
-  containerPort: 3000
+  containerPort: 1234
   tag: "latest"
   hostname: masterportal
   domainPath: ""
+  livenessProbe: "api/v1/livez"
+  readinessProbe: "api/v1/readyz"
+  noStripPath: true
 
+##########################
+# Caution updating below #
+##########################
 sidecarimage:
   name: "logging-sidecar"
   repository: ghcr.io/htaic/platform-logging-service
