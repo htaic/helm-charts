@@ -1,0 +1,15 @@
+apiVersion: v1
+entries:
+  microfrontend:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2022-09-30T18:06:03.602313058Z"
+    description: A Helm chart for Kubernetes micro front ends deployed behind a traefik
+      ingress
+    digest: 3808a2ba3f57aaca350946fb1c59688234e5d41eb6ca3c9523f85495fa1aa8aa
+    name: microfrontend
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/microfrontend-0.0.4/microfrontend-0.0.4.tgz
+    version: 0.0.4
+generated: "2022-09-30T18:06:03.602506371Z"
