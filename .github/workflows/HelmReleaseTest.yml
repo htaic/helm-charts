@@ -6,12 +6,17 @@ on:
       - main
 
 jobs:
-  # apply-sem-ver:
-  #   runs-on: ubuntu-latest
-  #   strategy:
-  #     matrix:
-  #       repos: ["microfrontend","dcs"]
-  #   steps:
+  apply-sem-ver:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repos: ["microfrontend"]
+    steps:
+      - name: Helm linting
+        id: linting
+        working-directory: charts
+        run: |
+          helm lint ${{ matrix.repos }} -f ${{ matrix.repos }}/values.yaml.Example
   #     - name: Application Version
   #       id: version
   #       uses: paulhatch/semantic-version@v4.0.2
@@ -19,10 +24,6 @@ jobs:
   #         change_path: ${{ matrix.repos }}
   #         namespace: ${{ matrix.repos }}
   #         bump_each_commit: true
-  #     - name: Helm linting
-  #       id: linting
-  #       run: |
-  #         helm lint ${{ matrix.repos }}
   
 
   release:
