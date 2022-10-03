@@ -8,9 +8,6 @@ on:
 jobs:
   scan-version-bump:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        repos: ["microfrontend"]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -19,7 +16,11 @@ jobs:
         id: linting
         working-directory: charts
         run: |
-          helm lint ${{ matrix.repos }} -f ${{ matrix.repos }}/values.yaml.Example
+          for d in */ ; do
+              echo "Running on directory $d"
+              helm lint $d -f $d/values.yaml.Example 
+          done
+
   #     - name: Application Version
   #       id: version
   #       uses: paulhatch/semantic-version@v4.0.2
