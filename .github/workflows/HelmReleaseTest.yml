@@ -4,13 +4,10 @@ on:
   push:
     branches:
       - main
-
+    
 jobs:
   scan-version-bump:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        repos: ["microfrontend"]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -19,15 +16,30 @@ jobs:
         id: linting
         working-directory: charts
         run: |
-          helm lint ${{ matrix.repos }} -f ${{ matrix.repos }}/values.yaml.Example
-  #     - name: Application Version
-  #       id: version
-  #       uses: paulhatch/semantic-version@v4.0.2
-  #       with:
-  #         change_path: ${{ matrix.repos }}
-  #         namespace: ${{ matrix.repos }}
-  #         bump_each_commit: true
-  
+          for d in */ ; do
+              echo "Running on directory $d"
+              helm lint $d -f $d/values.yaml.Example 
+          done
+
+      - name: Helm Version Bump
+        id: version_bump
+        working-directory: charts
+        run: |
+          for d in */ ; do
+              echo "Running on directory $d"
+              current_version=$(cat $d/Chart.yaml | grep "version:" | sed 's/[^0-9\.]//g')
+              new_version=$(echo ${current_version} | awk -F. -v OFS=. '{$NF += 1 ; print}')
+              echo bumping version "${current_version} -> ${new_version}"
+              sed -i "s/version: ${current_version}/version: ${new_version}/g" $d/Chart.yaml
+          done
+
+      - name: Update version bump
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git add .
+          git commit -m "chore: auto version bump"
+          git push
 
   release:
     # depending on default permission settings for your org (contents being read-only or read-write for workloads), you will have to add permissions

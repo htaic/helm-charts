@@ -12,6 +12,8 @@ image:
   livenessProbe: "api/v1/livez"
   readinessProbe: "api/v1/readyz"
   noStripPath: true
+  env:
+    name: value
 
 ##########################
 # Caution updating below #
