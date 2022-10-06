@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "{{ include ".helm.fullname" . }}-sql"
+  name: {{ include ".helm.fullname" . }}
   namespace: {{ .Values.namespace }}
   labels:
     {{- include ".helm.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.postgres.replicaCount }}
+  replicas: {{ .Values.image.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
@@ -21,7 +21,7 @@ spec:
       labels:
         {{- include ".helm.selectorLabels" . | nindent 8 }}
     spec:
-      hostname: {{ .Values.postgres.hostname }}
+      hostname: {{ .Values.image.hostname }}
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
@@ -30,20 +30,33 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
+        {{- if .Values.sidecarimage }}
+        - name: "{{ .Values.sidecarimage.name }}"
+          image: "{{ .Values.sidecarimage.repository }}:{{ .Values.sidecarimage.tag }}"
+          imagePullPolicy: {{ .Values.sidecarimage.pullPolicy }}
+        {{- end }}      
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.postgres.repository }}:{{ .Values.postgres.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.postgres.pullPolicy }}
-          {{- if .Values.postgres.env }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if .Values.image.env }}
           env: 
-            {{- toYaml .Values.postgres.env | nindent 12 }}
+            {{- toYaml .Values.image.env | nindent 12 }}
           {{- end }}
-          args: [ {{.Values.postgres.args}} ]
+          args: [ {{.Values.image.args}} ]
           ports:
             - name: http
-              containerPort: {{ .Values.postgres.containerPort }}
+              containerPort: {{ .Values.image.containerPort }}
               protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /{{ .Values.image.livenessProbe }}
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /{{ .Values.image.readinessProbe }}
+              port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
