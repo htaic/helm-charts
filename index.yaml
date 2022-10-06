@@ -3,6 +3,23 @@ entries:
   auth-services:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2022-10-06T21:19:54.843747424Z"
+    dependencies:
+    - name: postgresql
+      repository: file://./dependency_chart/postgresql
+      version: 0.0.1
+    - name: hasura
+      repository: file://./dependency_chart/hasura
+      version: 0.0.1
+    description: A Helm chart for Kubernetes micro auth services
+    digest: d733296adfedcb5b5d71e7254601966fe64d12dd889e0d5edaafd91b34102756
+    name: auth-services
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/auth-services-0.0.2/auth-services-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2022-10-06T16:12:28.668918019Z"
     dependencies:
     - name: postgresql
@@ -30,4 +47,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/microfrontend-0.0.4/microfrontend-0.0.4.tgz
     version: 0.0.4
-generated: "2022-10-06T16:12:28.857904609Z"
+generated: "2022-10-06T21:19:54.843755325Z"
