@@ -1,0 +1,3 @@
+# helm locals
+**/*.lock
+**/*.tgz
