@@ -1,0 +1,17 @@
+# this should probably get linked to traefik's toggle for the dashboard
+{{- if .Values.enableTraefikDashboard }}
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: web-dashboard
+  namespace: {{ .Release.Namespace }}
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+      kind: Rule
+      services:
+        - name: api@internal
+          kind: TraefikService
+{{- end }} 

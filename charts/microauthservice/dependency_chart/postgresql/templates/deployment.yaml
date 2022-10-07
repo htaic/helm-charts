@@ -50,6 +50,13 @@ spec:
           #     port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+          - name: postgres-vol
+            mountPath: /data
+      volumes:
+        - name: postgres-vol
+          persistentVolumeClaim:
+            claimName: {{ .Values.storage.claimName }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
