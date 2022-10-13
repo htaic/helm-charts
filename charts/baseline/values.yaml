@@ -8,13 +8,26 @@ storage:
   capacity: 20Gi
   volumeMode: Filesystem
   csi:
-    volumeHandle: fs-01122d90911a85252
+    volumeHandle: fs-{{FSID}}
     volumeAttributes:
       encryptInTransit: "true"
       
 # https://github.com/kubernetes-sigs/aws-efs-csi-driver/blob/master/charts/aws-efs-csi-driver/values.yaml
-# aws-efs-csi-driver:
-#   fullnameOverride: storage
+aws-efs-csi-driver:
+  controller:
+    serviceAccount:
+      create: true
+      name: efs-csi-controller-sa
+      annotations: 
+        eks.amazonaws.com/role-arn: arn:aws:iam::{{ACCOUNTID}}:role/{{ROLENAME}}
+  storageClasses:
+  - name: efs-storageclass
+    mountOptions:
+    - tls
+    parameters:
+      provisioningMode: efs-ap
+      fileSystemId: fs-{{FSID}}
+
 
 # https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml
 traefik:

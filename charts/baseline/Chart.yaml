@@ -37,3 +37,6 @@ dependencies:
 - name: aws-efs-csi-driver
   version: "2.2.8"
   repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
+# - name: elastic/filebeat
+#   version: "7.12.1"
+#   repository: https://helm.elastic.co

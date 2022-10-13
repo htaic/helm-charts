@@ -29,8 +29,8 @@ postgresql:
       - name: POSTGRES_PASSWORD
         value: postgrespassword
   storage:
-    className: efs-storageclass
     claimSize: 5Gi
+    className: efs-storageclass
 
 ####################################
 # hasura override
