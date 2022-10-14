@@ -38,6 +38,32 @@ entries:
   baseline:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2022-10-14T16:32:00.753512927Z"
+    dependencies:
+    - name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 10.24.2
+    - name: aws-efs-csi-driver
+      repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
+      version: 2.2.8
+    - name: auth-services
+      repository: file://./dependency_chart/microauthservice
+      version: 0.0.3
+    - name: postgresql
+      repository: file://./dependency_chart/postgresql
+      version: 0.0.1
+    - name: hasura
+      repository: file://./dependency_chart/hasura
+      version: 0.0.1
+    description: A Helm chart for Kubernetes
+    digest: 73238d271194f7d045db5c19e3d23f0df764159b94a9a9781f45167fe99f44c0
+    name: baseline
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/baseline-0.0.3/baseline-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2022-10-14T14:25:04.151280269Z"
     dependencies:
     - name: traefik
@@ -65,4 +91,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/microfrontend-0.0.4/microfrontend-0.0.4.tgz
     version: 0.0.4
-generated: "2022-10-14T14:25:04.292606636Z"
+generated: "2022-10-14T16:32:00.753527327Z"
