@@ -35,6 +35,24 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/auth-services-0.0.1/auth-services-0.0.1.tgz
     version: 0.0.1
+  baseline:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2022-10-14T14:25:04.151280269Z"
+    dependencies:
+    - name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 10.24.2
+    - name: aws-efs-csi-driver
+      repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
+      version: 2.2.8
+    description: A Helm chart for Kubernetes
+    digest: 29759b32602f82de5a5c1633eac695f2ad79d179c2ece0d7cbfa3e2582cafc4f
+    name: baseline
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/baseline-0.0.1/baseline-0.0.1.tgz
+    version: 0.0.1
   microfrontend:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -47,4 +65,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/microfrontend-0.0.4/microfrontend-0.0.4.tgz
     version: 0.0.4
-generated: "2022-10-06T21:19:54.843755325Z"
+generated: "2022-10-14T14:25:04.292606636Z"
