@@ -1,6 +1,6 @@
 apiVersion: v2
-name: auth-services
-description: A Helm chart for Kubernetes micro auth services
+name: baseline
+description: A Helm chart for Kubernetes
 
 # A chart can be either an 'application' or a 'library' chart.
 #
@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.0.2
+version: 0.0.1
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -25,12 +25,18 @@ appVersion: "0.0.1"
 
 # kubeVersion: ">=1.17.0-0"
 
-# You can find these charts on the artifact hub
-# https://artifacthub.io/packages/helm/bitnami/postgresql
+# This is where the helm chart will automatically pull content from a remote helm chart. Overrides
+# can also be done for this so ensure naming overlap doesn't conflict or break your local or the remote
+# helm chart dependency.
+# https://helm.sh/docs/helm/helm_dependency/
+# https://github.com/traefik/traefik-helm-chart
 dependencies:
-- name: postgresql
-  version: "0.0.1"
-  repository: "file://./dependency_chart/postgresql"
-- name: hasura
-  version: "0.0.1"
-  repository: "file://./dependency_chart/hasura"
+- name: traefik
+  version: "10.24.2"
+  repository: https://helm.traefik.io/traefik
+- name: aws-efs-csi-driver
+  version: "2.2.8"
+  repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
+# - name: elastic/filebeat
+#   version: "7.12.1"
+#   repository: https://helm.elastic.co

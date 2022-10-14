@@ -10,6 +10,11 @@ postgres:
     - name: POSTGRES_PASSWORD
       value: postgrespassword
 
+storage:
+  className: efs-storageclass
+  claimName: postgres-claim
+  claimSize: 5Gi
+
 service:
   type: ClusterIP
 

@@ -1,6 +1,6 @@
-# Microfront end helm chart
+# K8s baseline
 
-A sample library for dealing with microfront ends that deploy behind traefik.
+A Public chart for deploying cluster baseline configurations to support hanwha services.
 
 ## Installation
 
@@ -8,7 +8,7 @@ clone the [helm-charts](https://github.com/htaic/helm-charts) repo into your sou
 
 ```bash
 git clone https://github.com/htaic/helm-charts.git
-mv ./helm-charts/charts/microfrontend/values.yaml ./DevValues.yaml
+mv ./helm-charts/charts/baseline/values.yaml ./DevValues.yaml
 ```
 
 or
@@ -24,7 +24,8 @@ Update the dev yaml to reflect the correct image name, ports, pull policy, and r
 
 ```bash
 aws eks update-kubeconfig --region $AWS_DEFAULT_REGION --name $AWS_EKS_NAME
-helm upgrade --install --namespace hanwha -f $VALUES_FILE $MYSERVICENAME ./helm-charts/charts/microfrontend
+helm dependency build
+helm upgrade --install --namespace hanwha --create-namespace -f $VALUES_FILE baseline ./helm-charts/charts/baseline
 ```
 
 or
@@ -32,7 +33,7 @@ or
 ```bash
 aws eks update-kubeconfig --region $AWS_DEFAULT_REGION --name $AWS_EKS_NAME
 helm repo update
-helm upgrade --install --atomic --namespace hanwha -f $VALUES_FILE $MYSERVICENAME htaic/microfrontend
+helm upgrade --install --atomic --namespace hanwha --create-namespace -f $VALUES_FILE baseline htaic/baseline
 ```
 
 ## Contributing

@@ -1,0 +1,35 @@
+fullnameOverride: "baseline"
+enableTraefikDashboard: true
+
+storage:
+  className: efs-storageclass
+  storageName: efs-shared-storage
+  provisioner: efs.csi.aws.com
+  capacity: 20Gi
+  volumeMode: Filesystem
+  csi:
+    volumeHandle: fs-{{FSID}}
+    volumeAttributes:
+      encryptInTransit: "true"
+      
+# https://github.com/kubernetes-sigs/aws-efs-csi-driver/blob/master/charts/aws-efs-csi-driver/values.yaml
+aws-efs-csi-driver:
+  controller:
+    serviceAccount:
+      create: true
+      name: efs-csi-controller-sa
+      annotations: 
+        eks.amazonaws.com/role-arn: arn:aws:iam::{{ACCOUNTID}}:role/{{ROLENAME}}
+  storageClasses:
+  - name: efs-storageclass
+    mountOptions:
+    - tls
+    parameters:
+      provisioningMode: efs-ap
+      fileSystemId: fs-{{FSID}}
+
+
+# https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml
+traefik:
+  image:
+    pullPolicy: Always

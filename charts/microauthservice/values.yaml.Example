@@ -19,6 +19,45 @@ image:
     - name: NODE_ENV
       value: "development"
 
+####################################
+# Postgres override
+####################################
+postgresql:
+  namespace: "hanwha"
+  postgres:
+    env:
+      - name: POSTGRES_PASSWORD
+        value: postgrespassword
+  storage:
+    claimSize: 5Gi
+    className: efs-storageclass
+
+####################################
+# hasura override
+####################################
+hasura:
+  namespace: "hanwha"
+  hasura:
+    env:
+      - name: HASURA_GRAPHQL_METADATA_DATABASE_URL
+        value: postgres://postgres:postgrespassword@authentication-service-postgresql:5432/postgres
+        ## this env var can be used to add the above postgres database to Hasura as a data source. this can be removed/updated based on your needs
+      - name: PG_DATABASE_URL
+        value: postgres://postgres:postgrespassword@authentication-service-postgresql:5432/postgres
+        ## enable the console served by server
+      - name: HASURA_GRAPHQL_ENABLE_CONSOLE
+        value: "true" # set to "false" to disable console
+        ## enable debugging mode. It is recommended to disable this in production
+      - name: HASURA_GRAPHQL_DEV_MODE
+        value: "true"
+      - name: HASURA_GRAPHQL_ENABLED_LOG_TYPES
+        value: startup, http-log, webhook-log, websocket-log, query-log
+        # We have a readonly role for all users other than Hasura GraphQL admin
+      - name: HASURA_GRAPHQL_UNAUTHORIZED_ROLE
+        value: readonly
+      - name: HASURA_GRAPHQL_ADMIN_SECRET
+        value: HaSuRaPaSsWoRd
+
 sidecarimage:
   name: "logging-sidecar"
   repository: ghcr.io/htaic/platform-logging-service
@@ -46,39 +85,3 @@ autoscaling:
   minReplicas: 1
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
-
-####################################
-# Postgres override
-####################################
-postgresql:
-  namespace: "hanwha"
-  postgres:
-    env:
-      - name: POSTGRES_PASSWORD
-        value: postgrespassword
-
-####################################
-# hasura override
-####################################
-hasura:
-  namespace: "hanwha"
-  hasura:
-    env:
-      - name: HASURA_GRAPHQL_METADATA_DATABASE_URL
-        value: postgres://postgres:postgrespassword@authentication-service-postgresql:5432/postgres
-        ## this env var can be used to add the above postgres database to Hasura as a data source. this can be removed/updated based on your needs
-      - name: PG_DATABASE_URL
-        value: postgres://postgres:postgrespassword@authentication-service-postgresql:5432/postgres
-        ## enable the console served by server
-      - name: HASURA_GRAPHQL_ENABLE_CONSOLE
-        value: "true" # set to "false" to disable console
-        ## enable debugging mode. It is recommended to disable this in production
-      - name: HASURA_GRAPHQL_DEV_MODE
-        value: "true"
-      - name: HASURA_GRAPHQL_ENABLED_LOG_TYPES
-        value: startup, http-log, webhook-log, websocket-log, query-log
-        # We have a readonly role for all users other than Hasura GraphQL admin
-      - name: HASURA_GRAPHQL_UNAUTHORIZED_ROLE
-        value: readonly
-      - name: HASURA_GRAPHQL_ADMIN_SECRET
-        value: GVEvBZ78AQfR1WU78uqh
