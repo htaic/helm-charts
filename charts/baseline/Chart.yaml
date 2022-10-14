@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.0.2
+version: 0.0.3
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -37,9 +37,15 @@ dependencies:
 - name: aws-efs-csi-driver
   version: "2.2.8"
   repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
-- name: auth-services
-  version: "0.0.3"
-  repository: https://htaic.github.io/helm-charts
-# - name: elastic/filebeat
+# - name: filebeat
 #   version: "7.12.1"
 #   repository: https://helm.elastic.co
+- name: auth-services
+  version: "0.0.3"
+  repository: "file://./dependency_chart/microauthservice"
+- name: postgresql
+  version: "0.0.1"
+  repository: "file://./dependency_chart/postgresql"
+- name: hasura
+  version: "0.0.1"
+  repository: "file://./dependency_chart/hasura"

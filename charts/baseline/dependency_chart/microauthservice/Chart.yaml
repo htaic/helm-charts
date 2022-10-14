@@ -27,10 +27,3 @@ appVersion: "0.0.1"
 
 # You can find these charts on the artifact hub
 # https://artifacthub.io/packages/helm/bitnami/postgresql
-dependencies:
-- name: postgresql
-  version: "0.0.1"
-  repository: "file://./dependency_chart/postgresql"
-- name: hasura
-  version: "0.0.1"
-  repository: "file://./dependency_chart/hasura"
