@@ -84,7 +84,7 @@ auth-services:
         - name: HASURA_GRAPHQL_UNAUTHORIZED_ROLE
           value: readonly
         - name: HASURA_GRAPHQL_ADMIN_SECRET
-          value: 3FTgpUkll58n4br
+          value: HasuraPassword
   sidecarimage:
     name: "logging-sidecar"
     repository: ghcr.io/htaic/platform-logging-service
