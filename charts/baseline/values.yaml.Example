@@ -8,7 +8,7 @@ storage:
   capacity: 20Gi
   volumeMode: Filesystem
   csi:
-    volumeHandle: fs-{{FSID}}
+    volumeHandle: fs-{{fsid}}
     volumeAttributes:
       encryptInTransit: "true"
       
@@ -19,17 +19,91 @@ aws-efs-csi-driver:
       create: true
       name: efs-csi-controller-sa
       annotations: 
-        eks.amazonaws.com/role-arn: arn:aws:iam::{{ACCOUNTID}}:role/{{ROLENAME}}
+        eks.amazonaws.com/role-arn: arn:aws:iam::{{accountid}}:role/{{eksclusterrole}}
   storageClasses:
   - name: efs-storageclass
     mountOptions:
     - tls
     parameters:
       provisioningMode: efs-ap
-      fileSystemId: fs-{{FSID}}
+      fileSystemId: fs-{{fsid}}
 
 
 # https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml
 traefik:
   image:
     pullPolicy: Always
+
+
+auth-services:
+  image:
+    replicaCount: 1
+    repository: ghcr.io/htaic/authentication-service
+    pullPolicy: Always
+    containerPort: 9876
+    tag: "latest"
+    hostname: authentication-service
+    livenessProbe: "api/v1/livez"
+    readinessProbe: "api/v1/readyz"
+    domainPath: "auth"
+    env:
+      - name: LOGSINK
+        value: STDOUT
+      - name: APP_POSTGRESURI
+        value: "postgres://postgres:postgrespassword@baseline-postgresql:5432/postgres"
+      - name: NODE_ENV
+        value: "development"
+  postgresql:
+    namespace: "hanwha"
+    postgres:
+      env:
+        - name: POSTGRES_PASSWORD
+          value: postgrespassword
+    storage:
+      claimSize: 5Gi
+      className: efs-storageclass
+  hasura:
+    namespace: "hanwha"
+    hasura:
+      domainPath: "hasura"
+      env:
+        - name: HASURA_GRAPHQL_METADATA_DATABASE_URL
+          value: postgres://postgres:postgrespassword@baseline-postgresql:5432/postgres
+          ## this env var can be used to add the above postgres database to Hasura as a data source. this can be removed/updated based on your needs
+        - name: PG_DATABASE_URL
+          value: postgres://postgres:postgrespassword@baseline-postgresql:5432/postgres
+          ## enable the console served by server
+        - name: HASURA_GRAPHQL_ENABLE_CONSOLE
+          value: "true" # set to "false" to disable console
+          ## enable debugging mode. It is recommended to disable this in production
+        - name: HASURA_GRAPHQL_DEV_MODE
+          value: "true"
+        - name: HASURA_GRAPHQL_ENABLED_LOG_TYPES
+          value: startup, http-log, webhook-log, websocket-log, query-log
+          # We have a readonly role for all users other than Hasura GraphQL admin
+        - name: HASURA_GRAPHQL_UNAUTHORIZED_ROLE
+          value: readonly
+        - name: HASURA_GRAPHQL_ADMIN_SECRET
+          value: HasuraPassword
+  sidecarimage:
+    name: "logging-sidecar"
+    repository: ghcr.io/htaic/platform-logging-service
+    pullPolicy: Always
+    tag: "latest"
+  imagePullSecrets:
+    - name: dockerconfigjson-github-com
+  service:
+    type: ClusterIP
+  resources:
+    requests:
+      cpu: 250m
+      memory: 750Mi
+  serviceAccount:
+    create: false
+    annotations: {}
+    name: ""
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 80
