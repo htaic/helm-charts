@@ -50,13 +50,20 @@ spec:
           #     port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          {{- if .Values.storage }}
           volumeMounts:
           - name: postgres-vol
-            mountPath: /data
+            mountPath: /var/lib/postgresql/data
+          - name: config
+            mountPath: /docker-entrypoint-initdb.d
       volumes:
         - name: postgres-vol
           persistentVolumeClaim:
             claimName: {{ .Values.storage.claimName }}
+        - name: config
+          configMap:
+            name: {{ .Release.Name }}-configmap
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

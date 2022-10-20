@@ -9,6 +9,9 @@ postgres:
   env:
     - name: POSTGRES_PASSWORD
       value: postgrespassword
+    # https://hub.docker.com/_/postgres
+    - name: PGDATA
+      value: /var/lib/postgresql/data/pgdata
 
 storage:
   className: efs-storageclass
