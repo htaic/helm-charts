@@ -11,9 +11,9 @@ image:
   domainPath: ""
   livenessProbe: "api/v1/livez"
   readinessProbe: "api/v1/readyz"
-  noStripPath: true
   env:
-    name: value
+    - name: ENVVARIABLENAME
+      value: VALUE
 
 ##########################
 # Caution updating below #
