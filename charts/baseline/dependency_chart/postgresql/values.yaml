@@ -12,11 +12,11 @@ postgres:
     # https://hub.docker.com/_/postgres
     - name: PGDATA
       value: /var/lib/postgresql/data/pgdata
-
-storage:
-  className: efs-storageclass
-  claimName: postgres-claim
-  claimSize: 5Gi
+# # Optional (should be passed in from parent chart)
+# storage:
+#   className: efs-storageclass
+#   claimName: postgres-claim
+#   claimSize: 5Gi
 
 service:
   type: ClusterIP

@@ -40,30 +40,24 @@ spec:
             - name: http
               containerPort: {{ .Values.postgres.containerPort }}
               protocol: TCP
-          # livenessProbe:
-          #   httpGet:
-          #     path: /{{ .Values.postgres.livenessProbe }}
-          #     port: http
-          # readinessProbe:
-          #   httpGet:
-          #     path: /{{ .Values.postgres.readinessProbe }}
-          #     port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- if .Values.storage }}
           volumeMounts:
+          {{- if .Values.storage }}
           - name: postgres-vol
             mountPath: /var/lib/postgresql/data
+          {{- end }}
           - name: config
             mountPath: /docker-entrypoint-initdb.d
       volumes:
+        {{- if .Values.storage }}
         - name: postgres-vol
           persistentVolumeClaim:
             claimName: {{ .Values.storage.claimName }}
+        {{- end }}
         - name: config
           configMap:
             name: {{ .Release.Name }}-configmap
-      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
