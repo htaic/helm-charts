@@ -40,15 +40,15 @@ dependencies:
 - name: filebeat
   version: "7.12.1"
   repository: https://helm.elastic.co
-- name: auth-services
-  version: "0.0.3"
-  repository: "file://./dependency_chart/microauthservice"
-- name: postgresql
-  version: "0.0.1"
-  repository: "file://./dependency_chart/postgresql"
-- name: hasura
-  version: "0.0.1"
-  repository: "file://./dependency_chart/hasura"
 - name: oathkeeper
   version: "0.25.6"
   repository: "https://k8s.ory.sh/helm/charts"
+- name: auth-services
+  version: "0.0.4"
+  repository: "file://./dependency_chart/auth-services"
+- name: postgresql
+  version: "0.0.2"
+  repository: "file://./dependency_chart/postgresql"
+- name: hasura
+  version: "0.0.2"
+  repository: "file://./dependency_chart/hasura"
