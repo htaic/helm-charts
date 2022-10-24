@@ -31,24 +31,30 @@ appVersion: "0.0.1"
 # https://helm.sh/docs/helm/helm_dependency/
 # https://github.com/traefik/traefik-helm-chart
 dependencies:
-- name: traefik
-  version: "10.24.2"
-  repository: https://helm.traefik.io/traefik
-- name: aws-efs-csi-driver
-  version: "2.2.8"
-  repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
-- name: filebeat
-  version: "7.12.1"
-  repository: https://helm.elastic.co
-- name: oathkeeper
-  version: "0.25.6"
-  repository: "https://k8s.ory.sh/helm/charts"
-- name: auth-services
-  version: "0.0.4"
-  repository: "file://./dependency_chart/auth-services"
 - name: postgresql
   version: "0.0.2"
   repository: "file://./dependency_chart/postgresql"
-- name: hasura
-  version: "0.0.2"
-  repository: "file://./dependency_chart/hasura"
+# - name: hasura
+#   version: "0.0.2"
+#   repository: "file://./dependency_chart/hasura"
+- name: auth-services
+  version: "0.0.4"
+  repository: "file://./dependency_chart/auth-services"
+- name: traefik
+  version: "10.24.2"
+  repository: https://helm.traefik.io/traefik
+# - name: aws-efs-csi-driver
+#   version: "2.2.8"
+#   repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
+# - name: filebeat
+#   version: "7.12.1"
+#   repository: https://helm.elastic.co
+- name: oathkeeper
+  version: "0.25.6"
+  repository: "https://k8s.ory.sh/helm/charts"
+- name: kratos
+  version: "0.25.6"
+  repository: "https://k8s.ory.sh/helm/charts"
+- name: keto
+  version: "0.25.6"
+  repository: "https://k8s.ory.sh/helm/charts"

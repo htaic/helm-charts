@@ -4,4 +4,4 @@ metadata:
   name: {{ .Release.Name }}-configmap
 data:
   configdata.sql: |
-{{ .Files.Get "./dependency_chart/postgresql/configdata.sql" | indent 4 }}
+{{ .Files.Get "configdata.sql" | indent 4 }}
