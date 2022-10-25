@@ -8,7 +8,7 @@ clone the [helm-charts](https://github.com/htaic/helm-charts) repo into your sou
 
 ```bash
 git clone https://github.com/htaic/helm-charts.git
-mv ./helm-charts/charts/microauthservice/values.yaml ./DevValues.yaml
+mv ./helm-charts/charts/auth-service/values.yaml ./DevValues.yaml
 ```
 
 or
@@ -25,7 +25,7 @@ Update the dev yaml to reflect the correct image name, ports, pull policy, and r
 ```bash
 aws eks update-kubeconfig --region $AWS_DEFAULT_REGION --name $AWS_EKS_NAME
 helm dependency build
-helm upgrade --install --namespace hanwha -f $VALUES_FILE authentication-service ./helm-charts/charts/microauthservice
+helm upgrade --install --namespace hanwha -f $VALUES_FILE auth-service ./helm-charts/charts/auth-service
 ```
 
 or
@@ -33,7 +33,7 @@ or
 ```bash
 aws eks update-kubeconfig --region $AWS_DEFAULT_REGION --name $AWS_EKS_NAME
 helm repo update
-helm upgrade --install --atomic --namespace hanwha -f $VALUES_FILE authentication-service htaic/auth-services
+helm upgrade --install --atomic --namespace hanwha -f $VALUES_FILE auth-service htaic/auth-service
 ```
 
 ## Contributing
