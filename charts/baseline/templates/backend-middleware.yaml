@@ -4,14 +4,10 @@ metadata:
   annotations:
     meta.helm.sh/release-name: baseline-oathkeeper
     meta.helm.sh/release-namespace: hanwha
-  # creationTimestamp: "2022-10-06T05:54:13Z"
-  # generation: 5
   labels:
     app.kubernetes.io/managed-by: Helm
   name: baseline-oathkeeper-traefik-middleware
   namespace: hanwha
-  # resourceVersion: "75582"
-  # uid: 4258c6d8-c5d4-4a45-8389-74e2913110ba
 spec:
   forwardAuth:
     address: http://baseline-oathkeeper-api:4456/decisions
