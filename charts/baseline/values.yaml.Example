@@ -19,7 +19,7 @@ aws-efs-csi-driver:
       create: true
       name: efs-csi-controller-sa
       annotations: 
-        eks.amazonaws.com/role-arn: arn:aws:iam::YOURACCOUNTNUMBER:role/YOURROLE
+        eks.amazonaws.com/role-arn: arn:aws:iam::YOURACCOUNTNUMBER:role/YOURAWSROLE
   storageClasses:
   - name: efs-storageclass
     mountOptions:
@@ -87,7 +87,7 @@ faux-auth-service:
       - name: LOGSINK
         value: STDOUT
       - name: APP_POSTGRESURI
-        value: "postgres://postgres:postgrespassword@baseline-faux-auth-service-postgresql:5432/postgres"
+        value: "postgres://postgres:postgrespassword@baseline-postgresql:5432/postgres"
       - name: NODE_ENV
         value: "development"
 
@@ -111,10 +111,10 @@ faux-auth-service:
       domainPath: "hasura"
       env:
         - name: HASURA_GRAPHQL_METADATA_DATABASE_URL
-          value: postgres://postgres:postgrespassword@baseline-faux-auth-service-postgresql:5432/postgres
+          value: postgres://postgres:postgrespassword@baseline-postgresql:5432/postgres
           ## this env var can be used to add the above postgres database to Hasura as a data source. this can be removed/updated based on your needs
         - name: PG_DATABASE_URL
-          value: postgres://postgres:postgrespassword@baseline-faux-auth-service-postgresql:5432/postgres
+          value: postgres://postgres:postgrespassword@baseline-postgresql:5432/postgres
           ## enable the console served by server
         - name: HASURA_GRAPHQL_ENABLE_CONSOLE
           value: "true" # set to "false" to disable console
