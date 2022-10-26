@@ -27,10 +27,10 @@ resources:
     memory: 750Mi
 
 serviceAccount:
-  create: true
+  create: false
   annotations: {}
   name: ""
-
+  
 autoscaling:
   enabled: false
   minReplicas: 1

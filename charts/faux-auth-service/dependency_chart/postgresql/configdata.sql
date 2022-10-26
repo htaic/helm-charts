@@ -538,4 +538,3 @@ ALTER TABLE ONLY public."UserSessions"
 --
 -- PostgreSQL database dump complete
 --
-
