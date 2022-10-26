@@ -1,5 +1,29 @@
 apiVersion: v1
 entries:
+  auth-service:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2022-10-26T20:01:41.505453458Z"
+    dependencies:
+    - name: postgresql
+      repository: file://./dependency_chart/postgresql
+      version: 0.0.2
+    - name: oathkeeper
+      repository: https://k8s.ory.sh/helm/charts
+      version: 0.25.6
+    - name: kratos
+      repository: https://k8s.ory.sh/helm/charts
+      version: 0.25.6
+    - name: keto
+      repository: https://k8s.ory.sh/helm/charts
+      version: 0.25.6
+    description: A Helm chart for Kubernetes micro auth services
+    digest: f2cdb6d5cd8460137b8e7486f285ccf75e07371dc1e5b108ef8373216d44bea0
+    name: auth-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/auth-service-0.1.0/auth-service-0.1.0.tgz
+    version: 0.1.0
   auth-services:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -79,6 +103,24 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/baseline-0.0.1/baseline-0.0.1.tgz
     version: 0.0.1
+  faux-auth-service:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2022-10-26T20:01:41.991474126Z"
+    dependencies:
+    - name: postgresql
+      repository: file://./dependency_chart/postgresql
+      version: 0.0.2
+    - name: hasura
+      repository: file://./dependency_chart/hasura
+      version: 0.0.2
+    description: A Helm chart for Kubernetes micro auth services
+    digest: ce55f4aac0868cf2030ddaec1ef532b5f5a048a8a54b871286dba26b0a6103c4
+    name: faux-auth-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/faux-auth-service-0.0.1/faux-auth-service-0.0.1.tgz
+    version: 0.0.1
   microfrontend:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -91,4 +133,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/microfrontend-0.0.4/microfrontend-0.0.4.tgz
     version: 0.0.4
-generated: "2022-10-14T16:32:00.753527327Z"
+generated: "2022-10-26T20:01:42.219421401Z"
