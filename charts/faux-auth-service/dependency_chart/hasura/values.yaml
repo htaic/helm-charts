@@ -7,10 +7,10 @@ hasura:
   hostname: hasura
   env:
     - name: HASURA_GRAPHQL_METADATA_DATABASE_URL
-      value: postgres://postgres:postgrespassword@postgres:5432/postgres
+      value: postgres://postgres:postgrespassword@faux-auth-service-postgres:5432/postgres
       ## this env var can be used to add the above postgres database to Hasura as a data source. this can be removed/updated based on your needs
     - name: PG_DATABASE_URL
-      value: postgres://postgres:postgrespassword@postgres:5432/postgres
+      value: postgres://postgres:postgrespassword@faux-auth-service-postgres:5432/postgres
       ## enable the console served by server
     - name: HASURA_GRAPHQL_ENABLE_CONSOLE
       value: "true" # set to "false" to disable console

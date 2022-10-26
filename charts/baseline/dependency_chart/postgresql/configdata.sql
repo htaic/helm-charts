@@ -1,6 +1,0 @@
-SELECT 'CREATE DATABASE ory '
-'WITH '
-'ENCODING = ''UTF8'' '
-'CONNECTION LIMIT = -1 '
-'IS_TEMPLATE = False'
-WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'ory')\gexec
