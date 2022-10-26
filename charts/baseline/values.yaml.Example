@@ -8,7 +8,7 @@ storage:
   capacity: 20Gi
   volumeMode: Filesystem
   csi:
-    volumeHandle: {{UPDATE WITH fs-ID}}
+    volumeHandle: fs-123456
     volumeAttributes:
       encryptInTransit: "true"
       
@@ -19,14 +19,14 @@ aws-efs-csi-driver:
       create: true
       name: efs-csi-controller-sa
       annotations: 
-        eks.amazonaws.com/role-arn: arn:aws:iam::{{account}}:role/{{name of role}}
+        eks.amazonaws.com/role-arn: arn:aws:iam::YOURACCOUNTNUMBER:role/YOURROLE
   storageClasses:
   - name: efs-storageclass
     mountOptions:
     - tls
     parameters:
       provisioningMode: efs-ap
-      fileSystemId: {{UPDATE WITH fs-ID}}
+      fileSystemId: fs-123456
 
 
 # https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml
