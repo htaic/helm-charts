@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Release.Name }}-configmap
+  name: {{ .Release.Name }}-postgres-configmap
 data:
   configdata.sql: |
-{{ .Files.Get "configdata.sql" | indent 4 }}
+{{ .values.postgresOverride | indent 4 }}
