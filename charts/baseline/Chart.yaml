@@ -48,3 +48,4 @@ dependencies:
 - name: filebeat
   version: "7.12.1"
   repository: https://helm.elastic.co
+
