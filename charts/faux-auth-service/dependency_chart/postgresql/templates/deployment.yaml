@@ -42,22 +42,6 @@ spec:
               protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          volumeMounts:
-          {{- if .Values.storage }}
-          - name: postgres-vol
-            mountPath: /var/lib/postgresql/data
-          {{- end }}
-          - name: config
-            mountPath: /docker-entrypoint-initdb.d
-      volumes:
-        {{- if .Values.storage }}
-        - name: postgres-vol
-          persistentVolumeClaim:
-            claimName: {{ .Values.storage.claimName }}
-        {{- end }}
-        - name: config
-          configMap:
-            name: {{ .Release.Name }}-postgres-configmap
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
