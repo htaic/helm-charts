@@ -56,7 +56,7 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: {{ .Release.Name }}-configmap          
+            name: {{ .Release.Name }}-hasura-configmap          
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

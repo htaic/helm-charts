@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Release.Name }}-configmap
+  name: {{ .Release.Name }}-hasura-configmap
 data:
   k8s_hasura_metadata.json: |
 {{ .Values.hasuraMetadata | indent 4 }}
