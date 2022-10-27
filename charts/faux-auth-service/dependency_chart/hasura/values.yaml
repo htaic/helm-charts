@@ -7,10 +7,10 @@ hasura:
   hostname: hasura
   env:
     - name: HASURA_GRAPHQL_METADATA_DATABASE_URL
-      value: postgres://postgres:postgrespassword@faux-auth-service-postgres:5432/postgres
+      value: postgres://postgres:postgrespassword@baseline-postgresql:5432/postgres
       ## this env var can be used to add the above postgres database to Hasura as a data source. this can be removed/updated based on your needs
     - name: PG_DATABASE_URL
-      value: postgres://postgres:postgrespassword@faux-auth-service-postgres:5432/postgres
+      value: postgres://postgres:postgrespassword@baseline-postgresql:5432/postgres
       ## enable the console served by server
     - name: HASURA_GRAPHQL_ENABLE_CONSOLE
       value: "true" # set to "false" to disable console
@@ -25,6 +25,7 @@ hasura:
       ## uncomment next line to set an admin secret
     - name: HASURA_GRAPHQL_ADMIN_SECRET
       value: ABCDEFGHIJKLMNOP
+
 
 service:
   type: ClusterIP
@@ -44,3 +45,414 @@ autoscaling:
   minReplicas: 1
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
+
+# https://hasura.io/docs/latest/migrations-metadata-seeds/auto-apply-migrations/
+hasuraMetadata: |
+  {
+    "resource_version": 44,
+    "metadata": {
+      "version": 3,
+      "sources": [
+        {
+          "name": "baseline-postgresql",
+          "kind": "postgres",
+          "tables": [
+            {
+              "table": {
+                "name": "UserSessions",
+                "schema": "public"
+              },
+              "object_relationships": [
+                {
+                  "name": "User",
+                  "using": {
+                    "foreign_key_constraint_on": "userid"
+                  }
+                }
+              ],
+              "select_permissions": [
+                {
+                  "role": "readonly",
+                  "permission": {
+                    "columns": [
+                      "createdat",
+                      "expirationtime",
+                      "id",
+                      "ipaddress",
+                      "isloggedout",
+                      "logintime",
+                      "logouttime",
+                      "updatedat",
+                      "userid"
+                    ],
+                    "filter": {}
+                  }
+                }
+              ]
+            },
+            {
+              "table": {
+                "name": "Users",
+                "schema": "public"
+              },
+              "array_relationships": [
+                {
+                  "name": "UserSessions",
+                  "using": {
+                    "foreign_key_constraint_on": {
+                      "column": "userid",
+                      "table": {
+                        "name": "UserSessions",
+                        "schema": "public"
+                      }
+                    }
+                  }
+                }
+              ],
+              "select_permissions": [
+                {
+                  "role": "readonly",
+                  "permission": {
+                    "columns": [
+                      "createdat",
+                      "email",
+                      "firstname",
+                      "id",
+                      "lastname",
+                      "loggedinduration",
+                      "updatedat",
+                      "username"
+                    ],
+                    "filter": {}
+                  }
+                }
+              ]
+            }
+          ],
+          "configuration": {
+            "connection_info": {
+              "database_url": "postgres://postgres:postgrespassword@baseline-postgresql:5432/postgres",
+              "isolation_level": "read-committed",
+              "use_prepared_statements": false
+            }
+          },
+          "customization": {
+            "naming_convention": "hasura-default"
+          }
+        }
+      ],
+      "actions": [
+        {
+          "name": "createUser",
+          "definition": {
+            "handler": "http://faux-auth-service:9876/api/v1/createUser",
+            "output_type": "CreateUserOutput",
+            "arguments": [
+              {
+                "name": "username",
+                "type": "String!"
+              },
+              {
+                "name": "password",
+                "type": "String!"
+              },
+              {
+                "name": "token",
+                "type": "String!"
+              },
+              {
+                "name": "email",
+                "type": "String"
+              },
+              {
+                "name": "firstname",
+                "type": "String"
+              },
+              {
+                "name": "lastname",
+                "type": "String"
+              },
+              {
+                "name": "loggedinduration",
+                "type": "Int!"
+              }
+            ],
+            "type": "mutation",
+            "kind": "synchronous",
+            "timeout": 60
+          },
+          "permissions": [
+            {
+              "role": "readonly"
+            }
+          ]
+        },
+        {
+          "name": "deleteUser",
+          "definition": {
+            "handler": "http://faux-auth-service:9876/api/v1/deleteUser",
+            "output_type": "DeleteUserOutput",
+            "arguments": [
+              {
+                "name": "token",
+                "type": "String!"
+              },
+              {
+                "name": "username",
+                "type": "String!"
+              }
+            ],
+            "type": "mutation",
+            "kind": "synchronous",
+            "timeout": 60
+          },
+          "permissions": [
+            {
+              "role": "readonly"
+            }
+          ]
+        },
+        {
+          "name": "login",
+          "definition": {
+            "handler": "http://faux-auth-service:9876/api/v1/login",
+            "output_type": "LoginOutput",
+            "arguments": [
+              {
+                "name": "username",
+                "type": "String!"
+              },
+              {
+                "name": "password",
+                "type": "String!"
+              }
+            ],
+            "type": "mutation",
+            "kind": "synchronous",
+            "timeout": 60
+          },
+          "comment": "login action",
+          "permissions": [
+            {
+              "role": "readonly"
+            }
+          ]
+        },
+        {
+          "name": "logout",
+          "definition": {
+            "handler": "http://faux-auth-service:9876/api/v1/logout",
+            "output_type": "LogoutOutput",
+            "arguments": [
+              {
+                "name": "token",
+                "type": "String!"
+              }
+            ],
+            "type": "mutation",
+            "kind": "synchronous",
+            "timeout": 60
+          },
+          "permissions": [
+            {
+              "role": "readonly"
+            }
+          ]
+        },
+        {
+          "name": "refreshToken",
+          "definition": {
+            "handler": "http://faux-auth-service:9876/api/v1/refreshToken",
+            "output_type": "RefreshTokenOutput",
+            "arguments": [
+              {
+                "name": "token",
+                "type": "String!"
+              }
+            ],
+            "type": "mutation",
+            "kind": "synchronous",
+            "timeout": 60
+          },
+          "permissions": [
+            {
+              "role": "readonly"
+            }
+          ]
+        },
+        {
+          "name": "updatePassword",
+          "definition": {
+            "handler": "http://faux-auth-service:9876/api/v1/updatePassword",
+            "output_type": "UpdatePasswordOutput",
+            "arguments": [
+              {
+                "name": "username",
+                "type": "String!"
+              },
+              {
+                "name": "password",
+                "type": "String!"
+              },
+              {
+                "name": "token",
+                "type": "String!"
+              }
+            ],
+            "type": "mutation",
+            "kind": "synchronous",
+            "timeout": 60
+          },
+          "comment": "updatePassword",
+          "permissions": [
+            {
+              "role": "readonly"
+            }
+          ]
+        },
+        {
+          "name": "validateToken",
+          "definition": {
+            "handler": "http://faux-auth-service:9876/api/v1/validateToken",
+            "output_type": "ValidateOutput",
+            "arguments": [
+              {
+                "name": "token",
+                "type": "String!"
+              }
+            ],
+            "type": "query",
+            "timeout": 60
+          },
+          "permissions": [
+            {
+              "role": "readonly"
+            }
+          ]
+        }
+      ],
+      "custom_types": {
+        "input_objects": [
+          {
+            "name": "UsernamePasswordInput",
+            "fields": [
+              {
+                "name": "username",
+                "type": "String!"
+              },
+              {
+                "name": "password",
+                "type": "String!"
+              }
+            ]
+          },
+          {
+            "name": "LogoutInput",
+            "fields": [
+              {
+                "name": "token",
+                "type": "String!"
+              }
+            ]
+          }
+        ],
+        "objects": [
+          {
+            "name": "LoginOutput",
+            "fields": [
+              {
+                "name": "token",
+                "type": "String"
+              },
+              {
+                "name": "expirationTime",
+                "type": "String"
+              }
+            ]
+          },
+          {
+            "name": "LogoutOutput",
+            "fields": [
+              {
+                "name": "isLoggedOut",
+                "type": "Boolean!"
+              },
+              {
+                "name": "isSessionFound",
+                "type": "Boolean!"
+              }
+            ]
+          },
+          {
+            "name": "ValidateOutput",
+            "fields": [
+              {
+                "name": "isValid",
+                "type": "Boolean!"
+              }
+            ]
+          },
+          {
+            "name": "CreateUserOutput",
+            "fields": [
+              {
+                "name": "isUserAdded",
+                "type": "Boolean!"
+              },
+              {
+                "name": "isUserAlreadyExists",
+                "type": "Boolean!"
+              },
+              {
+                "name": "isAuthorized",
+                "type": "Boolean!"
+              }
+            ]
+          },
+          {
+            "name": "RefreshTokenOutput",
+            "fields": [
+              {
+                "name": "token",
+                "type": "String"
+              },
+              {
+                "name": "expirationTime",
+                "type": "String"
+              }
+            ]
+          },
+          {
+            "name": "DeleteUserOutput",
+            "fields": [
+              {
+                "name": "isAuthorized",
+                "type": "Boolean!"
+              },
+              {
+                "name": "isUserDeleted",
+                "type": "Boolean!"
+              },
+              {
+                "name": "isUserFound",
+                "type": "Boolean!"
+              }
+            ]
+          },
+          {
+            "name": "UpdatePasswordOutput",
+            "fields": [
+              {
+                "name": "isUpdated",
+                "type": "Boolean!"
+              },
+              {
+                "name": "isUserFound",
+                "type": "Boolean!"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
