@@ -30,8 +30,8 @@ appVersion: "0.0.1"
 # https://artifacthub.io/packages/helm/bitnami/postgresql
 dependencies:
 - name: postgresql
-  version: "0.0.3"
+  version: "0.0.5"
   repository: "file://./dependency_chart/postgresql"
 - name: hasura
-  version: "0.0.4"
+  version: "0.0.5"
   repository: "file://./dependency_chart/hasura"
