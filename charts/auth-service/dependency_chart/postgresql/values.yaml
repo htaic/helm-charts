@@ -30,3 +30,9 @@ serviceAccount:
   create: true
   annotations: {}
   name: ""
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
