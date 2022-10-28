@@ -8,8 +8,8 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: (PathPrefix("/{{ .Values.image.domainPath }}"))
-      kind: Rule
+    - kind: Rule
+      match: (Path("/{{ .Values.image.domainPath }}/(login|realms)"))
       services:
         - name: {{ include ".helm.fullname" . }}
           kind: Service
@@ -18,4 +18,15 @@ spec:
       middlewares:
       - name: "{{ include ".helm.fullname" . }}-strip"
       {{ end }}
+    - kind: Rule
+      match: (PathPrefix("/{{ .Values.image.domainPath }}"))
+      services:
+        - name: {{ include ".helm.fullname" . }}
+          kind: Service
+          port: {{ .Values.image.containerPort }}
+      middlewares:
+      {{ if (not (hasKey .Values.image "noStripPath")) }}
+      - name: "{{ include ".helm.fullname" . }}-strip"
+      {{ end }}
+      - name: "{{ include ".helm.fullname" . }}-forward-auth"
 {{ end }}
