@@ -274,6 +274,23 @@ entries:
   faux-auth-service:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2022-10-28T21:17:18.954900001Z"
+    dependencies:
+    - name: postgresql
+      repository: https://htaic.github.io/helm-charts
+      version: 0.1.0
+    - name: hasura
+      repository: file://./dependency_chart/hasura
+      version: 0.0.6
+    description: A Helm chart for Kubernetes micro auth services
+    digest: 130d060c81cea583898cd9562913b6d1ea6257de9d6fecc6fa956dee5e432f99
+    name: faux-auth-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/faux-auth-service-0.0.8/faux-auth-service-0.0.8.tgz
+    version: 0.0.8
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2022-10-28T19:06:31.412677529Z"
     dependencies:
     - name: postgresql
@@ -360,6 +377,17 @@ entries:
   microfrontend:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2022-10-28T21:17:19.218420312Z"
+    description: A Helm chart for Kubernetes micro front ends deployed behind a traefik
+      ingress
+    digest: 70bcdfded02109adcaf39238f0121a716e14c797775e18ff2db8a4df9d946afc
+    name: microfrontend
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/microfrontend-0.0.5/microfrontend-0.0.5.tgz
+    version: 0.0.5
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2022-09-30T18:06:03.602313058Z"
     description: A Helm chart for Kubernetes micro front ends deployed behind a traefik
       ingress
@@ -380,4 +408,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/postgresql-0.1.0/postgresql-0.1.0.tgz
     version: 0.1.0
-generated: "2022-10-28T19:11:17.657383815Z"
+generated: "2022-10-28T21:17:19.218669615Z"
