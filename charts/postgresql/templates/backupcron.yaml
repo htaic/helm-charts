@@ -1,10 +1,12 @@
-{{- if .Values.storage }}
+{{ if .Values.storage }}
 apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: postgres-backup
 spec:
-  schedule: {{ .Values.storage.scriptFrequency }}
+  schedule: "0 * * * *"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 5
   jobTemplate:
     spec:
       template:
@@ -16,7 +18,7 @@ spec:
             command:
             - /bin/sh
             - -c
-            - apt update && apt upgrade && apt install -y curl && curl {{ .Values.storage.scriptPath }} -o {{ .Values.storage.volumeMountPath }}/dumpdb.sh && chmod +x {{ .Values.storage.volumeMountPath }}/dumpdb.sh && {{ .Values.storage.volumeMountPath }}/dumpdb.sh
+            - apt update && apt upgrade && apt install -y curl && curl {{ .Values.storage.scriptPath }} > {{ .Values.storage.volumeMountPath }}/dumpdb.sh && chmod +x {{ .Values.storage.volumeMountPath }}/dumpdb.sh && {{ .Values.storage.volumeMountPath }}/dumpdb.sh
             envFrom:
             - secretRef:
                 name: "{{ include ".helm.fullname" . }}-secret"
@@ -30,4 +32,4 @@ spec:
             - name: postgres-vol
               persistentVolumeClaim:
                 claimName: "{{ include ".helm.fullname" . }}-claim"
-{{- end }}
+{{ end }}
