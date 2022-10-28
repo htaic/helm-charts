@@ -43,7 +43,7 @@ dependencies:
   repository: "https://htaic.github.io/helm-charts"
 # the auth service back end
 - name: faux-auth-service
-  version: "0.0.6"
+  version: "0.0.5"
   repository: "https://htaic.github.io/helm-charts"
 # send logs out to open search
 - name: filebeat
