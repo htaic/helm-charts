@@ -2,8 +2,8 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: {{ .Values.storage.storageName }}
-  namespace: {{ .Release.Namespace }}
+  name: "{{ include ".helm.fullname" . }}-volume"
+  namespace: {{ .Values.Namespace }}
 spec:
   storageClassName: {{ .Values.storage.className }}
   capacity:

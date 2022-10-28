@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include ".helm.fullname" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include ".helm.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.postgres.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include ".helm.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include ".helm.selectorLabels" . | nindent 8 }}
+    spec:
+      hostname: {{ .Values.postgres.hostname }}
+      serviceAccountName: {{ include ".helm.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.postgres.repository }}:{{ .Values.postgres.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.postgres.pullPolicy }}
+          {{- if .Values.postgres.env }}
+          env: 
+            {{- toYaml .Values.postgres.env | nindent 12 }}
+          {{- end }}
+          args: [ {{.Values.postgres.args}} ]
+          ports:
+            - name: http
+              containerPort: {{ .Values.postgres.containerPort }}
+              protocol: TCP
+          envFrom:
+            - secretRef:
+                name: "{{ include ".helm.fullname" . }}-secret"
+            - configMapRef:
+                name: "{{ .Chart.Name }}-configmap"
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+          {{- if .Values.storage }}
+          - name: postgres-vol
+            mountPath: {{ .Values.storage.volumeMountPath }}
+          {{- end }}
+          {{- if .Values.startUp }}
+          - name: config
+            mountPath: /docker-entrypoint-initdb.d
+          {{- end }}
+      volumes:
+        {{- if .Values.storage }}
+        - name: postgres-vol
+          persistentVolumeClaim:
+            claimName: "{{ include ".helm.fullname" . }}-claim"
+        {{- end }}
+        {{- if .Values.startUp }}
+        - name: config
+          configMap:
+            name: "{{ include ".helm.fullname" . }}-startup"
+        {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
