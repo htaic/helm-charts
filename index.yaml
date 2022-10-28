@@ -248,6 +248,23 @@ entries:
   faux-auth-service:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2022-10-28T19:06:31.412677529Z"
+    dependencies:
+    - name: postgresql
+      repository: https://htaic.github.io/helm-charts
+      version: 0.1.0
+    - name: hasura
+      repository: file://./dependency_chart/hasura
+      version: 0.0.6
+    description: A Helm chart for Kubernetes micro auth services
+    digest: 725b8f55fd0192643c62f3483179b6809711c37ecdf5074bdb83730910eab575
+    name: faux-auth-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/faux-auth-service-0.0.7/faux-auth-service-0.0.7.tgz
+    version: 0.0.7
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2022-10-28T18:59:32.556525358Z"
     dependencies:
     - name: postgresql
@@ -337,4 +354,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/postgresql-0.1.0/postgresql-0.1.0.tgz
     version: 0.1.0
-generated: "2022-10-28T18:59:32.698832514Z"
+generated: "2022-10-28T19:06:31.412718529Z"
