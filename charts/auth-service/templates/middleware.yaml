@@ -5,7 +5,7 @@ metadata:
   name: "{{ include ".helm.fullname" . }}-strip"
   namespace: {{ .Values.namespace }}
 spec:
-  stripPrefix:
-    prefixes:
+  stripPrefixRegex:
+    regex:
       - "/{{ .Values.image.domainPath }}"
 {{ end }}
