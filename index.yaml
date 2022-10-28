@@ -131,6 +131,32 @@ entries:
   baseline:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2022-10-28T21:24:18.856431692Z"
+    dependencies:
+    - name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 10.24.2
+    - name: aws-efs-csi-driver
+      repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
+      version: 2.2.8
+    - name: microfrontend
+      repository: https://htaic.github.io/helm-charts
+      version: 0.0.5
+    - name: faux-auth-service
+      repository: https://htaic.github.io/helm-charts
+      version: 0.0.8
+    - name: filebeat
+      repository: https://helm.elastic.co
+      version: 7.12.1
+    description: A Helm chart for Kubernetes
+    digest: 57dc95b8af7bc0e810a77bdc070a23ff3ffcefb6e5fb44b6b6b139c54687e367
+    name: baseline
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/baseline-0.0.6/baseline-0.0.6.tgz
+    version: 0.0.6
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2022-10-28T19:11:17.657217813Z"
     dependencies:
     - name: traefik
@@ -408,4 +434,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/postgresql-0.1.0/postgresql-0.1.0.tgz
     version: 0.1.0
-generated: "2022-10-28T21:17:19.218669615Z"
+generated: "2022-10-28T21:24:18.856709193Z"
