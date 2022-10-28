@@ -1,1 +1,1 @@
-echo "your mother was a hampster" > /data/testme
+echo "and your father smelled of elderberries" > /data/testme

@@ -25,6 +25,8 @@ storage:
       encryptInTransit: "true"
   # if you want to persist data without using backups use the PGDATA path from the postgres node
   volumeMountPath: /data
+  scriptPath: https://raw.githubusercontent.com/htaic/helm-charts/faux-auth-backup-restore-cron/charts/postgresql/dumpdb.sh
+  scriptFrequency: "* * * * *"
 
 # Optional (should be passed in from parent chart... if you want to run a startup script, enter it here)
 startUp:
