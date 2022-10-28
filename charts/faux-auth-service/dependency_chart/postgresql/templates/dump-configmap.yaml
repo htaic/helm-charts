@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-postgres-dump-configmap
+data:
+  dump-cron.sh: |
+{{ .Files.Get "dump-cron.sh" | indent 4 }}

@@ -1,17 +1,6 @@
 fullnameOverride: "baseline"
 enableTraefikDashboard: true
 
-storage:
-  className: efs-storageclass
-  storageName: efs-shared-storage
-  provisioner: efs.csi.aws.com
-  capacity: 20Gi
-  volumeMode: Filesystem
-  csi:
-    volumeHandle: fs-123456
-    volumeAttributes:
-      encryptInTransit: "true"
-      
 # https://github.com/kubernetes-sigs/aws-efs-csi-driver/blob/master/charts/aws-efs-csi-driver/values.yaml
 aws-efs-csi-driver:
   controller:

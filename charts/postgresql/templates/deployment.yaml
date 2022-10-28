@@ -40,8 +40,33 @@ spec:
             - name: http
               containerPort: {{ .Values.postgres.containerPort }}
               protocol: TCP
+          envFrom:
+            - secretRef:
+                name: "{{ include ".helm.fullname" . }}-secret"
+            - configMapRef:
+                name: "{{ .Chart.Name }}-configmap"
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+          {{- if .Values.storage }}
+          - name: postgres-vol
+            mountPath: {{ .Values.storage.volumeMountPath }}
+          {{- end }}
+          {{- if .Values.startUp }}
+          - name: config
+            mountPath: /docker-entrypoint-initdb.d
+          {{- end }}
+      volumes:
+        {{- if .Values.storage }}
+        - name: postgres-vol
+          persistentVolumeClaim:
+            claimName: "{{ include ".helm.fullname" . }}-claim"
+        {{- end }}
+        {{- if .Values.startUp }}
+        - name: config
+          configMap:
+            name: "{{ include ".helm.fullname" . }}-startup"
+        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
