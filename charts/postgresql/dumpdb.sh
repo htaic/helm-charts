@@ -1,9 +1,5 @@
 #!/bin/bash
 
-echo "YOUR MOTHER WAS A HAMPSTER"
-echo $POSTGRES_PASSWORD
-echo "AND YOUR FATHER SMELLED OF ELDERBERRIES"
-
 # This script is run normally every hour my k8s cron to create a pg_dump of the database.
 # The format of the dump file name includes a timestamp, and the last dump is always copied
 # to the file specified in POSTGRES_DUMPLATEST env variable, default value is public_dump_latest.sql
@@ -27,6 +23,9 @@ if [[ ! -d ${POSTGRES_DUMPDIR} ]]; then
 fi
 
 if [[ -z ${PGPASSWORD} ]]; then
+  echo "YOUR MOTHER WAS A HAMPSTER"
+  echo $POSTGRES_PASSWORD
+  echo "AND YOUR FATHER SMELLED OF ELDERBERRIES"
   echo "env variable POSTGRES_PASSWORD must be set to the correct Postgres password"
   echo "Use 'export POSTGRES_PASSWORD=YourPassword' to set POSTGRES_PASSWORD before running this script"
   exit 2
