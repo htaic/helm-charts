@@ -9,7 +9,7 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: (Path("/{{ .Values.image.domainPath }}/(login|realms|logout)"))
+      match: (Path("/{{ .Values.image.domainPath }}/{path:(login||realms/detect||logout)}"))
       services:
         - name: {{ include ".helm.fullname" . }}
           kind: Service

@@ -4,4 +4,4 @@ metadata:
   name: {{ .Release.Name }}-postgres-configmap
 data:
   configdata.sql: |
-{{ .values.postgresOverride | indent 4 }}
+{{ .Values.postgresOverride | indent 4 }}
