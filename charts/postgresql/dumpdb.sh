@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo "YOUR MOTHER WAS A HAMPSTER"
+echo $POSTGRES_PASSWORD
+echo "AND YOUR FATHER SMELLED OF ELDERBERRIES"
+
 # This script is run normally every hour my k8s cron to create a pg_dump of the database.
 # The format of the dump file name includes a timestamp, and the last dump is always copied
 # to the file specified in POSTGRES_DUMPLATEST env variable, default value is public_dump_latest.sql
@@ -9,7 +13,7 @@ POSTGRES_HOSTNAME=${POSTGRES_HOSTNAME:-localhost}
 POSTGRES_PORT=${POSTGRES_PORT:-5432}
 POSTGRES_USER=${POSTGRES_USER:-postgres}
 POSTGRES_DB=${POSTGRES_DB:-postgres}
-POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+PGPASSWORD=$POSTGRES_PASSWORD
 POSTGRES_DUMPDIR=${POSTGRES_DUMPDIR:-/data/dumps}
 POSTGRES_DUMPLATEST=${POSTGRES_DUMPLATEST:-public_dump_latest.sql}
 
