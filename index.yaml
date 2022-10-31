@@ -3,6 +3,29 @@ entries:
   auth-service:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2022-10-31T23:55:50.421172448Z"
+    dependencies:
+    - name: postgresql
+      repository: file://./dependency_chart/postgresql
+      version: 0.0.4
+    - name: oathkeeper
+      repository: https://k8s.ory.sh/helm/charts
+      version: 0.25.6
+    - name: kratos
+      repository: https://k8s.ory.sh/helm/charts
+      version: 0.25.6
+    - name: keto
+      repository: https://k8s.ory.sh/helm/charts
+      version: 0.25.6
+    description: A Helm chart for Kubernetes micro auth services
+    digest: ab38323af2f9348c4f3e6e8b229ab7b8ec3a4f25ff40f6ebaa507ec14f6f7bb0
+    name: auth-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/auth-service-0.1.4/auth-service-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2022-10-28T16:39:03.213570335Z"
     dependencies:
     - name: postgresql
@@ -487,4 +510,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/postgresql-0.1.0/postgresql-0.1.0.tgz
     version: 0.1.0
-generated: "2022-10-31T20:38:57.423846971Z"
+generated: "2022-10-31T23:55:50.568106142Z"
