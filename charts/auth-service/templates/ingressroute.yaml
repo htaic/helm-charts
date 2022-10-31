@@ -9,7 +9,7 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: (Path("/{{ .Values.image.domainPath }}/(login|realms)"))
+      match: (Path("/{{ .Values.image.domainPath }}/{path:(login||realms/detect||logout)}"))
       services:
         - name: {{ include ".helm.fullname" . }}
           kind: Service
@@ -25,8 +25,8 @@ spec:
           kind: Service
           port: {{ .Values.image.containerPort }}
       middlewares:
+      - name: "{{ include ".helm.fullname" . }}-forward-auth"
       {{ if (not (hasKey .Values.image "noStripPath")) }}
       - name: "{{ include ".helm.fullname" . }}-strip"
       {{ end }}
-      - name: "{{ include ".helm.fullname" . }}-forward-auth"
 {{ end }}
