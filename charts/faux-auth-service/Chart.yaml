@@ -29,7 +29,7 @@ appVersion: "0.0.1"
 # https://artifacthub.io/packages/helm/bitnami/postgresql
 dependencies:
 - name: postgresql
-  version: "0.1.1"
+  version: "0.1.2"
   repository: "https://htaic.github.io/helm-charts"
   # repository: "file://../postgresql"
 - name: hasura
