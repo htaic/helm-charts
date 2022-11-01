@@ -29,6 +29,8 @@ postgres:
 
 # # Optional (should be passed in from parent chart... if you want to run a startup script, enter it here)
 # startUp:
+#   scriptContent: |
+#       echo "I am a little tea pot" > /data/echotxt
 #   fileContent: |
 #       SELECT 'CREATE DATABASE ory '
 #       'WITH '
