@@ -7,13 +7,13 @@ apt install -y postgresql-client
 # to the file specified in POSTGRES_DUMPLATEST env variable, default value is public_dump_latest.sql
 # If needed, then the restoredb.sh script can be used to recreate the Postgres database from the
 # public_dump_latest.sql dump file.
-POSTGRES_HOSTNAME=${POSTGRES_HOSTNAME:-localhost}
-POSTGRES_PORT=${POSTGRES_PORT:-5432}
-POSTGRES_USER=${POSTGRES_USER:-postgres}
-POSTGRES_DB=${POSTGRES_DB:-postgres}
-PGPASSWORD=${POSTGRES_PASSWORD}
-POSTGRES_DUMPDIR=${POSTGRES_DUMPDIR:-/data/dumps}
-POSTGRES_DUMPLATEST=${POSTGRES_DUMPLATEST:-public_dump_latest.sql}
+export POSTGRES_HOSTNAME=${POSTGRES_HOSTNAME:-localhost}
+export POSTGRES_PORT=${POSTGRES_PORT:-5432}
+export POSTGRES_USER=${POSTGRES_USER:-postgres}
+export POSTGRES_DB=${POSTGRES_DB:-postgres}
+export PGPASSWORD=$POSTGRES_PASSWORD
+export POSTGRES_DUMPDIR=${POSTGRES_DUMPDIR:-/data/dumps}
+export POSTGRES_DUMPLATEST=${POSTGRES_DUMPLATEST:-public_dump_latest.sql}
 
 if [[ ! -d ${POSTGRES_DUMPDIR} ]]; then
   echo "Directory ${POSTGRES_DUMPDIR} not found, attempting to create directory"
