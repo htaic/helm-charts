@@ -351,6 +351,29 @@ entries:
   baseline-ory:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2022-11-02T17:52:49.66620538Z"
+    dependencies:
+    - name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 10.24.2
+    - name: aws-efs-csi-driver
+      repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
+      version: 2.2.8
+    - name: microfrontend
+      repository: https://htaic.github.io/helm-charts
+      version: 0.0.4
+    - name: auth-service
+      repository: https://htaic.github.io/helm-charts
+      version: 0.1.5
+    description: A Helm chart for Kubernetes
+    digest: fb2649f66375176d879dda8edfe9c4e71ab70eefdec31bfc19c7d56d60b296ba
+    name: baseline-ory
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/baseline-ory-0.0.3/baseline-ory-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2022-10-27T20:07:17.315524088Z"
     dependencies:
     - name: traefik
@@ -586,4 +609,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/postgresql-0.1.0/postgresql-0.1.0.tgz
     version: 0.1.0
-generated: "2022-11-02T17:12:02.01230957Z"
+generated: "2022-11-02T17:52:49.666261283Z"
