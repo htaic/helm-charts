@@ -1,0 +1,65 @@
+namespace: "hanwha"
+# fullnameOverride: imagename
+
+image:
+  replicaCount: 1
+  # repository: ghcr.io/htaic/video-edge-webrtc-service
+  repository: ghcr.io/htaic/video-edge-webrtc-service
+  pullPolicy: Always
+  containerPort: 3000
+  tag: "latest"
+  domainPath: ""
+  livenessProbe: "api/v1/livez"
+  readinessProbe: "api/v1/readyz"
+  env:
+    - name: AWS_IOT_CORE_THING_NAME
+      value: b0c12989b297449fafaac8b06ea33842
+    - name: AWS_IOT_CORE_CREDENTIAL_ENDPOINT
+      value: c3eei8x0141azc.credentials.iot.us-west-2.amazonaws.com
+    - name: AWS_IOT_CORE_ROLE_ALIAS
+      value: KvsCameraIoTRoleAlias
+    - name: AWS_IOT_CORE_CERT
+      value: /opt/iot/certificate.pem
+    - name: AWS_IOT_CORE_PRIVATE_KEY
+      value: /opt/iot/private.pem.key
+    - name: AWS_REGION
+      value: us-west-2
+    - name: CAM_USER
+      value: user1
+    - name: CAM_PASS
+      value: init123!!
+    - name: CAM_IP
+      value: 211.250.206.68:1554
+    - name: CAM_PROFILE
+      value: profile2
+    - name: KVS_CHANNEL
+      value: b0c12989b297449fafaac8b06ea33842
+
+iot:
+  secret: "edge-secret"
+
+##########################
+# Caution updating below #
+##########################
+sidecarimage:
+  name: "logging-sidecar"
+  repository: ghcr.io/htaic/platform-logging-service
+  pullPolicy: Always
+  tag: "latest"
+
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 750Mi
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
