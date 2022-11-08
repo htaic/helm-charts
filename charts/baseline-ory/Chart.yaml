@@ -31,17 +31,17 @@ appVersion: "0.0.1"
 # https://helm.sh/docs/helm/helm_dependency/
 # https://github.com/traefik/traefik-helm-chart
 dependencies:
-- name: traefik
-  version: "10.24.2"
-  repository: https://helm.traefik.io/traefik
-- name: aws-efs-csi-driver
-  version: "2.2.8"
-  repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
-# the login page front end
-- name: microfrontend
-  version: "0.0.4"
-  repository: "https://htaic.github.io/helm-charts"
-# the auth service back end
-- name: auth-service
-  version: "0.1.5"
-  repository: "https://htaic.github.io/helm-charts"
+  - name: traefik
+    version: "10.24.2"
+    repository: https://helm.traefik.io/traefik
+  - name: aws-efs-csi-driver
+    version: "2.2.8"
+    repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
+  # the login page front end
+  - name: microfrontend
+    version: "0.0.4"
+    repository: "https://htaic.github.io/helm-charts"
+  # the auth service back end
+  - name: auth-service
+    version: "0.1.6"
+    repository: "https://htaic.github.io/helm-charts"
