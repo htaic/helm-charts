@@ -26,16 +26,16 @@ appVersion: "0.0.1"
 # kubeVersion: ">=1.17.0-0"
 
 dependencies:
-  - name: postgresql
-    version: "0.1.2"
-    repository: "https://htaic.github.io/helm-charts"
-    # repository: "file://./dependency_chart/postgresql"
-  - name: oathkeeper
-    version: "0.25.6"
-    repository: "https://k8s.ory.sh/helm/charts"
-  - name: kratos
-    version: "0.25.6"
-    repository: "https://k8s.ory.sh/helm/charts"
-  - name: keto
-    version: "0.25.6"
-    repository: "https://k8s.ory.sh/helm/charts"
+- name: postgresql
+  version: "0.1.2"
+  repository: "https://htaic.github.io/helm-charts"
+  # repository: "file://./dependency_chart/postgresql"
+- name: oathkeeper
+  version: "0.25.6"
+  repository: "https://k8s.ory.sh/helm/charts"
+- name: kratos
+  version: "0.25.6"
+  repository: "https://k8s.ory.sh/helm/charts"
+- name: keto
+  version: "0.25.6"
+  repository: "https://k8s.ory.sh/helm/charts"
