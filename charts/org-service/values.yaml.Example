@@ -9,7 +9,7 @@ image:
   hostname: auth
   # livenessProbe: "api/v1/livez"
   # readinessProbe: "api/v1/readyz"
-  domainPath: "auth"
+  domainPath: "customer"
   env:
     - name: DATABASE_HOST
       value: baseline-auth-service-postgresql
