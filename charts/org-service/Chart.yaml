@@ -25,10 +25,10 @@ appVersion: "0.0.1"
 
 # kubeVersion: ">=1.17.0-0"
 
-# dependencies:
-# - name: postgresql
-#   version: "0.1.2"
-#   repository: "https://htaic.github.io/helm-charts"
-#TO DO: ask if we need postgres? DATA store mentioned in IA-46
+dependencies:
+- name: postgresql
+  version: "0.1.2"
+  repository: "https://htaic.github.io/helm-charts"
+
   
 
