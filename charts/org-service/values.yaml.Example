@@ -18,28 +18,8 @@ org-service:
     env:
       - name: DATABASE_HOST
         value: baseline-postgresql
-      - name: DATABASE_USER
-        value: auth_service
-      - name: DATABASE_PASSWORD
-        value: r4tuQcp0CQ9pgH0Sv30iQZ
-      - name: DATABASE_NAME
-        value: auth
-      - name: ORY_KRATOS_BASE_ADMIN_URL
-        value: http://baseline-kratos-admin
-      - name: ORY_KRATOS_BASE_PUBLIC_URL
-        value: http://baseline-kratos-public
-      - name: ORY_KETO_BASE_READ_URL
-        value: http://baseline-keto-read
-      - name: ORY_KETO_BASE_WRITE_URL
-        value: http://baseline-keto-write
-      - name: AWS_REGION
-        value: us-west-2
-      - name: AWS_ACCOUNT
-        value: "409642236539"
-      - name: PRODUCER_QUEUE
-        value: sqs-isaas-auth-test-auth-services-uw2-001
-      - name: CONSUMER_QUEUE
-        value: sqs-isaas-auth-test-auth-services-uw2-002
+      
+      
   ## TODO: Enable this once we incorporate it
   # sidecarimage:
   #   name: "logging-sidecar"
