@@ -1,0 +1,63 @@
+fullnameOverride: "org-service"
+
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/org-management-services
+  pullPolicy: Always
+  containerPort: 3000
+  tag: "latest"
+  hostname: auth
+  # livenessProbe: "api/v1/livez"
+  # readinessProbe: "api/v1/readyz"
+  domainPath: "auth"
+  env:
+    - name: DATABASE_HOST
+      value: baseline-auth-service-postgresql
+    - name: DATABASE_USER
+      value: postgres
+    - name: DATABASE_PASSWORD
+      value: postgrespassword
+    - name: DATABASE_NAME
+      value: auth
+    - name: ORY_KRATOS_BASE_ADMIN_URL
+      value: http://baseline-auth-service-kratos-admin
+    - name: ORY_KRATOS_BASE_PUBLIC_URL
+      value: http://baseline-auth-service-kratos-public
+    # - name: OPERATION_ENV
+    #   value: "edge"
+sidecarimage:
+  name: "logging-sidecar"
+  repository: ghcr.io/htaic/platform-logging-service
+  pullPolicy: Always
+  tag: "latest"
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+service:
+  type: ClusterIP
+resources:
+  requests:
+    cpu: 250m
+    memory: 750Mi
+serviceAccount:
+  create: false
+  annotations: {}
+  name: ""
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+
+# file://./dependency_chart/postgres
+postgresql:
+  namespace: "hanwha"
+  postgres:
+    env:
+      - name: POSTGRES_PASSWORD
+        value: postgrespassword
+  # # To enable EFS on the cluster, use the following values in the root helm chart
+  # storage:
+  #   className: efs-storageclass
+  #   claimName: postgres-claim
+  #   claimSize: 5Gi
+  
