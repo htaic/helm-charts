@@ -1,0 +1,37 @@
+namespace: "hanwha"
+# fullnameOverride: imagename
+
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/video-edge-webrtc-service
+  pullPolicy: Always
+  containerPort: 3000
+  tag: "latest"
+  env:
+    - name: AWS_REGION
+      value: us-west-2
+
+
+iot:
+  secret: "edge-secret"
+
+##########################
+# Caution updating below #
+##########################
+
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 750Mi
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
