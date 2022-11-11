@@ -8,7 +8,7 @@ clone the [helm-charts](https://github.com/htaic/helm-charts) repo into your sou
 
 ```bash
 git clone https://github.com/htaic/helm-charts.git
-mv ./helm-charts/charts/microfrontend/values.yaml ./DevValues.yaml
+mv ./helm-charts/charts/media-token-service/values.yaml ./DevValues.yaml
 ```
 
 or
@@ -24,7 +24,7 @@ Update the dev yaml to reflect the correct image name, ports, pull policy, and r
 
 ```bash
 aws eks update-kubeconfig --region $AWS_DEFAULT_REGION --name $AWS_EKS_NAME
-helm upgrade --install --namespace hanwha -f $VALUES_FILE $MYSERVICENAME ./helm-charts/charts/microfrontend
+helm upgrade --install --namespace hanwha -f $VALUES_FILE $MYSERVICENAME ./helm-charts/charts/media-token-service
 ```
 
 or
@@ -32,7 +32,7 @@ or
 ```bash
 aws eks update-kubeconfig --region $AWS_DEFAULT_REGION --name $AWS_EKS_NAME
 helm repo update
-helm upgrade --install --atomic --namespace hanwha -f $VALUES_FILE $MYSERVICENAME htaic/microfrontend
+helm upgrade --install --atomic --namespace hanwha -f $VALUES_FILE $MYSERVICENAME htaic/media-token-service
 ```
 
 ## Contributing
