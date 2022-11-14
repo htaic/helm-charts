@@ -638,6 +638,16 @@ entries:
   media-token-service:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2022-11-14T23:31:56.58281234Z"
+    description: A Helm chart for media-token-service
+    digest: fd0c4a6ce578f18a909459bede659e91337e619635788ae5fad64049e79d9d99
+    name: media-token-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/media-token-service-0.0.2/media-token-service-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2022-11-14T17:41:01.999516306Z"
     description: A Helm chart for media-token-service
     digest: 3a904fa54c166cfd2e463b110a53f4de73cd34b0d2bca3813fa2248106fa91cd
@@ -700,4 +710,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/postgresql-0.1.0/postgresql-0.1.0.tgz
     version: 0.1.0
-generated: "2022-11-14T17:41:01.999583507Z"
+generated: "2022-11-14T23:31:56.582876742Z"
