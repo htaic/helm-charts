@@ -1,0 +1,46 @@
+namespace: "hanwha"
+# fullnameOverride: imagename
+
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/media-token-service
+  pullPolicy: Always
+  containerPort: 3000
+  tag: "latest"
+  domainPath: ""
+  livenessProbe: "api/v1/livez"
+  readinessProbe: "api/v1/readyz"
+  env:
+    - name: AWS_REGION
+      value: us-west-2
+
+##########################
+# Caution updating below #
+##########################
+sidecarimage:
+  name: "logging-sidecar"
+  repository: ghcr.io/htaic/platform-logging-service
+  pullPolicy: Always
+  tag: "latest"
+
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+  
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 750Mi
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
