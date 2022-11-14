@@ -1,0 +1,14 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: "{{ include ".helm.fullname" . }}-forward-auth"
+  namespace: {{ .Values.namespace }}
+spec:
+  forwardAuth:
+    address: http://baseline-oathkeeper-api:4456/decisions
+    authRequestHeaders:
+    - accept
+    - accept-encoding
+    - authorization
+    authResponseHeaders:
+    - x-identity

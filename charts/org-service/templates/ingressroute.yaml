@@ -9,16 +9,6 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: (Path("/{{ .Values.image.domainPath }}/{path:(login||realms/detect||logout)}"))
-      services:
-        - name: {{ include ".helm.fullname" . }}
-          kind: Service
-          port: {{ .Values.image.containerPort }}
-      {{ if (not (hasKey .Values.image "noStripPath")) }}
-      middlewares:
-      - name: "{{ include ".helm.fullname" . }}-strip"
-      {{ end }}
-    - kind: Rule
       match: (PathPrefix("/{{ .Values.image.domainPath }}"))
       services:
         - name: {{ include ".helm.fullname" . }}
