@@ -1,6 +1,9 @@
 name: Release Charts
 
 on:
+  pull_request:
+    branches:
+      - main
   push:
     branches:
       - main
@@ -22,6 +25,7 @@ jobs:
           done
 
   release:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     # depending on default permission settings for your org (contents being read-only or read-write for workloads), you will have to add permissions
     # see: https://docs.github.com/en/actions/security-guides/automatic-token-authentication#modifying-the-permissions-for-the-github_token
     permissions:
