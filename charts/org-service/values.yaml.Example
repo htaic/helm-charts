@@ -34,8 +34,10 @@ org-service:
     requests:
       cpu: 250m
       memory: 750Mi
-  # serviceAccount:
-  #   name: "auth"
+  serviceAccount:
+    create: false
+    annotations: {}
+    name: ""
   autoscaling:
     enabled: false
     minReplicas: 1
