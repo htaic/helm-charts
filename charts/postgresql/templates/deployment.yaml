@@ -44,7 +44,7 @@ spec:
             - secretRef:
                 name: "{{ include ".helm.fullname" . }}-secret"
             - configMapRef:
-                name: "{{ .Chart.Name }}-configmap"
+                name: "{{ .Release.Name }}-configmap"
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:

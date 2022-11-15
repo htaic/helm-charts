@@ -23,7 +23,7 @@ spec:
             - secretRef:
                 name: "{{ include ".helm.fullname" . }}-secret"
             - configMapRef:
-                name: "{{ .Chart.Name }}-configmap"
+                name: "{{ .Release.Name }}-configmap"
             volumeMounts:
             - name: postgres-vol
               mountPath: {{ .Values.storage.volumeMountPath }}
