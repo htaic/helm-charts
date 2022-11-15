@@ -1,0 +1,90 @@
+fullnameOverride: "org-service"
+enableTraefikDashboard: true
+
+# https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml
+traefik:
+  image:
+    pullPolicy: Always
+
+org-service:
+  image:
+    replicaCount: 1
+    repository: ghcr.io/htaic/org-management-services
+    pullPolicy: Always
+    containerPort: 3000
+    tag: "1667930068"
+    hostname: 
+    domainPath: "customer"
+    env:
+      - name: DATABASE_HOST
+        value: baseline-postgresql
+      
+      
+  ## TODO: Enable this once we incorporate it
+  # sidecarimage:
+  #   name: "logging-sidecar"
+  #   repository: ghcr.io/htaic/platform-logging-service
+  #   pullPolicy: Always
+  #   tag: "latest"
+  imagePullSecrets:
+    - name: dockerconfigjson-github-com
+  service:
+    type: ClusterIP
+  resources:
+    requests:
+      cpu: 250m
+      memory: 750Mi
+  serviceAccount:
+    create: false
+    annotations: {}
+    name: ""
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 80
+  postgresql:
+    service:
+      type: ClusterIP
+    resources:
+      requests:
+        cpu: 250m
+        memory: 750Mi
+    serviceAccount:
+      create: false
+      annotations: {}
+      name: ""
+    autoscaling:
+      enabled: false
+      minReplicas: 1
+      maxReplicas: 100
+      targetCPUUtilizationPercentage: 80
+    postgres:
+      user: postgres
+      password: aeTbAJrh9LaMbsLFTUhLwFdwH
+      db: postgres
+      replicaCount: 1
+      repository: postgres
+      tag: 14
+      pullPolicy: Always
+      containerPort: 5432
+      env:
+        # https://hub.docker.com/_/postgres
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata # # To enable EFS on the cluster, use the following values in the root helm chart
+    storage:
+      className: efs-storageclass
+      provisioner: efs.csi.aws.com
+      capacity: 20Gi
+      volumeMode: Filesystem
+      csi:
+        volumeHandle: fs-03fef9b1995888177
+        volumeAttributes:
+          encryptInTransit: "true"
+      # If you want to run cron backups to the volume, use these settings
+      scriptPath: https://raw.githubusercontent.com/htaic/helm-charts/faux-auth-backup-restore-cron/charts/postgresql/dumpdb.sh
+      # if you want to persist data without using backups use the PGDATA path from the postgres node
+      volumeMountPath: /var/lib/postgresql/data/pgdata
+    startUp:
+      fileContent: 
+        
