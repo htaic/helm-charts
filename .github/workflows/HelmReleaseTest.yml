@@ -18,6 +18,7 @@ jobs:
       - name: Helm linting
         id: linting
         working-directory: charts
+        continue-on-error: true
         run: |
           for d in */ ; do
               echo "Running on directory $d"
