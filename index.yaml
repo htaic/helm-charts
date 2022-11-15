@@ -679,6 +679,21 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/microfrontend-0.0.4/microfrontend-0.0.4.tgz
     version: 0.0.4
+  org-service:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2022-11-15T00:39:47.926522653Z"
+    dependencies:
+    - name: postgresql
+      repository: https://htaic.github.io/helm-charts
+      version: 0.1.2
+    description: Helm chart for Organization Management service
+    digest: 4fe3b7402cf33f32ab3b79d1390b0f70fce69a3f9dc017bb0c21b434ec178a52
+    name: org-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/org-service-0.1.0/org-service-0.1.0.tgz
+    version: 0.1.0
   postgresql:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -710,4 +725,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/postgresql-0.1.0/postgresql-0.1.0.tgz
     version: 0.1.0
-generated: "2022-11-14T23:31:56.582876742Z"
+generated: "2022-11-15T00:39:47.926677273Z"
