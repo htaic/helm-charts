@@ -43,5 +43,5 @@ dependencies:
     repository: "https://htaic.github.io/helm-charts"
   # the auth service back end
   - name: auth-service
-    version: latest
+    version: "^0"
     repository: "https://htaic.github.io/helm-charts"
