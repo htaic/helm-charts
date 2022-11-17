@@ -18,7 +18,7 @@ spec:
             command:
             - /bin/sh
             - -c
-            - apt update && apt upgrade && apt install -y curl postgresql-client && curl {{ .Values.storage.scriptPath }} > {{ .Values.storage.volumeMountPath }}/dumpdb.sh && chmod +x {{ .Values.storage.volumeMountPath }}/dumpdb.sh && {{ .Values.storage.volumeMountPath }}/dumpdb.sh
+            - apt update && apt upgrade && apt install -y curl postgresql-client && curl {{ .Values.storage.scriptPath }} > /data/dumpdb.sh && chmod +x /data/dumpdb.sh && /data/dumpdb.sh
             envFrom:
             - secretRef:
                 name: "{{ include ".helm.fullname" . }}-secret"
@@ -26,7 +26,7 @@ spec:
                 name: "{{ .Release.Name }}-configmap"
             volumeMounts:
             - name: postgres-vol
-              mountPath: {{ .Values.storage.volumeMountPath }}
+              mountPath: /data
           restartPolicy: OnFailure
           volumes:
             - name: postgres-vol
