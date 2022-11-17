@@ -27,7 +27,7 @@ appVersion: "0.0.1"
 
 dependencies:
   - name: postgresql
-    version: 
+    version: latest
     repository: "https://htaic.github.io/helm-charts"
     # repository: "file://./dependency_chart/postgresql"
   - name: oathkeeper
