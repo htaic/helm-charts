@@ -27,6 +27,9 @@ postgres:
 #   # If you want to run cron backups to the volume, use these settings
 #   backupCron: true
 #   scriptPath: https://raw.githubusercontent.com/htaic/helm-charts/faux-auth-backup-restore-cron/charts/postgresql/dumpdb.sh
+#   # If you want disable the volume creation, use these settings
+#   disableCreate: true
+#   claimName: "baseline-postgresql-claim"
 
 # # Optional (should be passed in from parent chart... if you want to run a startup script, enter it here)
 # startUp:

@@ -28,8 +28,8 @@ appVersion: "0.0.2"
 dependencies:
 - name: postgresql
   version: "0.1.7"
-  # repository: "https://htaic.github.io/helm-charts"
-  repository: "file://../postgresql"
+  repository: "https://htaic.github.io/helm-charts"
+  # repository: "file://../postgresql"
 
   
 
