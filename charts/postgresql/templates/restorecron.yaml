@@ -1,0 +1,36 @@
+{{ if and .Values.storage .Values.storage.backupCron }}
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: "{{ include ".helm.fullname" . }}-restore"
+spec:
+  schedule: "0 0 5 31 2 ?" # never run... feb 31st
+  suspend: true
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 5
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: "{{ .Release.Name }}-restorepod"
+            image: ubuntu:latest
+            imagePullPolicy: IfNotPresent
+            command:
+            - /bin/sh
+            - -c
+            - apt update && apt upgrade && apt install -y curl postgresql-client && psql --dbname=$POSTGRES_DB --host=$POSTGRES_HOSTNAME --port=5432 --username=$POSTGRES_USER -f /data/dump/public_dump_latest.sql
+            envFrom:
+            - secretRef:
+                name: "{{ include ".helm.fullname" . }}-secret"
+            - configMapRef:
+                name: "{{ .Release.Name }}-configmap"
+            volumeMounts:
+            - name: postgres-vol
+              mountPath: /data
+          restartPolicy: OnFailure
+          volumes:
+            - name: postgres-vol
+              persistentVolumeClaim:
+                claimName: "{{ include ".helm.fullname" . }}-claim"
+{{ end }}
