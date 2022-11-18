@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: {{ .Release.Name }}-postgres-configmap
-data:
-  configdata.sql: |
-{{ .Values.postgresOverride | indent 4 }}
