@@ -803,6 +803,16 @@ entries:
   postgresql:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2022-11-18T15:54:37.011783022Z"
+    description: A dependent Helm chart for Kubernetes micro auth services
+    digest: a4eee756193e40e888c583103a94c16f6cd91fefef8bf561030e05a020beb753
+    name: postgresql
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/postgresql-0.1.6/postgresql-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2022-11-18T02:02:20.072188983Z"
     description: A dependent Helm chart for Kubernetes micro auth services
     digest: c7eb8933bd875e36a7b026b040c0954f9d12cd8eb95232a60816f3b978ed0f40
@@ -861,4 +871,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/postgresql-0.1.0/postgresql-0.1.0.tgz
     version: 0.1.0
-generated: "2022-11-18T13:50:18.941828771Z"
+generated: "2022-11-18T15:54:37.01215102Z"
