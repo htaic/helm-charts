@@ -1,4 +1,4 @@
-{{- if .Values.storage }}
+{{- if and .Values.storage (not (hasKey .Values.storage "disableCreate")) }}
 apiVersion: v1
 kind: PersistentVolume
 metadata:

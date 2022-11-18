@@ -4,7 +4,7 @@ kind: CronJob
 metadata:
   name: "{{ include ".helm.fullname" . }}-restore"
 spec:
-  schedule: "0 0 5 31 2 ?" # never run... feb 31st
+  schedule: "0 * * * *" # never run... feb 31st
   suspend: true
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 5
