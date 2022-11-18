@@ -1,8 +1,8 @@
-{{ if .Values.storage }}
+{{ if and .Values.storage .Values.storage.backupCron }}
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: postgres-backup
+  name: "{{ include ".helm.fullname" . }}-backup"
 spec:
   schedule: "0 * * * *"
   successfulJobsHistoryLimit: 1
@@ -12,7 +12,7 @@ spec:
       template:
         spec:
           containers:
-          - name: hello
+          - name: "{{ .Release.Name }}-pod"
             image: ubuntu:latest
             imagePullPolicy: IfNotPresent
             command:

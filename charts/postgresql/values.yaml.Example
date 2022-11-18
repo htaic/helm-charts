@@ -10,7 +10,7 @@ postgres:
   env:
     # https://hub.docker.com/_/postgres
     - name: PGDATA
-      value: /var/lib/postgresql/data/pgdata
+      value: /var/lib/postgresql/data/{name of your database}
 
 # # Optional (should be passed in from parent chart)
 # storage:
@@ -19,13 +19,14 @@ postgres:
 #   capacity: 20Gi
 #   volumeMode: Filesystem
 #   csi:
-#     volumeHandle: fs-123456789
+#     volumeHandle: fs-{your file system id}
 #     volumeAttributes:
 #       encryptInTransit: "true"
+#   # If you want to persist storage, use the volume path
+#   volumeMountPath: /var/lib/postgresql/data
 #   # If you want to run cron backups to the volume, use these settings
+#   backupCron: true
 #   scriptPath: https://raw.githubusercontent.com/htaic/helm-charts/faux-auth-backup-restore-cron/charts/postgresql/dumpdb.sh
-#   # if you want to persist data without using backups use the PGDATA path from the postgres node
-#   volumeMountPath: /data
 
 # # Optional (should be passed in from parent chart... if you want to run a startup script, enter it here)
 # startUp:
