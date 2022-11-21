@@ -14,8 +14,9 @@ spec:
         - name: {{ include ".helm.fullname" . }}
           kind: Service
           port: {{ .Values.image.containerPort }}
-      {{ if (not (hasKey .Values.image "noStripPath")) }}
       middlewares:
+      - name: "{{ include ".helm.fullname" . }}-headers"
+      {{ if (not (hasKey .Values.image "noStripPath")) }}
       - name: "{{ include ".helm.fullname" . }}-strip"
       {{ end }}
     - kind: Rule
@@ -35,6 +36,7 @@ spec:
           kind: Service
           port: {{ .Values.image.containerPort }}
       middlewares:
+      - name: "{{ include ".helm.fullname" . }}-headers"
       - name: "{{ include ".helm.fullname" . }}-forward-auth"
       {{ if (not (hasKey .Values.image "noStripPath")) }}
       - name: "{{ include ".helm.fullname" . }}-strip"
