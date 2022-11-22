@@ -7,9 +7,9 @@ image:
   pullPolicy: Always
   containerPort: 3000
   tag: "latest"
-  domainPath: ""
-  livenessProbe: "api/v1/livez"
-  readinessProbe: "api/v1/readyz"
+  domainPath: "media-api"
+  livenessProbe: "media-api/healthcheck"
+  readinessProbe: "media-api/healthcheck"
   env:
     - name: AWS_REGION
       value: us-west-2
