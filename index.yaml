@@ -892,6 +892,24 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/org-service-0.1.0/org-service-0.1.0.tgz
     version: 0.1.0
+  organization-stack:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2022-11-23T20:10:31.168041142Z"
+    dependencies:
+    - name: organization-creation
+      repository: file://./charts/organization-creation
+      version: 0.0.1
+    - name: organization-backend
+      repository: file://./charts/organization-backend
+      version: 0.0.1
+    description: Helm chart for Organization Management front end service
+    digest: 7e88f89d85ada03bc3fc593635303d264de9818589b4409053952fad7c9ac1b6
+    name: organization-stack
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/organization-stack-0.0.1/organization-stack-0.0.1.tgz
+    version: 0.0.1
   postgresql:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -983,4 +1001,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/postgresql-0.1.0/postgresql-0.1.0.tgz
     version: 0.1.0
-generated: "2022-11-21T21:23:48.05166573Z"
+generated: "2022-11-23T20:10:31.168468445Z"
