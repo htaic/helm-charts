@@ -1,0 +1,28 @@
+fullnameOverride: "organizationmanager"
+
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/portlet-org-manager
+  pullPolicy: Always
+  containerPort: 3004
+  tag: "latest"
+  hostname: organizationmanager
+  domainPath: "organization"
+    
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+service:
+  type: ClusterIP
+resources:
+  requests:
+    cpu: 250m
+    memory: 750Mi
+serviceAccount:
+  create: false
+  annotations: {}
+  name: ""
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
