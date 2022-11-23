@@ -4,6 +4,7 @@ image:
   pullPolicy: Always
   containerPort: 9876
   tag: "latest"
+  domainPath: "orgcreate"
   hostname: portlet-orgservice-orchestrator
     
 imagePullSecrets:
