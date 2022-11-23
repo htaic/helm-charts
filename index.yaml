@@ -819,6 +819,17 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/faux-auth-service-0.0.1/faux-auth-service-0.0.1.tgz
     version: 0.0.1
+  media-api-service:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2022-11-23T23:27:45.878700282Z"
+    description: A Helm chart for media-api-service
+    digest: 88b6f22c71c7da44ce03a147513f1b09f3970cc89d4f69181d126f2d12fbb4a0
+    name: media-api-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/media-api-service-0.0.1/media-api-service-0.0.1.tgz
+    version: 0.0.1
   media-token-service:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -1018,4 +1029,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/postgresql-0.1.0/postgresql-0.1.0.tgz
     version: 0.1.0
-generated: "2022-11-23T20:57:08.717242036Z"
+generated: "2022-11-23T23:27:45.878901283Z"
