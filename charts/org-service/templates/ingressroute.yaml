@@ -9,6 +9,15 @@ spec:
     - web
   routes:
     - kind: Rule
+      match: (Path("/{{ .Values.image.domainPath }}/api-json"))
+      services:
+        - name: {{ include ".helm.fullname" . }}
+          kind: Service
+          port: {{ .Values.image.containerPort }}
+      middlewares:
+      - name: "{{ include ".helm.fullname" . }}-headers"
+      - name: "{{ include ".helm.fullname" . }}-strip"
+    - kind: Rule
       match: (PathPrefix("/{{ .Values.image.domainPath }}"))
       services:
         - name: {{ include ".helm.fullname" . }}

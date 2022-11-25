@@ -10,5 +10,6 @@ spec:
     - accept
     - accept-encoding
     - authorization
+    - content-type
     authResponseHeaders:
     - x-identity
