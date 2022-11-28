@@ -18,7 +18,7 @@ spec:
             command:
             - /bin/sh
             - -c
-            - apt update && apt upgrade && apt install -y curl postgresql-client && curl {{ .Values.storage.scriptPath }} > /data/dumpdb.sh && chmod +x /data/dumpdb.sh && /data/dumpdb.sh
+            - apt update && apt upgrade -y && apt install -y curl postgresql-client && curl {{ .Values.storage.scriptPath }} > /data/dumpdb.sh && chmod +x /data/dumpdb.sh && /data/dumpdb.sh
             envFrom:
             - secretRef:
                 name: "{{ include ".helm.fullname" . }}-secret"
