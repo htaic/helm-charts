@@ -19,7 +19,7 @@ spec:
             command:
             - /bin/sh
             - -c
-            - apt update && apt upgrade && apt install -y curl postgresql-client && psql --dbname=$POSTGRES_DB --host=$POSTGRES_HOSTNAME --port=5432 --username=$POSTGRES_USER -f /data/dump/public_dump_latest.sql
+            - apt update && apt upgrade -y && apt install -y curl postgresql-client && psql --dbname=$POSTGRES_DB --host=$POSTGRES_HOSTNAME --port=5432 --username=$POSTGRES_USER -f /data/dump/public_dump_latest.sql
             envFrom:
             - secretRef:
                 name: "{{ include ".helm.fullname" . }}-secret"
