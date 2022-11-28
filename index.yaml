@@ -1089,4 +1089,15 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/postgresql-0.1.0/postgresql-0.1.0.tgz
     version: 0.1.0
-generated: "2022-11-28T22:17:11.741938067Z"
+  redis:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2022-11-28T23:05:42.768200097Z"
+    description: A dependent Helm chart for Kubernetes micro auth services
+    digest: 498de37276f28841ae9bc51139d4fc2a30fc91391c118f1e3ea67fc53ac72bf8
+    name: redis
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/redis-0.0.1/redis-0.0.1.tgz
+    version: 0.0.1
+generated: "2022-11-28T23:05:42.768293Z"
