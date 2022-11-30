@@ -740,6 +740,30 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/baseline-ory-0.0.1/baseline-ory-0.0.1.tgz
     version: 0.0.1
+  edge-background-service:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2022-11-30T04:27:16.330429946Z"
+    dependencies:
+    - name: redis
+      repository: https://htaic.github.io/helm-charts
+      version: ^0
+    - name: dcs
+      repository: file://./charts/dcs
+      version: 0.0.1
+    - name: edgeccs
+      repository: file://./charts/edgeccs
+      version: 0.0.1
+    - name: keymanager
+      repository: file://./charts/keymanager
+      version: 0.0.1
+    description: A dependent Helm chart for Kubernetes micro auth services
+    digest: 78d175d9a2eb5b867f50c0444c7afff55fc02fcfb0505b5f32104d2592fbb351
+    name: edge-background-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/edge-background-service-0.1.8/edge-background-service-0.1.8.tgz
+    version: 0.1.8
   edge-cloud-recording-service:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -1134,4 +1158,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/redis-0.0.1/redis-0.0.1.tgz
     version: 0.0.1
-generated: "2022-11-30T00:46:39.782746642Z"
+generated: "2022-11-30T04:27:16.330614253Z"
