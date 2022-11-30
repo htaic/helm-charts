@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include ".helm.fullname" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include ".helm.labels" . | nindent 4 }}
+spec:
+  type: LoadBalancer
+  ports:
+    - name: udp
+      protocol: UDP
+      port: {{ .Values.scs.containerPort }}
+      targetPort: {{ .Values.scs.containerPort }}
+  selector:
+    app: scs
