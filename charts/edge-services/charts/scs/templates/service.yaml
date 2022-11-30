@@ -13,4 +13,4 @@ spec:
       port: {{ .Values.scs.containerPort }}
       targetPort: {{ .Values.scs.containerPort }}
   selector:
-    app: scs
+    app.kubernetes.io/name: scs
