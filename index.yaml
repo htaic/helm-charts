@@ -775,6 +775,33 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/edge-cloud-recording-service-0.0.1/edge-cloud-recording-service-0.0.1.tgz
     version: 0.0.1
+  edge-services:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2022-11-30T19:04:22.224072751Z"
+    dependencies:
+    - name: redis
+      repository: https://htaic.github.io/helm-charts
+      version: ^0
+    - name: dcs
+      repository: file://./charts/dcs
+      version: 0.0.1
+    - name: edgeccs
+      repository: file://./charts/edgeccs
+      version: 0.0.1
+    - name: scs
+      repository: file://./charts/scs
+      version: 0.0.1
+    - name: keymanager
+      repository: file://./charts/keymanager
+      version: 0.0.1
+    description: A dependent Helm chart for Kubernetes micro auth services
+    digest: 0da95de8198d0320d5cd1afcf7880081815cb4a3a91c05eec852aeb0baed88d6
+    name: edge-services
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/edge-services-0.0.1/edge-services-0.0.1.tgz
+    version: 0.0.1
   edge-webrtc-service:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -1158,4 +1185,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/redis-0.0.1/redis-0.0.1.tgz
     version: 0.0.1
-generated: "2022-11-30T04:27:16.330614253Z"
+generated: "2022-11-30T19:04:22.224156552Z"
