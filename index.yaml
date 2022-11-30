@@ -740,6 +740,17 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/baseline-ory-0.0.1/baseline-ory-0.0.1.tgz
     version: 0.0.1
+  edge-cloud-recording-service:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2022-11-30T00:46:39.782508638Z"
+    description: A Helm chart for edge-cloud-recording-service
+    digest: 432d0b6cecb06c9abb707296098bb5faba9ec1ae24f52b83420e70a8a3037978
+    name: edge-cloud-recording-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/edge-cloud-recording-service-0.0.1/edge-cloud-recording-service-0.0.1.tgz
+    version: 0.0.1
   edge-webrtc-service:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -1123,4 +1134,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/redis-0.0.1/redis-0.0.1.tgz
     version: 0.0.1
-generated: "2022-11-29T00:57:32.063760935Z"
+generated: "2022-11-30T00:46:39.782746642Z"
