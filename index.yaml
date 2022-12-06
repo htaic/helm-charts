@@ -1106,6 +1106,23 @@ entries:
   organization-stack:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2022-12-06T18:27:58.192656599Z"
+    dependencies:
+    - name: organization-creation
+      repository: file://./charts/organization-creation
+      version: ^0
+    - name: organization-backend
+      repository: file://./charts/organization-backend
+      version: ^0
+    description: Helm chart for Organization Management front end service
+    digest: 8bcce42f9bb39252dd5fe91b1377f42cbe79243166e6ef3b36bd3507dab8fcb7
+    name: organization-stack
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/organization-stack-0.0.6/organization-stack-0.0.6.tgz
+    version: 0.0.6
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2022-12-05T18:31:02.948143948Z"
     dependencies:
     - name: organization-creation
@@ -1257,4 +1274,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/redis-0.0.1/redis-0.0.1.tgz
     version: 0.0.1
-generated: "2022-12-05T20:40:45.992021758Z"
+generated: "2022-12-06T18:27:58.192881498Z"
