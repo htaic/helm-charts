@@ -5,7 +5,12 @@ graphql:
   pullPolicy: Always
   containerPort: 3003
   domainPath: "graphql"
-
+  env:
+    - name: REDIS_HOST
+      value: communication-service-redis
+    - name: REDIS_PORT
+      value: "6379"
+      
 imagePullSecrets:
   - name: dockerconfigjson-github-com
 
