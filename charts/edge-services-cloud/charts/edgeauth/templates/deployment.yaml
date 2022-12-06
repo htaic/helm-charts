@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include ".helm.fullname" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include ".helm.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.edgeauth.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include ".helm.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        date: "{{ now | unixEpoch }}"
+        {{- include ".helm.selectorLabels" . | nindent 8 }}
+    spec:
+      hostname: {{ .Values.edgeauth.hostname }}
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include ".helm.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        {{- if .Values.sidecarimage }}
+        - name: "{{ .Values.sidecaredgeauth.name }}"
+          image: "{{ .Values.sidecaredgeauth.repository }}:{{ .Values.sidecaredgeauth.tag }}"
+          imagePullPolicy: {{ .Values.sidecaredgeauth.pullPolicy }}
+        {{- end }}      
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.edgeauth.repository }}:{{ .Values.edgeauth.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.edgeauth.pullPolicy }}
+          {{- if .Values.edgeauth.env }}
+          env: 
+            {{- toYaml .Values.edgeauth.env | nindent 12 }}
+          {{- end }}
+          args: [ {{.Values.edgeauth.args}} ]
+          ports:
+            - name: http
+              containerPort: {{ .Values.edgeauth.containerPort }}
+              protocol: TCP
+          # livenessProbe:
+          #   httpGet:
+          #     path: /{{ .Values.edgeauth.livenessProbe }}
+          #     port: http
+          # readinessProbe:
+          #   httpGet:
+          #     path: /{{ .Values.edgeauth.readinessProbe }}
+          #     port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

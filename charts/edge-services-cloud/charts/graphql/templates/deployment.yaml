@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include ".helm.fullname" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include ".helm.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.graphql.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include ".helm.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        date: "{{ now | unixEpoch }}"
+        {{- include ".helm.selectorLabels" . | nindent 8 }}
+    spec:
+      hostname: {{ .Values.graphql.hostname }}
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include ".helm.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        {{- if .Values.sidecarimage }}
+        - name: "{{ .Values.sidecargraphql.name }}"
+          image: "{{ .Values.sidecargraphql.repository }}:{{ .Values.sidecargraphql.tag }}"
+          imagePullPolicy: {{ .Values.sidecargraphql.pullPolicy }}
+        {{- end }}      
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.graphql.repository }}:{{ .Values.graphql.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.graphql.pullPolicy }}
+          {{- if .Values.graphql.env }}
+          env: 
+            {{- toYaml .Values.graphql.env | nindent 12 }}
+          {{- end }}
+          args: [ {{.Values.graphql.args}} ]
+          ports:
+            - name: http
+              containerPort: {{ .Values.graphql.containerPort }}
+              protocol: TCP
+          # livenessProbe:
+          #   httpGet:
+          #     path: /{{ .Values.graphql.livenessProbe }}
+          #     port: http
+          # readinessProbe:
+          #   httpGet:
+          #     path: /{{ .Values.graphql.readinessProbe }}
+          #     port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
