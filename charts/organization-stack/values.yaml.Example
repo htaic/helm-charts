@@ -1,5 +1,4 @@
 fullnameOverride: "organizationmanager"
-
 image:
   replicaCount: 1
   repository: ghcr.io/htaic/portlet-org-manager
@@ -8,7 +7,6 @@ image:
   tag: "latest"
   hostname: organizationmanager
   domainPath: "organization"
-
 sidecarimage:
   name: "logging-sidecar"
   repository: ghcr.io/htaic/platform-logging-service
@@ -31,17 +29,22 @@ autoscaling:
   minReplicas: 1
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
-
 organization-creation:
   image:
     replicaCount: 1
     repository: ghcr.io/htaic/portlet-orgservice-orchestrator
     pullPolicy: Always
-    containerPort: 9876
+    containerPort: 4001
     tag: "latest"
     domainPath: "orgcreate"
     hostname: portlet-orgservice-orchestrator
-
+    livenessProbe: "api/v1/livez"
+    readinessProbe: "api/v1/readyz"
+    env:
+    - name: LOGSINK
+      value: ELKSTACK
+    - name: NODE_ENV
+      value: "development"
   sidecarimage:
     name: "logging-sidecar"
     repository: ghcr.io/htaic/platform-logging-service
@@ -64,16 +67,22 @@ organization-creation:
     minReplicas: 1
     maxReplicas: 100
     targetCPUUtilizationPercentage: 80  
-
 organization-backend:
   image:
     replicaCount: 1
     repository: ghcr.io/htaic/portlet-orgservice
     pullPolicy: Always
-    containerPort: 9877
+    containerPort: 4000
     tag: "latest"
     domainPath: "orgservice"
     hostname: portlet-orgservice
+    livenessProbe: "api/v1/livez"
+    readinessProbe: "api/v1/readyz"
+    env:
+    - name: LOGSINK
+      value: ELKSTACK
+    - name: NODE_ENV
+      value: "development"
   sidecarimage:
     name: "logging-sidecar"
     repository: ghcr.io/htaic/platform-logging-service
