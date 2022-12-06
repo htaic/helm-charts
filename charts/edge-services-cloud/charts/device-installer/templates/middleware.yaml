@@ -1,0 +1,11 @@
+{{ if and (ne .Values.device.domainPath "") (not (hasKey .Values.device "noStripPath")) }}
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: "{{ include ".helm.fullname" . }}-strip"
+  namespace: {{ .Values.namespace }}
+spec:
+  stripPrefix:
+    prefixes:
+      - "/{{ .Values.device.domainPath }}"
+{{ end }}

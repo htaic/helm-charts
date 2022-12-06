@@ -1,0 +1,21 @@
+{{ if and (ne .Values.edgeauth.domainPath "") (hasKey .Values.edgeauth "domainPath") }}
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: "{{ include ".helm.fullname" . }}-route"
+  namespace: {{ .Values.namespace }}
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: (PathPrefix("/{{ .Values.edgeauth.domainPath }}"))
+      kind: Rule
+      services:
+        - name: {{ include ".helm.fullname" . }}
+          kind: Service
+          port: {{ .Values.edgeauth.containerPort }}
+      {{ if (not (hasKey .Values.edgeauth "noStripPath")) }}
+      middlewares:
+      - name: "{{ include ".helm.fullname" . }}-strip"
+      {{ end }}
+{{ end }}

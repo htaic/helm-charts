@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include ".helm.fullname" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include ".helm.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.device.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include ".helm.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        date: "{{ now | unixEpoch }}"
+        {{- include ".helm.selectorLabels" . | nindent 8 }}
+    spec:
+      hostname: {{ .Values.device.hostname }}
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include ".helm.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        {{- if .Values.sidecarimage }}
+        - name: "{{ .Values.sidecardevice.name }}"
+          image: "{{ .Values.sidecardevice.repository }}:{{ .Values.sidecardevice.tag }}"
+          imagePullPolicy: {{ .Values.sidecardevice.pullPolicy }}
+        {{- end }}      
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.device.repository }}:{{ .Values.device.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.device.pullPolicy }}
+          {{- if .Values.device.env }}
+          env: 
+            {{- toYaml .Values.device.env | nindent 12 }}
+          {{- end }}
+          args: [ {{.Values.device.args}} ]
+          ports:
+            - name: http
+              containerPort: {{ .Values.device.containerPort }}
+              protocol: TCP
+          # livenessProbe:
+          #   httpGet:
+          #     path: /{{ .Values.device.livenessProbe }}
+          #     port: http
+          # readinessProbe:
+          #   httpGet:
+          #     path: /{{ .Values.device.readinessProbe }}
+          #     port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
