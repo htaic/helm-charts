@@ -1,11 +1,3 @@
-edgeauth:
-  replicaCount: 1
-  repository: ghcr.io/htaic/rest_auth_service
-  tag: latest
-  pullPolicy: Always
-  containerPort: 3001
-  domainPath: "v0.1/oauth"
-
 imagePullSecrets:
   - name: dockerconfigjson-github-com
 
@@ -21,7 +13,7 @@ serviceAccount:
   create: false
   annotations: {}
   name: ""
-  
+
 autoscaling:
   enabled: false
   minReplicas: 1

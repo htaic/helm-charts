@@ -1,11 +1,3 @@
-graphql:
-  replicaCount: 1
-  repository: ghcr.io/htaic/gql-service
-  tag: latest
-  pullPolicy: Always
-  containerPort: 3003
-  domainPath: "graphql"
-
 imagePullSecrets:
   - name: dockerconfigjson-github-com
 

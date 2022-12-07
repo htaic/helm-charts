@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "{{ .Release.Name }}-env"
+data:
+  DATABASE_HOST: "{{ .Release.Name }}-postgresql"
+  DATABASE_TYPE: "postgres"
+  DATABASE_PORT: "{{ .Values.postgresql.postgres.containerPort }}"
+  DATABASE_NAME: {{ .Values.postgresql.postgres.db }}
+  REDIS_PORT: "{{ .Values.redis.redis.containerPort }}"
+  REDIS_HOST: "{{ .Release.Name }}-redis"
+  OPERATION_ENV: {{ .Values.operation }}
+  JWT_SECRET: {{ .Values.jwt.secret }}
+  JWT_EXPIRESIN: "{{ .Values.jwt.expiration }}"

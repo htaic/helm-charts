@@ -14,8 +14,4 @@ spec:
         - name: {{ include ".helm.fullname" . }}
           kind: Service
           port: {{ .Values.device.containerPort }}
-      {{ if (not (hasKey .Values.device "noStripPath")) }}
-      middlewares:
-      - name: "{{ include ".helm.fullname" . }}-strip"
-      {{ end }}
 {{ end }}

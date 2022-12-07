@@ -50,6 +50,13 @@ spec:
             - name: http
               containerPort: {{ .Values.graphql.containerPort }}
               protocol: TCP
+          envFrom:
+            - secretRef:
+                name: "{{ .Release.Name }}-secrets"
+            - configMapRef:
+                name: "{{ .Release.Name }}-env"
+            - configMapRef:
+                name: "{{ .Release.Name }}-iot-env"
           # livenessProbe:
           #   httpGet:
           #     path: /{{ .Values.graphql.livenessProbe }}
