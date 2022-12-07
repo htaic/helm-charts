@@ -3,7 +3,9 @@ scs:
   repository: ghcr.io/htaic/scsrun
   tag: latest
   pullPolicy: Always
-  containerPort: 7711
+  containerPortRec: 7711
+  containerPortSend: 7701
+  # externalIps: 123.123.123.123 # sets external IP for service
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
@@ -17,9 +19,3 @@ serviceAccount:
   create: false
   annotations: {}
   name: ""
-  
-autoscaling:
-  enabled: false
-  minReplicas: 1
-  maxReplicas: 100
-  targetCPUUtilizationPercentage: 80

@@ -6,9 +6,6 @@ metadata:
   labels:
     {{- include ".helm.labels" . | nindent 4 }}
 spec:
-  {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.edgeccs.replicaCount }}
-  {{- end }}
   selector:
     matchLabels:
       {{- include ".helm.selectorLabels" . | nindent 6 }}
@@ -30,12 +27,7 @@ spec:
       serviceAccountName: {{ include ".helm.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-      containers:
-        {{- if .Values.sidecarimage }}
-        - name: "{{ .Values.sidecaredgeccs.name }}"
-          image: "{{ .Values.sidecaredgeccs.repository }}:{{ .Values.sidecaredgeccs.tag }}"
-          imagePullPolicy: {{ .Values.sidecaredgeccs.pullPolicy }}
-        {{- end }}      
+      containers:  
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
@@ -46,20 +38,18 @@ spec:
             {{- toYaml .Values.edgeccs.env | nindent 12 }}
           {{- end }}
           args: [ {{.Values.edgeccs.args}} ]
-          ports:
-            - name: http
-              containerPort: {{ .Values.edgeccs.containerPort }}
-              protocol: TCP
-          # livenessProbe:
-          #   httpGet:
-          #     path: /{{ .Values.edgeccs.livenessProbe }}
-          #     port: http
-          # readinessProbe:
-          #   httpGet:
-          #     path: /{{ .Values.edgeccs.readinessProbe }}
-          #     port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          envFrom:
+            - configMapRef:
+                name: "{{ .Release.Name }}-env"
+          volumeMounts:
+          - name: certs
+            mountPath: /cert
+      volumes:
+        - name: certs
+          configMap:
+            name: "{{ .Release.Name }}-certs"
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

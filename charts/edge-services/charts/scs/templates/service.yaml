@@ -8,9 +8,17 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - name: udp
+    - name: discoveryrecvport
+      protocol: UDP 
+      port: {{ .Values.scs.containerPortRec }}
+      targetPort: {{ .Values.scs.containerPortRec }}
+    - name: discoverysendport
       protocol: UDP
-      port: {{ .Values.scs.containerPort }}
-      targetPort: {{ .Values.scs.containerPort }}
+      port: {{ .Values.scs.containerPortSend }}
+      targetPort: {{ .Values.scs.containerPortSend }}
   selector:
-    app.kubernetes.io/name: scs
+    app.kubernetes.io/name: {{ .Chart.Name }}
+  {{- if .Values.scs.imagePullSecrets }}  
+  externalIPs:
+    - {{ .Values.scs.externalIps }}
+   {{- end }}

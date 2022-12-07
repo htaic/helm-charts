@@ -31,14 +31,14 @@ dependencies:
     version: "^0"
     repository: "https://htaic.github.io/helm-charts"
   - name: dcs
-    version: "0.0.1"
+    version: "^0"
     repository: "file://./charts/dcs"
   - name: edgeccs
-    version: "0.0.1"
+    version: "^0"
     repository: "file://./charts/edgeccs"
   - name: scs
-    version: "0.0.1"
+    version: "^0"
     repository: "file://./charts/scs"
   - name: keymanager
-    version: "0.0.1"
+    version: "^0"
     repository: "file://./charts/keymanager"
