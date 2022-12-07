@@ -860,6 +860,32 @@ entries:
   edge-services-cloud:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2022-12-07T17:25:25.72874244Z"
+    dependencies:
+    - name: redis
+      repository: https://htaic.github.io/helm-charts
+      version: ^0
+    - name: postgresql
+      repository: https://htaic.github.io/helm-charts
+      version: ^0
+    - name: edgeauth
+      repository: file://./charts/edgeauth
+      version: 0.0.1
+    - name: device-installer
+      repository: file://./charts/device-installer
+      version: 0.0.1
+    - name: graphql
+      repository: file://./charts/graphql
+      version: 0.0.1
+    description: A dependent Helm chart for Kubernetes micro auth services
+    digest: f9b5f12fa4d73bd1def3164f5ce36c51b40d87f14fec3a8806616ae9918a3182
+    name: edge-services-cloud
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/edge-services-cloud-0.0.3/edge-services-cloud-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2022-12-07T17:24:00.661576324Z"
     dependencies:
     - name: redis
@@ -1327,4 +1353,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/redis-0.0.1/redis-0.0.1.tgz
     version: 0.0.1
-generated: "2022-12-07T17:24:00.661664324Z"
+generated: "2022-12-07T17:25:25.728957542Z"
