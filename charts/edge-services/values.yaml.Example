@@ -1,6 +1,14 @@
 edgeId: {{ INSERT EDGE ID }}
 awsIotDataEndpoint: {{ INSERT IOT ENDPOINT }}
 
+cert:
+  devicecrt: |
+    {{ INSERT DEVICE.CRT HERE }}
+  devicekey: |
+    {{ INSERT DEVICE.KEY HERE }}
+  secretkey: |
+    {{ INSERT SECRET.KEY HERE }}
+
 scs:
   scs:
     externalIps: {{ INSERT DEVICE IP }}
