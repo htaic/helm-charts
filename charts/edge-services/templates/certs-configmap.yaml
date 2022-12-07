@@ -4,8 +4,8 @@ metadata:
   name: "{{ .Release.Name }}-certs"
 data:
   device.crt: |-
-{{ .Files.Get (printf "cert/device.crt") | indent 4 }}
+{{ .Values.cert.devicecrt | indent 4 }}
   device.key: |-
-{{ .Files.Get (printf "cert/device.key") | indent 4 }}
+{{ .Values.cert.devicekey | indent 4 }}
   secret.key: |-
-{{ .Files.Get (printf "cert/secret.key") | indent 4 }}
+{{ .Values.cert.secretkey | indent 4 }}
