@@ -778,6 +778,35 @@ entries:
   edge-services:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2022-12-07T23:33:05.659433836Z"
+    dependencies:
+    - name: redis
+      repository: https://htaic.github.io/helm-charts
+      version: ^0
+    - name: postgresql
+      repository: https://htaic.github.io/helm-charts
+      version: ^0
+    - name: dcs
+      repository: file://./charts/dcs
+      version: ^0
+    - name: edgeccs
+      repository: file://./charts/edgeccs
+      version: ^0
+    - name: scs
+      repository: file://./charts/scs
+      version: ^0
+    - name: keymanager
+      repository: file://./charts/keymanager
+      version: ^0
+    description: A dependent Helm chart for Kubernetes micro auth services
+    digest: e1af13c384d32f9afd3c4c70a44291e792d8189ce8417c3f6c492c6484600f1d
+    name: edge-services
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/edge-services-0.0.6/edge-services-0.0.6.tgz
+    version: 0.0.6
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2022-12-07T23:23:19.557474196Z"
     dependencies:
     - name: redis
@@ -1411,4 +1440,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/redis-0.0.1/redis-0.0.1.tgz
     version: 0.0.1
-generated: "2022-12-07T23:23:19.55766751Z"
+generated: "2022-12-07T23:33:05.659662957Z"
