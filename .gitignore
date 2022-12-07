@@ -1,3 +1,5 @@
 # helm locals
 **/*.lock
 **/*.tgz
+**/*.key
+**/*.crt
