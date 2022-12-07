@@ -6,9 +6,6 @@ metadata:
   labels:
     {{- include ".helm.labels" . | nindent 4 }}
 spec:
-  {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.scs.replicaCount }}
-  {{- end }}
   selector:
     matchLabels:
       {{- include ".helm.selectorLabels" . | nindent 6 }}
@@ -31,11 +28,6 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        {{- if .Values.sidecarimage }}
-        - name: "{{ .Values.sidecarscs.name }}"
-          image: "{{ .Values.sidecarscs.repository }}:{{ .Values.sidecarscs.tag }}"
-          imagePullPolicy: {{ .Values.sidecarscs.pullPolicy }}
-        {{- end }}      
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
@@ -46,18 +38,6 @@ spec:
             {{- toYaml .Values.scs.env | nindent 12 }}
           {{- end }}
           args: [ {{.Values.scs.args}} ]
-          ports:
-            - name: udp
-              containerPort: {{ .Values.scs.containerPort }}
-              protocol: UDP
-          # livenessProbe:
-          #   httpGet:
-          #     path: /{{ .Values.scs.livenessProbe }}
-          #     port: http
-          # readinessProbe:
-          #   httpGet:
-          #     path: /{{ .Values.scs.readinessProbe }}
-          #     port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

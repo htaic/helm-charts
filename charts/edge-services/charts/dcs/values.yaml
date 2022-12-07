@@ -1,15 +1,10 @@
 dcs:
-  replicaCount: 1
   repository: ghcr.io/htaic/edgedcsmanagerrun
   tag: latest
   pullPolicy: Always
-  containerPort: 5555
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
-
-service:
-  type: ClusterIP
 
 resources:
   requests:
@@ -20,9 +15,3 @@ serviceAccount:
   create: false
   annotations: {}
   name: ""
-  
-autoscaling:
-  enabled: false
-  minReplicas: 1
-  maxReplicas: 100
-  targetCPUUtilizationPercentage: 80

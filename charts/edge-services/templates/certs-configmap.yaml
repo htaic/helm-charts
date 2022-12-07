@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "{{ .Release.Name }}-certs"
+data:
+  device.crt: |-
+{{ .Files.Get "cert/device.crt" | indent 4 }}
+  device.key: |-
+{{ .Files.Get "cert/device.key" | indent 4 }}
+  secret.key: |-
+{{ .Files.Get "cert/secret.key" | indent 4 }}

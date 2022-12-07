@@ -6,9 +6,6 @@ metadata:
   labels:
     {{- include ".helm.labels" . | nindent 4 }}
 spec:
-  {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.keymanager.replicaCount }}
-  {{- end }}
   selector:
     matchLabels:
       {{- include ".helm.selectorLabels" . | nindent 6 }}
@@ -46,20 +43,15 @@ spec:
             {{- toYaml .Values.keymanager.env | nindent 12 }}
           {{- end }}
           args: [ {{.Values.keymanager.args}} ]
-          ports:
-            - name: http
-              containerPort: {{ .Values.keymanager.containerPort }}
-              protocol: TCP
-          # livenessProbe:
-          #   httpGet:
-          #     path: /{{ .Values.keymanager.livenessProbe }}
-          #     port: http
-          # readinessProbe:
-          #   httpGet:
-          #     path: /{{ .Values.keymanager.readinessProbe }}
-          #     port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+          - name: certs
+            mountPath: /cert
+      volumes:
+        - name: certs
+          configMap:
+            name: "{{ .Release.Name }}-certs"
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
