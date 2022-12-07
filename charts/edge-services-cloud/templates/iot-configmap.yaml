@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "{{ .Release.Name }}-iot-env"
+data:
+  AWS_IOTCORE_ENDPOINT: "{{ .Values.iot.endpoint }}.iot.{{ .Values.iot.region }}.{{ .Values.iot.controlPlane }}"
+  AWS_IOTCORE_CLIENTID: {{ .Values.iot.controlPlane }}
+  AWS_IOTCORE_API_VERSION: {{ .Values.iot.ApiVersion }}
+  AWS_IOTCORE_CONTROL_PLANE: "iot.{{ .Values.iot.region }}.{{ .Values.iot.controlPlane }}"
+  AWS_IOTCORE_POLICY_NAME: {{ .Values.iot.policyName }}
+  AWS_IOTCORE_REGION: {{ .Values.iot.region }}
+  AWS_S3_API_VERSION: {{ .Values.openApp.ApiVersion }}
+  AWS_S3_REGION: {{ .Values.openApp.region }}
+  AWS_S3_OPENAPP_BUCKET: {{ .Values.openApp.bucket }}
+  AWS_S3_OPENAPP_KEY_PREFIX: {{ .Values.openApp.prefix }}

@@ -1,0 +1,121 @@
+############################################
+#        Settings for the deployment       #
+############################################
+operation: "EDGE"
+jwt:
+  secret: {{ INSERT JWT TOKEN NAME HERE }}
+  expiration: 7200
+iot:
+  endpoint: {{ INSERT IOT ENPOINT NAME HERE }}
+  clientId: device_install_service_01
+  controlPlane: amazonaws.com
+  region: us-west-2
+  policyName: {{ INSERT IOT POLICY NAME HERE }}
+  ApiVersion: "2015-05-28"
+openApp:
+  region: us-west-2
+  bucket: {{ INSERT BUCKET NAME HERE }}
+  prefix: openapp
+  ApiVersion: "2006-03-01"
+
+############################################
+#    Settings for the edge auth service    #
+############################################
+edgeauth:
+  edgeauth:
+    replicaCount: 1
+    repository: ghcr.io/htaic/rest_auth_service
+    tag: latest
+    pullPolicy: Always
+    containerPort: 3001
+    domainPath: "v0.1/oauth"
+    hostname: rest-auth-service
+
+############################################
+#    Settings for the installer service    #
+############################################
+device-installer:
+  device:
+    replicaCount: 1
+    repository: ghcr.io/htaic/rest_device_installation_service
+    pullPolicy: Always
+    containerPort: 3002
+    tag: "latest"
+    hostname: rest-device-installation-service
+    domainPath: "v0.1/device-installation"
+
+############################################
+#     Settings for the graphql service     #
+############################################
+graphql:
+  graphql:
+    replicaCount: 1
+    repository: ghcr.io/htaic/gql-service
+    pullPolicy: Always
+    containerPort: 3003
+    tag: "latest"
+    hostname: gql-service
+    domainPath: "graphql"
+
+############################################
+#     Settings for the internal redis      #
+############################################
+redis:
+  redis:
+    replicaCount: 1
+    repository: redis
+    password: {{ INSERT REDIS PASSWORD HERE }}
+    tag: latest
+    pullPolicy: Always
+    containerPort: 6379
+  service:
+    type: ClusterIP
+  resources:
+    requests:
+      cpu: 250m
+      memory: 750Mi
+  serviceAccount:
+    create: false
+    annotations: {}
+    name: ""
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 80
+
+############################################
+#    Settings for the internal postgres    #
+############################################
+postgresql:
+  postgres:
+    user: {{ INSERT SQL DB USERNAME HERE }}
+    password: {{ INSERT SQL DB PASSWORD HERE }}
+    db: {{ INSERT SQL DB NAME HERE }}
+    replicaCount: 1
+    repository: postgres
+    tag: 14
+    pullPolicy: Always
+    containerPort: 5432
+    env:
+      # https://hub.docker.com/_/postgres
+      - name: PGDATA
+        value: /var/lib/postgresql/data/edgecloud
+  startUp:
+    fileContent: | 
+      {{ INSERT SQL STARTUP SCRIPT HERE }}
+  service:
+    type: ClusterIP
+  resources:
+    requests:
+      cpu: 250m
+      memory: 750Mi
+  serviceAccount:
+    create: false
+    annotations: {}
+    name: ""
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 80

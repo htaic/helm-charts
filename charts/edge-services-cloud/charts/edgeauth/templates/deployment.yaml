@@ -50,6 +50,11 @@ spec:
             - name: http
               containerPort: {{ .Values.edgeauth.containerPort }}
               protocol: TCP
+          envFrom:
+            - secretRef:
+                name: "{{ .Release.Name }}-secrets"
+            - configMapRef:
+                name: "{{ .Release.Name }}-env"
           # livenessProbe:
           #   httpGet:
           #     path: /{{ .Values.edgeauth.livenessProbe }}

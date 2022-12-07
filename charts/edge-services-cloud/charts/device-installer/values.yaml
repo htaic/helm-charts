@@ -1,11 +1,3 @@
-device:
-  replicaCount: 1
-  repository: ghcr.io/htaic/rest_device_installation_service 
-  tag: latest
-  pullPolicy: Always
-  containerPort: 3002
-  domainPath: "v0.1/device-installation"
-
 imagePullSecrets:
   - name: dockerconfigjson-github-com
 
@@ -21,7 +13,7 @@ serviceAccount:
   create: false
   annotations: {}
   name: ""
-  
+
 autoscaling:
   enabled: false
   minReplicas: 1

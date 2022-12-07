@@ -14,8 +14,4 @@ spec:
         - name: {{ include ".helm.fullname" . }}
           kind: Service
           port: {{ .Values.edgeauth.containerPort }}
-      {{ if (not (hasKey .Values.edgeauth "noStripPath")) }}
-      middlewares:
-      - name: "{{ include ".helm.fullname" . }}-strip"
-      {{ end }}
 {{ end }}
