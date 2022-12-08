@@ -19,6 +19,8 @@ spec:
         date: "{{ now | unixEpoch }}"
         {{- include ".helm.selectorLabels" . | nindent 8 }}
     spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
       hostname: {{ .Values.scs.hostname }}
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
