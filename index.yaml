@@ -1069,6 +1069,17 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/edge-services-cloud-0.0.1/edge-services-cloud-0.0.1.tgz
     version: 0.0.1
+  edge-stream-service:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2022-12-12T20:16:55.590177766Z"
+    description: A Helm chart for edge-stream-service
+    digest: 9b370fcd35fec6702a69c15104cc61c195805f177c5d74575e906942f182b5d5
+    name: edge-stream-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/edge-stream-service-0.0.1/edge-stream-service-0.0.1.tgz
+    version: 0.0.1
   edge-webrtc-service:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -1486,4 +1497,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/redis-0.0.1/redis-0.0.1.tgz
     version: 0.0.1
-generated: "2022-12-08T19:49:34.783787557Z"
+generated: "2022-12-12T20:16:55.59060567Z"
