@@ -1,0 +1,32 @@
+{{- if (hasKey .Values.awsloadbalancer "loadBalancerName") -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hanwha-ingress
+  namespace: hanwha
+  labels:
+    app: traefik
+  annotations:
+    alb.ingress.kubernetes.io/load-balancer-name: {{ .Values.awsloadbalancer.loadBalancerName }}
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: instance
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+    {{- if (hasKey .Values.awsloadbalancer "TLSCertificateARN") }}  
+    alb.ingress.kubernetes.io/certificate-arn: {{ .Values.awsloadbalancer.TLSCertificateARN }}
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
+    {{- end }}
+    alb.ingress.kubernetes.io/load-balancer-attributes: routing.http2.enabled=true,idle_timeout.timeout_seconds=600
+    alb.ingress.kubernetes.io/tags: ingress=hanwha-ingress
+    alb.ingress.kubernetes.io/healthcheck-port: traffic-port
+    alb.ingress.kubernetes.io/healthcheck-path: /
+    alb.ingress.kubernetes.io/healthcheck-protocol: HTTP
+    alb.ingress.kubernetes.io/success-codes: 200,404,301
+spec:
+  defaultBackend:
+    service:
+      name: baseline-traefik
+      port:
+        number: 80
+{{- end }}

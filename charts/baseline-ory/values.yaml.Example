@@ -11,7 +11,11 @@ storage:
     volumeHandle: fs-123456
     volumeAttributes:
       encryptInTransit: "true"
-      
+
+awsloadbalancer:
+  TLSCertificateARN: arn:aws:acm:us-west-2:409642236539:certificate/c5383be5-1e09-4703-bde3-c7163576502f
+  loadBalancerName: alb-isaas-dev-simplek8s
+
 # https://github.com/kubernetes-sigs/aws-efs-csi-driver/blob/master/charts/aws-efs-csi-driver/values.yaml
 aws-efs-csi-driver:
   controller:
@@ -27,7 +31,6 @@ aws-efs-csi-driver:
     parameters:
       provisioningMode: efs-ap
       fileSystemId: fs-123456
-
 
 # https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml
 traefik:
