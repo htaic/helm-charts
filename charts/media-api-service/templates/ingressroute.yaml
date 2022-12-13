@@ -16,6 +16,7 @@ spec:
           port: {{ .Values.image.containerPort }}
       {{ if (not (hasKey .Values.image "noStripPath")) }}
       middlewares:
-      - name: "{{ include ".helm.fullname" . }}-strip"
-      {{ end }}
+        - name: "{{ include ".helm.fullname" . }}-headers"
+        - name: "{{ include ".helm.fullname" . }}-forward-auth"
+        - name: "{{ include ".helm.fullname" . }}-strip"
 {{ end }}
