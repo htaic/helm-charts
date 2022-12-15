@@ -18,7 +18,7 @@ spec:
       - name: "{{ include ".helm.fullname" . }}-headers"
       - name: "{{ include ".helm.fullname" . }}-strip"
     - kind: Rule
-      match: (PathPrefix("/{{ .Values.image.domainPath }}/{path:(api||livez||readyz)}"))
+      match: (PathPrefix("/{{ .Values.image.domainPath }}/api"))
       services:
         - name: {{ include ".helm.fullname" . }}
           kind: Service
