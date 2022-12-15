@@ -27,4 +27,12 @@ spec:
       - name: "{{ include ".helm.fullname" . }}-headers"
       - name: "{{ include ".helm.fullname" . }}-forward-auth"
       - name: "{{ include ".helm.fullname" . }}-strip"
+    - kind: Rule
+      match: (PathPrefix("/{{ .Values.image.domainPath }}/{path:(livez||readyz)}"))
+      services:
+        - name: {{ include ".helm.fullname" . }}
+          kind: Service
+          port: {{ .Values.image.containerPort }}
+      middlewares:
+      - name: "{{ include ".helm.fullname" . }}-strip"
 {{ end }}
