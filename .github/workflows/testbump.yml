@@ -1,0 +1,67 @@
+name: Release Charts
+
+on:
+  push:
+    
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      folderList: ${{ steps.filter.outputs.charts }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            charts:
+              - 'charts/**'
+
+      # - name: Get modified files
+      #   id: modified_files
+      #   uses: trilom/file-changes-action@v1.2.4
+      #   with:
+      #     githubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Print modified files
+        run: echo '${{ steps.filter.outputs.charts }}'
+
+      # - name: Print modified files
+      #   id: changes
+      #   run: |
+      #     echo "$(find ./charts $1 -type f ! -path "./.git/*" -print0 | xargs -0 stat --format '%Y :%y %n' | sort -nr | cut -d / -f3- | head)"
+      #     # echo "folderList=$(find ./charts $1 -type f ! -path "./.git/*" -print0 | xargs -0 stat --format '%Y :%y %n' | sort -nr | cut -d / -f3- | head)" >> $GITHUB_OUTPUT
+
+  scan-version-bump:
+    runs-on: ubuntu-latest
+    needs: changes
+    strategy:
+      matrix:
+        folderList: ${{ fromJSON(needs.changes.outputs.folderList) }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Helm linting
+        id: linting
+        working-directory: ${{ matrix.folderList }}
+        run: helm lint . -f ./values.yaml.Example
+
+      # levels supported patch/minor/major
+      - name: Helm version bump
+        id: bump
+        working-directory: ${{ matrix.folderList }}
+        run: |
+          python -m pip install pybump
+          pybump bump --file ./Chart.yaml --level patch
+
+  #     - name: Commit changes
+  #       id: commit
+  #       run: |
+  #         git config user.name "${{ github.actor }}" && \
+  #         git config user.email "<>" && \
+  #         git add --all
+  #         git diff-index --quiet HEAD || git commit -m "chore: bump helm version" && \
+  #         git push
+  #       continue-on-error: false
