@@ -1378,6 +1378,20 @@ entries:
   org-service:
   - apiVersion: v2
     appVersion: 0.0.2
+    created: "2023-01-11T19:37:13.981126388Z"
+    dependencies:
+    - name: postgresql
+      repository: https://htaic.github.io/helm-charts
+      version: 0.1.7
+    description: Helm chart for Organization Management service
+    digest: ed56cb793b976b2990143bf2dab198dd0bec8b31fe8bc438f315c151fae4bc68
+    name: org-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/org-service-0.1.3/org-service-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: 0.0.2
     created: "2022-11-25T19:29:36.793696835Z"
     dependencies:
     - name: postgresql
@@ -1589,4 +1603,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/redis-0.0.1/redis-0.0.1.tgz
     version: 0.0.1
-generated: "2023-01-11T19:05:18.770285924Z"
+generated: "2023-01-11T19:37:13.98149499Z"
