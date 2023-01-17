@@ -1603,4 +1603,20 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/redis-0.0.1/redis-0.0.1.tgz
     version: 0.0.1
-generated: "2023-01-11T19:37:13.98149499Z"
+  reporting-services:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-01-17T22:36:23.250396184Z"
+    dependencies:
+    - name: filebeat
+      repository: https://helm.elastic.co
+      version: 7.12.1
+    description: A Helm chart for Kubernetes micro front ends deployed behind a traefik
+      ingress
+    digest: ca0a04d6048925a33abc4fedce0cef0913097acfca4aed26cb39017f50024a16
+    name: reporting-services
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/reporting-services-0.0.1/reporting-services-0.0.1.tgz
+    version: 0.0.1
+generated: "2023-01-17T22:36:23.250595491Z"
