@@ -1,5 +1,5 @@
 apiVersion: v2
-name: role-frontend
+name: roles-frontend
 description: Helm chart for Roles Management front end service
 
 # A chart can be either an 'application' or a 'library' chart.
