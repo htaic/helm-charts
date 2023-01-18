@@ -1619,4 +1619,22 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/reporting-services-0.0.1/reporting-services-0.0.1.tgz
     version: 0.0.1
-generated: "2023-01-17T22:36:23.250595491Z"
+  role-stack:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-01-18T23:25:04.898892406Z"
+    dependencies:
+    - name: roles-backend
+      repository: file://./charts/roles-backend
+      version: ^0
+    - name: roles-frontend
+      repository: file://./charts/roles-frontend
+      version: ^0
+    description: Helm chart for Roles Management front end service
+    digest: 073bdc57d21eae9dea502ea025e12fcad31854df59660a61caaeef58a62cf8b9
+    name: role-stack
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/role-stack-0.0.1/role-stack-0.0.1.tgz
+    version: 0.0.1
+generated: "2023-01-18T23:25:04.899134216Z"
