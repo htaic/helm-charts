@@ -1,4 +1,3 @@
-fullnameOverride: "rolesmanager"
 image:
   replicaCount: 1
   repository: ghcr.io/htaic/portlet-role-manager
