@@ -1,0 +1,72 @@
+fullnameOverride: "rolesmanager"
+
+roles-frontend:
+  image:
+    replicaCount: 1
+    repository: ghcr.io/htaic/portlet-role-manager
+    pullPolicy: Always
+    containerPort: 3005
+    tag: "latest"
+    hostname: rolesmanager
+    domainPath: "roles"
+  sidecarimage:
+    name: "logging-sidecar"
+    repository: ghcr.io/htaic/platform-logging-service
+    pullPolicy: Always
+    tag: "latest"
+  imagePullSecrets:
+    - name: dockerconfigjson-github-com
+  service:
+    type: ClusterIP
+  resources:
+    requests:
+      cpu: 250m
+      memory: 750Mi
+  serviceAccount:
+    create: false
+    annotations: {}
+    name: ""
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 80
+
+roles-backend:
+  image:
+    replicaCount: 1
+    repository: ghcr.io/htaic/portlet-roleservice
+    pullPolicy: Always
+    containerPort: 4002
+    tag: "latest"
+    domainPath: "roleservice"
+    hostname: portlet-roleservice
+    livenessProbe: "api/v1/livez"
+    readinessProbe: "api/v1/readyz"
+    env:
+    - name: LOGSINK
+      value: STDOUT
+    - name: NODE_ENV
+      value: "development"
+  sidecarimage:
+    name: "logging-sidecar"
+    repository: ghcr.io/htaic/platform-logging-service
+    pullPolicy: Always
+    tag: "latest"
+  imagePullSecrets:
+    - name: dockerconfigjson-github-com
+  service:
+    type: ClusterIP
+  resources:
+    requests:
+      cpu: 250m
+      memory: 750Mi
+  serviceAccount:
+    create: false
+    annotations: {}
+    name: ""
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 80
