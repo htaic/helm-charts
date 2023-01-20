@@ -35,7 +35,7 @@ dependencies:
     version: "10.24.2"
     repository: https://helm.traefik.io/traefik
   - name: aws-efs-csi-driver
-    version: "2.2.8"
+    version: "^2.3.6"
     repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
   # the login page front end
   - name: microfrontend
