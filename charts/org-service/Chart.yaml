@@ -25,8 +25,9 @@ appVersion: "0.0.2"
 
 # kubeVersion: ">=1.17.0-0"
 
-dependencies:
-  - name: postgresql
-    version: "0.1.7"
-    repository: "https://htaic.github.io/helm-charts"
-    # repository: "file://../postgresql"
+## DB Pod spun up by auth-services will be host the org_service db 
+# dependencies:
+#   - name: postgresql
+#     version: "0.1.7"
+#     repository: "https://htaic.github.io/helm-charts"
+#     # repository: "file://../postgresql"
