@@ -673,6 +673,29 @@ entries:
   baseline-ory:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-01-27T18:54:42.601283244Z"
+    dependencies:
+    - name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 10.24.2
+    - name: aws-efs-csi-driver
+      repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
+      version: 2.2.8
+    - name: microfrontend
+      repository: https://htaic.github.io/helm-charts
+      version: 0.0.4
+    - name: auth-service
+      repository: https://htaic.github.io/helm-charts
+      version: 0.1.19
+    description: A Helm chart for Kubernetes
+    digest: 034a2bb262e9c217fbe3657960cbf4054a100842d8ba8d9bf42cda76b86a54ac
+    name: baseline-ory
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/baseline-ory-0.0.11/baseline-ory-0.0.11.tgz
+    version: 0.0.11
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-01-11T19:05:18.769917022Z"
     dependencies:
     - name: traefik
@@ -1660,4 +1683,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/role-stack-0.0.1/role-stack-0.0.1.tgz
     version: 0.0.1
-generated: "2023-01-27T18:49:28.943831836Z"
+generated: "2023-01-27T18:54:42.601416244Z"
