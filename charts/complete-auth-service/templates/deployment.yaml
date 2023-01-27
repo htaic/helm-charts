@@ -34,7 +34,7 @@ spec:
         - name: {{ .Chart.Name }}-postgres-provisioner
           image: {{ .Values.postgresUpdater }}:{{ .Values.image.tag }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          command: ['sh', '-c', 'for file in /sql/*.sql ; do psql -U $POSTGRES_USER -d $POSTGRES_DB -f "$file"; done']
+          command: ['sh', '-c', '/home/developer/executecommands.sh']
           envFrom:
             - secretRef:
                 name: "{{ .Release.Name }}-postgresql-secret"

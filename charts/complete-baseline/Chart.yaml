@@ -54,6 +54,6 @@ dependencies:
   - name: postgresql
     version: "^0"
     repository: "https://htaic.github.io/helm-charts"
-  - name: reporting
+  - name: reporting-services
     version: "^0"
     repository: "https://htaic.github.io/helm-charts"
