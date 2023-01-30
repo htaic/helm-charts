@@ -924,6 +924,71 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/baseline-ory-0.0.1/baseline-ory-0.0.1.tgz
     version: 0.0.1
+  complete-auth-service:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-01-30T17:21:33.566867482Z"
+    dependencies:
+    - name: oathkeeper
+      repository: https://k8s.ory.sh/helm/charts
+      version: 0.25.6
+    - name: kratos
+      repository: https://k8s.ory.sh/helm/charts
+      version: 0.25.6
+    - name: keto
+      repository: https://k8s.ory.sh/helm/charts
+      version: 0.25.6
+    description: A Helm chart for Kubernetes micro auth services
+    digest: 4d8630e0ddabe680d46696ee7aed20a6ac32a17c9eb06c577f433f4cb32e1c11
+    name: complete-auth-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/complete-auth-service-0.1.18/complete-auth-service-0.1.18.tgz
+    version: 0.1.18
+  complete-baseline:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-01-30T17:21:33.797854669Z"
+    dependencies:
+    - name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 10.24.2
+    - name: aws-efs-csi-driver
+      repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
+      version: ^2.2.8
+    - name: microfrontend
+      repository: https://htaic.github.io/helm-charts
+      version: ^0
+    - name: complete-auth-service
+      repository: file://../complete-auth-service
+      version: ^0
+    - name: complete-org-service
+      repository: file://../complete-org-service
+      version: ^0
+    - name: postgresql
+      repository: https://htaic.github.io/helm-charts
+      version: ^0
+    - name: reporting-services
+      repository: https://htaic.github.io/helm-charts
+      version: ^0
+    description: A Helm chart for Kubernetes
+    digest: cc6ac49a70db70216866e303bb03a41ffe43b92b1a637ac673e5282d2612e6bc
+    name: complete-baseline
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/complete-baseline-0.0.1/complete-baseline-0.0.1.tgz
+    version: 0.0.1
+  complete-org-service:
+  - apiVersion: v2
+    appVersion: 0.0.2
+    created: "2023-01-30T17:21:33.970543947Z"
+    description: Helm chart for Organization Management service
+    digest: b913c8df059d4fc765135aa9475b1f08d6518c68f22e380fbb294f0556c63c01
+    name: complete-org-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/complete-org-service-0.1.3/complete-org-service-0.1.3.tgz
+    version: 0.1.3
   edge-background-service:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -1683,4 +1748,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/role-stack-0.0.1/role-stack-0.0.1.tgz
     version: 0.0.1
-generated: "2023-01-27T18:54:42.601416244Z"
+generated: "2023-01-30T17:21:34.115009391Z"
