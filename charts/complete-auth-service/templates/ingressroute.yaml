@@ -1,0 +1,38 @@
+{{ if and (ne .Values.image.domainPath "") (hasKey .Values.image "domainPath") }}
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: "{{ include ".helm.fullname" . }}-route"
+  namespace: {{ .Values.namespace }}
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: (Path("/{{ .Values.image.domainPath }}/{path:(v[1-9]{1,2}/){0,1}(login|realms/detect|logout)}"))
+      services:
+        - name: {{ include ".helm.fullname" . }}
+          kind: Service
+          port: {{ .Values.image.containerPort }}
+      middlewares:
+      - name: "{{ include ".helm.fullname" . }}-headers"
+      - name: "{{ include ".helm.fullname" . }}-strip"
+    - kind: Rule
+      match: (PathPrefix("/{{ .Values.image.domainPath }}/api"))
+      services:
+        - name: {{ include ".helm.fullname" . }}
+          kind: Service
+          port: {{ .Values.image.containerPort }}
+      middlewares:
+      - name: "{{ include ".helm.fullname" . }}-strip"
+    - kind: Rule
+      match: (PathPrefix("/{{ .Values.image.domainPath }}"))
+      services:
+        - name: {{ include ".helm.fullname" . }}
+          kind: Service
+          port: {{ .Values.image.containerPort }}
+      middlewares:
+      - name: "{{ include ".helm.fullname" . }}-headers"
+      - name: "{{ include ".helm.fullname" . }}-forward-auth"
+      - name: "{{ include ".helm.fullname" . }}-strip"
+{{ end }}
