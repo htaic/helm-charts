@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.0.1
+version: 0.0.2
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -44,13 +44,13 @@ dependencies:
   # the auth service back end
   - name: complete-auth-service
     version: "^0"
-    repository: "file://../complete-auth-service"
-    # repository: "https://htaic.github.io/helm-charts"
+    # repository: "file://../complete-auth-service"
+    repository: "https://htaic.github.io/helm-charts"
   # the org service back end
   - name: complete-org-service
     version: "^0"
-    repository: "file://../complete-org-service"
-    # repository: "https://htaic.github.io/helm-charts"
+    # repository: "file://../complete-org-service"
+    repository: "https://htaic.github.io/helm-charts"
   - name: postgresql
     version: "^0"
     repository: "https://htaic.github.io/helm-charts"
