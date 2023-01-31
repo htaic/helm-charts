@@ -34,6 +34,9 @@ spec:
         - name: {{ .Chart.Name }}-postgres-provisioner
           image: {{ .Values.postgresUpdater }}:{{ .Values.image.tag }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: APP_PASS
+              value: {{ .Values.postgresUpdater.app_pass }}
           command: ['sh', '-c', '/home/developer/executecommands.sh']
           envFrom:
             - secretRef:
