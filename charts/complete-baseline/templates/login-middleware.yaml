@@ -2,12 +2,12 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   annotations:
-    meta.helm.sh/release-name: baseline-auth-manager
-    meta.helm.sh/release-namespace: hanwha
+    meta.helm.sh/release-name: {{ .Release.Name }}-auth-manager
+    meta.helm.sh/release-namespace: {{ .Release.Namespace }}
   labels:
     app.kubernetes.io/managed-by: Helm
-  name: baseline-auth-manager-traefik-middleware
-  namespace: hanwha
+  name: {{ .Release.Name }}-auth-manager-traefik-middleware
+  namespace: {{ .Release.Namespace }}
 spec:
   forwardAuth:
     address: /login

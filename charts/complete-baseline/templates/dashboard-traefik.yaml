@@ -1,4 +1,3 @@
-# this should probably get linked to traefik's toggle for the dashboard
 {{- if .Values.enableTraefikDashboard }}
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
@@ -9,9 +8,13 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+    # this doesn't honor / only /dashboard/
+    - match: PathPrefix(`/dashboard`, `/dashboard/`) || PathPrefix(`/api`, `/api/`)
       kind: Rule
       services:
         - name: api@internal
           kind: TraefikService
+      middlewares:
+        - name: basic-auth
+          namespace: {{ .Release.Namespace }}
 {{- end }} 
