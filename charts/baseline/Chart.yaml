@@ -37,6 +37,10 @@ dependencies:
 - name: aws-efs-csi-driver
   version: "2.2.8"
   repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
+# Longhorn is a distributed block storage system for Kubernetes
+- name: longhorn
+  version: "1.4.0"
+  repository: https://charts.longhorn.io/longhorn
 # the login page front end
 - name: microfrontend
   version: "0.0.5"
