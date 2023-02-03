@@ -32,7 +32,11 @@ spec:
       {{- if .Values.postgresUpdater }}
       initContainers:
         - name: {{ .Chart.Name }}-postgres-provisioner
+          {{- if hasKey .Values.postgresUpdater "tag" }}
+          image: {{ .Values.postgresUpdater.image }}:{{ .Values.postgresUpdater.tag }}
+          {{ else }}
           image: {{ .Values.postgresUpdater.image }}:{{ .Values.image.tag }}
+          {{ end }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: APP_PASS
