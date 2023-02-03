@@ -988,6 +988,38 @@ entries:
   complete-baseline:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-02-03T19:46:12.539522666Z"
+    dependencies:
+    - name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: ^10.24.2
+    - name: aws-efs-csi-driver
+      repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
+      version: ^2.2.8
+    - name: microfrontend
+      repository: https://htaic.github.io/helm-charts
+      version: ^0
+    - name: complete-auth-service
+      repository: https://htaic.github.io/helm-charts
+      version: ^0
+    - name: complete-org-service
+      repository: https://htaic.github.io/helm-charts
+      version: ^0
+    - name: postgresql
+      repository: https://htaic.github.io/helm-charts
+      version: ^0
+    - name: reporting-services
+      repository: https://htaic.github.io/helm-charts
+      version: ^0
+    description: A Helm chart for Kubernetes
+    digest: 722a53a7d4054c0d4b7345feb6f8351b7f41ee2e0ad89ca9aa3908f03bd59e0a
+    name: complete-baseline
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/complete-baseline-0.0.5/complete-baseline-0.0.5.tgz
+    version: 0.0.5
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-02-01T20:51:56.90033641Z"
     dependencies:
     - name: traefik
@@ -1904,4 +1936,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/role-stack-0.0.1/role-stack-0.0.1.tgz
     version: 0.0.1
-generated: "2023-02-03T19:44:04.616423313Z"
+generated: "2023-02-03T19:46:12.539830885Z"
