@@ -927,6 +927,26 @@ entries:
   complete-auth-service:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-02-07T20:57:34.78399576Z"
+    dependencies:
+    - name: oathkeeper
+      repository: https://k8s.ory.sh/helm/charts
+      version: 0.25.6
+    - name: kratos
+      repository: https://k8s.ory.sh/helm/charts
+      version: 0.27.0
+    - name: keto
+      repository: https://k8s.ory.sh/helm/charts
+      version: 0.25.6
+    description: A Helm chart for Kubernetes micro auth services
+    digest: 61a33024b4d657ca3fb7de79f7a87404d84cedd48135208fef5e972e6657f3c3
+    name: complete-auth-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/complete-auth-service-0.1.22/complete-auth-service-0.1.22.tgz
+    version: 0.1.22
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-02-03T19:44:04.477655219Z"
     dependencies:
     - name: oathkeeper
@@ -1936,4 +1956,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/role-stack-0.0.1/role-stack-0.0.1.tgz
     version: 0.0.1
-generated: "2023-02-03T19:46:12.539830885Z"
+generated: "2023-02-07T20:57:34.784128159Z"
