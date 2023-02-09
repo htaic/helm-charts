@@ -89,7 +89,7 @@ reporting-services:
   filebeat_config:
     ELASTIC_SEARCH_HOST: YOUR_ELASTIC_URL
     ELASTIC_SEARCH_USERNAME: YOUR_ELASTIC_USER
-    ELASTIC_SEARCH_PASSWORD: YOUR_ELSATIC_PASSWORD
+    ELASTIC_SEARCH_PASSWORD: YOUR_ELASTIC_PASSWORD
   filebeat:
     daemonset:
       # Include the daemonset
