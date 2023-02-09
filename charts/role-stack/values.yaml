@@ -1,5 +1,4 @@
 fullnameOverride: "rolesmanager"
-
 roles-frontend:
   image:
     replicaCount: 1
@@ -31,7 +30,6 @@ roles-frontend:
     minReplicas: 1
     maxReplicas: 100
     targetCPUUtilizationPercentage: 80
-
 roles-backend:
   image:
     replicaCount: 1
