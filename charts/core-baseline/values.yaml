@@ -1,0 +1,220 @@
+fullnameOverride: "baseline"
+enableTraefikDashboard: true
+
+# https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml
+traefik:
+  image:
+    pullPolicy: Always
+  service:
+    type: LoadBalancer
+  # # enable this block for cloud mode
+  # service:
+  #   type: NodePort
+  # ports:
+  #   web:
+  #     # internal web port
+  #     port: 80
+  #     nodePort: 32414
+  #     targetPort: web
+
+redis:
+  redis:
+    replicaCount: 1
+    repository: redis
+    password: ImaPasswordRedis
+    tag: latest
+    pullPolicy: Always
+    containerPort: 6379
+  service:
+    type: ClusterIP
+  resources:
+    requests:
+      cpu: 250m
+      memory: 750Mi
+  serviceAccount:
+    create: false
+    annotations: {}
+    name: ""
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 80
+
+postgresql:
+  service:
+    type: ClusterIP
+  resources:
+    requests:
+      cpu: 250m
+      memory: 750Mi
+  serviceAccount:
+    create: false
+    annotations: {}
+    name: ""
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 80
+  postgres:
+    user: postgres
+    password: ImaPasswordPostgres
+    db: postgres
+    replicaCount: 1
+    repository: postgres
+    tag: 14
+    pullPolicy: Always
+    containerPort: 5432
+    env:
+      # https://hub.docker.com/_/postgres
+      - name: PGDATA
+        value: /var/lib/postgresql/data/postgres # # To enable EFS on the cluster, use the following values in the root helm chart
+
+# https://github.com/htaic/helm-charts/blob/main/charts/reporting-service/values.yaml.example   
+reporting-services:
+  image:
+    replicaCount: 1
+    repository: ghcr.io/htaic/platform-logging-service
+    pullPolicy: Always
+    containerPort: 6420
+    tag: "latest"
+    hostname: plsbrowser
+    domainPath: "plsbrowser"
+    livenessProbe: "api/v1/livez"
+    readinessProbe: "api/v1/readyz"
+    env:
+    - name: WEBSOCKETHOST
+      value: plsbrowser
+  filebeat_config:
+    ELASTIC_SEARCH_HOST: YOUR_ELASTIC_URL
+    ELASTIC_SEARCH_USERNAME: YOUR_ELASTIC_USER
+    ELASTIC_SEARCH_PASSWORD: YOUR_ELSATIC_PASSWORD
+  filebeat:
+    daemonset:
+      # Include the daemonset
+      enabled: true
+      envFrom:
+      - configMapRef:
+          name: reporting-configmap    
+      filebeatConfig:
+        filebeat.yml: |
+          filebeat.config:
+            modules:
+              path: ${path.config}/modules.d/*.yml
+              reload.enabled: false
+          filebeat.autodiscover:
+            providers:
+              - type: kubernetes
+                node: ${NODE_NAME}
+                templates:
+                  - condition.or:
+                      - equals.kubernetes.container.name: "logging-sidecar"
+                      - contains.kubernetes.pod.name: "baseline"
+                      - contains.kubernetes.pod.name: "authmanager"
+                      - contains.kubernetes.pod.name: "communication-service"
+                      - contains.kubernetes.pod.name: "edge-"
+                      - contains.kubernetes.pod.name: "org-service-postgresql-"
+                      - contains.kubernetes.pod.name: "rest-devicemanager-"
+                      - contains.kubernetes.pod.name: "gql-devicemanager-"
+                    config:
+                      - type: container
+                        paths:
+                          - /var/log/containers/*${data.kubernetes.container.id}.log
+                        exclude_lines: ["^\\s+[\\-`('.|_]"]  # drop asciiart lines
+          filebeat.modules:
+            - module: elasticsearch
+              server:
+                enabled: true
+          processors:
+            - add_kubernetes_metadata:
+                in_cluster: true
+                namespace: "hanwha"
+                matchers:
+                - logs_path:
+                    logs_path: "/var/log/containers/"
+            - add_host_metadata:
+                when.not.contains.tags: forwarded
+            - add_cloud_metadata: ~
+          setup.ilm.enabled: "false"
+          setup.dashboards.enabled: "false"
+          setup.template.enabled: "false"
+          output.elasticsearch:
+            # Array of hosts to connect to.
+            hosts: ${ELASTIC_SEARCH_HOST}
+            protocol: "https"
+            username: ${ELASTIC_SEARCH_USERNAME}
+            password: ${ELASTIC_SEARCH_PASSWORD}
+      maxUnavailable: 1
+      securityContext:
+        runAsUser: 0
+        privileged: false
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "100Mi"
+        limits:
+          cpu: "1000m"
+          memory: "200Mi"
+      tolerations: []
+    replicas: 1
+    hostPathRoot: /var/lib
+    image: "docker.elastic.co/beats/filebeat-oss"
+    imageTag: "7.12.1"
+    imagePullPolicy: "IfNotPresent"
+    imagePullSecrets: []
+    livenessProbe:
+      exec:
+        command:
+          - sh
+          - -c
+          - |
+            #!/usr/bin/env bash -e
+            curl --fail 127.0.0.1:5066
+      failureThreshold: 3
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      timeoutSeconds: 5
+    readinessProbe:
+      exec:
+        command:
+          - sh
+          - -c
+          - |
+            #!/usr/bin/env bash -e
+            filebeat test output
+      failureThreshold: 3
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      timeoutSeconds: 5
+    managedServiceAccount: true
+    clusterRoleRules:
+    - apiGroups:
+      - ""
+      resources:
+      - namespaces
+      - nodes
+      - pods
+      verbs:
+      - get
+      - list
+      - watch
+    terminationGracePeriod: 30
+    updateStrategy: RollingUpdate
+  imagePullSecrets:
+    - name: dockerconfigjson-github-com
+  service:
+    type: ClusterIP
+  resources:
+    requests:
+      cpu: 250m
+      memory: 750Mi
+  serviceAccount:
+    create: true
+    annotations: {}
+    name: ""
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 80
