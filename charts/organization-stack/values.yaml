@@ -42,7 +42,7 @@ organization-creation:
     readinessProbe: "api/v1/readyz"
     env:
     - name: LOGSINK
-      value: ELKSTACK
+      value: STDOUT
     - name: NODE_ENV
       value: "development"
   sidecarimage:
@@ -80,7 +80,7 @@ organization-backend:
     readinessProbe: "api/v1/readyz"
     env:
     - name: LOGSINK
-      value: ELKSTACK
+      value: STDOUT
     - name: NODE_ENV
       value: "development"
   sidecarimage:
