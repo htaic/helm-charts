@@ -1,0 +1,22 @@
+{{ if and (eq .Values.image.domainPath "") (hasKey .Values.image "domainPath") }}
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: "{{ include ".helm.fullname" . }}-ingress"
+  namespace: {{ .Values.namespace }}
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+spec:
+  rules:
+    - host:
+      http:
+        paths:
+          - path: /{{ .Values.image.domainPath }}
+            pathType: Prefix
+            backend:
+              service:
+                name:  {{ include ".helm.fullname" . }}
+                port:
+                  number: {{ .Values.image.containerPort }}
+{{ end }}
