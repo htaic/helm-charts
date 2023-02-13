@@ -496,6 +496,17 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/auth-services-0.0.1/auth-services-0.0.1.tgz
     version: 0.0.1
+  authmanager:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-02-13T22:21:36.260147655Z"
+    description: A Helm chart for Kubernetes
+    digest: ec515f9f95a647f2892b7887f7dddc9b3c2be7497476ef65c8a9b566dc9ca3e3
+    name: authmanager
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/authmanager-0.0.1/authmanager-0.0.1.tgz
+    version: 0.0.1
   baseline:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -1229,6 +1240,42 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/complete-org-service-0.1.3/complete-org-service-0.1.3.tgz
     version: 0.1.3
+  core-baseline:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-02-13T22:21:36.738191877Z"
+    dependencies:
+    - name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: ^10.24.2
+    - name: postgresql
+      repository: https://htaic.github.io/helm-charts
+      version: ^0
+    - name: redis
+      repository: https://htaic.github.io/helm-charts
+      version: ^0
+    - name: reporting-services
+      repository: https://htaic.github.io/helm-charts
+      version: ^0
+    description: A Helm chart for Kubernetes
+    digest: 964e1ed3d032148eb172958bca606f6a8866e9a8dc5d7c1af7d6f690f53a4dc4
+    name: core-baseline
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/core-baseline-0.0.1/core-baseline-0.0.1.tgz
+    version: 0.0.1
+  devicemanager:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-02-13T22:21:36.930365523Z"
+    description: A Helm chart for Kubernetes micro front ends deployed behind a traefik
+      ingress
+    digest: 18ac6555429ed66fd497d991e3a8974130d2a2dbc942c79ba34dd1c7ccc28ee4
+    name: devicemanager
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/devicemanager-0.0.1/devicemanager-0.0.1.tgz
+    version: 0.0.1
   edge-background-service:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -1671,6 +1718,18 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/faux-auth-service-0.0.1/faux-auth-service-0.0.1.tgz
     version: 0.0.1
+  gql-devicemanager:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-02-13T22:21:37.106803324Z"
+    description: A Helm chart for Kubernetes isaas007 gql deployed behind a traefik
+      ingress
+    digest: 1f03fd86dbe944babf8418a5c2a0121ec3eb8e0e07626d97f7dc8b693ce72225
+    name: gql-devicemanager
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/gql-devicemanager-0.0.1/gql-devicemanager-0.0.1.tgz
+    version: 0.0.1
   media-api-service:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -1970,6 +2029,18 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/reporting-services-0.0.1/reporting-services-0.0.1.tgz
     version: 0.0.1
+  rest-devicemanager:
+  - apiVersion: v2
+    appVersion: 0.1.14
+    created: "2023-02-13T22:21:37.640855311Z"
+    description: A Helm chart for Kubernetes rest-devicemanager deployed behind a
+      traefik ingress
+    digest: ad476a1e560023cbf086be717ca11f338b1ceab8d53ebc116628a6c5f3a57a93
+    name: rest-devicemanager
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/rest-devicemanager-0.0.1/rest-devicemanager-0.0.1.tgz
+    version: 0.0.1
   role-stack:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -1988,4 +2059,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/role-stack-0.0.1/role-stack-0.0.1.tgz
     version: 0.0.1
-generated: "2023-02-07T21:26:06.344366987Z"
+generated: "2023-02-13T22:21:37.836844086Z"
