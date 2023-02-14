@@ -1264,6 +1264,16 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/core-baseline-0.0.1/core-baseline-0.0.1.tgz
     version: 0.0.1
+  cp-kafka-rest:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: "2023-02-14T19:17:00.959934451Z"
+    description: A Helm chart for Confluent Kafka REST Proxy on Kubernetes
+    digest: 9abd5e02fbbdfa26390edfdc29073348cdf8b071ca3c1206aac692a97d951da0
+    name: cp-kafka-rest
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/cp-kafka-rest-0.1.0/cp-kafka-rest-0.1.0.tgz
+    version: 0.1.0
   devicemanager:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -2059,4 +2069,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/role-stack-0.0.1/role-stack-0.0.1.tgz
     version: 0.0.1
-generated: "2023-02-13T22:21:37.836844086Z"
+generated: "2023-02-14T19:17:00.960141251Z"
