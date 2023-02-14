@@ -99,7 +99,7 @@ cp-zookeeper:
 cp-schema-registry:
   url: ""
 
-##Plain Text,
+##Plain Text ##TODO:Parameter store/Environment variables to store value
 cp-kafka:
   bootstrapServers: ""
 

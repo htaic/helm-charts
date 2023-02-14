@@ -100,7 +100,7 @@ cp-schema-registry:
   url: ""
 
 ##Plain Text
-cp-kafka:
+cp-kafka: ##TODO:Parameter store/Environment variables to store value
   bootstrapServers: "PLAINTEXT://b-1.mskhtdevsaasuw21.40fm05.c2.kafka.us-west-2.amazonaws.com:9092,PLAINTEXT://b-2.mskhtdevsaasuw21.40fm05.c2.kafka.us-west-2.amazonaws.com:9092,PLAINTEXT://b-3.mskhtdevsaasuw21.40fm05.c2.kafka.us-west-2.amazonaws.com:9092"
 
 
