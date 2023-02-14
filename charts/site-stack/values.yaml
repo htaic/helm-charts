@@ -1,0 +1,70 @@
+fullnameOverride: "sitesmanager"
+sites-frontend:
+  image:
+    replicaCount: 1
+    repository: ghcr.io/htaic/portlet-site-manager
+    pullPolicy: Always
+    containerPort: 3007
+    tag: "latest"
+    hostname: sitesmanager
+    domainPath: "sites"
+  sidecarimage:
+    name: "logging-sidecar"
+    repository: ghcr.io/htaic/platform-logging-service
+    pullPolicy: Always
+    tag: "latest"
+  imagePullSecrets:
+    - name: dockerconfigjson-github-com
+  service:
+    type: ClusterIP
+  resources:
+    requests:
+      cpu: 250m
+      memory: 750Mi
+  serviceAccount:
+    create: false
+    annotations: {}
+    name: ""
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 80
+sites-backend:
+  image:
+    replicaCount: 1
+    repository: ghcr.io/htaic/portlet-siteservice
+    pullPolicy: Always
+    containerPort: 4004
+    tag: "latest"
+    domainPath: "siteservice"
+    hostname: portlet-siteservice
+    livenessProbe: "api/v1/livez"
+    readinessProbe: "api/v1/readyz"
+    env:
+    - name: LOGSINK
+      value: STDOUT
+    - name: NODE_ENV
+      value: "development"
+  sidecarimage:
+    name: "logging-sidecar"
+    repository: ghcr.io/htaic/platform-logging-service
+    pullPolicy: Always
+    tag: "latest"
+  imagePullSecrets:
+    - name: dockerconfigjson-github-com
+  service:
+    type: ClusterIP
+  resources:
+    requests:
+      cpu: 250m
+      memory: 750Mi
+  serviceAccount:
+    create: false
+    annotations: {}
+    name: ""
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 80
