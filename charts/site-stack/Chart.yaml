@@ -1,4 +1,4 @@
-apiVersion: v0
+apiVersion: v2
 name: site-stack
 description: Helm chart for Sites Management front end service
 

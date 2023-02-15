@@ -1,4 +1,4 @@
-apiVersion: v0
+apiVersion: v2
 name: sites-backend
 description: Helm chart for Sites Management back end service
 
