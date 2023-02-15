@@ -1,4 +1,4 @@
-apiVersion: v0
+apiVersion: v2
 name: groups-backend
 description: Helm chart for Groups Management back end service
 
