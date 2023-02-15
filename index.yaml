@@ -1797,6 +1797,24 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/gql-devicemanager-0.0.1/gql-devicemanager-0.0.1.tgz
     version: 0.0.1
+  group-stack:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-02-15T23:43:32.942829809Z"
+    dependencies:
+    - name: groups-backend
+      repository: file://./charts/groups-backend
+      version: ^0
+    - name: groups-frontend
+      repository: file://./charts/groups-frontend
+      version: ^0
+    description: Helm chart for Groups Management front end service
+    digest: 2d2afbb8682b8b4b84bb3438c1f9d4e1d8c7fb06e54eafb9528cc13dce6a24da
+    name: group-stack
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/group-stack-0.0.1/group-stack-0.0.1.tgz
+    version: 0.0.1
   media-api-service:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -2144,4 +2162,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/site-stack-0.0.1/site-stack-0.0.1.tgz
     version: 0.0.1
-generated: "2023-02-15T23:42:11.624274238Z"
+generated: "2023-02-15T23:43:32.94297351Z"
