@@ -44,9 +44,9 @@ spec:
           command: ['sh', '-c', '/home/developer/executecommands.sh']
           envFrom:
             - secretRef:
-                name: "{{ .Release.Name }}-postgresql-secret"
+                name: "baseline-postgresql-secret"
             - configMapRef:
-                name: "{{ .Release.Name }}-configmap"
+                name: "baseline-configmap"
       {{- end }}
       containers:
         {{- if .Values.sidecarimage }}
