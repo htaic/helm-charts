@@ -5,7 +5,7 @@ metadata:
   namespace: {{ .Values.namespace }}
 spec:
   forwardAuth:
-    address: http://baseline-oathkeeper-api:4456/decisions
+    address: "http://{{ .Release.Name }}-oathkeeper-api:4456/decisions"
     authRequestHeaders:
     - accept
     - accept-encoding
