@@ -10,7 +10,7 @@ spec:
     - match: (PathPrefix(`/kafka`))
       kind: Rule
       services:
-        - name: kafka-rest-cp-kafka-rest
+        - name: {{ template "cp-kafka-rest.name" . }}
           kind: Service
           port: 8082
       middlewares:
