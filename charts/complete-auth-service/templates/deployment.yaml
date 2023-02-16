@@ -68,6 +68,9 @@ spec:
             - name: http
               containerPort: {{ .Values.image.containerPort }}
               protocol: TCP
+          envFrom:
+            - secretRef:
+                name: "auth-service-secret"           
           livenessProbe:
             httpGet:
               path: /{{ .Values.image.livenessProbe }}
