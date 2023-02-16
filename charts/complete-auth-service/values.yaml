@@ -601,7 +601,7 @@ kratos:
     enabled: false
   kratos:
     automigration:
-      enabled: true
+      enabled: false
       customCommand:
         - kratos
       customArgs:
@@ -712,7 +712,7 @@ kratos:
 keto:
   keto:
     automigration:
-      enabled: true
+      enabled: false
       customCommand:
         - keto
     config:
