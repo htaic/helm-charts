@@ -10,7 +10,7 @@ spec:
     - kind: Rule
       match: (PathPrefix("/ory"))
       services:
-        - name: "baseline-keto-read"
+        - name: "{{ .Release.Name }}-keto-read"
           kind: Service
           port: 80
       middlewares:
