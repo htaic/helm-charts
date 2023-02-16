@@ -52,9 +52,9 @@ postgresql:
     db: postgres
     user: postgres
     password: YOUR_POSTGRES_PASSWORD
-    auth-db: auth
-    auth-user: auth_service
-    auth-password: YOUR_AUTH_DB_PASSWORD
+    authdb: auth
+    authuser: auth_service
+    authpassword: YOUR_AUTH_DB_PASSWORD
     replicaCount: 1
     repository: postgres
     tag: 14
