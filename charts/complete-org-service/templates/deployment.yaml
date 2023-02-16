@@ -64,6 +64,9 @@ spec:
             {{- toYaml .Values.image.env | nindent 12 }}
           {{- end }}
           args: [ {{.Values.image.args}} ]
+          envFrom:
+            - secretRef:
+                name: "org-service-secret"
           ports:
             - name: http
               containerPort: {{ .Values.image.containerPort }}
