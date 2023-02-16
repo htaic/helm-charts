@@ -70,7 +70,9 @@ spec:
               protocol: TCP
           envFrom:
             - secretRef:
-                name: "auth-service-secret"           
+                name: "auth-service-secret"
+            - configMapRef:
+                name: "{{ .Release.Name }}-ory-keto-configmap"           
           livenessProbe:
             httpGet:
               path: /{{ .Values.image.livenessProbe }}
