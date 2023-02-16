@@ -89,6 +89,16 @@ postgresql:
       # https://hub.docker.com/_/postgres
       - name: PGDATA
         value: /var/lib/postgresql/data/postgres # # To enable EFS on the cluster, use the following values in the root helm chart
+  storage:
+    className: efs-storageclass
+    provisioner: efs.csi.aws.com
+    capacity: 20Gi
+    volumeMode: Filesystem
+    csi:
+      volumeHandle: YOUR_FILESYSTEM_ID
+      volumeAttributes:
+        encryptInTransit: "true"
+    volumeMountPath: /var/lib/postgresql/data
 
 # https://github.com/htaic/helm-charts/blob/main/charts/reporting-service/values.yaml.example   
 reporting-services:
