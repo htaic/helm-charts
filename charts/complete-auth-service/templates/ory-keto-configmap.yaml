@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "{{ .Release.Name }}-ory-keto-configmap"
+data:
+  ORY_KRATOS_BASE_ADMIN_URL: "http://{{ .Release.Name }}-kratos-admin"
+  ORY_KRATOS_BASE_PUBLIC_URL: "http://{{ .Release.Name }}-kratos-public"
+  ORY_KETO_BASE_READ_URL: "http://{{ .Release.Name }}-keto-read"
+  ORY_KETO_BASE_WRITE_URL: "http://{{ .Release.Name }}-keto-write"
