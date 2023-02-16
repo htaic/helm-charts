@@ -1,8 +1,7 @@
 postgresUpdater:
   image: ghcr.io/htaic/auth-services-postgres-runner
-  #sql override
+  # # sql tag override
   # tag: "1.0.0"
-  app_pass: YOUR_AUTH_DB_PASSWORD
 image:
   replicaCount: 1
   repository: ghcr.io/htaic/auth-service
@@ -35,6 +34,7 @@ resources:
   requests:
     cpu: 250m
     memory: 750Mi
+# TODO: This should be made toggleable for edge vs cloud...
 serviceAccount:
   name: "auth"
   create: true

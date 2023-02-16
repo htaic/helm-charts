@@ -38,13 +38,11 @@ spec:
           image: {{ .Values.postgresUpdater.image }}:{{ .Values.image.tag }}
           {{ end }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          env:
-            - name: APP_PASS
-              value: {{ .Values.postgresUpdater.app_pass }}
           command: ['sh', '-c', '/home/developer/executecommands.sh']
           envFrom:
             - secretRef:
                 name: "baseline-postgresql-secret"
+                name: "auth-service-secret"
             - configMapRef:
                 name: "baseline-configmap"
       {{- end }}
