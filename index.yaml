@@ -2090,6 +2090,16 @@ entries:
   redis:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-02-17T21:05:59.590208444Z"
+    description: A dependent Helm chart for Kubernetes micro auth services
+    digest: 01a20c11638549454c4e303ab55edd09ad5178cb029960fedd155dc75616d0a6
+    name: redis
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/redis-0.0.2/redis-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2022-11-28T23:05:42.768200097Z"
     description: A dependent Helm chart for Kubernetes micro auth services
     digest: 498de37276f28841ae9bc51139d4fc2a30fc91391c118f1e3ea67fc53ac72bf8
@@ -2162,4 +2172,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/site-stack-0.0.1/site-stack-0.0.1.tgz
     version: 0.0.1
-generated: "2023-02-15T23:43:32.94297351Z"
+generated: "2023-02-17T21:05:59.590404044Z"
