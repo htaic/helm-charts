@@ -10,27 +10,7 @@ traefik:
 
 redis:
   redis:
-    replicaCount: 1
-    repository: redis
     password: YOUR_REDIS_PASSWORD
-    tag: latest
-    pullPolicy: Always
-    containerPort: 6379
-  service:
-    type: ClusterIP
-  resources:
-    requests:
-      cpu: 250m
-      memory: 750Mi
-  serviceAccount:
-    create: false
-    annotations: {}
-    name: ""
-  autoscaling:
-    enabled: false
-    minReplicas: 1
-    maxReplicas: 100
-    targetCPUUtilizationPercentage: 80
 
 postgresql:
   service:
