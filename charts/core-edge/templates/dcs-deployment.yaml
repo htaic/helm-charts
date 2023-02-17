@@ -1,0 +1,28 @@
+{{- if .Values.dcs }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dcs
+spec:
+  selector:
+    matchLabels:
+      app: dcs
+  replicas: {{ .Values.dcs.replicaCount | default 1 }}
+  template:
+    metadata:
+      labels:
+        app: dcs
+    spec:
+      containers:
+        - name: dcs
+          {{- if .Values.dcs.image.digest }}
+          image: {{ .Values.dcs.image.repository }}@{{ .Values.dcs.image.digest }}
+          {{- else }}
+          image: {{ .Values.dcs.image.repository }}:latest
+          {{- end }}
+          imagePullPolicy: Always
+      {{- if .Values.imagePullSecrets }}
+      imagePullSecrets:
+        - name: {{ .Values.imagePullSecrets }}
+      {{- end }}
+{{- end }}
