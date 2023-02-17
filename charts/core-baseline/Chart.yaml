@@ -39,5 +39,4 @@ dependencies:
     repository: "https://htaic.github.io/helm-charts"
   - name: redis
     version: "^0"
-    # repository: "https://htaic.github.io/helm-charts"
-    repository: "file://../redis"
+    repository: "https://htaic.github.io/helm-charts"
