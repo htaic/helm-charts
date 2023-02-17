@@ -29,7 +29,7 @@ spec:
           imagePullPolicy: Always
           envFrom:
             - secretRef:
-                name: "baseline-redis-secret"
+                name: "edge-redis-secret"
           volumeMounts:
           - name: cert
             mountPath: /cert
