@@ -11,6 +11,9 @@ image:
   hostname: auth
   domainPath: "auth"
   env:
+    # TODO: This should be made toggleable for edge vs cloud...
+    - name: OPERATION_ENV
+      value: edge
     - name: AWS_REGION
       value: YOUR_AWS_REGION
     - name: AWS_ACCOUNT
