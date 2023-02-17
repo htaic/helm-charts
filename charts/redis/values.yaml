@@ -1,7 +1,7 @@
 redis:
   replicaCount: 1
   repository: redis
-  password: redis-default-password
+  password: YOUR_REDIS_PASSWORD
   tag: latest
   pullPolicy: Always
   containerPort: 6379
