@@ -1,0 +1,22 @@
+
+imagePullSecrets: dockerconfigjson-github-com
+
+scs:
+  replicaCount: 1
+  image:
+    repository: ghcr.io/htaic/scsrun
+
+edgeccs:
+  replicaCount: 1
+  image:
+    repository: ghcr.io/htaic/edgeccs
+
+keymanager:
+  replicaCount: 1
+  image:
+    repository: ghcr.io/htaic/edgekeymanagerrun
+
+dcs:
+  replicaCount: 1
+  image:
+    repository: ghcr.io/htaic/edgedcsmanagerrun

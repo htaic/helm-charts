@@ -1,0 +1,30 @@
+{{- if .Values.scs }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scs
+spec:
+  selector:
+    matchLabels:
+      app: scs
+  replicas: {{ .Values.scs.replicaCount | default 1 }}
+  template:
+    metadata:
+      labels:
+        app: scs
+    spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
+      containers:
+        - name: scs
+          {{- if .Values.scs.image.digest }}
+          image: {{ .Values.scs.image.repository }}@{{ .Values.scs.image.digest }}
+          {{- else }}
+          image: {{ .Values.scs.image.repository }}:latest
+          {{- end }}
+          imagePullPolicy: Always
+      {{- if .Values.imagePullSecrets }}
+      imagePullSecrets:
+        - name: {{ .Values.imagePullSecrets }}
+      {{- end }}
+{{- end }}
