@@ -19,6 +19,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
+        date: "{{ now | unixEpoch }}"
         {{- include ".helm.selectorLabels" . | nindent 8 }}
     spec:
       hostname: {{ .Values.image.hostname }}
@@ -29,31 +30,12 @@ spec:
       serviceAccountName: {{ include ".helm.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-      {{- if .Values.postgresUpdater }}
-      initContainers:
-        - name: {{ .Chart.Name }}-postgres-provisioner
-          {{- if hasKey .Values.postgresUpdater "tag" }}
-          image: {{ .Values.postgresUpdater.image }}:{{ .Values.postgresUpdater.tag }}
-          {{ else }}
-          image: {{ .Values.postgresUpdater.image }}:{{ .Values.image.tag }}
-          {{ end }}
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          env:
-            - name: APP_PASS
-              value: {{ .Values.postgresUpdater.app_pass }}
-          command: ['sh', '-c', '/home/developer/executecommands.sh']
-          envFrom:
-            - secretRef:
-                name: "baseline-postgresql-secret"
-            - configMapRef:
-                name: "baseline-configmap"
-      {{- end }}
       containers:
         {{- if .Values.sidecarimage }}
         - name: "{{ .Values.sidecarimage.name }}"
           image: "{{ .Values.sidecarimage.repository }}:{{ .Values.sidecarimage.tag }}"
           imagePullPolicy: {{ .Values.sidecarimage.pullPolicy }}
-        {{- end }}      
+        {{- end }}  
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
@@ -68,14 +50,6 @@ spec:
             - name: http
               containerPort: {{ .Values.image.containerPort }}
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /{{ .Values.image.livenessProbe }}
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /{{ .Values.image.readinessProbe }}
-              port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

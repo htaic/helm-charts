@@ -5,7 +5,7 @@ apiVersion: apps/v1beta2
 {{- end }}
 kind: Deployment
 metadata:
-  name: {{ template "cp-kafka-rest.fullname" . }} ##TODO Fix name to be more readable
+  name: {{ .Release.Name }} 
   labels:
     app: {{ template "cp-kafka-rest.name" . }}
     chart: {{ template "cp-kafka-rest.chart" . }}
