@@ -1324,6 +1324,15 @@ entries:
   cp-kafka-rest:
   - apiVersion: v1
     appVersion: "1.0"
+    created: "2023-02-18T09:08:25.627385532Z"
+    description: A Helm chart for Confluent Kafka REST Proxy on Kubernetes
+    digest: cf1ceaa5d493bb8af49317bb4acd898921a3da8f848392d7ed569c18d508a702
+    name: cp-kafka-rest
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/cp-kafka-rest-0.1.1/cp-kafka-rest-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v1
+    appVersion: "1.0"
     created: "2023-02-14T19:17:00.959934451Z"
     description: A Helm chart for Confluent Kafka REST Proxy on Kubernetes
     digest: 9abd5e02fbbdfa26390edfdc29073348cdf8b071ca3c1206aac692a97d951da0
@@ -2172,4 +2181,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/site-stack-0.0.1/site-stack-0.0.1.tgz
     version: 0.0.1
-generated: "2023-02-17T21:05:59.590404044Z"
+generated: "2023-02-18T09:08:25.627576541Z"
