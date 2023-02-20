@@ -17,5 +17,4 @@ spec:
       middlewares:
       - name: "{{ include ".helm.fullname" . }}-headers"
       - name: "{{ include ".helm.fullname" . }}-forward-auth"
-      - name: "{{ include ".helm.fullname" . }}-strip"
 {{ end }}
