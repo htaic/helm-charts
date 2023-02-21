@@ -99,6 +99,8 @@ postgresql:
       volumeAttributes:
         encryptInTransit: "true"
     volumeMountPath: /var/lib/postgresql/data
+  RDS:
+    host: "YOUR_RDS_HOST"
 
 # https://github.com/htaic/helm-charts/blob/main/charts/reporting-service/values.yaml.example   
 reporting-services:

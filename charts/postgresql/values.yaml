@@ -1,7 +1,7 @@
 postgres:
-  user: postgres
-  password: postgrespassword
   db: postgres
+  user: postgres
+  password: YOUR_POSTGRES_PASSWORD
   replicaCount: 1
   repository: postgres
   tag: 14
@@ -10,7 +10,7 @@ postgres:
   env:
     # https://hub.docker.com/_/postgres
     - name: PGDATA
-      value: /var/lib/postgresql/data/{name of your database}
+      value: /var/lib/postgresql/data/postgres
 
 # # Optional (should be passed in from parent chart)
 # storage:
@@ -54,7 +54,7 @@ serviceAccount:
   create: false
   annotations: {}
   name: ""
-  
+
 autoscaling:
   enabled: false
   minReplicas: 1
