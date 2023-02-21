@@ -18,12 +18,6 @@ spec:
         {{- include ".helm.selectorLabels" . | nindent 8 }}
         app: edgeccs
     spec:
-      {{- if .Values.edgeccs.volume }}
-      volumes:
-        - name: {{ .Values.edgeccs.volume.pvcName }}
-          persistentVolumeClaim:
-            claimName: {{ .Values.edgeccs.volume.pvcName }}
-      {{- end }}
       containers:
         - name: edgeccs
           {{- if .Values.edgeccs.image.digest }}
