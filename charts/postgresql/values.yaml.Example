@@ -55,6 +55,9 @@ serviceAccount:
   annotations: {}
   name: ""
   
+RDS:
+  host: 
+
 autoscaling:
   enabled: false
   minReplicas: 1
