@@ -685,7 +685,7 @@ kratos:
           }
         }
     config:
-      dsn: "postgres://postgres:YOUR_POSTGRES_PASSWORD@baseline-postgresql:5432/ory?sslmode=disable&max_conn_lifetime=10s"
+      dsn: "postgres://postgres:YOUR_POSTGRES_PASSWORD@YOUR_POSTGRES_HOST:5432/ory?sslmode=disable&max_conn_lifetime=10s"
       selfservice:
         default_browser_return_url: https://ui.domain.com
         methods:
@@ -730,6 +730,6 @@ keto:
           name: cameras
         - id: 4
           name: sites
-      dsn: "postgres://postgres:YOUR_POSTGRES_PASSWORD@baseline-postgresql:5432/ory?sslmode=disable&max_conn_lifetime=10s"
+      dsn: "postgres://postgres:YOUR_POSTGRES_PASSWORD@YOUR_POSTGRES_HOST:5432/ory?sslmode=disable&max_conn_lifetime=10s"
     log:
       leak_sensitive_values: false

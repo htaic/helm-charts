@@ -45,6 +45,9 @@ spec:
           envFrom:
             - secretRef:
                 name: "baseline-postgresql-secret"
+            # TODO: Add cloud toggle for this    
+            # - secretRef:
+            #     name: "org-management-service-secret"
             - configMapRef:
                 name: "baseline-configmap"
       {{- end }}
