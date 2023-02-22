@@ -43,7 +43,8 @@ dependencies:
     repository: "file://../postgresql"
   - name: redis
     version: "^0"
-    repository: "https://htaic.github.io/helm-charts"
+    # repository: "https://htaic.github.io/helm-charts"
+    repository: "file://../redis"
   - name: reporting-services
     version: "^0"
     repository: "https://htaic.github.io/helm-charts"

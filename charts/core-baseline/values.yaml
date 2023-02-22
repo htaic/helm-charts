@@ -11,8 +11,6 @@ traefik:
 redis:
   redis:
     password: YOUR_REDIS_PASSWORD
-    # this is hard coded somewhere in dcsManager...
-    # hostname: edge-redis
 
 postgresql:
   service:
