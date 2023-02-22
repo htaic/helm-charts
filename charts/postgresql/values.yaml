@@ -1,7 +1,7 @@
 postgres:
   db: postgres
   user: postgres
-  password: WHOSAIDIAMAPASSWORD
+  password: "YOUR_POSTGRES_PASSWORD"
   replicaCount: 1
   repository: postgres
   tag: 14

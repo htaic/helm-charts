@@ -53,13 +53,13 @@ postgresql:
   postgres:
     db: postgres
     user: postgres
-    password: YOUR_POSTGRES_PASSWORD
+    password: "YOUR_POSTGRES_PASSWORD"
     orgdb: org_management
     orguser: org_management_service
-    orgpassword: YOUR_ORG_DB_PASSWORD
+    orgpassword: "YOUR_ORG_DB_PASSWORD"
     authdb: auth
     authuser: auth_service
-    authpassword: YOUR_AUTH_DB_PASSWORD
+    authpassword: "YOUR_AUTH_DB_PASSWORD"
     replicaCount: 1
     repository: postgres
     tag: 14
