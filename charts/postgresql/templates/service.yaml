@@ -1,4 +1,4 @@
-{{- if (not (hasKey .Values.RDS "host")) }}
+{{- if not (((.Values).RDS).host) }}
 apiVersion: v1
 kind: Service
 metadata:
