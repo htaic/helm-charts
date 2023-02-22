@@ -9,6 +9,14 @@ spec:
     - web
   routes:
     - kind: Rule
+      match: (PathPrefix("/{{ .Values.image.domainPath }}/edge-device"))
+      services:
+        - name: {{ include ".helm.fullname" . }}
+          kind: Service
+          port: {{ .Values.image.containerPort }}
+      middlewares:
+      - name: "{{ include ".helm.fullname" . }}-headers"
+    - kind: Rule
       match: (PathPrefix("/{{ .Values.image.domainPath }}"))
       services:
         - name: {{ include ".helm.fullname" . }}
