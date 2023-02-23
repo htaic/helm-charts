@@ -1,5 +1,5 @@
 apiVersion: v2
-name: microfrontend
+name: foundationweb
 description: A Helm chart for Kubernetes micro front ends deployed behind a traefik ingress
 
 # A chart can be either an 'application' or a 'library' chart.
