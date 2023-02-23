@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.0.1
+version: 0.0.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -34,15 +34,9 @@ dependencies:
   - name: traefik
     version: "^10.24.2"
     repository: https://helm.traefik.io/traefik
-  # - name: aws-efs-csi-driver
-  #   version: "^2.2.8"
-  #   repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
   - name: postgresql
-    version: "^0"
+    version: "^0.1.9"
     repository: "https://htaic.github.io/helm-charts"
   - name: redis
-    version: "^0"
-    repository: "https://htaic.github.io/helm-charts"
-  - name: reporting-services
     version: "^0"
     repository: "https://htaic.github.io/helm-charts"

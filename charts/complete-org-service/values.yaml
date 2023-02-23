@@ -1,0 +1,44 @@
+postgresUpdater: 
+  image: ghcr.io/htaic/org-management-service-postgres-runner
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/org-management-services
+  pullPolicy: Always
+  containerPort: 3001
+  tag: 'latest' 
+  hostname: 'org'
+  domainPath: 'customer'
+  env:
+    - name: AWS_REGION
+      value: YOUR_AWS_REGION
+    - name: AWS_ACCOUNT
+      value: "YOUR_AWS_ACCOUNT_ID"
+    - name: PRODUCER_QUEUE
+      value: YOUR_SQS_CONSUMER_QUEUE
+    - name: CONSUMER_QUEUE
+      value: YOUR_SQS_PRODUCER_QUEUE
+  livenessProbe: livez
+  readinessProbe: readyz
+sidecarimage:
+  name: 'logging-sidecar'
+  repository: ghcr.io/htaic/platform-logging-service
+  pullPolicy: Always
+  tag: 'latest'
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+service:
+  type: ClusterIP
+resources:
+  requests:
+    cpu: 250m
+    memory: 750Mi
+serviceAccount:
+  name: 'org-service'
+  create: true
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::YOUR_AWS_ACCOUNT_ID:role/YOUR_SQS_ROLE
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80

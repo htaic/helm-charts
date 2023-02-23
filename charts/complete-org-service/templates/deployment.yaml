@@ -38,13 +38,12 @@ spec:
           image: {{ .Values.postgresUpdater.image }}:{{ .Values.image.tag }}
           {{ end }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          env:
-            - name: APP_PASS
-              value: {{ .Values.postgresUpdater.app_pass }}
           command: ['sh', '-c', '/home/developer/executecommands.sh']
           envFrom:
             - secretRef:
                 name: "baseline-postgresql-secret"
+            - secretRef:
+                name: "org-service-secret"
             - configMapRef:
                 name: "baseline-configmap"
       {{- end }}
@@ -64,6 +63,9 @@ spec:
             {{- toYaml .Values.image.env | nindent 12 }}
           {{- end }}
           args: [ {{.Values.image.args}} ]
+          envFrom:
+            - secretRef:
+                name: "org-service-secret"
           ports:
             - name: http
               containerPort: {{ .Values.image.containerPort }}

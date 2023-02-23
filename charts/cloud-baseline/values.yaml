@@ -16,27 +16,23 @@ traefik:
 
 redis:
   redis:
-    replicaCount: 1
-    repository: redis
     password: YOUR_REDIS_PASSWORD
-    tag: latest
-    pullPolicy: Always
-    containerPort: 6379
-  service:
-    type: ClusterIP
-  resources:
-    requests:
-      cpu: 250m
-      memory: 750Mi
-  serviceAccount:
-    create: false
-    annotations: {}
-    name: ""
-  autoscaling:
-    enabled: false
-    minReplicas: 1
-    maxReplicas: 100
-    targetCPUUtilizationPercentage: 80
+
+# https://github.com/kubernetes-sigs/aws-efs-csi-driver/blob/master/charts/aws-efs-csi-driver/values.yaml
+aws-efs-csi-driver:
+  controller:
+    serviceAccount:
+      create: true
+      name: efs-csi-controller-sa
+      annotations:
+        eks.amazonaws.com/role-arn: arn:aws:iam::YOUR_AWS_ACCOUNT_ID:role/YOUR_EKS_ROLE
+  storageClasses:
+    - name: efs-storageclass
+      mountOptions:
+        - tls
+      parameters:
+        provisioningMode: efs-ap
+        fileSystemId: YOUR_FILESYSTEM_ID
 
 postgresql:
   service:
@@ -55,9 +51,15 @@ postgresql:
     maxReplicas: 100
     targetCPUUtilizationPercentage: 80
   postgres:
-    user: postgres
-    password: YOUR_POSTGRES_PASSWORD
     db: postgres
+    user: postgres
+    password: "YOUR_POSTGRES_PASSWORD"
+    orgdb: org_management
+    orguser: org_management_service
+    orgpassword: "YOUR_ORG_DB_PASSWORD"
+    authdb: auth
+    authuser: auth_service
+    authpassword: "YOUR_AUTH_DB_PASSWORD"
     replicaCount: 1
     repository: postgres
     tag: 14
@@ -67,6 +69,18 @@ postgresql:
       # https://hub.docker.com/_/postgres
       - name: PGDATA
         value: /var/lib/postgresql/data/postgres # # To enable EFS on the cluster, use the following values in the root helm chart
+  storage:
+    className: efs-storageclass
+    provisioner: efs.csi.aws.com
+    capacity: 20Gi
+    volumeMode: Filesystem
+    csi:
+      volumeHandle: YOUR_FILESYSTEM_ID
+      volumeAttributes:
+        encryptInTransit: "true"
+    volumeMountPath: /var/lib/postgresql/data
+  # RDS:
+  #   host: "YOUR_RDS_HOST"
 
 # https://github.com/htaic/helm-charts/blob/main/charts/reporting-service/values.yaml.example   
 reporting-services:

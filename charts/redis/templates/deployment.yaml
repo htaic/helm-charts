@@ -21,7 +21,11 @@ spec:
       labels:
         {{- include ".helm.selectorLabels" . | nindent 8 }}
     spec:
+      {{- if (hasKey .Values.redis "hostname") }}
       hostname: {{ .Values.redis.hostname }}
+      {{- else }}
+      hostname: {{ include ".helm.fullname" . }}
+      {{- end }}      
       serviceAccountName: {{ include ".helm.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
