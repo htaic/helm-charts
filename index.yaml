@@ -1886,6 +1886,23 @@ entries:
   group-stack:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-02-23T17:48:49.683277559Z"
+    dependencies:
+    - name: groups-backend
+      repository: file://./charts/groups-backend
+      version: ^0
+    - name: groups-frontend
+      repository: file://./charts/groups-frontend
+      version: ^0
+    description: Helm chart for Groups Management front end service
+    digest: 7fd7ab80961a948c8de5c0b935217bc22d8903892c3c59f98cf33a86ffdf7071
+    name: group-stack
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/group-stack-0.0.3/group-stack-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-02-23T17:25:16.519786376Z"
     dependencies:
     - name: groups-backend
@@ -2280,6 +2297,23 @@ entries:
   site-stack:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-02-23T17:48:49.941483726Z"
+    dependencies:
+    - name: sites-backend
+      repository: file://./charts/sites-backend
+      version: ^0
+    - name: sites-frontend
+      repository: file://./charts/sites-frontend
+      version: ^0
+    description: Helm chart for Sites Management front end service
+    digest: 2a03273c924ec5668b7e4a5e72a5a2561190f3e41f67e49a43373a2c4f6192e7
+    name: site-stack
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/site-stack-0.0.3/site-stack-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-02-23T17:25:16.838260894Z"
     dependencies:
     - name: sites-backend
@@ -2312,4 +2346,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/site-stack-0.0.1/site-stack-0.0.1.tgz
     version: 0.0.1
-generated: "2023-02-23T17:25:16.838457699Z"
+generated: "2023-02-23T17:48:49.941636925Z"
