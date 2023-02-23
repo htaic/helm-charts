@@ -1305,6 +1305,16 @@ entries:
   complete-org-service:
   - apiVersion: v2
     appVersion: 0.0.2
+    created: "2023-02-23T18:25:28.774467919Z"
+    description: Helm chart for Organization Management service
+    digest: 2142694ed9b59fe3505737889eaeb32167f5ea2981e040190b4e8c3210b2d0dc
+    name: complete-org-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/complete-org-service-0.1.8/complete-org-service-0.1.8.tgz
+    version: 0.1.8
+  - apiVersion: v2
+    appVersion: 0.0.2
     created: "2023-02-15T21:13:24.616763345Z"
     description: Helm chart for Organization Management service
     digest: eaaabd4663f3be5cb0d74167e8315e973137251264e93afc123634cb2525aa8a
@@ -2346,4 +2356,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/site-stack-0.0.1/site-stack-0.0.1.tgz
     version: 0.0.1
-generated: "2023-02-23T17:48:49.941636925Z"
+generated: "2023-02-23T18:25:28.774663925Z"
