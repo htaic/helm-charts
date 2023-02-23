@@ -938,6 +938,32 @@ entries:
   cloud-baseline:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-02-23T21:16:43.643420743Z"
+    dependencies:
+    - name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: ^10.24.2
+    - name: aws-efs-csi-driver
+      repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
+      version: ^2.3.6
+    - name: postgresql
+      repository: https://htaic.github.io/helm-charts
+      version: ^0.1.9
+    - name: redis
+      repository: https://htaic.github.io/helm-charts
+      version: ^0.0.3
+    - name: reporting-services
+      repository: https://htaic.github.io/helm-charts
+      version: ^0
+    description: A Helm chart for Kubernetes
+    digest: 43d2258fa979e6b7823213e9a8e4e0020b4353f9d3faacfaaf64c3af8282fe13
+    name: cloud-baseline
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/cloud-baseline-0.1.2/cloud-baseline-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-02-23T21:06:51.936302785Z"
     dependencies:
     - name: traefik
@@ -2414,4 +2440,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/site-stack-0.0.1/site-stack-0.0.1.tgz
     version: 0.0.1
-generated: "2023-02-23T21:06:52.096173827Z"
+generated: "2023-02-23T21:16:43.643571243Z"
