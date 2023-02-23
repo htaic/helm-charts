@@ -2,7 +2,7 @@ image:
   replicaCount: 1
   repository: ghcr.io/htaic/portlet-site-manager
   pullPolicy: Always
-  containerPort: 3005
+  containerPort: 3007
   tag: "latest"
   hostname: sitesmanager
   domainPath: "sites"
