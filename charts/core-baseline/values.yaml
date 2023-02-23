@@ -45,7 +45,6 @@ postgresql:
       - name: PGDATA
         value: /var/lib/postgresql/data/postgres # # To enable EFS on the cluster, use the following values in the root helm chart
   
-  #TODO... comment this out after local testing
   # If using RDS for postgres
-  RDS:
-    host: "YOUR_RDS_HOST"
+  # RDS:
+  #   host: "YOUR_RDS_HOST"

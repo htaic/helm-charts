@@ -21,7 +21,7 @@ version: 0.0.3
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
-appVersion: "0.0.1"
+appVersion: "0.0.0"
 
 # kubeVersion: ">=1.17.0-0"
 
@@ -36,8 +36,8 @@ dependencies:
     repository: https://helm.traefik.io/traefik
   - name: postgresql
     version: "^0.1.9"
-    # repository: "https://htaic.github.io/helm-charts"
-    repository: "file://../postgresql"
+    repository: "https://htaic.github.io/helm-charts"
+    # repository: "file://../postgresql"
   - name: redis
     version: "^0"
     repository: "https://htaic.github.io/helm-charts"
