@@ -938,6 +938,32 @@ entries:
   cloud-baseline:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-02-23T21:06:51.936302785Z"
+    dependencies:
+    - name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: ^10.24.2
+    - name: aws-efs-csi-driver
+      repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
+      version: ^2.3.6
+    - name: postgresql
+      repository: https://htaic.github.io/helm-charts
+      version: ^0.1.9
+    - name: redis
+      repository: https://htaic.github.io/helm-charts
+      version: ^0.0.3
+    - name: reporting-services
+      repository: https://htaic.github.io/helm-charts
+      version: ^0
+    description: A Helm chart for Kubernetes
+    digest: a1ada62332ff4e86d9e5c4910519b5b328897c0b8548e640cf9ad170549a3613
+    name: cloud-baseline
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/cloud-baseline-0.1.1/cloud-baseline-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-02-23T01:43:29.013842663Z"
     dependencies:
     - name: traefik
@@ -1354,6 +1380,26 @@ entries:
     - https://github.com/htaic/helm-charts/releases/download/complete-org-service-0.1.3/complete-org-service-0.1.3.tgz
     version: 0.1.3
   core-baseline:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-02-23T21:06:52.095981829Z"
+    dependencies:
+    - name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: ^10.24.2
+    - name: postgresql
+      repository: https://htaic.github.io/helm-charts
+      version: ^0.1.9
+    - name: redis
+      repository: https://htaic.github.io/helm-charts
+      version: ^0.0.3
+    description: A Helm chart for Kubernetes
+    digest: 2f263d6c6d2a89a53dc53e69a8b7def9a02f48c53bcd15362dcd861d8a83b88e
+    name: core-baseline
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/core-baseline-0.1.1/core-baseline-0.1.1.tgz
+    version: 0.1.1
   - apiVersion: v2
     appVersion: 0.0.1
     created: "2023-02-23T01:43:29.196753322Z"
@@ -2368,4 +2414,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/site-stack-0.0.1/site-stack-0.0.1.tgz
     version: 0.0.1
-generated: "2023-02-23T19:53:32.207894981Z"
+generated: "2023-02-23T21:06:52.096173827Z"
