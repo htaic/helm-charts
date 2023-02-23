@@ -965,6 +965,26 @@ entries:
   complete-auth-service:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-02-23T01:40:36.456548792Z"
+    dependencies:
+    - name: oathkeeper
+      repository: https://k8s.ory.sh/helm/charts
+      version: 0.25.6
+    - name: kratos
+      repository: https://k8s.ory.sh/helm/charts
+      version: 0.27.0
+    - name: keto
+      repository: https://k8s.ory.sh/helm/charts
+      version: 0.25.6
+    description: A Helm chart for Kubernetes micro auth services
+    digest: 2024d221189c9b1a32d414bfb509cdd4340f98aaccea6a30cce2e042717faea8
+    name: complete-auth-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/complete-auth-service-0.1.24/complete-auth-service-0.1.24.tgz
+    version: 0.1.24
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-02-15T21:13:24.464576534Z"
     dependencies:
     - name: oathkeeper
@@ -1321,6 +1341,17 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/core-baseline-0.0.1/core-baseline-0.0.1.tgz
     version: 0.0.1
+  core-edge:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-02-23T01:40:36.84693064Z"
+    description: A Helm chart for Kubernetes
+    digest: dd504d617015bdbfb1cfcc4476d17fdfb70b906f085634f1358dddadd03bd610
+    name: core-edge
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/core-edge-0.1.0/core-edge-0.1.0.tgz
+    version: 0.1.0
   cp-kafka-rest:
   - apiVersion: v1
     appVersion: "1.0"
@@ -2008,6 +2039,16 @@ entries:
   postgresql:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-02-23T01:40:37.112471287Z"
+    description: A dependent Helm chart for Kubernetes micro auth services
+    digest: 8e98ace81f528abbda27c1d69c8a80edf44f78e4b4f3d504634c7cdfd04ef9a1
+    name: postgresql
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/postgresql-0.1.9/postgresql-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2022-11-18T20:17:59.577290558Z"
     description: A dependent Helm chart for Kubernetes micro auth services
     digest: 48f2f06d27dad0430cb25d21f7887cea74e359614726411e8dc5be1f26008033
@@ -2099,6 +2140,16 @@ entries:
   redis:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-02-23T01:40:37.249767479Z"
+    description: A dependent Helm chart for Kubernetes micro auth services
+    digest: 57dca020fb16db6ba1d2c7d11094113a99d5ddea4abf5d7e1366fd61e304bba4
+    name: redis
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/redis-0.0.3/redis-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-02-17T21:05:59.590208444Z"
     description: A dependent Helm chart for Kubernetes micro auth services
     digest: 01a20c11638549454c4e303ab55edd09ad5178cb029960fedd155dc75616d0a6
@@ -2181,4 +2232,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/site-stack-0.0.1/site-stack-0.0.1.tgz
     version: 0.0.1
-generated: "2023-02-18T09:08:25.627576541Z"
+generated: "2023-02-23T01:40:37.405904558Z"
