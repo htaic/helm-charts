@@ -1881,6 +1881,18 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/faux-auth-service-0.0.1/faux-auth-service-0.0.1.tgz
     version: 0.0.1
+  foundationweb:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-02-23T19:53:32.20774838Z"
+    description: A Helm chart for Kubernetes micro front ends deployed behind a traefik
+      ingress
+    digest: db48c734b6db46389c5b144929784c6fb95cff1d40f70d5d027435ef4a7c9196
+    name: foundationweb
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/foundationweb-0.0.5/foundationweb-0.0.5.tgz
+    version: 0.0.5
   gql-devicemanager:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -2356,4 +2368,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/site-stack-0.0.1/site-stack-0.0.1.tgz
     version: 0.0.1
-generated: "2023-02-23T18:25:28.774663925Z"
+generated: "2023-02-23T19:53:32.207894981Z"
