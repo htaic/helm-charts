@@ -2,10 +2,17 @@ image:
   replicaCount: 1
   repository: ghcr.io/htaic/portlet-groupservice
   pullPolicy: Always
-  containerPort: 9877
+  containerPort: 4003
   tag: "latest"
   domainPath: "groupservice"
   hostname: portlet-groupservice
+  livenessProbe: "api/v1/livez"
+  readinessProbe: "api/v1/readyz"
+  env:
+  - name: LOGSINK
+    value: STDOUT
+  - name: NODE_ENV
+    value: "development"
     
 imagePullSecrets:
   - name: dockerconfigjson-github-com

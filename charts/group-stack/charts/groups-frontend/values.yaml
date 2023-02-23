@@ -2,7 +2,7 @@ image:
   replicaCount: 1
   repository: ghcr.io/htaic/portlet-group-manager
   pullPolicy: Always
-  containerPort: 3005
+  containerPort: 3006
   tag: "latest"
   hostname: groupsmanager
   domainPath: "groups"
