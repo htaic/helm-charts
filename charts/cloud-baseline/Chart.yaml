@@ -37,12 +37,12 @@ dependencies:
   - name: aws-efs-csi-driver
     version: "^2.3.6"
     repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
-  # - name: postgresql
-  #   version: "^0.1.9"
-  #   repository: "https://htaic.github.io/helm-charts"
-  # - name: redis
-  #   version: "^0.0.3"
-  #   repository: "https://htaic.github.io/helm-charts"
+  - name: postgresql
+    version: "^0.1.9"
+    repository: "https://htaic.github.io/helm-charts"
+  - name: redis
+    version: "^0.0.3"
+    repository: "https://htaic.github.io/helm-charts"
   - name: reporting-services
     version: "^0"
     repository: "https://htaic.github.io/helm-charts"

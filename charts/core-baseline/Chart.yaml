@@ -34,9 +34,9 @@ dependencies:
   - name: traefik
     version: "^10.24.2"
     repository: https://helm.traefik.io/traefik
-  # - name: postgresql
-  #   version: "^0.1.9"
-  #   repository: "https://htaic.github.io/helm-charts"
-  # - name: redis
-  #   version: "^0"
-  #   repository: "https://htaic.github.io/helm-charts"
+  - name: postgresql
+    version: "^0.1.9"
+    repository: "https://htaic.github.io/helm-charts"
+  - name: redis
+    version: "^0.0.3"
+    repository: "https://htaic.github.io/helm-charts"
