@@ -13,6 +13,9 @@ traefik:
       port: 80
       nodePort: 32414
       targetPort: web
+  providers:
+  kubernetesCRD:
+    allowCrossNamespace: true
 
 redis:
   redis:
