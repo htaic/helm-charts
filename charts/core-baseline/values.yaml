@@ -7,6 +7,9 @@ traefik:
     pullPolicy: Always
   service:
     type: LoadBalancer
+  providers:
+    kubernetesCRD:
+      allowCrossNamespace: true
 
 redis:
   redis:
