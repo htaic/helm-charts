@@ -50,18 +50,20 @@ spec:
             - name: http
               containerPort: {{ .Values.image.containerPort }}
               protocol: TCP
-          {{- if .Values.image.livenessProbe }}
           livenessProbe:
             httpGet:
               path: /{{ .Values.image.livenessProbe }}
               port: http
-          {{- end }}
-          {{- if .Values.image.readinessProbe }}
+            {{- if .Values.image.livenessProbePeriodSeconds }}
+            periodSeconds: {{ .Values.image.livenessProbePeriodSeconds }}
+            {{- end }}
           readinessProbe:
             httpGet:
               path: /{{ .Values.image.readinessProbe }}
               port: http
-          {{- end }}
+            {{- if .Values.image.readinessProbePeriodSeconds }}
+            periodSeconds: {{ .Values.image.readinessProbePeriodSeconds }}
+            {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

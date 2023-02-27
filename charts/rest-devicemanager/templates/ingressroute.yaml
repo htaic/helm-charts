@@ -1,4 +1,4 @@
-{{ if and (ne .Values.image.domainPath "") (hasKey .Values.image "domainPath") }}
+{{- if ((.Values.image).domainPath) -}}
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
@@ -8,14 +8,21 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: (PathPrefix("/{{ .Values.image.domainPath }}"))
-      kind: Rule
+    - kind: Rule
+      match: (PathPrefix("/{{ .Values.image.domainPath }}/edge-device"))
       services:
         - name: {{ include ".helm.fullname" . }}
           kind: Service
           port: {{ .Values.image.containerPort }}
-      {{ if (not (hasKey .Values.image "noStripPath")) }}
       middlewares:
-      - name: "{{ include ".helm.fullname" . }}-strip"
-      {{ end }}
+      - name: "{{ include ".helm.fullname" . }}-headers"
+    - kind: Rule
+      match: (PathPrefix("/{{ .Values.image.domainPath }}"))
+      services:
+        - name: {{ include ".helm.fullname" . }}
+          kind: Service
+          port: {{ .Values.image.containerPort }}
+      middlewares:
+      - name: "{{ include ".helm.fullname" . }}-headers"
+      - name: "{{ include ".helm.fullname" . }}-forward-auth"
 {{ end }}
