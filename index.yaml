@@ -1968,6 +1968,17 @@ entries:
   gql-devicemanager:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-02-27T00:07:24.846502372Z"
+    description: A Helm chart for Kubernetes gql-devicemanager deployed behind a traefik
+      ingress
+    digest: bedbc9728d50439fc056fec38039e6a484bed112a195820fde6432511f1cef06
+    name: gql-devicemanager
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/gql-devicemanager-0.0.2/gql-devicemanager-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-02-13T22:21:37.106803324Z"
     description: A Helm chart for Kubernetes isaas007 gql deployed behind a traefik
       ingress
@@ -2360,6 +2371,17 @@ entries:
     version: 0.0.1
   rest-devicemanager:
   - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-02-27T00:07:25.00338457Z"
+    description: A Helm chart for Kubernetes rest-devicemanager deployed behind a
+      traefik ingress
+    digest: b4fcfdd30901778b18a52892824ec4b178c72fca247fe50396dabb9d8d669f12
+    name: rest-devicemanager
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/rest-devicemanager-0.0.2/rest-devicemanager-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
     appVersion: 0.1.14
     created: "2023-02-13T22:21:37.640855311Z"
     description: A Helm chart for Kubernetes rest-devicemanager deployed behind a
@@ -2440,4 +2462,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/site-stack-0.0.1/site-stack-0.0.1.tgz
     version: 0.0.1
-generated: "2023-02-23T21:16:43.643571243Z"
+generated: "2023-02-27T00:07:25.003550971Z"
