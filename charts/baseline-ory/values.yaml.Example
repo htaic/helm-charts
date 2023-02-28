@@ -58,7 +58,7 @@ microfrontend:
   resources:
     requests:
       cpu: 250m
-      memory: 750Mi
+      memory: 350Mi
   serviceAccount:
     create: false
     annotations: {}
@@ -105,7 +105,7 @@ auth-service:
   resources:
     requests:
       cpu: 250m
-      memory: 750Mi
+      memory: 350Mi
   serviceAccount:
     create: false
     annotations: {}
