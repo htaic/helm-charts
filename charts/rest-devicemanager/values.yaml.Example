@@ -1,16 +1,19 @@
 namespace: "hanwha"
-fullnameOverride: imagename
+fullnameOverride: rest-devicemanager
 
 image:
   replicaCount: 1
-  repository: ghcr.io/htaic/imagename
+  repository: ghcr.io/htaic/rest-devicemanager
   pullPolicy: Always
-  containerPort: 1234
+  containerPort: 3002
   tag: "latest"
-  hostname: masterportal
-  domainPath: ""
-  livenessProbe: "api/v1/livez"
-  readinessProbe: "api/v1/readyz"
+  hostname: rest-devicemanager
+  domainPath: "rest-devicemanager/v0.1"
+  noStripPath: true
+  #livenessProbe: "api/v1/livez"
+  #readinessProbe: "api/v1/readyz"
+  livenessProbePeriodSeconds: 50
+  readinessProbePeriodSeconds: 50
   env:
     - name: ENVVARIABLENAME
       value: VALUE
@@ -23,10 +26,10 @@ sidecarimage:
   repository: ghcr.io/htaic/platform-logging-service
   pullPolicy: Always
   tag: "latest"
-  
+
 imagePullSecrets:
   - name: dockerconfigjson-github-com
-  
+
 service:
   type: ClusterIP
 
