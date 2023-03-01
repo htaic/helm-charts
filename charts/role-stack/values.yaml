@@ -20,7 +20,7 @@ roles-frontend:
   resources:
     requests:
       cpu: 250m
-      memory: 750Mi
+      memory: 350Mi
   serviceAccount:
     create: false
     annotations: {}
@@ -58,7 +58,7 @@ roles-backend:
   resources:
     requests:
       cpu: 250m
-      memory: 750Mi
+      memory: 350Mi
   serviceAccount:
     create: false
     annotations: {}

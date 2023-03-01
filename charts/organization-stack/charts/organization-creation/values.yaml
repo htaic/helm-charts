@@ -13,8 +13,8 @@ service:
   type: ClusterIP
 resources:
   requests:
-    cpu: 250m
-    memory: 750Mi
+    cpu: 175m
+    memory: 350Mi
 serviceAccount:
   create: false
   annotations: {}
