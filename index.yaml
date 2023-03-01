@@ -499,6 +499,16 @@ entries:
   authmanager:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-03-01T23:51:09.687060648Z"
+    description: A Helm chart for Kubernetes
+    digest: 1d3de696f09e7315ef3353ba3f4019db7dceb4c84a2e4e17782d62cf90718616
+    name: authmanager
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/authmanager-0.0.2/authmanager-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-02-13T22:21:36.260147655Z"
     description: A Helm chart for Kubernetes
     digest: ec515f9f95a647f2892b7887f7dddc9b3c2be7497476ef65c8a9b566dc9ca3e3
@@ -938,6 +948,32 @@ entries:
   cloud-baseline:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-03-01T23:51:09.880258865Z"
+    dependencies:
+    - name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: ^10.24.2
+    - name: aws-efs-csi-driver
+      repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
+      version: ^2.3.6
+    - name: postgresql
+      repository: https://htaic.github.io/helm-charts
+      version: ^0.1.9
+    - name: redis
+      repository: https://htaic.github.io/helm-charts
+      version: ^0.0.3
+    - name: reporting-services
+      repository: https://htaic.github.io/helm-charts
+      version: ^0
+    description: A Helm chart for Kubernetes
+    digest: 2f81bf95acdfc4acc4167119a8505a91ef663e8613eae8ebc7174d1b7c9f63bf
+    name: cloud-baseline
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/cloud-baseline-0.1.3/cloud-baseline-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-02-23T21:16:43.643420743Z"
     dependencies:
     - name: traefik
@@ -1041,6 +1077,26 @@ entries:
     - https://github.com/htaic/helm-charts/releases/download/cloud-baseline-0.0.1/cloud-baseline-0.0.1.tgz
     version: 0.0.1
   complete-auth-service:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-03-01T23:51:10.127368601Z"
+    dependencies:
+    - name: oathkeeper
+      repository: https://k8s.ory.sh/helm/charts
+      version: 0.25.6
+    - name: kratos
+      repository: https://k8s.ory.sh/helm/charts
+      version: 0.27.0
+    - name: keto
+      repository: https://k8s.ory.sh/helm/charts
+      version: 0.25.6
+    description: A Helm chart for Kubernetes micro auth services
+    digest: a7a7c6ccd40385fd59b429b59ad4e58c22671b5a956fba0398107022f91e3397
+    name: complete-auth-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/complete-auth-service-0.1.25/complete-auth-service-0.1.25.tgz
+    version: 0.1.25
   - apiVersion: v2
     appVersion: 0.0.1
     created: "2023-02-23T01:40:36.456548792Z"
@@ -1357,6 +1413,16 @@ entries:
   complete-org-service:
   - apiVersion: v2
     appVersion: 0.0.2
+    created: "2023-03-01T23:51:10.291181675Z"
+    description: Helm chart for Organization Management service
+    digest: 345c26e0ae75c2fbed31c65f82fdab32bd63c3c38c0209a4b9f657a4af1ac4c9
+    name: complete-org-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/complete-org-service-0.1.9/complete-org-service-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v2
+    appVersion: 0.0.2
     created: "2023-02-23T18:25:28.774467919Z"
     description: Helm chart for Organization Management service
     digest: 2142694ed9b59fe3505737889eaeb32167f5ea2981e040190b4e8c3210b2d0dc
@@ -1406,6 +1472,26 @@ entries:
     - https://github.com/htaic/helm-charts/releases/download/complete-org-service-0.1.3/complete-org-service-0.1.3.tgz
     version: 0.1.3
   core-baseline:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-03-01T23:51:10.467679072Z"
+    dependencies:
+    - name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: ^10.24.2
+    - name: postgresql
+      repository: https://htaic.github.io/helm-charts
+      version: ^0.1.9
+    - name: redis
+      repository: https://htaic.github.io/helm-charts
+      version: ^0.0.3
+    description: A Helm chart for Kubernetes
+    digest: 8c46035e239ddb73d88dc0dc7efb66ac9d7a792d683f3edb5988edb7e68a29b7
+    name: core-baseline
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/core-baseline-0.1.2/core-baseline-0.1.2.tgz
+    version: 0.1.2
   - apiVersion: v2
     appVersion: 0.0.1
     created: "2023-02-23T21:06:52.095981829Z"
@@ -1500,6 +1586,17 @@ entries:
     - https://github.com/htaic/helm-charts/releases/download/cp-kafka-rest-0.1.0/cp-kafka-rest-0.1.0.tgz
     version: 0.1.0
   devicemanager:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-03-01T23:51:10.65789831Z"
+    description: A Helm chart for Kubernetes micro front ends deployed behind a traefik
+      ingress
+    digest: eec027beb34439b35bb1eb74ad893d1b66c02cb7193e019e8fbbe514838a9326
+    name: devicemanager
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/devicemanager-0.0.2/devicemanager-0.0.2.tgz
+    version: 0.0.2
   - apiVersion: v2
     appVersion: 0.0.1
     created: "2023-02-13T22:21:36.930365523Z"
@@ -1956,6 +2053,17 @@ entries:
   foundationweb:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-03-01T23:51:10.81634859Z"
+    description: A Helm chart for Kubernetes micro front ends deployed behind a traefik
+      ingress
+    digest: 0234f91c52d63f635661f0b72e96a8f4a8a728eed5417ffebc9490cb85108390
+    name: foundationweb
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/foundationweb-0.0.6/foundationweb-0.0.6.tgz
+    version: 0.0.6
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-02-23T19:53:32.20774838Z"
     description: A Helm chart for Kubernetes micro front ends deployed behind a traefik
       ingress
@@ -1989,6 +2097,23 @@ entries:
     - https://github.com/htaic/helm-charts/releases/download/gql-devicemanager-0.0.1/gql-devicemanager-0.0.1.tgz
     version: 0.0.1
   group-stack:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-03-01T23:51:10.991081456Z"
+    dependencies:
+    - name: groups-backend
+      repository: file://./charts/groups-backend
+      version: ^0
+    - name: groups-frontend
+      repository: file://./charts/groups-frontend
+      version: ^0
+    description: Helm chart for Groups Management front end service
+    digest: 291a78cd91e26c3a7ccfbfcd491ce974c914be10f05c6c25bb33b1992879e872
+    name: group-stack
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/group-stack-0.0.4/group-stack-0.0.4.tgz
+    version: 0.0.4
   - apiVersion: v2
     appVersion: 0.0.1
     created: "2023-02-23T17:48:49.683277559Z"
@@ -2153,6 +2278,23 @@ entries:
     - https://github.com/htaic/helm-charts/releases/download/org-service-0.1.0/org-service-0.1.0.tgz
     version: 0.1.0
   organization-stack:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-03-01T23:51:11.169694689Z"
+    dependencies:
+    - name: organization-creation
+      repository: file://./charts/organization-creation
+      version: ^0
+    - name: organization-backend
+      repository: file://./charts/organization-backend
+      version: ^0
+    description: Helm chart for Organization Management front end service
+    digest: 9067ddf8099a5afa3db8ffb615d48dcd944a614654ed686564b657c3591313ed
+    name: organization-stack
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/organization-stack-0.0.7/organization-stack-0.0.7.tgz
+    version: 0.0.7
   - apiVersion: v2
     appVersion: 0.0.1
     created: "2022-12-06T18:27:58.192656599Z"
@@ -2395,6 +2537,23 @@ entries:
   role-stack:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-03-01T23:51:11.342950829Z"
+    dependencies:
+    - name: roles-backend
+      repository: file://./charts/roles-backend
+      version: ^0
+    - name: roles-frontend
+      repository: file://./charts/roles-frontend
+      version: ^0
+    description: Helm chart for Roles Management front end service
+    digest: 89aaa20591404798bcb01c0a94413528d8538b59ce1fd8e1a63645c950a70c19
+    name: role-stack
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/role-stack-0.0.2/role-stack-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-01-18T23:25:04.898892406Z"
     dependencies:
     - name: roles-backend
@@ -2411,6 +2570,23 @@ entries:
     - https://github.com/htaic/helm-charts/releases/download/role-stack-0.0.1/role-stack-0.0.1.tgz
     version: 0.0.1
   site-stack:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-03-01T23:51:11.509840858Z"
+    dependencies:
+    - name: sites-backend
+      repository: file://./charts/sites-backend
+      version: ^0
+    - name: sites-frontend
+      repository: file://./charts/sites-frontend
+      version: ^0
+    description: Helm chart for Sites Management front end service
+    digest: 3f1206db0555fc0f26498846c16ee510325d2a6db021454b44cc2d76911c62fd
+    name: site-stack
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/site-stack-0.0.4/site-stack-0.0.4.tgz
+    version: 0.0.4
   - apiVersion: v2
     appVersion: 0.0.1
     created: "2023-02-23T17:48:49.941483726Z"
@@ -2462,4 +2638,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/site-stack-0.0.1/site-stack-0.0.1.tgz
     version: 0.0.1
-generated: "2023-02-27T00:07:25.003550971Z"
+generated: "2023-03-01T23:51:11.510205964Z"
