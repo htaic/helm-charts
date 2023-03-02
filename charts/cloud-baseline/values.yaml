@@ -240,10 +240,14 @@ cp-kafka-rest:
     name: "confluentinc/cp-kafka-rest"
     pullPolicy: Always
     tag: 6.1.0
+    env:
+      - name: 
+        value: 
   affinity: {}
   configurationOverrides: null
   cp-kafka:
     bootstrapServers: YOUR_BOOTSTRAP_SERVERS
+    resthostname: YOUR_KAFKA_REST_HOST_NAME
   cp-schema-registry:
     url: ""
   cp-zookeeper:
