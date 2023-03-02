@@ -9,7 +9,7 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: (PathPrefix("/{{ .Values.image.domainPath }}/edge-device"))
+      match: (Method("POST") && (Path("/{{ .Values.image.domainPath }}/edge-device") || Path("/{{ .Values.image.domainPath }}/edge-device/")))
       services:
         - name: {{ include ".helm.fullname" . }}
           kind: Service
