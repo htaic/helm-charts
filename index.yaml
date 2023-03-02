@@ -2514,6 +2514,17 @@ entries:
   rest-devicemanager:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-03-02T20:36:47.6227021Z"
+    description: A Helm chart for Kubernetes rest-devicemanager deployed behind a
+      traefik ingress
+    digest: 733aab7ae57344f270da6cb0c2d5153cd4e4ad4be6d7b4d8f8ec3d3af46614aa
+    name: rest-devicemanager
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/rest-devicemanager-0.0.3/rest-devicemanager-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-02-27T00:07:25.00338457Z"
     description: A Helm chart for Kubernetes rest-devicemanager deployed behind a
       traefik ingress
@@ -2638,4 +2649,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/site-stack-0.0.1/site-stack-0.0.1.tgz
     version: 0.0.1
-generated: "2023-03-01T23:51:11.510205964Z"
+generated: "2023-03-02T20:36:47.623050401Z"
