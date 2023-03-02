@@ -233,3 +233,42 @@ reporting-services:
     minReplicas: 1
     maxReplicas: 100
     targetCPUUtilizationPercentage: 80
+
+#https://github.com/htaic/helm-charts/blob/main/charts/kafka-rest/values-dev.yaml
+cp-kafka-rest:
+  image: 
+    name: "confluentinc/cp-kafka-rest"
+    pullPolicy: Always
+    tag: 6.1.0
+  affinity: {}
+  configurationOverrides: null
+  cp-kafka:
+    bootstrapServers: YOUR_BOOTSTRAP_SERVERS
+  cp-schema-registry:
+    url: ""
+  cp-zookeeper:
+    url: ""
+  customEnv: {}
+  external:
+    domainPath: kafka
+    enabled: true
+  heapOptions: -Xms512M -Xmx512M
+  imagePullSecrets: null
+  imageTag: 6.1.0
+  jmx:
+    port: 5555
+  nodeSelector: {}
+  podAnnotations: {}
+  prometheus:
+    jmx:
+      enabled: false ##Disable JMX
+      image: solsson/kafka-prometheus-jmx-exporter@sha256
+      imagePullPolicy: IfNotPresent
+      imageTag: 6f82e2b0464f50da8104acd7363fb9b995001ddff77d248379f8788e78946143
+      port: 5556
+      resources: {}
+  replicaCount: 1
+  resources: {}
+  servicePort: 8082
+  tolerations: []
+
