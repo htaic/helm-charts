@@ -1,16 +1,15 @@
 namespace: "hanwha"
-fullnameOverride: imagename
+fullnameOverride: gql-devicemanager
 
 image:
   replicaCount: 1
-  repository: ghcr.io/htaic/imagename
+  repository: ghcr.io/htaic/gql-devicemanager
   pullPolicy: Always
-  containerPort: 1234
+  containerPort: 3003
   tag: "latest"
-  hostname: masterportal
-  domainPath: ""
-  livenessProbe: "api/v1/livez"
-  readinessProbe: "api/v1/readyz"
+  hostname: gql-devicemanager
+  domainPath: "graphql"
+  noStripPath: true
   env:
     - name: ENVVARIABLENAME
       value: VALUE
@@ -23,10 +22,10 @@ sidecarimage:
   repository: ghcr.io/htaic/platform-logging-service
   pullPolicy: Always
   tag: "latest"
-  
+
 imagePullSecrets:
   - name: dockerconfigjson-github-com
-  
+
 service:
   type: ClusterIP
 
