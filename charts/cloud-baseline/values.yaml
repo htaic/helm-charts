@@ -239,7 +239,7 @@ cp-kafka-rest:
   affinity: {}
   configurationOverrides: null
   cp-kafka:
-    bootstrapServers: ${YOUR_BOOTSTRAP_SERVERS}
+    bootstrapServers: YOUR_BOOTSTRAP_SERVERS
   cp-schema-registry:
     url: ""
   cp-zookeeper:
