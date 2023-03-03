@@ -48,4 +48,10 @@ dependencies:
     repository: "https://htaic.github.io/helm-charts"
   # - name: cp-kafka-rest
   #   version: "0.1.1"
-  #   repository: "https://htaic.github.io/helm-charts"  
+  #   # repository: "https://htaic.github.io/helm-charts"  
+  #   repository: "file://../kafka-rest"  
+
+  # this repo doesn't support the cp-kafka-rest chart only the full stack
+  # - name: cp-kafka-rest
+  #   version: "^0"
+  #   repository: "https://confluentinc.github.io/cp-helm-charts/"  

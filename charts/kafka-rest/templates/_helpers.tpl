@@ -85,3 +85,9 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 {{- printf "PLAINTEXT://%s:9092" (include "cp-kafka-rest.cp-kafka-headless.fullname" .) -}}
 {{- end -}}
 {{- end -}}
+
+{{- define "cp-kafka-rest.kafka.resthostname" -}}
+{{- if (index .Values "cp-kafka" "resthostname") -}}
+{{- printf "%s" (index .Values "cp-kafka" "resthostname") -}}
+{{- end -}}
+{{- end -}}
