@@ -71,7 +71,7 @@ spec:
 {{ toYaml .Values.resources | indent 12 }}
           env:
           - name: KAFKA_REST_HOST_NAME
-            value: k8s-ht-dev-saas-uw2-1.dev.hticdev.net/kafka ##TODO Extract Cluster name + DNS(dev.hticdev.net)
+            value: {{ template "cp-kafka-rest.kafka.resthostname" . }}
           - name: KAFKA_REST_BOOTSTRAP_SERVERS
             value: {{ template "cp-kafka-rest.kafka.bootstrapServers" . }}
           - name: KAFKA_REST_SCHEMA_REGISTRY_URL

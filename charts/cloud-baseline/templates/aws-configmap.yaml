@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: "aws-account-configmap"
 data:
-  AWS_REGION: {{ .Values.AWS.region }}
-  AWS_ACCOUNT_ID: {{ .Values.AWS.accountId }}
+  AWS_REGION: {{ .Values.AWS.region | b64enc }}
+  AWS_ACCOUNT_ID: {{ .Values.AWS.accountId | b64enc }}
