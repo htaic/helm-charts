@@ -47,7 +47,7 @@ dependencies:
     version: "^0"
     repository: "https://htaic.github.io/helm-charts"
   - name: cp-kafka-rest
-    version: "0.1.1"
+    version: "^0"
     # repository: "https://htaic.github.io/helm-charts"  
     repository: "file://../kafka-rest"  
 
