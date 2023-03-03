@@ -2,6 +2,11 @@ image:
   name: "confluentinc/cp-kafka-rest"
   pullPolicy: Always
   tag: 6.1.0
+  env:
+  - name: KAFKA_REST_HOST_NAME
+    value: YOUR_KAFKA_REST_HOST_NAME
+  - name: KAFKA_REST_BOOTSTRAP_SERVERS
+    value: YOUR_BOOTSTRAP_SERVERS
 affinity: {}
 configurationOverrides: null
 cp-kafka:
