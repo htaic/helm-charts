@@ -3,7 +3,7 @@ enableTraefikDashboard: true
 
 AWS:
   region: YOUR_AWS_REGION
-  accountId: YOUR_AWS_ACCOUNT_ID
+  accountId: "YOUR_AWS_ACCOUNT_ID"
 
 # https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml
 traefik:
