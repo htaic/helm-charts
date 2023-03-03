@@ -57,7 +57,7 @@ spec:
             mountPath: /etc/jmx-kafka-rest
         {{- end }}
         - name: {{ template "cp-kafka-rest.name" . }}-server
-          image: confluentinc/cp-kafka-rest:6.1.0
+          image: "{{ .Values.image }}:{{ .Values.imageTag }}"
           imagePullPolicy: "{{ .Values.imagePullPolicy }}"
           ports:
             - name: rest-proxy
