@@ -1,0 +1,42 @@
+namespace: "hanwha"
+fullnameOverride: signaling-service
+
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/signaling-service
+  pullPolicy: Always
+  containerPort: 4000
+  tag: "latest"
+  hostname: signaling
+  domainPath: "signaling"
+
+##########################
+# Caution updating below #
+##########################
+sidecarimage:
+  name: "logging-sidecar"
+  repository: ghcr.io/htaic/platform-logging-service
+  pullPolicy: Always
+  tag: "latest"
+  
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+  
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 750Mi
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
