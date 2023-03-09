@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: "{{ .Release.Name }}-env"
-data:
-  REDIS_URL: "redis://{{ .Values.redis.redis.serviceName }}:{{ .Values.redis.redis.containerPort }}"
-  edgeId: "{{ .Values.edgeId }}"
-  awsIotDataEndpoint: {{ .Values.awsIotDataEndpoint }}

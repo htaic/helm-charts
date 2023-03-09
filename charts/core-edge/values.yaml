@@ -1,22 +1,35 @@
 
 imagePullSecrets: dockerconfigjson-github-com
+namespace: hanwha
+
+service:
+  type: ClusterIP
 
 scs:
   replicaCount: 1
+  tag: latest
   image:
     repository: ghcr.io/htaic/scsrun
 
-edgeccs:
-  replicaCount: 1
-  image:
-    repository: ghcr.io/htaic/edgeccs
-
+#init pod for edgeccs
 keymanager:
-  replicaCount: 1
+  tag: latest
   image:
     repository: ghcr.io/htaic/edgekeymanagerrun
 
+edgeccs:
+  replicaCount: 1
+  tag: latest
+  image:
+    repository: ghcr.io/htaic/edgeccs
+    env:
+      - name: edgeId
+        value: YOUR_EDGE_ID
+      - name: awsIotDataEndpoint
+        value: YOUR_AWS_IOT_DATA_ENDPOINT
+
 dcs:
   replicaCount: 1
+  tag: latest
   image:
     repository: ghcr.io/htaic/edgedcsmanagerrun

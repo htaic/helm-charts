@@ -22,13 +22,3 @@ version: 0.1.0
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
 appVersion: "1.16.0"
-
-# these dependencies need to be installed, however its recommended to use the baselines to add these to
-# use standards around provisioning devices
-# dependencies:
-#   - name: postgresql
-#     version: "^0"
-#     repository: "https://htaic.github.io/helm-charts"
-#   - name: redis
-#     version: "^0"
-#     repository: "https://htaic.github.io/helm-charts"
