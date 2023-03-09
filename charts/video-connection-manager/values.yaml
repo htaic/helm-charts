@@ -1,0 +1,24 @@
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/video-connection-manager
+  pullPolicy: Always
+  containerPort: 3001
+  tag: 'latest' 
+  hostname: 'video-connection-manager'
+
+sidecarimage:
+  name: 'logging-sidecar'
+  repository: ghcr.io/htaic/platform-logging-service
+  pullPolicy: Always
+  tag: 'latest'
+
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 250Mi
