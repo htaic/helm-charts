@@ -6,9 +6,7 @@ metadata:
   labels:
     {{- include ".helm.labels" . | nindent 4 }}
 spec:
-  {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.image.replicaCount }}
-  {{- end }}
+  replicas: 1
   selector:
     matchLabels:
       {{- include ".helm.selectorLabels" . | nindent 6 }}
@@ -19,10 +17,8 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        date: "{{ now | unixEpoch }}"
         {{- include ".helm.selectorLabels" . | nindent 8 }}
     spec:
-      hostname: {{ .Values.image.hostname }}
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
@@ -50,16 +46,34 @@ spec:
             - name: http
               containerPort: {{ .Values.image.containerPort }}
               protocol: TCP
-          # livenessProbe:
-          #   httpGet:
-          #     path: /{{ .Values.image.livenessProbe }}
-          #     port: http
-          # readinessProbe:
-          #   httpGet:
-          #     path: /{{ .Values.image.readinessProbe }}
-          #     port: http
+          livenessProbe:
+            exec:
+              command:
+              - cat
+              - /opt/iot/certificate.pem
+            initialDelaySeconds: 5
+            periodSeconds: 5              
+          readinessProbe:
+            exec:
+              command:
+              - cat
+              - /opt/iot/certificate.pem
+            initialDelaySeconds: 5
+            periodSeconds: 5  
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+            {{- if .Values.iot.secret }}
+          volumeMounts:
+            - name: iot-secret
+              mountPath: /opt/iot
+              readOnly: true
+            {{- end }}            
+        {{- if .Values.iot.secret }}
+      volumes:
+        - name: iot-secret
+          secret:
+            secretName: {{ .Values.iot.secret }}
+        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
