@@ -5,6 +5,19 @@ image:
   containerPort: 3001
   tag: 'latest' 
   hostname: 'video-connection-manager'
+  env:
+    - name: REDIS_HOST
+      value: redis://baseline-redis:6379    
+    - name: REDIS_QUEUE_TOPIC_KEY
+      value: kvs-1    
+    - name: REDIS_QUEUE_DCS_TOPIC_KEY
+      value: dcs-1    
+    - name: REDIS_QUEUE_MSG_VERSION
+      value: '2.0'    
+    - name: SERVICE_NAME
+      value: VideoConnectionManager-1.0    
+    - name: MSG_VERSION
+      value: '1.0'    
 
 sidecarimage:
   name: 'logging-sidecar'
