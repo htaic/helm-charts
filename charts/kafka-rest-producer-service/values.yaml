@@ -1,0 +1,43 @@
+namespace: 'hanwha'
+fullnameOverride: kafka-rest-producer-service
+
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/kafka-rest-producer-service
+  pullPolicy: Always
+  tag: 'sha-525f2ef'
+  secretref: 'auth-service-secret' # this is the secret where the database information will be pulled from
+  env:
+    - name: APP_DATA_VERSION
+      value: '12'
+    - name: KAFKA_REST_URL
+      value: KAFKA_REST_PROXY_URL # this value is different between cloud and edge (edge has to go throuh internet to reach Traefik. In cloud, requests are made to Traefik's internal endpoint)
+    - name: LOG_LEVEL
+      value: DEBUG
+    - name: LOG_SINK
+      value: STDOUT
+    - name: LOG_WEBSOCKET_HOST
+      value: localhost
+    - name: LOG_WEBSOCKET_PORT
+      value: '6420'
+    - name: MAX_PRODUCER_RESTART_ATTEMPTS
+      value: '3'
+    - name: OPERATION_ENV
+      value: 'edge'
+
+##########################
+# Caution updating below #
+##########################
+sidecarimage:
+  name: 'logging-sidecar'
+  repository: ghcr.io/htaic/platform-logging-service
+  pullPolicy: Always
+  tag: 'latest'
+
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+
+resources:
+  requests:
+    cpu: 150m
+    memory: 350Mi
