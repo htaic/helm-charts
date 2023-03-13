@@ -18,24 +18,59 @@ spec:
         {{- include ".helm.selectorLabels" . | nindent 8 }}
         app: edgeccs
     spec:
+      initContainers:
+      - name: init-copy-device-certs-files-from-secret
+        image: busybox:latest
+        volumeMounts:
+          - name: shared-volume
+            mountPath: /cert
+          - name: device-certs
+            readOnly: true
+            mountPath: /cert/device_cert_as_secret
+        command: ['sh', '-c', "mkdir -p /cert/device_cert; cp -Lr /cert/device_cert_as_secret/* /cert/device_cert"]
       containers:
+{{- if .Values.keymanager }}
+        - name: keymanager
+          {{- if .Values.keymanager.image.tag }}
+          image: {{ .Values.keymanager.image.repository }}@{{ .Values.keymanager.image.tag }}
+          {{- else }}
+          image: {{ .Values.keymanager.image.repository }}:latest
+          {{- end }}
+          imagePullPolicy: Always
+          {{- if .Values.keymanager.image.env }}
+          env:
+            {{- toYaml .Values.keymanager.image.env | nindent 12 }}
+          {{- end }}
+          volumeMounts:
+            - name: shared-volume
+              mountPath: /cert
+            - name: device-certs
+              readOnly: true
+              mountPath: /cert/device_cert_as_secret
+{{- end }}
         - name: edgeccs
-          {{- if .Values.edgeccs.image.digest }}
-          image: {{ .Values.edgeccs.image.repository }}@{{ .Values.edgeccs.image.digest }}
+          {{- if .Values.edgeccs.image.tag }}
+          image: {{ .Values.edgeccs.image.repository }}@{{ .Values.edgeccs.image.tag }}
           {{- else }}
           image: {{ .Values.edgeccs.image.repository }}:latest
           {{- end }}
           imagePullPolicy: Always
+          {{- if .Values.edgeccs.image.env }}
+          env:
+            {{- toYaml .Values.edgeccs.image.env | nindent 12 }}
+          {{- end }}
           envFrom:
             - secretRef:
                 name: "baseline-redis-secret"
           volumeMounts:
-          - name: cert
+          - name: shared-volume
             mountPath: /cert
       volumes:
-        - name: cert
-          configMap:
-            name: "{{ include ".helm.fullname" . }}-certs"
+        - name: shared-volume
+          emptyDir: {}
+        - name: device-certs
+          secret:
+            secretName: "{{ include ".helm.fullname" . }}-certs"
       {{- if .Values.imagePullSecrets }}
       imagePullSecrets:
         - name: {{ .Values.imagePullSecrets }}
