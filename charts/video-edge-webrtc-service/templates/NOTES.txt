@@ -1,5 +1,0 @@
-1. The video-edge-webrtc-service has now been setup!
-
-export POD_NAME=$(kubectl get pods --namespace {{ .Release.Namespace }} -l "app.kubernetes.io/name={{ include ".helm.name" . }},app.kubernetes.io/instance={{ .Release.Name }}" -o jsonpath="{.items[0].metadata.name}")
-echo "To check the logs"
-kubectl --namespace {{ .Release.Namespace }} logs -f pod/$POD_NAME -c edge-webrtc-service
