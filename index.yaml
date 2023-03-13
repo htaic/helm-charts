@@ -1905,6 +1905,17 @@ entries:
   edge-webrtc-service:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-03-13T22:57:55.145522607Z"
+    description: A Helm chart for Kubernetes micro front ends deployed behind a traefik
+      ingress
+    digest: 28d5465010e59987dab3acefe0839d5e87f73258e3d852973ffb3124425a1a7a
+    name: edge-webrtc-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/edge-webrtc-service-0.0.2/edge-webrtc-service-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2022-11-11T20:08:15.850053192Z"
     description: A Helm chart for edge-webrtc-service
     digest: dc87c185a49029554472e2b321789667f0f2abe9629f0242349d7d1102bb766f
@@ -2704,4 +2715,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2023-03-13T19:32:20.495285312Z"
+generated: "2023-03-13T22:57:55.145699708Z"
