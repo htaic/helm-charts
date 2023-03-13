@@ -19,6 +19,17 @@ spec:
         app: edgeccs
     spec:
       initContainers:
+      - name: init-copy-device-certs-files-from-secret
+        image: busybox:latest
+        volumeMounts:
+          - name: shared-volume
+            mountPath: /cert
+          - name: device-certs
+            readOnly: true
+            mountPath: /cert/device_cert_as_secret
+        command: ['sh', '-c', "mkdir -p /cert/device_cert; cp -Lr /cert/device_cert_as_secret/* /cert/device_cert"]
+      containers:
+{{- if .Values.keymanager }}
         - name: keymanager
           {{- if .Values.keymanager.image.tag }}
           image: {{ .Values.keymanager.image.repository }}@{{ .Values.keymanager.image.tag }}
@@ -26,17 +37,17 @@ spec:
           image: {{ .Values.keymanager.image.repository }}:latest
           {{- end }}
           imagePullPolicy: Always
-          {{- if .Values.edgeccs.image.env }}
+          {{- if .Values.keymanager.image.env }}
           env: 
-            {{- toYaml .Values.edgeccs.image.env | nindent 12 }}
+            {{- toYaml .Values.keymanager.image.env | nindent 12 }}
           {{- end }}          
-          command: ['sh', '-c', 'cp -rH /cert/* /certLoader && ls -laR /certLoader']
           volumeMounts:
-            - name: workdir
-              mountPath: /certLoader
-            - name: cert
-              mountPath: /cert/device_cert
-      containers:
+            - name: shared-volume
+              mountPath: /cert
+            - name: device-certs
+              readOnly: true
+              mountPath: /cert/device_cert_as_secret
+{{- end }}
         - name: edgeccs
           {{- if .Values.edgeccs.image.tag }}
           image: {{ .Values.edgeccs.image.repository }}@{{ .Values.edgeccs.image.tag }}
@@ -52,14 +63,14 @@ spec:
             - secretRef:
                 name: "baseline-redis-secret"
           volumeMounts:
-          - name: workdir
+          - name: shared-volume
             mountPath: /cert
       volumes:
-        - name: workdir
+        - name: shared-volume
           emptyDir: {}
-        - name: cert
-          configMap:
-            name: "{{ include ".helm.fullname" . }}-certs"
+        - name: device-certs
+          secret:
+            secretName: "{{ include ".helm.fullname" . }}-certs"
       {{- if .Values.imagePullSecrets }}
       imagePullSecrets:
         - name: {{ .Values.imagePullSecrets }}
