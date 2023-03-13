@@ -2390,6 +2390,16 @@ entries:
   postgresql:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-03-13T19:28:00.460528194Z"
+    description: A dependent Helm chart for Kubernetes micro auth services
+    digest: a98c7d6212332e32974a0801a8e1bad0f53561d9d8f1110dda9a16ac6ddd5765
+    name: postgresql
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/postgresql-0.1.10/postgresql-0.1.10.tgz
+    version: 0.1.10
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-02-23T01:40:37.112471287Z"
     description: A dependent Helm chart for Kubernetes micro auth services
     digest: 8e98ace81f528abbda27c1d69c8a80edf44f78e4b4f3d504634c7cdfd04ef9a1
@@ -2684,4 +2694,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2023-03-13T15:28:39.276496419Z"
+generated: "2023-03-13T19:28:00.619086757Z"
