@@ -41,6 +41,9 @@ spec:
           env:
             {{- toYaml .Values.keymanager.image.env | nindent 12 }}
           {{- end }}
+          envFrom:
+            - secretRef:
+                name: "baseline-redis-secret"
           volumeMounts:
             - name: shared-volume
               mountPath: /cert

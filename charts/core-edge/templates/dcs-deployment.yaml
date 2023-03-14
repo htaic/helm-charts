@@ -26,6 +26,9 @@ spec:
           image: {{ .Values.dcs.image.repository }}:latest
           {{- end }}
           imagePullPolicy: Always
+          envFrom:
+            - secretRef:
+                name: "baseline-redis-secret"
       {{- if .Values.imagePullSecrets }}
       imagePullSecrets:
         - name: {{ .Values.imagePullSecrets }}
