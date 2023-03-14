@@ -8,8 +8,8 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.redis.containerPort }}
-      targetPort: {{ .Values.redis.containerPort }}
+    - port: '6379'
+      targetPort: '6379'
       protocol: TCP
       name: http
   selector:
