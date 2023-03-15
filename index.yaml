@@ -2635,6 +2635,18 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/role-stack-0.0.1/role-stack-0.0.1.tgz
     version: 0.0.1
+  rtsp-service:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-03-15T00:47:21.735794841Z"
+    description: A Helm chart for Kubernetes micro front ends deployed behind a traefik
+      ingress
+    digest: 03ea52e5bd14f9f3b6ee518b97a97048a8c079d57ae64e03e7bdb353a30836ee
+    name: rtsp-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/rtsp-service-0.0.1/rtsp-service-0.0.1.tgz
+    version: 0.0.1
   signaling-service:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -2727,4 +2739,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2023-03-15T00:46:46.464891598Z"
+generated: "2023-03-15T00:47:21.736060248Z"
