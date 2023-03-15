@@ -36,7 +36,7 @@ spec:
           # {{- else }}
           # image: {{ .Values.keymanager.image.repository }}:latest
           # {{- end }}
-          image: ubuntu:latest
+          image: nginx:latest
           imagePullPolicy: Always
           {{- if .Values.keymanager.image.env }}
           env:
@@ -57,7 +57,7 @@ spec:
           # {{- else }}
           # image: {{ .Values.edgeccs.image.repository }}:latest
           # {{- end }}
-          image: ubuntu:latest
+          image: nginx:latest
           imagePullPolicy: Always
           {{- if .Values.edgeccs.image.env }}
           resources:
