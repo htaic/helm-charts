@@ -1,0 +1,33 @@
+image: "confluentinc/cp-kafka-rest"
+imageTag: 6.1.0
+cp-kafka:
+  bootstrapServers: YOUR_BOOTSTRAP_SERVERS
+  resthostname: YOUR_KAFKA_REST_HOST_NAME
+affinity: {}
+configurationOverrides: null
+cp-schema-registry:
+  url: ""
+cp-zookeeper:
+  url: ""
+customEnv: {}
+external:
+  domainPath: kafka
+  enabled: true
+heapOptions: -Xms512M -Xmx512M
+imagePullSecrets: null
+jmx:
+  port: 5555
+nodeSelector: {}
+podAnnotations: {}
+prometheus:
+  jmx:
+    enabled: false ##Disable JMX
+    image: solsson/kafka-prometheus-jmx-exporter@sha256
+    imagePullPolicy: IfNotPresent
+    imageTag: 6f82e2b0464f50da8104acd7363fb9b995001ddff77d248379f8788e78946143
+    port: 5556
+    resources: {}
+replicaCount: 1
+resources: {}
+servicePort: 8082
+tolerations: []

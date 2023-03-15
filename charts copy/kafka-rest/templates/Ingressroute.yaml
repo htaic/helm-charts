@@ -1,0 +1,17 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: cp-kafka-rest
+  namespace: hanwha
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: (PathPrefix(`/kafka`))
+      kind: Rule
+      services:
+        - name: {{ template "cp-kafka-rest.name" . }}
+          kind: Service
+          port: 8082
+      middlewares:
+      - name: "kafka-strip"
