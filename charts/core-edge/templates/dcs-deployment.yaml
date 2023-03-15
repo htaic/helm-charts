@@ -25,6 +25,8 @@ spec:
           {{- else }}
           image: {{ .Values.dcs.image.repository }}:latest
           {{- end }}
+          resources:
+            {{- toYaml .Values.dcs.resources | nindent 12 }}
           imagePullPolicy: Always
       {{- if .Values.imagePullSecrets }}
       imagePullSecrets:
