@@ -18,16 +18,16 @@ spec:
         {{- include ".helm.selectorLabels" . | nindent 8 }}
         app: edgeccs
     spec:
-      initContainers:
-      - name: init-copy-device-certs-files-from-secret
-        image: busybox:latest
-        volumeMounts:
-          - name: shared-volume
-            mountPath: /cert
-          - name: device-certs
-            readOnly: true
-            mountPath: /cert/device_cert_as_secret
-        command: ['sh', '-c', "mkdir -p /cert/device_cert; cp -Lr /cert/device_cert_as_secret/* /cert/device_cert"]
+      # initContainers:
+      # - name: init-copy-device-certs-files-from-secret
+      #   image: busybox:latest
+      #   volumeMounts:
+      #     - name: shared-volume
+      #       mountPath: /cert
+      #     - name: device-certs
+      #       readOnly: true
+      #       mountPath: /cert/device_cert_as_secret
+      #   command: ['sh', '-c', "mkdir -p /cert/device_cert; cp -Lr /cert/device_cert_as_secret/* /cert/device_cert"]
       containers:
 {{- if .Values.keymanager }}
         - name: keymanager
