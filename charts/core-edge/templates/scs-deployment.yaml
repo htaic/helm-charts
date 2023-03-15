@@ -27,6 +27,8 @@ spec:
           {{- else }}
           image: {{ .Values.scs.image.repository }}:latest
           {{- end }}
+          resources:
+            {{- toYaml .Values.scs.resources | nindent 12 }}
           imagePullPolicy: Always
       {{- if .Values.imagePullSecrets }}
       imagePullSecrets:
