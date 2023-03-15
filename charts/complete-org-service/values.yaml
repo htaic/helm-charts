@@ -30,8 +30,8 @@ service:
   type: ClusterIP
 resources:
   requests:
-    cpu: 250m
-    memory: 350Mi
+    cpu: 150m
+    memory: 250Mi
 serviceAccount:
   name: 'org-service'
   create: true
