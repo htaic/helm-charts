@@ -44,7 +44,7 @@ postgresql:
   resources:
     requests:
       cpu: 150m
-      memory: 350Mi
+      memory: 250Mi
   serviceAccount:
     create: false
     annotations: {}
@@ -223,7 +223,7 @@ reporting-services:
   resources:
     requests:
       cpu: 150m
-      memory: 350Mi
+      memory: 250Mi
   serviceAccount:
     create: true
     annotations: {}

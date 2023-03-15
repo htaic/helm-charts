@@ -13,7 +13,7 @@ scs:
   resources:
     requests:
       cpu: 150m
-      memory: 350Mi
+      memory: 250Mi
 
 keymanager:
   replicaCount: 1
@@ -41,7 +41,7 @@ edgeccs:
   resources:
     requests:
       cpu: 150m
-      memory: 350Mi
+      memory: 250Mi
 
 dcs:
   replicaCount: 1
@@ -51,4 +51,4 @@ dcs:
   resources:
     requests:
       cpu: 150m
-      memory: 350Mi
+      memory: 250Mi

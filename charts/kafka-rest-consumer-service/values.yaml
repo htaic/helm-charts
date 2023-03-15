@@ -42,4 +42,4 @@ imagePullSecrets:
 resources:
   requests:
     cpu: 150m
-    memory: 350Mi
+    memory: 250Mi
