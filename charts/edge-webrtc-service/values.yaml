@@ -5,24 +5,24 @@ image:
   replicaCount: 1
   repository: ghcr.io/htaic/edge-webrtc-service
   pullPolicy: Always
-  containerPort: 1234
+  containerPort: "8081"
   tag: "latest"
-  hostname: edge-webrtc-service
+  domainPath: "edgewebrtcservice"
+  livenessProbe: "/healthcheck"
+  readinessProbe: "/healthcheck"
   env:
     - name: EWS_RTSP_URL
       value: YOUR_EWS_RTSP_URL
-    - name: EWS_REDISCLIENT_DB
-      value: "0"
     - name: EWS_WEBRTC_BROKER_URL
-      value: test
+      value: YOUR_EWS_WEBRTC_BROKER_URL
     - name: EWS_WEBRTC_CLIENTID
-      value: rest
+      value: YOUR_EWS_WEBRTC_CLIENTID
     - name: EWS_WEBRTC_DEVICEID
-      value: test
+      value: YOUR_EWS_WEBRTC_DEVICEID
     - name: EWS_WEBRTC_SIGNALING_PASSWORD
-      value: test
+      value: YOUR_EWS_WEBRTC_SIGNALING_PASSWORD
     - name: EWS_WEBRTC_SUBDEVICEID
-      value: test
+      value: YOUR_EWS_WEBRTC_SUBDEVICEID
 
 ##########################
 # Caution updating below #
@@ -32,22 +32,22 @@ sidecarimage:
   repository: ghcr.io/htaic/platform-logging-service
   pullPolicy: Always
   tag: "latest"
-  
+
 imagePullSecrets:
   - name: dockerconfigjson-github-com
   
 service:
   type: ClusterIP
 
-resources:
-  requests:
-    cpu: 150m
-    memory: 250Mi
-
 serviceAccount:
   create: true
   annotations: {}
   name: ""
+
+resources:
+  requests:
+    cpu: 150m
+    memory: 300Mi
 
 autoscaling:
   enabled: false
