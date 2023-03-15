@@ -15,25 +15,24 @@ scs:
       cpu: 250m
       memory: 350Mi
 
-# keymanager:
-#   replicaCount: 1
-#   tag: latest
-#   image:
-#     repository: ghcr.io/htaic/edgekeymanagerrun
-#     env:
-#       - name: edgeId
-#         value: YOUR_EDGE_ID
-#   resources:
-#     requests:
-#       cpu: 250m
-#       memory: 450Mi
+keymanager:
+  replicaCount: 1
+  tag: latest
+  image:
+    repository: ghcr.io/htaic/edgekeymanagerrun
+    env:
+      - name: edgeId
+        value: YOUR_EDGE_ID
+  resources:
+    requests:
+      cpu: 250m
+      memory: 450Mi
 
 edgeccs:
   replicaCount: 1
   tag: latest
   image:
-    repository: nginx
-    # repository: ghcr.io/htaic/edgeccs
+    repository: ghcr.io/htaic/edgeccs
     env:
       - name: edgeId
         value: YOUR_EDGE_ID
