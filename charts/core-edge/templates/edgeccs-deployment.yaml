@@ -37,6 +37,8 @@ spec:
           image: {{ .Values.keymanager.image.repository }}:latest
           {{- end }}
           imagePullPolicy: Always
+          resources:
+            {{- toYaml .Values.keymanager.resources | nindent 12 }}
           {{- if .Values.keymanager.image.env }}
           env:
             {{- toYaml .Values.keymanager.image.env | nindent 12 }}
@@ -55,6 +57,8 @@ spec:
           image: {{ .Values.edgeccs.image.repository }}:latest
           {{- end }}
           imagePullPolicy: Always
+          resources:
+            {{- toYaml .Values.edgeccs.resources | nindent 12 }}
           {{- if .Values.edgeccs.image.env }}
           env:
             {{- toYaml .Values.edgeccs.image.env | nindent 12 }}
