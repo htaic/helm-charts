@@ -12,7 +12,7 @@ scs:
     repository: ghcr.io/htaic/scsrun
   resources:
     requests:
-      cpu: 250m
+      cpu: 150m
       memory: 350Mi
 
 keymanager:
@@ -25,7 +25,7 @@ keymanager:
         value: YOUR_EDGE_ID
   resources:
     requests:
-      cpu: 250m
+      cpu: 150m
       memory: 450Mi
 
 edgeccs:
@@ -40,7 +40,7 @@ edgeccs:
         value: YOUR_AWS_IOT_DATA_ENDPOINT
   resources:
     requests:
-      cpu: 250m
+      cpu: 150m
       memory: 350Mi
 
 dcs:
@@ -50,5 +50,5 @@ dcs:
     repository: ghcr.io/htaic/edgedcsmanagerrun
   resources:
     requests:
-      cpu: 250m
+      cpu: 150m
       memory: 350Mi

@@ -20,7 +20,7 @@ service:
   type: ClusterIP
 resources:
   requests:
-    cpu: 250m
+    cpu: 150m
     memory: 350Mi
 serviceAccount:
   create: false

@@ -12,7 +12,7 @@ imagePullSecrets:
   
 resources:
   requests:
-    cpu: 250m
+    cpu: 150m
     memory: 750Mi
 
 serviceAccount:
