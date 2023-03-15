@@ -45,6 +45,9 @@ spec:
           env: 
             {{- toYaml .Values.image.env | nindent 12 }}
           {{- end }}
+          envFrom:
+            - secretRef:
+                name: "baseline-redis-secret"
           args: [ {{.Values.image.args}} ]
           ports:
             - name: http
