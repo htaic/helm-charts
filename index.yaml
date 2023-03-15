@@ -2635,6 +2635,18 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/role-stack-0.0.1/role-stack-0.0.1.tgz
     version: 0.0.1
+  signaling-service:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-03-15T00:46:46.464704697Z"
+    description: A Helm chart for Kubernetes micro front ends deployed behind a traefik
+      ingress
+    digest: 9568d978c5198131bff1d130721d7e877a5abdc041e2b68b9994c285187b9a80
+    name: signaling-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/signaling-service-0.0.1/signaling-service-0.0.1.tgz
+    version: 0.0.1
   site-stack:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -2715,4 +2727,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2023-03-13T22:57:55.145699708Z"
+generated: "2023-03-15T00:46:46.464891598Z"
