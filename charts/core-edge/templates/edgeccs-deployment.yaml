@@ -31,11 +31,12 @@ spec:
       containers:
 {{- if .Values.keymanager }}
         - name: keymanager
-          {{- if .Values.keymanager.image.tag }}
-          image: {{ .Values.keymanager.image.repository }}@{{ .Values.keymanager.image.tag }}
-          {{- else }}
-          image: {{ .Values.keymanager.image.repository }}:latest
-          {{- end }}
+          # {{- if .Values.keymanager.image.tag }}
+          # image: {{ .Values.keymanager.image.repository }}@{{ .Values.keymanager.image.tag }}
+          # {{- else }}
+          # image: {{ .Values.keymanager.image.repository }}:latest
+          # {{- end }}
+          image: ubuntu:latest
           imagePullPolicy: Always
           {{- if .Values.keymanager.image.env }}
           env:
@@ -51,11 +52,12 @@ spec:
               mountPath: /cert/device_cert_as_secret
 {{- end }}
         - name: edgeccs
-          {{- if .Values.edgeccs.image.tag }}
-          image: {{ .Values.edgeccs.image.repository }}@{{ .Values.edgeccs.image.tag }}
-          {{- else }}
-          image: {{ .Values.edgeccs.image.repository }}:latest
-          {{- end }}
+          # {{- if .Values.edgeccs.image.tag }}
+          # image: {{ .Values.edgeccs.image.repository }}@{{ .Values.edgeccs.image.tag }}
+          # {{- else }}
+          # image: {{ .Values.edgeccs.image.repository }}:latest
+          # {{- end }}
+          image: ubuntu:latest
           imagePullPolicy: Always
           {{- if .Values.edgeccs.image.env }}
           resources:
