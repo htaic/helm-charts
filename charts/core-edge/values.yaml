@@ -32,7 +32,8 @@ edgeccs:
   replicaCount: 1
   tag: latest
   image:
-    repository: ghcr.io/htaic/edgeccs
+    repository: nginx
+    # repository: ghcr.io/htaic/edgeccs
     env:
       - name: edgeId
         value: YOUR_EDGE_ID
