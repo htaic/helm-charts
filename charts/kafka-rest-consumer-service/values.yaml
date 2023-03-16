@@ -26,7 +26,7 @@ image:
     - name: MAX_CONSUMER_RESTART_ATTEMPTS
       value: '3'
     - name: OPERATION_ENV
-      value: 'edge'
+      value: edge
 
 ##########################
 # Caution updating below #

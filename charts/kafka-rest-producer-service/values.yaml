@@ -23,7 +23,7 @@ image:
     - name: MAX_PRODUCER_RESTART_ATTEMPTS
       value: '3'
     - name: OPERATION_ENV
-      value: 'edge'
+      value: edge
 
 ##########################
 # Caution updating below #
