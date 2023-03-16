@@ -52,6 +52,7 @@ postgresql:
     startUp:
       scriptContent: |
         apt install -y postgresql-14-wal2json
+        sed -i 's/#wal_level = replica/wal_level = logical/g' /var/lib/postgresql/data/postgres/postgresql.conf
   # If using RDS for postgres
   # RDS:
   #   host: "YOUR_RDS_HOST"
