@@ -26,7 +26,7 @@ keymanager:
   resources:
     requests:
       cpu: 150m
-      memory: 450Mi
+      memory: 250Mi
 
 edgeccs:
   replicaCount: 1
@@ -41,7 +41,7 @@ edgeccs:
   resources:
     requests:
       cpu: 150m
-      memory: 450Mi
+      memory: 850Mi
 
 dcs:
   replicaCount: 1
