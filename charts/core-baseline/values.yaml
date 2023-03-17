@@ -11,7 +11,13 @@ traefik:
   image:
     pullPolicy: Always
   service:
-    type: LoadBalancer
+    type: NodePort
+  ports:
+    web:
+      # internal web port
+      port: 80
+      nodePort: 32414 ##ALB Healthcheck endpoint 
+      targetPort: web
 
 redis:
   redis:
