@@ -33,11 +33,6 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        {{- if .Values.sidecarimage }}
-        - name: "{{ .Values.sidecarimage.name }}"
-          image: "{{ .Values.sidecarimage.repository }}:{{ .Values.sidecarimage.tag }}"
-          imagePullPolicy: {{ .Values.sidecarimage.pullPolicy }}
-        {{- end }}      
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
@@ -78,6 +73,11 @@ spec:
             periodSeconds: 5
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+        {{- if .Values.sidecarimage }}
+        - name: "{{ .Values.sidecarimage.name }}"
+          image: "{{ .Values.sidecarimage.repository }}:{{ .Values.sidecarimage.tag }}"
+          imagePullPolicy: {{ .Values.sidecarimage.pullPolicy }}
+        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
