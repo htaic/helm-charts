@@ -23,7 +23,7 @@ spec:
       containers:
         - name: scs
           {{- if .Values.scs.image.tag }}
-          image: {{ .Values.scs.image.repository }}:{{ .Values.scs.image.tag }}
+          image: {{ .Values.scs.image.repository }}@{{ .Values.scs.image.tag }}
           {{- else }}
           image: {{ .Values.scs.image.repository }}:latest
           {{- end }}
