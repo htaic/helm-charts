@@ -1,0 +1,51 @@
+namespace: "hanwha"
+fullnameOverride: media-token-service
+
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/media-token-service
+  pullPolicy: Always
+  containerPort: 3000
+  tag: "latest"
+  domainPath: "media-token"
+  livenessProbe: "healthcheck"
+  readinessProbe: "healthcheck"
+  env:
+    - name: DURATION_SECONDS
+      value: "3600"
+    - name: ROLE_ARN
+      value: arn:aws:iam::YOUR_ACCOUNT_ID:role/YOUR_MEDIA_TOKEN_ROLE
+    - name: ROLE_SESSION_NAME
+      value: media-token-session
+
+
+##########################
+# Caution updating below #
+##########################
+# sidecarimage:
+#   name: "logging-sidecar"
+#   repository: ghcr.io/htaic/platform-logging-service
+#   pullPolicy: Always
+#   tag: "latest"
+
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+  
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 750Mi
+
+serviceAccount:
+  create: true
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::409642236539:role/media-token-service-account-role
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80

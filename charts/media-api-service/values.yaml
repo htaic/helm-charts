@@ -1,5 +1,5 @@
 namespace: "hanwha"
-# fullnameOverride: imagename
+fullnameOverride: media-api-service
 
 image:
   replicaCount: 1
@@ -11,17 +11,18 @@ image:
   livenessProbe: "media-api/healthcheck"
   readinessProbe: "media-api/healthcheck"
   env:
-    - name: AWS_REGION
-      value: us-west-2
+    - name: MAX_MEDIA_PLAYLIST_FRAGMENT_RESULTS
+      value: 10
+
 
 ##########################
 # Caution updating below #
 ##########################
-sidecarimage:
-  name: "logging-sidecar"
-  repository: ghcr.io/htaic/platform-logging-service
-  pullPolicy: Always
-  tag: "latest"
+# sidecarimage:
+#   name: "logging-sidecar"
+#   repository: ghcr.io/htaic/platform-logging-service
+#   pullPolicy: Always
+#   tag: "latest"
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
@@ -31,13 +32,13 @@ service:
 
 resources:
   requests:
-    cpu: 150m
+    cpu: 250m
     memory: 750Mi
 
 serviceAccount:
   create: true
-  annotations: {}
-  name: ""
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::YOUR_ACCOUNT_ID:role/YOUR_MEDIA_ROLE
 
 autoscaling:
   enabled: false
