@@ -23,7 +23,7 @@ spec:
           {{- if .Values.dcs.image.tag }}
           image: {{ .Values.dcs.image.repository }}:{{ .Values.dcs.image.tag }}
           {{- else }}
-          image: {{ .Values.dcs.image.repository }}:{{ .Values.dcs.image.tag }}
+          image: {{ .Values.dcs.image.repository }}:latest
           {{- end }}
           resources:
             {{- toYaml .Values.dcs.resources | nindent 12 }}
