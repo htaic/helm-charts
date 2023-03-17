@@ -43,6 +43,9 @@ spec:
           env: 
             {{- toYaml .Values.image.env | nindent 12 }}
           {{- end }}
+          envFrom:
+            - configMapRef:
+                name: "aws-account-configmap"  
           args: [ {{.Values.image.args}} ]
           ports:
             - name: http
