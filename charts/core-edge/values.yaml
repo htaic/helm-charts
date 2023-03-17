@@ -7,7 +7,7 @@ service:
 
 scs:
   replicaCount: 1
-  tag: latest
+  tag: sha256:b3e11fd2480e8f5ea944e91c955810bcc6038fe947e79699f26134f3516b3848
   image:
     repository: ghcr.io/htaic/scsrun
   resources:
@@ -17,7 +17,7 @@ scs:
 
 keymanager:
   replicaCount: 1
-  tag: latest
+  tag: sha256:3d8497fbce80d23bc4e2de03e122af210ed888b3aec9febfa58fe5e25077e205
   image:
     repository: ghcr.io/htaic/edgekeymanagerrun
     env:
@@ -30,7 +30,7 @@ keymanager:
 
 edgeccs:
   replicaCount: 1
-  tag: latest
+  tag: sha256:8bc997f01a3d9e9fa663ba0467be2450a9f007a8c55caf69d0d61be0b3729d4e
   image:
     repository: ghcr.io/htaic/edgeccs
     env:
@@ -45,7 +45,7 @@ edgeccs:
 
 dcs:
   replicaCount: 1
-  tag: latest
+  tag: sha256:7a2eef384c2d2c9997c7faf41b6441004757987b96af6d204227220162f0a5dc
   image:
     repository: ghcr.io/htaic/edgedcsmanagerrun
   resources:
