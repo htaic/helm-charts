@@ -30,7 +30,7 @@ keymanager:
 
 edgeccs:
   replicaCount: 1
-  tag: sha256:8bc997f01a3d9e9fa663ba0467be2450a9f007a8c55caf69d0d61be0b3729d4e
+  tag: latest
   image:
     repository: ghcr.io/htaic/edgeccs
     env:
