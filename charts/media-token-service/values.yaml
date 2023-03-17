@@ -14,7 +14,7 @@ image:
     - name: DURATION_SECONDS
       value: "3600"
     - name: ROLE_ARN
-      value: arn:aws:iam::YOUR_ACCOUNT_ID:role/YOUR_MEDIA_TOKEN_ROLE
+      value: arn:aws:iam::YOUR_ACCOUNT_ID:role/YOUR_MEDIA_TOKEN_APP_ROLE
     - name: ROLE_SESSION_NAME
       value: media-token-session
 
@@ -42,7 +42,7 @@ resources:
 serviceAccount:
   create: true
   annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::409642236539:role/media-token-service-account-role
+    eks.amazonaws.com/role-arn: arn:aws:iam::YOUR_ACCOUNT_ID:role/YOUR_MEDIA_TOKEN_SERVICE_ROLE
 
 autoscaling:
   enabled: false
