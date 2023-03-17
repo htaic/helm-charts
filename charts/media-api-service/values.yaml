@@ -12,7 +12,7 @@ image:
   readinessProbe: "media-api/healthcheck"
   env:
     - name: MAX_MEDIA_PLAYLIST_FRAGMENT_RESULTS
-      value: 10
+      value: "10"
 
 
 ##########################
