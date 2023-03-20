@@ -42,7 +42,7 @@ spec:
             - secretRef:
                 name: {{ .Values.image.secretref }}
             - configMapRef:
-                name: "aws-account-configmap"
+                name: "baseline-configmap"
           {{- if .Values.image.env }}
           env: 
             {{- toYaml .Values.image.env | nindent 12 }}
