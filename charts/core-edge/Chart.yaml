@@ -1,4 +1,4 @@
-apiVersion: v2
+apiVersion: v3
 name: core-edge
 description: A Helm chart for Kubernetes
 
