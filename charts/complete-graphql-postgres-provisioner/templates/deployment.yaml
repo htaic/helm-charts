@@ -47,25 +47,17 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.repository }}:{{ .Values.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.pullPolicy }}
-          {{- if .Values.env }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if .Values.image.env }}
           env: 
-            {{- toYaml .Values.env | nindent 12 }}
+            {{- toYaml .Values.image.env | nindent 12 }}
           {{- end }}
-          args: [ {{.Values.args}} ]
+          args: [ {{.Values.image.args}} ]
           ports:
             - name: http
-              containerPort: {{ .Values.containerPort }}
+              containerPort: {{ .Values.image.containerPort }}
               protocol: TCP
-          # livenessProbe:
-          #   httpGet:
-          #     path: /{{ .Values.livenessProbe }}
-          #     port: http
-          # readinessProbe:
-          #   httpGet:
-          #     path: /{{ .Values.readinessProbe }}
-          #     port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}    
       {{- with .Values.nodeSelector }}

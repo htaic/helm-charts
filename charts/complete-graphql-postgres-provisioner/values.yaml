@@ -4,29 +4,31 @@ postgresProvisioner:
   databaseName: graphql
   databaseUser: YOUR_HASURA_USER
   databasePassword: YOUR_HASURA_PASSWORD
-repository: hasura/graphql-engine
-tag: v2.20.0
-pullPolicy: Always
-domainPath: "hasura"
-containerPort: 8080
-hostname: hasura
-env:
-  - name: HASURA_GRAPHQL_METADATA_DATABASE_URL
-    value: postgres://YOUR_POSTGRES_USERNAME:YOUR_POSTGRES_PASSWORD@YOUR_POSTGRES_HOST:YOUR_POSTGRES_PORT/YOUR_POSTGRES_DB
-    ## enable the console served by server
-  - name: HASURA_GRAPHQL_ENABLE_CONSOLE
-    value: "true" # set to "false" to disable console
-    ## enable debugging mode. It is recommended to disable this in production
-  - name: HASURA_GRAPHQL_DEV_MODE
-    value: "true"
-  - name: HASURA_GRAPHQL_ENABLED_LOG_TYPES
-    value: startup, http-log, webhook-log, websocket-log, query-log
-    # We have a readonly role for all users other than Hasura GraphQL admin
-  - name: HASURA_GRAPHQL_UNAUTHORIZED_ROLE
-    value: readonly
-    ## uncomment next line to set an admin secret
-  - name: HASURA_GRAPHQL_ADMIN_SECRET
-    value: YOUR_ADMIN_SECRET
+  
+image:
+  repository: hasura/graphql-engine
+  tag: v2.20.0
+  pullPolicy: Always
+  domainPath: "hasura"
+  containerPort: 8080
+  hostname: hasura
+  env:
+    - name: HASURA_GRAPHQL_METADATA_DATABASE_URL
+      value: postgres://YOUR_POSTGRES_USERNAME:YOUR_POSTGRES_PASSWORD@YOUR_POSTGRES_HOST:YOUR_POSTGRES_PORT/YOUR_POSTGRES_DB
+      ## enable the console served by server
+    - name: HASURA_GRAPHQL_ENABLE_CONSOLE
+      value: "true" # set to "false" to disable console
+      ## enable debugging mode. It is recommended to disable this in production
+    - name: HASURA_GRAPHQL_DEV_MODE
+      value: "true"
+    - name: HASURA_GRAPHQL_ENABLED_LOG_TYPES
+      value: startup, http-log, webhook-log, websocket-log, query-log
+      # We have a readonly role for all users other than Hasura GraphQL admin
+    - name: HASURA_GRAPHQL_UNAUTHORIZED_ROLE
+      value: readonly
+      ## uncomment next line to set an admin secret
+    - name: HASURA_GRAPHQL_ADMIN_SECRET
+      value: YOUR_ADMIN_SECRET
 
 service:
   type: ClusterIP
