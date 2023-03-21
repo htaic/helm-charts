@@ -1,0 +1,54 @@
+namespace: "hanwha"
+domainPath: "hasura"
+replicaCount: 1
+postgresProvisioner:
+  image: ghcr.io/htaic/graphql-db-postgres-provisioner
+  databaseName: graphql
+  databaseUser: YOUR_HASURA_USER
+  databasePassword: YOUR_HASURA_PASSWORD
+
+image:
+  repository: hasura/graphql-engine
+  tag: v2.20.0
+  pullPolicy: Always
+  containerPort: 8080
+  hostname: hasura
+  env:
+    - name: HASURA_GRAPHQL_METADATA_DATABASE_URL
+      value: postgres://YOUR_HASURA_USER:YOUR_HASURA_PASSWORD@YOUR_POSTGRES_HOST:YOUR_POSTGRES_PORT/graphql
+      ## enable the console served by server
+    - name: HASURA_GRAPHQL_ENABLE_CONSOLE
+      value: "true" # set to "false" to disable console
+      ## enable debugging mode. It is recommended to disable this in production
+    - name: HASURA_GRAPHQL_DEV_MODE
+      value: "true"
+    - name: HASURA_GRAPHQL_ENABLED_LOG_TYPES
+      value: startup, http-log, webhook-log, websocket-log, query-log
+      # We have a readonly role for all users other than Hasura GraphQL admin
+    - name: HASURA_GRAPHQL_UNAUTHORIZED_ROLE
+      value: readonly
+      ## uncomment next line to set an admin secret
+    - name: HASURA_GRAPHQL_ADMIN_SECRET
+      value: YOUR_ADMIN_SECRET
+
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    cpu: 150m
+    memory: 250Mi
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
