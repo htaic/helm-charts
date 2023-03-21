@@ -14,7 +14,7 @@ image:
   hostname: hasura
   env:
     - name: HASURA_GRAPHQL_METADATA_DATABASE_URL
-      value: postgres://YOUR_POSTGRES_USERNAME:YOUR_POSTGRES_PASSWORD@YOUR_POSTGRES_HOST:YOUR_POSTGRES_PORT/YOUR_POSTGRES_DB
+      value: postgres://YOUR_GRAPHQL_USERNAME:YOUR_GRAPHQL_PASSWORD@YOUR_POSTGRES_HOST:YOUR_POSTGRES_PORT/YOUR_GRAPHQL_DB
       ## enable the console served by server
     - name: HASURA_GRAPHQL_ENABLE_CONSOLE
       value: "true" # set to "false" to disable console
