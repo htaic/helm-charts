@@ -10,7 +10,7 @@ image:
   tag: v2.20.0
   pullPolicy: Always
   domainPath: "hasura"
-  containerPort: "8080"
+  containerPort: 8080
   hostname: hasura
   env:
     - name: HASURA_GRAPHQL_METADATA_DATABASE_URL
