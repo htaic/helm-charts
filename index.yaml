@@ -1588,6 +1588,16 @@ entries:
   core-edge:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-03-21T15:34:40.184429094Z"
+    description: A Helm chart for Kubernetes
+    digest: bc950c7265f8803a2fd6c2e8e3f3a54a24cb38cc58d90e74f23938e8684cbd53
+    name: core-edge
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/core-edge-0.1.1/core-edge-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-02-23T01:40:36.84693064Z"
     description: A Helm chart for Kubernetes
     digest: dd504d617015bdbfb1cfcc4476d17fdfb70b906f085634f1358dddadd03bd610
@@ -2552,6 +2562,16 @@ entries:
   redis:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-03-21T15:34:40.347566076Z"
+    description: A dependent Helm chart for Kubernetes micro auth services
+    digest: 3c0c5948978f9baf7cc15e85923349632b9843643c7b194f0811c3726aad18d6
+    name: redis
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/redis-0.0.4/redis-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-02-23T01:40:37.249767479Z"
     description: A dependent Helm chart for Kubernetes micro auth services
     digest: 57dca020fb16db6ba1d2c7d11094113a99d5ddea4abf5d7e1366fd61e304bba4
@@ -2769,4 +2789,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2023-03-17T21:35:29.121108518Z"
+generated: "2023-03-21T15:34:40.347769577Z"
