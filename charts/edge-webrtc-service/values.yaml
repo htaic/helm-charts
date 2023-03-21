@@ -46,7 +46,7 @@ serviceAccount:
 
 resources:
   requests:
-    cpu: 150m
+    cpu: 100m
     memory: 300Mi
 
 autoscaling:
