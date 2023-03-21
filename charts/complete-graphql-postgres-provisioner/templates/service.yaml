@@ -8,8 +8,8 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.hasura.containerPort }}
-      targetPort: {{ .Values.hasura.containerPort }}
+    - port: {{ .Values.containerPort }}
+      targetPort: {{ .Values.containerPort }}
       protocol: TCP
       name: http
   selector:

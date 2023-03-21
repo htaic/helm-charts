@@ -7,7 +7,7 @@ metadata:
     {{- include ".helm.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.hasura.replicaCount }}
+  replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
@@ -21,7 +21,7 @@ spec:
       labels:
         {{- include ".helm.selectorLabels" . | nindent 8 }}
     spec:
-      hostname: {{ .Values.hasura.hostname }}
+      hostname: {{ .Values.hostname }}
       serviceAccountName: {{ include ".helm.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
@@ -47,24 +47,24 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.hasura.repository }}:{{ .Values.hasura.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.hasura.pullPolicy }}
-          {{- if .Values.hasura.env }}
+          image: "{{ .Values.repository }}:{{ .Values.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.pullPolicy }}
+          {{- if .Values.env }}
           env: 
-            {{- toYaml .Values.hasura.env | nindent 12 }}
+            {{- toYaml .Values.env | nindent 12 }}
           {{- end }}
-          args: [ {{.Values.hasura.args}} ]
+          args: [ {{.Values.args}} ]
           ports:
             - name: http
-              containerPort: {{ .Values.hasura.containerPort }}
+              containerPort: {{ .Values.containerPort }}
               protocol: TCP
           # livenessProbe:
           #   httpGet:
-          #     path: /{{ .Values.hasura.livenessProbe }}
+          #     path: /{{ .Values.livenessProbe }}
           #     port: http
           # readinessProbe:
           #   httpGet:
-          #     path: /{{ .Values.hasura.readinessProbe }}
+          #     path: /{{ .Values.readinessProbe }}
           #     port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}    

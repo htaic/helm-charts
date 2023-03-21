@@ -1,4 +1,4 @@
-{{ if and (ne .Values.hasura.domainPath "") (hasKey .Values.hasura "domainPath") }}
+{{ if and (ne .Values.domainPath "") (hasKey .Values.hasura "domainPath") }}
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
@@ -8,12 +8,12 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: (PathPrefix("/{{ .Values.hasura.domainPath }}"))
+    - match: (PathPrefix("/{{ .Values.domainPath }}"))
       kind: Rule
       services:
         - name: {{ include ".helm.fullname" . }}
           kind: Service
-          port: {{ .Values.hasura.containerPort }}
+          port: {{ .Values.containerPort }}
       {{ if (not (hasKey .Values.hasura "noStripPath")) }}
       middlewares:
       - name: "{{ include ".helm.fullname" . }}-strip"

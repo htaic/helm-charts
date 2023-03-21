@@ -1,4 +1,4 @@
-{{ if and (ne .Values.hasura.domainPath "") (hasKey .Values.hasura "domainPath") }}
+{{ if and (ne .Values.domainPath "") (hasKey .Values.hasura "domainPath") }}
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
@@ -7,5 +7,5 @@ metadata:
 spec:
   stripPrefix:
     prefixes:
-      - "/{{ .Values.hasura.domainPath }}"
+      - "/{{ .Values.domainPath }}"
 {{ end }}
