@@ -30,6 +30,9 @@ image:
     - name: HASURA_GRAPHQL_ADMIN_SECRET
       value: YOUR_ADMIN_SECRET
 
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+
 service:
   type: ClusterIP
 
