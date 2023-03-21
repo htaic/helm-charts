@@ -1,3 +1,4 @@
+domainPath: "hasura"
 replicaCount: 1
 postgresProvisioner:
   image: ghcr.io/htaic/graphql-db-postgres-provisioner
@@ -9,7 +10,6 @@ image:
   repository: hasura/graphql-engine
   tag: v2.20.0
   pullPolicy: Always
-  domainPath: "hasura"
   containerPort: 8080
   hostname: hasura
   env:
