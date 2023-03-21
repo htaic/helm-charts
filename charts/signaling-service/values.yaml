@@ -8,7 +8,7 @@ image:
   containerPort: 4000
   tag: "latest"
   hostname: signaling
-  domainPath: "mqtt"
+  domainPath: "signaling"
 
 ##########################
 # Caution updating below #
