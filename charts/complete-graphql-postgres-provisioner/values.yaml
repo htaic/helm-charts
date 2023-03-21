@@ -1,3 +1,4 @@
+namespace: "hanwha"
 domainPath: "hasura"
 replicaCount: 1
 postgresProvisioner:
