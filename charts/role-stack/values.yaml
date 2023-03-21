@@ -19,7 +19,7 @@ roles-frontend:
     type: ClusterIP
   resources:
     requests:
-      cpu: 150m
+      cpu: 100m
       memory: 250Mi
   serviceAccount:
     create: false
@@ -57,7 +57,7 @@ roles-backend:
     type: ClusterIP
   resources:
     requests:
-      cpu: 150m
+      cpu: 100m
       memory: 250Mi
   serviceAccount:
     create: false
