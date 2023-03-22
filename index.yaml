@@ -2507,6 +2507,18 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/organization-stack-0.0.1/organization-stack-0.0.1.tgz
     version: 0.0.1
+  portletmedia:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-03-22T16:16:11.6948111Z"
+    description: A Helm chart for Kubernetes micro front ends deployed behind a traefik
+      ingress
+    digest: 125f997f5bd15babbeb009c01ce0e99f510fa4721a1e2d6030c4db8c690f8030
+    name: portletmedia
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/portletmedia-0.0.1/portletmedia-0.0.1.tgz
+    version: 0.0.1
   postgresql:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -2868,4 +2880,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2023-03-22T15:05:35.149695493Z"
+generated: "2023-03-22T16:16:11.6951536Z"
