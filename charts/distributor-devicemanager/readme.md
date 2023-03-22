@@ -1,6 +1,6 @@
-# gql-devicemanager helm chart
+# distributor-devicemanager helm chart
 
-A sample library for dealing with gql-devicemanager that deploy behind traefik and auth-service.
+A sample library for dealing with distributor-devicemanager that deploy behind traefik and auth-service.
 
 ## Installation
 
@@ -8,7 +8,7 @@ clone the [helm-charts](https://github.com/htaic/helm-charts) repo into your sou
 
 ```bash
 git clone https://github.com/htaic/helm-charts.git
-mv ./helm-charts/charts/gql-devicemanager/values.yaml.Example ./DevValues.yaml
+mv ./helm-charts/charts/distributor-devicemanager/values.yaml.Example ./DevValues.yaml
 ```
 
 or
@@ -24,7 +24,7 @@ Update the dev yaml to reflect the correct image name, ports, pull policy, and r
 
 ```bash
 aws eks update-kubeconfig --region $AWS_DEFAULT_REGION --name $AWS_EKS_NAME
-helm upgrade --install --namespace hanwha -f $VALUES_FILE $MYSERVICENAME ./helm-charts/charts/gql-devicemanager
+helm upgrade --install --namespace hanwha -f $VALUES_FILE $MYSERVICENAME ./helm-charts/charts/distributor-devicemanager
 ```
 
 or
@@ -32,7 +32,7 @@ or
 ```bash
 aws eks update-kubeconfig --region $AWS_DEFAULT_REGION --name $AWS_EKS_NAME
 helm repo update
-helm upgrade --install --atomic --namespace hanwha -f $VALUES_FILE $MYSERVICENAME htaic/gql-devicemanager
+helm upgrade --install --atomic --namespace hanwha -f $VALUES_FILE $MYSERVICENAME htaic/distributor-devicemanager
 ```
 
 ## Contributing
