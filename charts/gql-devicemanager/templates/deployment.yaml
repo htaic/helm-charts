@@ -45,6 +45,11 @@ spec:
           env: 
             {{- toYaml .Values.image.env | nindent 12 }}
           {{- end }}
+          {{- if .Values.image.envFrom }}
+          envFrom:
+            - secretRef:
+                name: {{ .Values.image.envFrom }}
+          {{- end }}
           args: [ {{.Values.image.args}} ]
           ports:
             - name: http
@@ -54,10 +59,16 @@ spec:
             httpGet:
               path: /{{ .Values.image.livenessProbe }}
               port: http
+            {{- if .Values.image.livenessProbePeriodSeconds }}
+            periodSeconds: {{ .Values.image.livenessProbePeriodSeconds }}
+            {{- end }}
           readinessProbe:
             httpGet:
               path: /{{ .Values.image.readinessProbe }}
               port: http
+            {{- if .Values.image.readinessProbePeriodSeconds }}
+            periodSeconds: {{ .Values.image.readinessProbePeriodSeconds }}
+            {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

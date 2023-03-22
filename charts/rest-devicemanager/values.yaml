@@ -1,0 +1,46 @@
+namespace: 'hanwha'
+fullnameOverride: rest-devicemanager
+
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/rest-devicemanager-local
+  pullPolicy: Always
+  containerPort: 3002
+  tag: 'latest'
+  hostname: rest-devicemanager
+  domainPath: 'rest-devicemanager/v0.1'
+  noStripPath: true
+  envFrom: baseline-redis-secret 
+  livenessProbePeriodSeconds: 50
+  readinessProbePeriodSeconds: 50
+  env:
+    - name: DATABASE_HOST
+      value: 'YOUR_POSTGRES_HOST'
+
+# sidecarimage:
+#   name: 'logging-sidecar'
+#   repository: ghcr.io/htaic/platform-logging-service
+#   pullPolicy: Always
+#   tag: 'latest'
+
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 250Mi
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ''
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80

@@ -72,8 +72,8 @@ redis:
     type: ClusterIP
   resources:
     requests:
-      cpu: 250m
-      memory: 750Mi
+      cpu: 100m
+      memory: 250Mi
   serviceAccount:
     create: false
     annotations: {}
@@ -108,8 +108,8 @@ postgresql:
     type: ClusterIP
   resources:
     requests:
-      cpu: 250m
-      memory: 750Mi
+      cpu: 100m
+      memory: 250Mi
   serviceAccount:
     create: false
     annotations: {}

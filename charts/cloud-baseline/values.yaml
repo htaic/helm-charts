@@ -1,6 +1,10 @@
 fullnameOverride: "baseline"
 enableTraefikDashboard: true
 
+AWS:
+  region: YOUR_AWS_REGION
+  accountId: "YOUR_AWS_ACCOUNT_ID"
+
 # https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml
 traefik:
   image:
@@ -42,8 +46,8 @@ postgresql:
     type: ClusterIP
   resources:
     requests:
-      cpu: 250m
-      memory: 750Mi
+      cpu: 100m
+      memory: 250Mi
   serviceAccount:
     create: false
     annotations: {}
@@ -221,8 +225,8 @@ reporting-services:
     type: ClusterIP
   resources:
     requests:
-      cpu: 250m
-      memory: 750Mi
+      cpu: 100m
+      memory: 250Mi
   serviceAccount:
     create: true
     annotations: {}
@@ -232,3 +236,14 @@ reporting-services:
     minReplicas: 1
     maxReplicas: 100
     targetCPUUtilizationPercentage: 80
+
+# #https://github.com/htaic/helm-charts/blob/main/charts/kafka-rest/values-dev.yaml
+cp-kafka-rest:
+  image: "confluentinc/cp-kafka-rest"
+  imageTag: 6.1.0
+  cp-kafka:
+    bootstrapServers: YOUR_BOOTSTRAP_SERVERS
+    resthostname: YOUR_KAFKA_REST_HOST_NAME
+  prometheus:
+    jmx:
+      enabled: false ##Disable JMX

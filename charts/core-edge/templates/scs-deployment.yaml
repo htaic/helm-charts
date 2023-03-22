@@ -22,11 +22,13 @@ spec:
       dnsPolicy: ClusterFirstWithHostNet
       containers:
         - name: scs
-          {{- if .Values.scs.image.digest }}
-          image: {{ .Values.scs.image.repository }}@{{ .Values.scs.image.digest }}
+          {{- if .Values.scs.image.tag }}
+          image: {{ .Values.scs.image.repository }}@{{ .Values.scs.image.tag }}
           {{- else }}
           image: {{ .Values.scs.image.repository }}:latest
           {{- end }}
+          resources:
+            {{- toYaml .Values.scs.resources | nindent 12 }}
           imagePullPolicy: Always
       {{- if .Values.imagePullSecrets }}
       imagePullSecrets:

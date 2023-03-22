@@ -1,0 +1,35 @@
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/video-connection-manager
+  pullPolicy: Always
+  containerPort: 3001
+  tag: 'latest' 
+  hostname: 'video-connection-manager'
+  env:
+    - name: REDIS_QUEUE_TOPIC_KEY
+      value: kvs-1    
+    - name: REDIS_QUEUE_DCS_TOPIC_KEY
+      value: dcs-1    
+    - name: REDIS_QUEUE_MSG_VERSION
+      value: '2.0'    
+    - name: SERVICE_NAME
+      value: VideoConnectionManager-1.0    
+    - name: MSG_VERSION
+      value: '1.0'    
+
+sidecarimage:
+  name: 'logging-sidecar'
+  repository: ghcr.io/htaic/platform-logging-service
+  pullPolicy: Always
+  tag: 'latest'
+
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 250Mi

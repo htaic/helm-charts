@@ -1,0 +1,50 @@
+namespace: "hanwha"
+fullnameOverride: gql-devicemanager
+
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/gql-devicemanager-local
+  pullPolicy: Always
+  containerPort: 3003
+  tag: "latest"
+  hostname: gql-devicemanager
+  domainPath: "graphql"
+  noStripPath: true
+  envFrom: baseline-redis-secret
+  env:
+    - name: DATABASE_HOST
+      value: "YOUR_POSTGRES_HOST"
+    - name: DATABASE_TYPE
+      value: "postgres"
+    - name: DATABASE_PASSWORD
+      value: "YOUR_POSTGRES_PASSWORD"
+    - name: DATABASE_PORT
+      value: "YOUR_POSTGRES_PORT"
+    - name: DATABASE_NAME
+      value: "postgres"
+    - name: DATABASE_USER
+      value: "postgres"
+    - name: OPERATION_ENV
+      value: "EDGE"
+
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 150Mi
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80

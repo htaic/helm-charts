@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.1.2
+version: 0.1.4
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -41,8 +41,18 @@ dependencies:
     version: "^0.1.9"
     repository: "https://htaic.github.io/helm-charts"
   - name: redis
-    version: "^0.0.3"
+    version: "^0.0.5"
     repository: "https://htaic.github.io/helm-charts"
   - name: reporting-services
     version: "^0"
     repository: "https://htaic.github.io/helm-charts"
+  ##TODO: ADD Kafka-rest into the cloud-baseline as a subchart
+  # - name: cp-kafka-rest
+  #   version: "^0"
+  #   # repository: "https://htaic.github.io/helm-charts"  
+  #   repository: "file://../kafka-rest"  
+
+  # this repo doesn't support the cp-kafka-rest chart only the full stack
+  # - name: cp-kafka-rest
+  #   version: "^0"
+  #   repository: "https://confluentinc.github.io/cp-helm-charts/"  

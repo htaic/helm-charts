@@ -66,6 +66,8 @@ spec:
           envFrom:
             - secretRef:
                 name: "org-service-secret"
+            - configMapRef:
+                name: "baseline-configmap"
           ports:
             - name: http
               containerPort: {{ .Values.image.containerPort }}

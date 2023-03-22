@@ -1,0 +1,56 @@
+namespace: "hanwha"
+fullnameOverride: edge-webrtc-service
+
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/edge-webrtc-service
+  pullPolicy: Always
+  containerPort: "8081"
+  tag: "latest"
+  domainPath: "edgewebrtcservice"
+  livenessProbe: "/healthcheck"
+  readinessProbe: "/healthcheck"
+  env:
+    - name: EWS_RTSP_URL
+      value: YOUR_EWS_RTSP_URL
+    - name: EWS_WEBRTC_BROKER_URL
+      value: YOUR_EWS_WEBRTC_BROKER_URL
+    - name: EWS_WEBRTC_CLIENTID
+      value: YOUR_EWS_WEBRTC_CLIENTID
+    - name: EWS_WEBRTC_DEVICEID
+      value: YOUR_EWS_WEBRTC_DEVICEID
+    - name: EWS_WEBRTC_SIGNALING_PASSWORD
+      value: YOUR_EWS_WEBRTC_SIGNALING_PASSWORD
+    - name: EWS_WEBRTC_SUBDEVICEID
+      value: YOUR_EWS_WEBRTC_SUBDEVICEID
+
+##########################
+# Caution updating below #
+##########################
+sidecarimage:
+  name: "logging-sidecar"
+  repository: ghcr.io/htaic/platform-logging-service
+  pullPolicy: Always
+  tag: "latest"
+
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+  
+service:
+  type: ClusterIP
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 300Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80

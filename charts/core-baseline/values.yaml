@@ -1,6 +1,11 @@
 fullnameOverride: "baseline"
 enableTraefikDashboard: true
 
+#TODO: edge environments should not need this
+AWS:
+  region: YOUR_AWS_REGION
+  accountId: "YOUR_AWS_ACCOUNT_ID"
+
 # https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml
 traefik:
   image:
@@ -20,8 +25,8 @@ postgresql:
     type: ClusterIP
   resources:
     requests:
-      cpu: 250m
-      memory: 750Mi
+      cpu: 100m
+      memory: 250Mi
   serviceAccount:
     create: false
     annotations: {}
@@ -47,7 +52,10 @@ postgresql:
       # https://hub.docker.com/_/postgres
       - name: PGDATA
         value: /var/lib/postgresql/data/postgres # # To enable EFS on the cluster, use the following values in the root helm chart
-  
+    startUp:
+      scriptContent: |
+        apt update && apt install -y postgresql-14-wal2json
+        sed -i 's/#wal_level = replica/wal_level = logical/g' /var/lib/postgresql/data/postgres/postgresql.conf
   # If using RDS for postgres
   # RDS:
   #   host: "YOUR_RDS_HOST"

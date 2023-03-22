@@ -20,11 +20,13 @@ spec:
     spec:
       containers:
         - name: dcs
-          {{- if .Values.dcs.image.digest }}
-          image: {{ .Values.dcs.image.repository }}@{{ .Values.dcs.image.digest }}
+          {{- if .Values.dcs.image.tag }}
+          image: {{ .Values.dcs.image.repository }}@{{ .Values.dcs.image.tag }}
           {{- else }}
           image: {{ .Values.dcs.image.repository }}:latest
           {{- end }}
+          resources:
+            {{- toYaml .Values.dcs.resources | nindent 12 }}
           imagePullPolicy: Always
       {{- if .Values.imagePullSecrets }}
       imagePullSecrets:

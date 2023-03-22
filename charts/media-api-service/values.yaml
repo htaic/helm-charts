@@ -1,0 +1,47 @@
+namespace: "hanwha"
+fullnameOverride: media-api-service
+
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/media-api-service
+  pullPolicy: Always
+  containerPort: 3000
+  tag: "latest"
+  domainPath: "media-api"
+  livenessProbe: "media-api/healthcheck"
+  readinessProbe: "media-api/healthcheck"
+  env:
+    - name: MAX_MEDIA_PLAYLIST_FRAGMENT_RESULTS
+      value: "10"
+
+
+##########################
+# Caution updating below #
+##########################
+# sidecarimage:
+#   name: "logging-sidecar"
+#   repository: ghcr.io/htaic/platform-logging-service
+#   pullPolicy: Always
+#   tag: "latest"
+
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+  
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 250Mi
+
+serviceAccount:
+  create: true
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::YOUR_ACCOUNT_ID:role/YOUR_MEDIA_ROLE
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80

@@ -20,7 +20,7 @@ service:
 resources:
   requests:
     cpu: 250m
-    memory: 750Mi
+    memory: 250Mi
 serviceAccount:
   create: true
   annotations: {}

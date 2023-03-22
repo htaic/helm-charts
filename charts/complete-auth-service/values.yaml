@@ -11,9 +11,8 @@ image:
   hostname: auth
   domainPath: "auth"
   env:
-    # # TODO: This should be made toggleable for edge vs cloud...
-    # - name: OPERATION_ENV
-    #   value: edge
+    - name: OPERATION_ENV
+      value: edge
     - name: AWS_REGION
       value: YOUR_AWS_REGION
     - name: AWS_ACCOUNT
@@ -35,8 +34,8 @@ service:
   type: ClusterIP
 resources:
   requests:
-    cpu: 250m
-    memory: 750Mi
+    cpu: 100m
+    memory: 250Mi
 # TODO: This should be made toggleable for edge vs cloud...
 serviceAccount:
   name: "auth"

@@ -1,0 +1,47 @@
+namespace: "hanwha"
+fullnameOverride: portletmedia
+
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/portletmedia
+  pullPolicy: Always
+  containerPort: 3003
+  tag: "latest"
+  hostname: portletmedia
+  domainPath: "/live"
+  # livenessProbe: "api/v1/livez"
+  # readinessProbe: "api/v1/readyz"
+  # env:
+  #   - name: ENVVARIABLENAME
+  #     value: VALUE
+
+##########################
+# Caution updating below #
+##########################
+sidecarimage:
+  name: "logging-sidecar"
+  repository: ghcr.io/htaic/platform-logging-service
+  pullPolicy: Always
+  tag: "latest"
+  
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+  
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 150Mi
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
