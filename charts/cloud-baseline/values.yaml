@@ -64,6 +64,9 @@ postgresql:
     authdb: auth
     authuser: auth_service
     authpassword: "YOUR_AUTH_DB_PASSWORD"
+    issdb: issdevdb
+    issuser: issuser
+    isspassword: "YOUR_ISS_DB_PASSWORD"
     replicaCount: 1
     repository: postgres
     tag: 14

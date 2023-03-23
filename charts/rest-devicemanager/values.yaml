@@ -1,6 +1,8 @@
 namespace: 'hanwha'
 fullnameOverride: rest-devicemanager
 
+postgresProvisioner:
+  image: ghcr.io/htaic/rest-devicemanager-postgres-provisioner
 image:
   replicaCount: 1
   repository: ghcr.io/htaic/rest-devicemanager-local
