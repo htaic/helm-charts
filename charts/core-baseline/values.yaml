@@ -15,6 +15,7 @@ traefik:
   providers:
     kubernetesCRD:
       allowCrossNamespace: true
+      allowExternalNameServices: true
 
 redis:
   redis:
