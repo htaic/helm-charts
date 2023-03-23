@@ -26,6 +26,12 @@ image:
     - name: OPERATION_ENV
       value: "edge"
 
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+
 ##########################
 # Caution updating below #
 ##########################
