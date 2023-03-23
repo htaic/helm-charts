@@ -595,6 +595,24 @@ oathkeeper:
           "mutators": [{
             "handler": "header"
           }]
+        },
+        {
+          "id": "authenticate_rest-devicemanager_get_edge_dev",
+          "match": {
+            "url": "http://<[^/]+>/rest-devicemanager/<v\\d{1,2}(\\.\\d+)?>/edge-devices<(\\?.*)?>",
+            "methods": [
+              "GET"
+            ]
+          },
+          "authenticators": [{
+              "handler": "bearer_token"
+          }],
+          "authorizer": {
+            "handler": "allow"
+          },
+          "mutators": [{
+            "handler": "header"
+          }]
         }
       ]
 
