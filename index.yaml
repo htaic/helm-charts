@@ -2277,6 +2277,16 @@ entries:
   hasura:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-03-23T21:39:41.741522192Z"
+    description: A dependent Helm chart for Kubernetes micro auth services
+    digest: 9a105bb015fcec6a733efc801f6d7fd51408b9bcc920a0f2dacb5c31cca03f32
+    name: hasura
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/hasura-0.0.2/hasura-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-03-21T21:20:03.099857468Z"
     description: A dependent Helm chart for Kubernetes micro auth services
     digest: af56c14e6c6296c3e76cee98c5fcbeb5701ed29b468636740c654732b236af5b
@@ -2916,6 +2926,16 @@ entries:
   video-connection-manager:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-03-23T21:39:41.941073021Z"
+    description: Helm chart for video-connection-manager
+    digest: 37fbebdcc634bce44e289fd560e83d033b0c24eee637c66776f20d7288b7b64d
+    name: video-connection-manager
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.2/video-connection-manager-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-03-09T21:23:20.601602819Z"
     description: Helm chart for video-connection-manager
     digest: 2a57a98f73865d263e3598a7a88a3b6d88515089f9f57c16fdcf2477b6e137e4
@@ -2924,4 +2944,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2023-03-23T21:28:32.536902695Z"
+generated: "2023-03-23T21:39:41.941293123Z"
