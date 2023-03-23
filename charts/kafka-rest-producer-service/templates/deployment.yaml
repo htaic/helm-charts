@@ -6,7 +6,9 @@ metadata:
   labels:
     {{- include ".helm.labels" . | nindent 4 }}
 spec:
-  replicas: 1
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.image.replicaCount }}
+  {{- end }}
   selector:
     matchLabels:
       {{- include ".helm.selectorLabels" . | nindent 6 }}
@@ -25,8 +27,25 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      serviceAccountName: {{ include ".helm.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      {{- if .Values.postgresUpdater }}
+      initContainers:
+        - name: {{ .Chart.Name }}-postgres-provisioner
+          {{- if hasKey .Values.postgresUpdater "tag" }}
+          image: {{ .Values.postgresUpdater.image }}:{{ .Values.postgresUpdater.tag }}
+          {{ else }}
+          image: {{ .Values.postgresUpdater.image }}:{{ .Values.image.tag }}
+          {{ end }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: ['sh', '-c', '/home/developer/executecommands.sh']
+          envFrom:
+            - secretRef:
+                name: {{ .Values.image.secretref }}
+            - configMapRef:
+                name: "baseline-configmap"
+      {{- end }}
       containers:
         {{- if .Values.sidecarimage }}
         - name: "{{ .Values.sidecarimage.name }}"
