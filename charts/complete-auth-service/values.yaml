@@ -17,10 +17,14 @@ image:
       value: YOUR_AWS_REGION
     - name: AWS_ACCOUNT
       value: "YOUR_AWS_ACCOUNT_ID"
-    - name: PRODUCER_QUEUE
-      value: YOUR_SQS_PRODUCER_QUEUE
-    - name: CONSUMER_QUEUE
-      value: YOUR_SQS_CONSUMER_QUEUE
+    - name: AUTH_SERVICE_QUEUE
+      value: YOUR_SQS_AUTH_SERVICE_QUEUE
+    - name: ORG_SERVICE_QUEUE
+      value: YOUR_SQS_ORG_SERVICE_QUEUE
+    - name: DEVICE_SERVICE_QUEUE
+      value: YOUR_SQS_DEVICE_SERVICE_QUEUE
+    - name: SITE_SERVICE_QUEUE
+      value: YOUR_SQS_SITE_SERVICE_QUEUE
   livenessProbe: livez
   readinessProbe: readyz
 sidecarimage:
@@ -34,8 +38,8 @@ service:
   type: ClusterIP
 resources:
   requests:
-    cpu: 100m
-    memory: 250Mi
+    cpu: 250m
+    memory: 750Mi
 # TODO: This should be made toggleable for edge vs cloud...
 serviceAccount:
   name: "auth"
@@ -77,7 +81,7 @@ oathkeeper:
         remote_json:
           enabled: true
           config:
-            remote: http://auth-service-keto-read/relation-tuples/check
+            remote: http://auth-service-complete-auth-service:3000/v2/authorization-checks
             forward_response_headers_to_upstream: []
             payload: |
               {
@@ -97,11 +101,10 @@ oathkeeper:
     accessRules: |
       [
         {
-          "id": "authorize_user_management",
+          "id": "authorize_create_user",
           "match": {
             "url": "http://<[^/]+>/auth<(/v[1-9]{1,2}){0,1}>/<organizations>/<[[:alnum:],-]+>/<users>",
             "methods": [
-              "GET",
               "POST"
             ]
           },
@@ -109,7 +112,35 @@ oathkeeper:
               "handler": "bearer_token"
           }],
           "authorizer": {
-            "handler": "remote_json"
+            "handler": "remote_json",
+            "config": {
+              "remote": "http://auth-service-complete-auth-service:3000/v2/authorization-checks",
+              "forward_response_headers_to_upstream": [],
+              "payload": "{\"namespace\": \"organizations\", \"object\": \"{{ printIndex .MatchContext.RegexpCaptureGroups 4 }}\", \"relation\": \"create-users\", \"subject_id\": \"{{ print .Subject }}\"}"
+            }
+          },
+          "mutators": [{
+            "handler": "header"
+          }]
+        },
+        {
+          "id": "authorize_view_user",
+          "match": {
+            "url": "http://<[^/]+>/auth<(/v[1-9]{1,2}){0,1}>/<organizations>/<[[:alnum:],-]+>/<users>",
+            "methods": [
+              "GET"
+            ]
+          },
+          "authenticators": [{
+              "handler": "bearer_token"
+          }],
+          "authorizer": {
+            "handler": "remote_json",
+            "config": {
+              "remote": "http://auth-service-complete-auth-service:3000/v2/authorization-checks",
+              "forward_response_headers_to_upstream": [],
+              "payload": "{\"namespace\": \"organizations\", \"object\": \"{{ printIndex .MatchContext.RegexpCaptureGroups 4 }}\", \"relation\": \"view-users\", \"subject_id\": \"{{ print .Subject }}\"}"
+            }
           },
           "mutators": [{
             "handler": "header"
@@ -129,7 +160,7 @@ oathkeeper:
           "authorizer": {
             "handler": "remote_json",
             "config": {
-              "remote": "http://auth-service-keto-read/relation-tuples/check",
+              "remote": "http://auth-service-complete-auth-service:3000/v2/authorization-checks",
               "forward_response_headers_to_upstream": [],
               "payload": "{\"namespace\": \"organizations\", \"object\": \"{{ printIndex .MatchContext.RegexpCaptureGroups 4 }}\", \"relation\": \"delete-users\", \"subject_id\": \"{{ print .Subject }}\"}"
             }
@@ -152,7 +183,7 @@ oathkeeper:
           "authorizer": {
             "handler": "remote_json",
             "config": {
-              "remote": "http://auth-service-keto-read/relation-tuples/check",
+              "remote": "http://auth-service-complete-auth-service:3000/v2/authorization-checks",
               "forward_response_headers_to_upstream": [],
               "payload": "{\"namespace\": \"organizations\", \"object\": \"{{ printIndex .MatchContext.RegexpCaptureGroups 4 }}\", \"relation\": \"update-users\", \"subject_id\": \"{{ print .Subject }}\"}"
             }
@@ -173,7 +204,12 @@ oathkeeper:
               "handler": "bearer_token"
           }],
           "authorizer": {
-            "handler": "remote_json"
+            "handler": "remote_json",
+            "config": {
+              "remote": "http://auth-service-complete-auth-service:3000/v2/authorization-checks",
+              "forward_response_headers_to_upstream": [],
+              "payload": "{\"namespace\": \"organizations\", \"object\": \"{{ printIndex .MatchContext.RegexpCaptureGroups 4 }}\", \"relation\": \"create-roles\", \"subject_id\": \"{{ print .Subject }}\"}"
+            }
           },
           "mutators": [{
             "handler": "header"
@@ -193,7 +229,7 @@ oathkeeper:
           "authorizer": {
             "handler": "remote_json",
             "config": {
-              "remote": "http://auth-service-keto-read/relation-tuples/check",
+              "remote": "http://auth-service-complete-auth-service:3000/v2/authorization-checks",
               "forward_response_headers_to_upstream": [],
               "payload": "{\"namespace\": \"organizations\", \"object\": \"{{ printIndex .MatchContext.RegexpCaptureGroups 3 }}\", \"relation\": \"view-roles\", \"subject_id\": \"{{ print .Subject }}\"}"
             }
@@ -214,7 +250,12 @@ oathkeeper:
               "handler": "bearer_token"
           }],
           "authorizer": {
-            "handler": "remote_json"
+            "handler": "remote_json",
+            "config": {
+              "remote": "http://auth-service-complete-auth-service:3000/v2/authorization-checks",
+              "forward_response_headers_to_upstream": [],
+              "payload": "{\"namespace\": \"organizations\", \"object\": \"{{ printIndex .MatchContext.RegexpCaptureGroups 4 }}\", \"relation\": \"create-role-assignments\", \"subject_id\": \"{{ print .Subject }}\"}"
+            }
           },
           "mutators": [{
             "handler": "header"
@@ -232,12 +273,7 @@ oathkeeper:
               "handler": "bearer_token"
           }],
           "authorizer": {
-            "handler": "remote_json",
-            "config": {
-              "remote": "http://auth-service-keto-read/relation-tuples/check",
-              "forward_response_headers_to_upstream": [],
-              "payload": "{\"namespace\": \"platform\", \"object\": \"entitlement\", \"relation\": \"get-entitlements\", \"subject_id\": \"{{ print .Subject }}\"}"
-            }
+            "handler": "allow"
           },
           "mutators": [{
             "handler": "header"
@@ -257,7 +293,7 @@ oathkeeper:
           "authorizer": {
             "handler": "remote_json",
             "config": {
-              "remote": "http://auth-service-keto-read/relation-tuples/check",
+              "remote": "http://auth-service-complete-auth-service:3000/v2/authorization-checks",
               "forward_response_headers_to_upstream": [],
               "payload": "{\"namespace\": \"organizations\", \"object\": \"{{ printIndex .MatchContext.RegexpCaptureGroups 3 }}\", \"relation\": \"create-groups\", \"subject_id\": \"{{ print .Subject }}\"}"
             }
@@ -280,9 +316,55 @@ oathkeeper:
           "authorizer": {
             "handler": "remote_json",
             "config": {
-              "remote": "http://auth-service-keto-read/relation-tuples/check",
+              "remote": "http://auth-service-complete-auth-service:3000/v2/authorization-checks",
               "forward_response_headers_to_upstream": [],
               "payload": "{\"namespace\": \"organizations\", \"object\": \"{{ printIndex .MatchContext.RegexpCaptureGroups 3 }}\", \"relation\": \"delete-groups\", \"subject_id\": \"{{ print .Subject }}\"}"
+            }
+          },
+          "mutators": [{
+            "handler": "header"
+          }]
+        },
+        {
+          "id": "authorize_get_groups",
+          "match": {
+            "url": "http://<[^/]+>/auth<(/v[1-9]{1,2}){0,1}>/organizations/<[[:alnum:],-]+>/groups<(/[[:alnum:],-]+){0,1}>",
+            "methods": [
+              "GET"
+            ]
+          },
+          "authenticators": [{
+              "handler": "bearer_token"
+          }],
+          "authorizer": {
+            "handler": "remote_json",
+            "config": {
+              "remote": "http://auth-service-complete-auth-service:3000/v2/authorization-checks",
+              "forward_response_headers_to_upstream": [],
+              "payload": "{\"namespace\": \"organizations\", \"object\": \"{{ printIndex .MatchContext.RegexpCaptureGroups 3 }}\", \"relation\": \"view-groups\", \"subject_id\": \"{{ print .Subject }}\"}"
+            }
+          },
+          "mutators": [{
+            "handler": "header"
+          }]
+        },
+        {
+          "id": "authorize_update_groups",
+          "match": {
+            "url": "http://<[^/]+>/auth<(/v[1-9]{1,2}){0,1}>/organizations/<[[:alnum:],-]+>/groups/<[[:alnum:],-]+>",
+            "methods": [
+              "PATCH"
+            ]
+          },
+          "authenticators": [{
+              "handler": "bearer_token"
+          }],
+          "authorizer": {
+            "handler": "remote_json",
+            "config": {
+              "remote": "http://auth-service-complete-auth-service:3000/v2/authorization-checks",
+              "forward_response_headers_to_upstream": [],
+              "payload": "{\"namespace\": \"organizations\", \"object\": \"{{ printIndex .MatchContext.RegexpCaptureGroups 3 }}\", \"relation\": \"update-groups\", \"subject_id\": \"{{ print .Subject }}\"}"
             }
           },
           "mutators": [{
@@ -303,9 +385,9 @@ oathkeeper:
           "authorizer": {
             "handler": "remote_json",
             "config": {
-              "remote": "http://auth-service-keto-read/relation-tuples/check",
+              "remote": "http://auth-service-complete-auth-service:3000/v2/authorization-checks",
               "forward_response_headers_to_upstream": [],
-              "payload": "{\"namespace\": \"platform\", \"object\": \"organization\", \"relation\": \"create-organization\", \"subject_id\": \"{{ print .Subject }}\"}"
+              "payload": "{\"namespace\": \"platform\", \"object\": \"organization\", \"relation\": \"create-customers-and-organizations\", \"subject_id\": \"{{ print .Subject }}\"}"
             }
           },
           "mutators": [{
@@ -326,7 +408,7 @@ oathkeeper:
           "authorizer": {
             "handler": "remote_json",
             "config": {
-              "remote": "http://auth-service-keto-read/relation-tuples/check",
+              "remote": "http://auth-service-complete-auth-service:3000/v2/authorization-checks",
               "forward_response_headers_to_upstream": [],
               "payload": "{\"namespace\": \"platform\", \"object\": \"organization\", \"relation\": \"delete-organizations\", \"subject_id\": \"{{ print .Subject }}\"}"
             }
@@ -338,7 +420,7 @@ oathkeeper:
         {
           "id": "authorize_get_organizations",
           "match": {
-            "url": "http://<[^/]+>/customer<(/v[1-9]{1,2}){0,1}>/organizations",
+            "url": "http://<[^/]+>/customer<(/v[1-9]{1,2}){0,1}>/organizations<(/[[:alnum:],-]+){0,1}>",
             "methods": [
               "GET"
             ]
@@ -349,7 +431,7 @@ oathkeeper:
           "authorizer": {
             "handler": "remote_json",
             "config": {
-              "remote": "http://auth-service-keto-read/relation-tuples/check",
+              "remote": "http://auth-service-complete-auth-service:3000/v2/authorization-checks",
               "forward_response_headers_to_upstream": [],
               "payload": "{\"namespace\": \"platform\", \"object\": \"organization\", \"relation\": \"view-organizations\", \"subject_id\": \"{{ print .Subject }}\"}"
             }
@@ -390,7 +472,7 @@ oathkeeper:
           "authorizer": {
             "handler": "remote_json",
             "config": {
-              "remote": "http://auth-service-keto-read/relation-tuples/check",
+              "remote": "http://auth-service-complete-auth-service:3000/v2/authorization-checks",
               "forward_response_headers_to_upstream": [],
               "payload": "{\"namespace\": \"organizations\", \"object\": \"{{ printIndex .MatchContext.RegexpCaptureGroups 4 }}\", \"relation\": \"view-assigned-roles\", \"subject_id\": \"{{ print .Subject }}\"}"
             }
@@ -413,7 +495,7 @@ oathkeeper:
           "authorizer": {
             "handler": "remote_json",
             "config": {
-              "remote": "http://auth-service-keto-read/relation-tuples/check",
+              "remote": "http://auth-service-complete-auth-service:3000/v2/authorization-checks",
               "forward_response_headers_to_upstream": [],
               "payload": "{\"namespace\": \"organizations\", \"object\": \"{{ printIndex .MatchContext.RegexpCaptureGroups 4 }}\", \"relation\": \"delete-roles\", \"subject_id\": \"{{ print .Subject }}\"}"
             }
@@ -436,7 +518,7 @@ oathkeeper:
           "authorizer": {
             "handler": "remote_json",
             "config": {
-              "remote": "http://auth-service-keto-read/relation-tuples/check",
+              "remote": "http://auth-service-complete-auth-service:3000/v2/authorization-checks",
               "forward_response_headers_to_upstream": [],
               "payload": "{\"namespace\": \"organizations\", \"object\": \"{{ printIndex .MatchContext.RegexpCaptureGroups 4 }}\", \"relation\": \"update-users\", \"subject_id\": \"{{ print .Subject }}\"}"
             }
@@ -459,7 +541,7 @@ oathkeeper:
           "authorizer": {
             "handler": "remote_json",
             "config": {
-              "remote": "http://auth-service-keto-read/relation-tuples/check",
+              "remote": "http://auth-service-complete-auth-service:3000/v2/authorization-checks",
               "forward_response_headers_to_upstream": [],
               "payload": "{\"namespace\": \"organizations\", \"object\": \"{{ printIndex .MatchContext.RegexpCaptureGroups 4 }}\", \"relation\": \"update-roles\", \"subject_id\": \"{{ print .Subject }}\"}"
             }
@@ -518,7 +600,7 @@ oathkeeper:
           "authorizer": {
             "handler": "remote_json",
             "config": {
-              "remote": "http://auth-service-keto-read/relation-tuples/check",
+              "remote": "http://auth-service-complete-auth-service:3000/v2/authorization-checks",
               "forward_response_headers_to_upstream": [],
               "payload": "{\"namespace\": \"cameras\", \"object\": \"{{ printIndex .MatchContext.RegexpCaptureGroups 1 }}\", \"relation\": \"camera-view-live-stream-from-device\", \"subject_id\": \"{{ print .Subject }}\"}"
             }
@@ -541,7 +623,7 @@ oathkeeper:
           "authorizer": {
             "handler": "remote_json",
             "config": {
-              "remote": "http://auth-service-keto-read/relation-tuples/check",
+              "remote": "http://auth-service-complete-auth-service:3000/v2/authorization-checks",
               "forward_response_headers_to_upstream": [],
               "payload": "{\"namespace\": \"cameras\", \"object\": \"{{ printIndex .MatchContext.RegexpCaptureGroups 1 }}\", \"relation\": \"camera-view-recorded-video\", \"subject_id\": \"{{ print .Subject }}\"}"
             }
@@ -564,7 +646,7 @@ oathkeeper:
           "authorizer": {
             "handler": "remote_json",
             "config": {
-              "remote": "http://auth-service-keto-read/relation-tuples/check",
+              "remote": "http://auth-service-complete-auth-service:3000/v2/authorization-checks",
               "forward_response_headers_to_upstream": [],
               "payload": "{\"namespace\": \"cameras\", \"object\": \"{{ printIndex .MatchContext.RegexpCaptureGroups 1 }}\", \"relation\": \"camera-view-video-recording-settings\", \"subject_id\": \"{{ print .Subject }}\"}"
             }
@@ -587,7 +669,7 @@ oathkeeper:
           "authorizer": {
             "handler": "remote_json",
             "config": {
-              "remote": "http://auth-service-keto-read/relation-tuples/check",
+              "remote": "http://auth-service-complete-auth-service:3000/v2/authorization-checks",
               "forward_response_headers_to_upstream": [],
               "payload": "{\"namespace\": \"cameras\", \"object\": \"{{ printIndex .MatchContext.RegexpCaptureGroups 1 }}\", \"relation\": \"camera-view-recorded-video\", \"subject_id\": \"{{ print .Subject }}\"}"
             }
@@ -595,6 +677,166 @@ oathkeeper:
           "mutators": [{
             "handler": "header"
           }]
+        },
+        {
+          "id": "authenticate_rest-devicemanager_configurations_datetime",
+          "match": {
+            "url": "http://<[^/]+>/rest-devicemanager/<v\\d{1,2}(\\.\\d+)?>/edge-devices/<([0-9A-Fa-f]{2}){6}>/configurations/date-time<(\\?.*)?>",
+            "methods": ["GET", "PUT"]
+          },
+          "authenticators": [
+            {
+              "handler": "bearer_token"
+            }
+          ],
+          "authorizer": {
+            "handler": "allow"
+          },
+          "mutators": [
+            {
+              "handler": "header"
+            }
+          ]
+        },
+        {
+          "id": "authenticate_rest-devicemanager_get_edge_devices",
+          "match": {
+            "url": "http://<[^/]+>/rest-devicemanager/<v\\d{1,2}(\\.\\d+)?>/edge-devices<(\\?.*)?>",
+            "methods": ["GET"]
+          },
+          "authenticators": [
+            {
+              "handler": "bearer_token"
+            }
+          ],
+          "authorizer": {
+            "handler": "allow"
+          },
+          "mutators": [
+            {
+              "handler": "header"
+            }
+          ]
+        },
+        {
+          "id": "authenticate_rest-devicemanager_edge_device_management",
+          "match": {
+            "url": "http://<[^/]+>/rest-devicemanager/<v\\d{1,2}(\\.\\d+)?>/edge-devices/<([0-9A-Fa-f]{2}){6}>",
+            "methods": ["POST", "DELETE"]
+          },
+          "authenticators": [
+            {
+              "handler": "bearer_token"
+            }
+          ],
+          "authorizer": {
+            "handler": "allow"
+          },
+          "mutators": [
+            {
+              "handler": "header"
+            }
+          ]
+        },
+        {
+          "id": "authenticate_rest-devicemanager_iot_device_management",
+          "match": {
+            "url": "http://<[^/]+>/rest-devicemanager/<v\\d{1,2}(\\.\\d+)?>/edge-devices/<([0-9A-Fa-f]{2}){6}>/iot-devices/<([0-9A-Fa-f]{2}){6}>",
+            "methods": ["POST"]
+          },
+          "authenticators": [
+            {
+              "handler": "bearer_token"
+            }
+          ],
+          "authorizer": {
+            "handler": "allow"
+          },
+          "mutators": [
+            {
+              "handler": "header"
+            }
+          ]
+        },
+        {
+          "id": "authenticate_rest-devicemanager_iot_device_action",
+          "match": {
+            "url": "http://<[^/]+>/rest-devicemanager/<v\\d{1,2}(\\.\\d+)?>/edge-devices/<([0-9A-Fa-f]{2}){6}>/actions/<[^/]+>",
+            "methods": ["POST"]
+          },
+          "authenticators": [
+            {
+              "handler": "bearer_token"
+            }
+          ],
+          "authorizer": {
+            "handler": "allow"
+          },
+          "mutators": [
+            {
+              "handler": "header"
+            }
+          ]
+        },
+        {
+          "id": "authenticate_rest-devicemanager_move_edge_device",
+          "match": {
+            "url": "http://<[^/]+>/rest-devicemanager/<v\\d{1,2}(\\.\\d+)?>/edge-devices/<([0-9A-Fa-f]{2}){6}>/site",
+            "methods": ["PUT"]
+          },
+          "authenticators": [
+            {
+              "handler": "bearer_token"
+            }
+          ],
+          "authorizer": {
+            "handler": "allow"
+          },
+          "mutators": [
+            {
+              "handler": "header"
+            }
+          ]
+        },
+        {
+          "id": "authenticate_rest-devicemanager_move_iot_device",
+          "match": {
+            "url": "http://<[^/]+>/rest-devicemanager/<v\\d{1,2}(\\.\\d+)?>/iot-devices/<([0-9A-Fa-f]{2}){6}>/site",
+            "methods": ["PUT"]
+          },
+          "authenticators": [
+            {
+              "handler": "bearer_token"
+            }
+          ],
+          "authorizer": {
+            "handler": "allow"
+          },
+          "mutators": [
+            {
+              "handler": "header"
+            }
+          ]
+        },
+        {
+          "id": "authenticate_rest-devicemanager_delete_iot_device",
+          "match": {
+            "url": "http://<[^/]+>/rest-devicemanager/<v\\d{1,2}(\\.\\d+)?>/iot-devices/<([0-9A-Fa-f]{2}){6}>",
+            "methods": ["DELETE"]
+          },
+          "authenticators": [
+            {
+              "handler": "bearer_token"
+            }
+          ],
+          "authorizer": {
+            "handler": "allow"
+          },
+          "mutators": [
+            {
+              "handler": "header"
+            }
+          ]
         }
       ]
 
@@ -603,7 +845,7 @@ kratos:
     enabled: false
   kratos:
     automigration:
-      enabled: false
+      enabled: true
       customCommand:
         - kratos
       customArgs:
@@ -714,7 +956,7 @@ kratos:
 keto:
   keto:
     automigration:
-      enabled: false
+      enabled: true
       customCommand:
         - keto
     config:
@@ -729,6 +971,12 @@ keto:
           name: cameras
         - id: 4
           name: sites
+        - id: 5
+          name: gateways
+        - id: 6
+          name: access-control
+        - id: 7
+          name: groups
       dsn: "postgres://postgres:YOUR_POSTGRES_PASSWORD@YOUR_POSTGRES_HOST:5432/ory?sslmode=disable&max_conn_lifetime=10s"
     log:
       leak_sensitive_values: false
