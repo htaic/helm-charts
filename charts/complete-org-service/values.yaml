@@ -9,6 +9,8 @@ image:
   hostname: "org"
   domainPath: "customer"
   env:
+    - name: OPERATION_ENV
+      value: edge
     - name: AWS_REGION
       value: YOUR_AWS_REGION
     - name: AWS_ACCOUNT
