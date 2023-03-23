@@ -56,14 +56,8 @@ spec:
           envFrom:
             - secretRef:
                 name: "hasura-secret"
-            - secretRef:
-                name: "graphql-postgresql-secret"
-            - configMapRef:
-                name: "baseline-configmap"
-          env: 
-            - name: HASURA_GRAPHQL_METADATA_DATABASE_URL
-              value: postgres://$(DATABASE_USER):$(DATABASE_PASSWORD)@$(POSTGRES_HOST):$(POSTGRES_PORT)/$(DATABASE_NAME)
           {{- if .Values.image.env }}
+          env: 
             {{- toYaml .Values.image.env | nindent 12 }}
           {{- end }}
           args: [ {{.Values.image.args}} ]
