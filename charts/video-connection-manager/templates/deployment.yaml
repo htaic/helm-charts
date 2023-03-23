@@ -40,6 +40,8 @@ spec:
           envFrom:
             - secretRef:
                 name: "baseline-postgresql-secret"
+            - secretRef:
+                name: "hasura-secret"
             - configMapRef:
                 name: "baseline-configmap"
             - secretRef:

@@ -7,6 +7,8 @@ postgresProvisioner:
   databaseUser: YOUR_HASURA_USER
   databasePassword: YOUR_HASURA_PASSWORD
 
+hasuraToken: YOUR_ADMIN_SECRET
+
 image:
   repository: hasura/graphql-engine
   tag: v2.20.0
@@ -27,9 +29,6 @@ image:
       # We have a readonly role for all users other than Hasura GraphQL admin
     - name: HASURA_GRAPHQL_UNAUTHORIZED_ROLE
       value: readonly
-      ## uncomment next line to set an admin secret
-    - name: HASURA_GRAPHQL_ADMIN_SECRET
-      value: YOUR_ADMIN_SECRET
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
