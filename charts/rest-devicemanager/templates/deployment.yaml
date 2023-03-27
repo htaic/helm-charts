@@ -65,10 +65,10 @@ spec:
           {{- end }}
           {{- if .Values.image.envFrom }}
           envFrom:
-            - {{- range $secretRef := .Values.image.envFrom.secretRefs }}
+            {{- range .Values.image.envFrom.secretRefs }}
               - secretRef:
-                  name: {{ $secretRef }}
-              {{- end }}
+                  name: {{ . }}
+            {{- end }}
           {{- end }}
           args: [ {{.Values.image.args}} ]
           ports:
