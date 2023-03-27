@@ -3,7 +3,7 @@ fullnameOverride: gql-devicemanager
 
 image:
   replicaCount: 1
-  repository: ghcr.io/htaic/gql-devicemanager-local
+  repository: ghcr.io/htaic/gql-devicemanager
   pullPolicy: Always
   containerPort: 3003
   tag: "latest"

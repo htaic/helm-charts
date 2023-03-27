@@ -5,7 +5,7 @@ postgresProvisioner:
   image: ghcr.io/htaic/rest-devicemanager-postgres-provisioner
 image:
   replicaCount: 1
-  repository: ghcr.io/htaic/rest-devicemanager-local
+  repository: ghcr.io/htaic/rest-devicemanager
   pullPolicy: Always
   containerPort: 3002
   tag: 'latest'
