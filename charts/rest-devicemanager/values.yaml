@@ -12,12 +12,17 @@ image:
   hostname: rest-devicemanager
   domainPath: 'rest-devicemanager/v0.1'
   noStripPath: true
-  envFrom: baseline-redis-secret 
   livenessProbePeriodSeconds: 50
   readinessProbePeriodSeconds: 50
   env:
     - name: OPERATION_ENV
       value: 'EDGE'
+    - name: DATABASE_HOST
+      value: "baseline-postgresql"
+    - name: DATABASE_TYPE
+      value: "postgres"
+    - name: DATABASE_PORT
+      value: "5432"
   envFrom:
     secretRefs:
       - baseline-redis-secret

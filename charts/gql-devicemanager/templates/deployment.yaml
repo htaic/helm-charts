@@ -52,7 +52,7 @@ spec:
                   name: {{ . }}
             {{- end }}
             {{- range .Values.image.envFrom.configMapRefs }}
-              - configMapRefs:
+              - configMapRef:
                   name: {{ . }}
             {{- end }}
           {{- end }}
