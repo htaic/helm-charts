@@ -65,7 +65,7 @@ spec:
           {{- end }}
           {{- if .Values.image.envFrom }}
           envFrom:
-            - {{- range $secretRef := .Values.envFrom.secretRefs }}
+            - {{- range $secretRef := .Values.image.envFrom.secretRefs }}
             - secretRef:
                 name: {{ $secretRef }}
               {{- end }}
