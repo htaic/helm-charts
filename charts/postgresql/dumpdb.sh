@@ -7,7 +7,7 @@ apt install -y postgresql-client
 # to the file specified in POSTGRES_DUMPLATEST env variable, default value is public_dump_latest.sql
 # If needed, then the restoredb.sh script can be used to recreate the Postgres database from the
 # public_dump_latest.sql dump file.
-export POSTGRES_HOSTNAME=${POSTGRES_HOSTNAME:-localhost}
+export POSTGRES_HOSTNAME=${POSTGRES_HOSTNAME:host}
 export POSTGRES_PORT=${POSTGRES_PORT:-5432}
 export POSTGRES_USER=${POSTGRES_USER:-postgres}
 export POSTGRES_DB=${POSTGRES_DB:-postgres}
