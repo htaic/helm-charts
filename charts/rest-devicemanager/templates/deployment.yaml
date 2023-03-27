@@ -44,6 +44,8 @@ spec:
             - secretRef:
                 name: "baseline-postgresql-secret"
             - secretRef:
+                name: "baseline-redis-secret"
+            - secretRef:
                 name: "iss-service-secret"
             - configMapRef:
                 name: "baseline-configmap"

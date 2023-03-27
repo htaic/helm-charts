@@ -16,8 +16,8 @@ image:
   livenessProbePeriodSeconds: 50
   readinessProbePeriodSeconds: 50
   env:
-    - name: DATABASE_HOST
-      value: 'YOUR_POSTGRES_HOST'
+    - name: OPERATION_ENV
+      value: 'EDGE'
 
 # sidecarimage:
 #   name: 'logging-sidecar'
