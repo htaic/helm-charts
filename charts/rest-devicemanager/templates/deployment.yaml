@@ -69,6 +69,10 @@ spec:
               - secretRef:
                   name: {{ . }}
             {{- end }}
+            {{- range .Values.image.envFrom.configMapRefs }}
+              - configMapRefs:
+                  name: {{ . }}
+            {{- end }}
           {{- end }}
           args: [ {{.Values.image.args}} ]
           ports:

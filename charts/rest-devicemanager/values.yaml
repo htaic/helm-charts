@@ -18,16 +18,12 @@ image:
   env:
     - name: OPERATION_ENV
       value: 'EDGE'
-    - name: DATABASE_HOST
-      value: "baseline-postgresql"
-    - name: DATABASE_TYPE
-      value: "postgres"
-    - name: DATABASE_PORT
-      value: "5432"
   envFrom:
     secretRefs:
       - baseline-redis-secret
       - iss-service-secret
+    configMapRefs:
+      - baseline-configmap
 
 # sidecarimage:
 #   name: 'logging-sidecar'

@@ -47,8 +47,14 @@ spec:
           {{- end }}
           {{- if .Values.image.envFrom }}
           envFrom:
-            - secretRef:
-                name: {{ .Values.image.envFrom }}
+            {{- range .Values.image.envFrom.secretRefs }}
+              - secretRef:
+                  name: {{ . }}
+            {{- end }}
+            {{- range .Values.image.envFrom.configMapRefs }}
+              - configMapRefs:
+                  name: {{ . }}
+            {{- end }}
           {{- end }}
           args: [ {{.Values.image.args}} ]
           ports:
