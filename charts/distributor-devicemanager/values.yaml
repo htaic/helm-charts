@@ -3,7 +3,7 @@ fullnameOverride: distributor-devicemanager
 
 image:
   replicaCount: 1
-  repository: ghcr.io/htaic/distributor-devicemanager-local
+  repository: ghcr.io/htaic/distributor-devicemanager
   pullPolicy: Always
   tag: "latest"
   hostname: distributor-devicemanager
