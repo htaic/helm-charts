@@ -44,8 +44,6 @@ spec:
             - secretRef:
                 name: "baseline-postgresql-secret"
             - secretRef:
-                name: "baseline-redis-secret"
-            - secretRef:
                 name: "iss-service-secret"
             - configMapRef:
                 name: "baseline-configmap"
@@ -67,8 +65,10 @@ spec:
           {{- end }}
           {{- if .Values.image.envFrom }}
           envFrom:
+            - {{- range $secretRef := .Values.envFrom.secretRefs }}
             - secretRef:
-                name: {{ .Values.image.envFrom }}
+                name: {{ $secretRef }}
+              {{- end }}
           {{- end }}
           args: [ {{.Values.image.args}} ]
           ports:
