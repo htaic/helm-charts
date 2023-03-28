@@ -48,6 +48,9 @@ postgresql:
     tag: 14
     pullPolicy: Always
     containerPort: 5432
+    persistence:
+      enabled: true
+      existingClaim: postgres-pvc
     env:
       # https://hub.docker.com/_/postgres
       - name: PGDATA
