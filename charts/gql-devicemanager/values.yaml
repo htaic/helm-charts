@@ -10,22 +10,21 @@ image:
   hostname: gql-devicemanager
   domainPath: "graphql"
   noStripPath: true
-  envFrom: baseline-redis-secret
   env:
     - name: DATABASE_HOST
-      value: "YOUR_POSTGRES_HOST"
+      value: "baseline-postgresql"
     - name: DATABASE_TYPE
       value: "postgres"
-    - name: DATABASE_PASSWORD
-      value: "YOUR_POSTGRES_PASSWORD"
     - name: DATABASE_PORT
-      value: "YOUR_POSTGRES_PORT"
-    - name: DATABASE_NAME
-      value: "postgres"
-    - name: DATABASE_USER
-      value: "postgres"
+      value: "5432"
     - name: OPERATION_ENV
       value: "EDGE"
+  envFrom:
+    secretRefs:
+      - baseline-redis-secret
+      - graphql-postgresql-secret
+    configMapRefs:
+      - baseline-configmap
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
