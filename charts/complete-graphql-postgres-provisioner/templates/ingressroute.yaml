@@ -13,7 +13,7 @@ spec:
       services:
         - name: {{ include ".helm.fullname" . }}
           kind: Service
-          port: {{ .Values.containerPort }}
+          port: {{ .Values.image.containerPort }}
       {{ if (not (hasKey .Values "noStripPath")) }}
       middlewares:
       - name: "{{ include ".helm.fullname" . }}-strip"
