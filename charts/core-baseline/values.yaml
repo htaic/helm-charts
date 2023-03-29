@@ -51,10 +51,10 @@ postgresql:
     persistence:
       enabled: true
       existingClaim: postgres-pvc
-    env:
-      # https://hub.docker.com/_/postgres
-      - name: PGDATA
-        value: /var/lib/postgresql/data/postgres # # To enable EFS on the cluster, use the following values in the root helm chart
+    # env:
+    #   # https://hub.docker.com/_/postgres
+    #   - name: PGDATA
+    #     value: /var/lib/postgresql/data/postgres # # To enable EFS on the cluster, use the following values in the root helm chart
     startUp:
       scriptContent: |
         apt update && apt install -y postgresql-14-wal2json
