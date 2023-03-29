@@ -25,11 +25,11 @@ image:
 ##########################
 # Caution updating below #
 ##########################
-sidecarimage:
-  name: "logging-sidecar"
-  repository: ghcr.io/htaic/platform-logging-service
-  pullPolicy: Always
-  tag: "latest"
+#sidecarimage:
+#  name: "logging-sidecar"
+#  repository: ghcr.io/htaic/platform-logging-service
+#  pullPolicy: Always
+#  tag: "latest"
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
