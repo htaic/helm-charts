@@ -3015,6 +3015,16 @@ entries:
   video-connection-manager:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-03-29T20:26:43.876643356Z"
+    description: Helm chart for video-connection-manager
+    digest: 6e2d0726de03d40455b9ddb5ad7fd5c89a2ecdc8440f3760fef11ed92b39bf89
+    name: video-connection-manager
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.3/video-connection-manager-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-03-23T21:39:41.941073021Z"
     description: Helm chart for video-connection-manager
     digest: 37fbebdcc634bce44e289fd560e83d033b0c24eee637c66776f20d7288b7b64d
@@ -3033,4 +3043,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2023-03-29T18:12:12.570384266Z"
+generated: "2023-03-29T20:26:43.876906058Z"
