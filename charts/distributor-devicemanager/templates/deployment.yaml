@@ -43,8 +43,14 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           {{- if .Values.image.envFrom }}
           envFrom:
-            - secretRef:
-                name: {{ .Values.image.envFrom }}
+            {{- range .Values.image.envFrom.secretRefs }}
+              - secretRef:
+                  name: {{ . }}
+            {{- end }}
+            {{- range .Values.image.envFrom.configMapRefs }}
+              - configMapRef:
+                  name: {{ . }}
+            {{- end }}
           {{- end }}
           args: [ {{.Values.image.args}} ]
           ports:

@@ -8,7 +8,9 @@ image:
   tag: "latest"
   hostname: distributor-devicemanager
   containerPort: 3303
-  envFrom: baseline-redis-secret
+  envFrom:
+    secretRefs:
+      - baseline-redis-secret
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
