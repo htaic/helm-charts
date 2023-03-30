@@ -11,18 +11,18 @@ image:
   domainPath: "graphql"
   noStripPath: true
   env:
+    - name: OPERATION_ENV
+      value: "EDGE"
     - name: DATABASE_HOST
-      value: "baseline-postgresql"
+      value: "YOUR_POSTGRES_HOST"
     - name: DATABASE_TYPE
       value: "postgres"
     - name: DATABASE_PORT
-      value: "5432"
-    - name: OPERATION_ENV
-      value: "EDGE"
+      value: "YOUR_POSTGRES_PORT"
   envFrom:
     secretRefs:
       - baseline-redis-secret
-      - graphql-postgresql-secret
+      - iss-postgresql-secret
     configMapRefs:
       - baseline-configmap
 
