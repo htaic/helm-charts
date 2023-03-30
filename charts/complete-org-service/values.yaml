@@ -15,10 +15,11 @@ image:
       value: YOUR_AWS_REGION
     - name: AWS_ACCOUNT
       value: "YOUR_AWS_ACCOUNT_ID"
-    - name: ORG_SERVICE_QUEUE
-      value: YOUR_SQS_ORG_SERVICE_QUEUE
-    - name: AUTH_SERVICE_QUEUE
-      value: YOUR_SQS_AUTH_SERVICE_QUEUE
+    # Queue name Environment Variables ONLY required for Cloud
+    # - name: ORG_SERVICE_QUEUE
+    #   value: YOUR_SQS_ORG_SERVICE_QUEUE
+    # - name: AUTH_SERVICE_QUEUE
+    #   value: YOUR_SQS_AUTH_SERVICE_QUEUE
   livenessProbe: livez
   readinessProbe: readyz
 sidecarimage:

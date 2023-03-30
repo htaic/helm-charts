@@ -17,14 +17,15 @@ image:
       value: YOUR_AWS_REGION
     - name: AWS_ACCOUNT
       value: "YOUR_AWS_ACCOUNT_ID"
-    - name: AUTH_SERVICE_QUEUE
-      value: YOUR_SQS_AUTH_SERVICE_QUEUE
-    - name: ORG_SERVICE_QUEUE
-      value: YOUR_SQS_ORG_SERVICE_QUEUE
-    - name: DEVICE_SERVICE_QUEUE
-      value: YOUR_SQS_DEVICE_SERVICE_QUEUE
-    - name: SITE_SERVICE_QUEUE
-      value: YOUR_SQS_SITE_SERVICE_QUEUE
+    # Queue name Environment Variables ONLY required for Cloud
+    # - name: AUTH_SERVICE_QUEUE
+    #   value: YOUR_SQS_AUTH_SERVICE_QUEUE
+    # - name: ORG_SERVICE_QUEUE
+    #   value: YOUR_SQS_ORG_SERVICE_QUEUE
+    # - name: DEVICE_SERVICE_QUEUE
+    #   value: YOUR_SQS_DEVICE_SERVICE_QUEUE
+    # - name: SITE_SERVICE_QUEUE
+    #   value: YOUR_SQS_SITE_SERVICE_QUEUE
   livenessProbe: livez
   readinessProbe: readyz
 sidecarimage:
