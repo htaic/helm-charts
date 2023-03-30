@@ -8,7 +8,7 @@ image:
   containerPort: 3003
   tag: "latest"
   hostname: portletmedia
-  domainPath: "/live"
+  domainPath: "live"
   # livenessProbe: "api/v1/livez"
   # readinessProbe: "api/v1/readyz"
   # env:
