@@ -14,7 +14,7 @@ image:
     - name: OPERATION_ENV
       value: "EDGE"
     - name: DATABASE_HOST
-      value: "YOUR_POSTGRES_HOST"
+      value: "baseline-postgresql"
     - name: DATABASE_TYPE
       value: "postgres"
     - name: DATABASE_PORT
