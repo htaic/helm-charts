@@ -11,27 +11,25 @@ image:
   livenessProbe: "/healthcheck"
   readinessProbe: "/healthcheck"
   env:
-    - name: EWS_RTSP_URL
-      value: YOUR_EWS_RTSP_URL
-    - name: EWS_WEBRTC_BROKER_URL
-      value: YOUR_EWS_WEBRTC_BROKER_URL
-    - name: EWS_WEBRTC_CLIENTID
-      value: YOUR_EWS_WEBRTC_CLIENTID
-    - name: EWS_WEBRTC_DEVICEID
-      value: YOUR_EWS_WEBRTC_DEVICEID
-    - name: EWS_WEBRTC_SIGNALING_PASSWORD
-      value: YOUR_EWS_WEBRTC_SIGNALING_PASSWORD
-    - name: EWS_WEBRTC_SUBDEVICEID
-      value: YOUR_EWS_WEBRTC_SUBDEVICEID
+    - name: EWS_MQTTCLIENT_BROKERURL
+      value: YOUR_EWS_MQTTCLIENT_BROKERURL
+    - name: EWS_MQTTCLIENT_CLIENTID
+      value: YOUR_EWS_MQTTCLIENT_CLIENTID
+    - name: EWS_MQTTCLIENT_DEVICEID
+      value: YOUR_EWS_MQTTCLIENT_DEVICEID
+    - name: EWS_MQTTCLIENT_BROKERPASSWORD
+      value: YOUR_EWS_MQTTCLIENT_BROKERPASSWORD
+    - name: EWS_MQTTCLIENT_SUBDEVICEID
+      value: YOUR_EWS_MQTTCLIENT_SUBDEVICEID
 
 ##########################
 # Caution updating below #
 ##########################
-sidecarimage:
-  name: "logging-sidecar"
-  repository: ghcr.io/htaic/platform-logging-service
-  pullPolicy: Always
-  tag: "latest"
+#sidecarimage:
+#  name: "logging-sidecar"
+#  repository: ghcr.io/htaic/platform-logging-service
+#  pullPolicy: Always
+#  tag: "latest"
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com

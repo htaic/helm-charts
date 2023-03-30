@@ -1,21 +1,34 @@
 namespace: 'hanwha'
 fullnameOverride: rest-devicemanager
 
+postgresProvisioner:
+  image: ghcr.io/htaic/rest-devicemanager-postgres-provisioner
 image:
   replicaCount: 1
-  repository: ghcr.io/htaic/rest-devicemanager-local
+  repository: ghcr.io/htaic/rest-devicemanager
   pullPolicy: Always
   containerPort: 3002
   tag: 'latest'
   hostname: rest-devicemanager
   domainPath: 'rest-devicemanager/v0.1'
   noStripPath: true
-  envFrom: baseline-redis-secret 
   livenessProbePeriodSeconds: 50
   readinessProbePeriodSeconds: 50
   env:
+    - name: OPERATION_ENV
+      value: 'EDGE'
     - name: DATABASE_HOST
-      value: 'YOUR_POSTGRES_HOST'
+      value: "YOUR_POSTGRES_HOST"
+    - name: DATABASE_TYPE
+      value: "postgres"
+    - name: DATABASE_PORT
+      value: "YOUR_POSTGRES_PORT"
+  envFrom:
+    secretRefs:
+      - baseline-redis-secret
+      - iss-service-secret
+    configMapRefs:
+      - baseline-configmap
 
 # sidecarimage:
 #   name: 'logging-sidecar'

@@ -1,11 +1,12 @@
 namespace: "hanwha"
 fullnameOverride: kafka-rest-producer-service
-
+postgresUpdater:
+  image: ghcr.io/htaic/kafka-client-services-postgres-runner
 image:
   replicaCount: 1
   repository: ghcr.io/htaic/kafka-rest-producer-service
   pullPolicy: Always
-  tag: 'sha-4ab91b8'
+  tag: "sha-aa5a23b"
   secretref: "baseline-postgresql-secret" # this is the secret where the database information will be pulled from
   env:
     - name: APP_DATA_VERSION
@@ -23,7 +24,13 @@ image:
     - name: MAX_PRODUCER_RESTART_ATTEMPTS
       value: "3"
     - name: OPERATION_ENV
-      value: edge
+      value: "edge"
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
 
 ##########################
 # Caution updating below #
@@ -39,5 +46,5 @@ imagePullSecrets:
 
 resources:
   requests:
-    cpu: 100m
-    memory: 250Mi
+    cpu: 150m
+    memory: 350Mi

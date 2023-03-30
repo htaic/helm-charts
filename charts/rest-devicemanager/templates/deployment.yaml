@@ -30,6 +30,24 @@ spec:
       serviceAccountName: {{ include ".helm.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      {{- if .Values.postgresProvisioner }}
+      initContainers:
+        - name: {{ .Chart.Name }}-postgres-provisioner
+          {{- if hasKey .Values.postgresProvisioner "tag" }}
+          image: {{ .Values.postgresProvisioner.image }}:{{ .Values.postgresProvisioner.tag }}
+          {{ else }}
+          image: {{ .Values.postgresProvisioner.image }}:latest
+          {{ end }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: ['sh', '-c', '/home/developer/executecommands.sh']
+          envFrom:
+            - secretRef:
+                name: "baseline-postgresql-secret"
+            - secretRef:
+                name: "iss-service-secret"
+            - configMapRef:
+                name: "baseline-configmap"
+      {{- end }}
       containers:
         {{- if .Values.sidecarimage }}
         - name: "{{ .Values.sidecarimage.name }}"
@@ -47,8 +65,14 @@ spec:
           {{- end }}
           {{- if .Values.image.envFrom }}
           envFrom:
-            - secretRef:
-                name: {{ .Values.image.envFrom }}
+            {{- range .Values.image.envFrom.secretRefs }}
+              - secretRef:
+                  name: {{ . }}
+            {{- end }}
+            {{- range .Values.image.envFrom.configMapRefs }}
+              - configMapRef:
+                  name: {{ . }}
+            {{- end }}
           {{- end }}
           args: [ {{.Values.image.args}} ]
           ports:

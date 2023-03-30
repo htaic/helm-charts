@@ -8,7 +8,7 @@ clone the [helm-charts](https://github.com/htaic/helm-charts) repo into your sou
 
 ```bash
 git clone https://github.com/htaic/helm-charts.git
-mv ./helm-charts/charts/auth-service/values.yaml ./DevValues.yaml
+mv ./helm-charts/charts/auth-service/values.yaml ./Values.dev.yaml
 ```
 
 or

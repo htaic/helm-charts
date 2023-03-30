@@ -461,7 +461,7 @@ oathkeeper:
         {
           "id": "authorize_get_assigned_roles",
           "match": {
-            "url": "http://<[^/]+>/auth<(/v[1-9]{1,2}){0,1}>/<organizations>/<[[:alnum:],-]+>/<users>/<[[:alnum:],-]+>/<assigned-roles>",
+            "url": "http://<[^/]+>/auth<(/v[1-9]{1,2}){0,1}>/<organizations>/<[[:alnum:],-]+>/<(users|groups)>/<[[:alnum:],-]+>/<assigned-roles>",
             "methods": [
               "GET"
             ]

@@ -3,29 +3,28 @@ fullnameOverride: gql-devicemanager
 
 image:
   replicaCount: 1
-  repository: ghcr.io/htaic/gql-devicemanager-local
+  repository: ghcr.io/htaic/gql-devicemanager
   pullPolicy: Always
   containerPort: 3003
   tag: "latest"
   hostname: gql-devicemanager
   domainPath: "graphql"
   noStripPath: true
-  envFrom: baseline-redis-secret
   env:
-    - name: DATABASE_HOST
-      value: "YOUR_POSTGRES_HOST"
-    - name: DATABASE_TYPE
-      value: "postgres"
-    - name: DATABASE_PASSWORD
-      value: "YOUR_POSTGRES_PASSWORD"
-    - name: DATABASE_PORT
-      value: "YOUR_POSTGRES_PORT"
-    - name: DATABASE_NAME
-      value: "postgres"
-    - name: DATABASE_USER
-      value: "postgres"
     - name: OPERATION_ENV
       value: "EDGE"
+    - name: DATABASE_HOST
+      value: "baseline-postgresql"
+    - name: DATABASE_TYPE
+      value: "postgres"
+    - name: DATABASE_PORT
+      value: "YOUR_POSTGRES_PORT"
+  envFrom:
+    secretRefs:
+      - baseline-redis-secret
+      - iss-service-secret
+    configMapRefs:
+      - baseline-configmap
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com

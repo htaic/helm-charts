@@ -15,7 +15,11 @@ image:
     - name: SERVICE_NAME
       value: VideoConnectionManager-1.0    
     - name: MSG_VERSION
-      value: '1.0'    
+      value: '1.0'
+    - name: GRAPHQLURL
+      value: 'http://complete-graphql-postgres-provisioner-hasura:8080/v1/graphql'
+    # - name: GRAPHQLSERVERTOKEN
+    #   value: './hasura/v1/api'
 
 sidecarimage:
   name: 'logging-sidecar'
