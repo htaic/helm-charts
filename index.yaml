@@ -1131,6 +1131,26 @@ entries:
   complete-auth-service:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-03-30T17:00:15.297113721Z"
+    dependencies:
+    - name: oathkeeper
+      repository: https://k8s.ory.sh/helm/charts
+      version: 0.25.6
+    - name: kratos
+      repository: https://k8s.ory.sh/helm/charts
+      version: 0.27.0
+    - name: keto
+      repository: https://k8s.ory.sh/helm/charts
+      version: 0.25.6
+    description: A Helm chart for Kubernetes micro auth services
+    digest: 49bd90d505134d9c023ee9f3730e926ca37984c199b40ed8827a8812bb92ca3a
+    name: complete-auth-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/complete-auth-service-0.1.27/complete-auth-service-0.1.27.tgz
+    version: 0.1.27
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-03-17T21:35:25.188075582Z"
     dependencies:
     - name: oathkeeper
@@ -1483,6 +1503,16 @@ entries:
     - https://github.com/htaic/helm-charts/releases/download/complete-baseline-0.0.1/complete-baseline-0.0.1.tgz
     version: 0.0.1
   complete-org-service:
+  - apiVersion: v2
+    appVersion: 0.0.2
+    created: "2023-03-30T17:00:15.530544072Z"
+    description: Helm chart for Organization Management service
+    digest: 4cd0f3d37c1057afadc03a03d2b8d13638e9c03643cc66e1f328bf323ae385f4
+    name: complete-org-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/complete-org-service-0.1.11/complete-org-service-0.1.11.tgz
+    version: 0.1.11
   - apiVersion: v2
     appVersion: 0.0.2
     created: "2023-03-17T21:35:25.345979207Z"
@@ -3065,4 +3095,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2023-03-30T15:04:27.522870582Z"
+generated: "2023-03-30T17:00:15.531000681Z"
