@@ -1,39 +1,42 @@
-postgresUpdater: 
+postgresUpdater:
   image: ghcr.io/htaic/org-management-service-postgres-runner
 image:
   replicaCount: 1
   repository: ghcr.io/htaic/org-management-services
   pullPolicy: Always
   containerPort: 3001
-  tag: 'latest' 
-  hostname: 'org'
-  domainPath: 'customer'
+  tag: "latest"
+  hostname: "org"
+  domainPath: "customer"
   env:
+    - name: OPERATION_ENV
+      value: edge
     - name: AWS_REGION
       value: YOUR_AWS_REGION
     - name: AWS_ACCOUNT
       value: "YOUR_AWS_ACCOUNT_ID"
-    - name: PRODUCER_QUEUE
-      value: YOUR_SQS_CONSUMER_QUEUE
-    - name: CONSUMER_QUEUE
-      value: YOUR_SQS_PRODUCER_QUEUE
+    # Queue name Environment Variables ONLY required for Cloud - TEMPORARY FOR M2
+    # - name: ORG_SERVICE_QUEUE
+    #   value: YOUR_SQS_ORG_SERVICE_QUEUE
+    # - name: AUTH_SERVICE_QUEUE
+    #   value: YOUR_SQS_AUTH_SERVICE_QUEUE
   livenessProbe: livez
   readinessProbe: readyz
 sidecarimage:
-  name: 'logging-sidecar'
+  name: "logging-sidecar"
   repository: ghcr.io/htaic/platform-logging-service
   pullPolicy: Always
-  tag: 'latest'
+  tag: "latest"
 imagePullSecrets:
   - name: dockerconfigjson-github-com
 service:
   type: ClusterIP
 resources:
   requests:
-    cpu: 100m
-    memory: 250Mi
+    cpu: 250m
+    memory: 750Mi
 serviceAccount:
-  name: 'org-service'
+  name: "org-service"
   create: true
   annotations:
     eks.amazonaws.com/role-arn: arn:aws:iam::YOUR_AWS_ACCOUNT_ID:role/YOUR_SQS_ROLE

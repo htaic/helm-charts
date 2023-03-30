@@ -18,11 +18,11 @@ image:
     - name: OPERATION_ENV
       value: 'EDGE'
     - name: DATABASE_HOST
-      value: "baseline-postgresql"
+      value: "YOUR_POSTGRES_HOST"
     - name: DATABASE_TYPE
       value: "postgres"
     - name: DATABASE_PORT
-      value: "5432"
+      value: "YOUR_POSTGRES_PORT"
   envFrom:
     secretRefs:
       - baseline-redis-secret
