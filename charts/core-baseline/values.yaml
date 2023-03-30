@@ -48,9 +48,14 @@ postgresql:
     tag: 14
     pullPolicy: Always
     containerPort: 5432
-    persistence:
-      enabled: true
-      existingClaim: postgres-pvc
+# Optional (should be passed in from parent chart)
+storage:
+  className: local-path
+  provisioner: rancher.io/local-path
+  capacity: 20Gi
+  volumeMode: Filesystem
+  # If you want to persist storage, use the volume path
+  volumeMountPath: /var/lib/postgresql/data
     # env:
     #   # https://hub.docker.com/_/postgres
     #   - name: PGDATA
