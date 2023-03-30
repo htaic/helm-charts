@@ -17,7 +17,7 @@ image:
       value: YOUR_AWS_REGION
     - name: AWS_ACCOUNT
       value: "YOUR_AWS_ACCOUNT_ID"
-    # Queue name Environment Variables ONLY required for Cloud
+    # Queue name Environment Variables ONLY required for Cloud - TEMPORARY FOR M2
     # - name: AUTH_SERVICE_QUEUE
     #   value: YOUR_SQS_AUTH_SERVICE_QUEUE
     # - name: ORG_SERVICE_QUEUE
