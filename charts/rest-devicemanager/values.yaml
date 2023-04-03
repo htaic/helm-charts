@@ -14,21 +14,51 @@ image:
   noStripPath: true
   livenessProbePeriodSeconds: 50
   readinessProbePeriodSeconds: 50
-  env:
-    - name: OPERATION_ENV
-      value: 'EDGE'
-    - name: DATABASE_HOST
-      value: "YOUR_POSTGRES_HOST"
-    - name: DATABASE_TYPE
-      value: "postgres"
-    - name: DATABASE_PORT
-      value: "YOUR_POSTGRES_PORT"
   envFrom:
     secretRefs:
       - baseline-redis-secret
       - iss-service-secret
     configMapRefs:
       - baseline-configmap
+  env:
+    - name: OPERATION_ENV
+      value: 'EDGE'
+    - name: DATABASE_HOST
+      value: "YOUR_POSTGRES_HOST"
+    - name: DATABASE_PORT
+      value: "YOUR_POSTGRES_PORT"
+    - name: AWS_IOTCORE_ENDPOINT
+      value: 'YOUR_AWS_IOTCORE_ENDPOINT'
+    - name: AWS_IOTCORE_CONTROL_PLANE
+      value: 'YOUR_AWS_IOTCORE_CONTROL_PLANE'
+    - name: AWS_IOTCORE_POLICY_NAME
+      value: 'YOUR_AWS_IOTCORE_POLICY_NAME'
+    - name: DATABASE_TYPE
+      value: "postgres"
+    - name: AWS_IOTCORE_REGION
+      value: 'YOUR_AWS_REGION'
+    - name: AWS_S3_REGION
+      value: 'YOUR_AWS_REGION'
+    - name: AWS_SQS_REGION
+      value: 'YOUR_AWS_REGION'
+    - name: AWS_SQS_CONSUMER_QUEUE_URL
+      value: 'https://sqs.YOUR_AWS_REGION.amazonaws.com/YOUR_AWS_ACCOUNT_ID/YOUR_SQS_DEVICE_SERVICE_QUEUE'
+    - name: AWS_SQS_PRODUCER_QUEUE_URL
+      value: 'https://sqs.YOUR_AWS_REGION.amazonaws.com/YOUR_AWS_ACCOUNT_ID/YOUR_SQS_AUTH_SERVICE_QUEUE'
+    - name: AUTH_SERVICE_URL
+      value: 'http://auth-service-complete-auth-service:3000'
+    - name: AWS_IOTCORE_API_VERSION
+      value: '2015-05-28'
+    - name: AWS_S3_API_VERSION
+      value: '2006-03-01'
+    - name: AWS_IOTCORE_CLIENTID
+      value: 'device_install_service_01'
+    - name: AWS_S3_OPENAPP_BUCKET
+      value: 'saas-dapp-d-uw2'
+    - name: AWS_S3_OPENAPP_KEY_PREFIX
+      value: 'openapp'
+    - name: TEMP_USER_ID
+      value: 'issu-6988fff4-5b2c-422f-9afb-73b362296a46'
 
 # sidecarimage:
 #   name: 'logging-sidecar'
