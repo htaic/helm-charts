@@ -1,6 +1,16 @@
 testStack:
   enabled: false
   domainPath: "auth-integ-test"
+  # Overriding "queues" env variables
+  # env:
+  # - name: AUTH_SERVICE_QUEUE
+  #   value: YOUR_TEST_SQS_AUTH_SERVICE_QUEUE
+  # - name: ORG_SERVICE_QUEUE
+  #   value: YOUR_TEST_SQS_ORG_SERVICE_QUEUE
+  # - name: DEVICE_SERVICE_QUEUE
+  #   value: YOUR_TEST_SQS_DEVICE_SERVICE_QUEUE
+  # - name: SITE_SERVICE_QUEUE
+  #   value: YOUR_TEST_SQS_SITE_SERVICE_QUEUE
 postgresUpdater:
   image: ghcr.io/htaic/auth-services-postgres-runner
   # # sql tag override
