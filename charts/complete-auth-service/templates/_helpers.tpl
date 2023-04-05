@@ -51,6 +51,14 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
+Test Stack selector labels
+*/}}
+{{- define ".helm.testStackSelectorLabels" -}}
+app.kubernetes.io/name: {{ include ".helm.name" . }}-test-stack
+app.kubernetes.io/instance: {{ .Release.Name }}-test-stack
+{{- end }}
+
+{{/*
 Create the name of the service account to use
 */}}
 {{- define ".helm.serviceAccountName" -}}
