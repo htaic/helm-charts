@@ -1,3 +1,6 @@
+testStack:
+  enabled: false
+  domainPath: "auth-integ-test"
 postgresUpdater:
   image: ghcr.io/htaic/auth-services-postgres-runner
   # # sql tag override
