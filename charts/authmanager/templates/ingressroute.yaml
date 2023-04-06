@@ -16,6 +16,7 @@ spec:
           port: {{ .Values.image.containerPort }}
       {{ if (not (hasKey .Values.image "noStripPath")) }}
       middlewares:
+      - name: add-trailing-slash
       - name: "{{ include ".helm.fullname" . }}-strip"
       {{ end }}
 {{ end }}
