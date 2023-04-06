@@ -44,14 +44,14 @@ spec:
             {{- range $overrideEnvVar := $.Values.testStack.env -}}
             {{- if eq $envVar.name $overrideEnvVar.name }}
             - name: {{ $overrideEnvVar.name }}
-              value: {{ $overrideEnvVar.value }}
+              value: {{ $overrideEnvVar.value | quote }}
             {{- $found = true -}}
             {{- end }}
             {{- end -}}
             {{- end }}
             {{- if not $found }}
             - name: {{ $envVar.name }}
-              value: {{ $envVar.value }}
+              value: {{ $envVar.value | quote }}
             {{- end }}
             {{- end -}}
           {{- end }}
