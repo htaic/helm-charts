@@ -45,7 +45,7 @@ spec:
             {{- if eq $envVar.name $overrideEnvVar.name }}
             - name: {{ $overrideEnvVar.name }}
               value: {{ $overrideEnvVar.value }}
-            {{ $found = true }}
+            {{- $found = true -}}
             {{- end }}
             {{- end -}}
             {{- end }}
