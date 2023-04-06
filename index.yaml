@@ -1131,6 +1131,26 @@ entries:
   complete-auth-service:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-04-06T21:12:53.583144706Z"
+    dependencies:
+    - name: oathkeeper
+      repository: https://k8s.ory.sh/helm/charts
+      version: 0.25.6
+    - name: kratos
+      repository: https://k8s.ory.sh/helm/charts
+      version: 0.27.0
+    - name: keto
+      repository: https://k8s.ory.sh/helm/charts
+      version: 0.25.6
+    description: A Helm chart for Kubernetes micro auth services
+    digest: 49710347a5de356f27c39d57fd54ad29b368bb442a580b02697a8d13503eebda
+    name: complete-auth-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/complete-auth-service-0.1.32/complete-auth-service-0.1.32.tgz
+    version: 0.1.32
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-04-06T18:07:00.290993421Z"
     dependencies:
     - name: oathkeeper
@@ -3254,4 +3274,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2023-04-06T18:07:00.291342326Z"
+generated: "2023-04-06T21:12:53.728302312Z"
