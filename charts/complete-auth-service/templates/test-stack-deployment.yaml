@@ -38,7 +38,22 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           {{- if .Values.image.env }}
           env: 
-            {{- toYaml .Values.image.env | nindent 12 }}
+            {{- range $envVar := .Values.image.env -}}
+            {{ $found := false }}
+            {{- if hasKey $.Values.testStack "env" }}
+            {{- range $overrideEnvVar := $.Values.testStack.env -}}
+            {{- if eq $envVar.name $overrideEnvVar.name }}
+            - name: {{ $overrideEnvVar.name }}
+              value: {{ $overrideEnvVar.value }}
+            {{- $found = true -}}
+            {{- end }}
+            {{- end -}}
+            {{- end }}
+            {{- if not $found }}
+            - name: {{ $envVar.name }}
+              value: {{ $envVar.value }}
+            {{- end }}
+            {{- end -}}
           {{- end }}
           args: [ {{.Values.image.args}} ]
           ports:
