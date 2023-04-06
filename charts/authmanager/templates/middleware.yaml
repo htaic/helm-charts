@@ -8,4 +8,25 @@ spec:
   stripPrefix:
     prefixes:
       - "/{{ .Values.image.domainPath }}"
+    forceSlash: false
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name:  "{{ include ".helm.fullname" . }}-remove-trailing-slash"
+  namespace: {{ .Values.namespace }}
+spec:
+  redirectRegex:
+    permanent: true
+    regex: "(.*)\\/$"
+    replacement: "${1}"
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name:  "{{ include ".helm.fullname" . }}-fix-forward-to-service"
+  namespace: {{ .Values.namespace }}
+spec:
+  replacePath:
+    path: "/"
 {{ end }}

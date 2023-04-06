@@ -7,6 +7,9 @@ traefik:
     pullPolicy: Always
   service:
     type: LoadBalancer
+  logs:
+    access:
+      enabled: true
 
 redis:
   redis:
