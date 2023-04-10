@@ -1,6 +1,11 @@
 testStack:
   enabled: false
   domainPath: "auth-integ-test"
+  serviceAccount:
+    name: "auth-test-stack"
+    create: true
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::YOUR_AWS_ACCOUNT_ID:role/YOUR_SQS_ROLE_FOR_TEST_STACK
   # Overriding "queues" env variables
   # env:
   # - name: AUTH_SERVICE_QUEUE

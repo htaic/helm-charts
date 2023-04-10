@@ -68,3 +68,15 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+
+{{/*
+Create the name of the service account to use for test stack
+*/}}
+{{- define ".helm.testStackServiceAccountName" -}}
+{{- if .Values.testStack.serviceAccount.create }}
+{{- default (include ".helm.fullname" .) .Values.testStack.serviceAccount.name }}
+{{- else }}
+{{- default "default" .Values.testStack.serviceAccount.name }}
+{{- end }}
+{{- end }}

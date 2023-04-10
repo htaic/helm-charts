@@ -15,8 +15,7 @@ spec:
           kind: Service
           port: {{ .Values.image.containerPort }}
       middlewares:
-      - name: "{{ include ".helm.fullname" . }}-headers"
-      - name: "{{ include ".helm.fullname" . }}-strip"
+      - name: "{{ include ".helm.fullname" . }}-strip-test-stack"
     - kind: Rule
       match: (PathPrefix("/{{ .Values.testStack.domainPath }}"))
       services:
@@ -25,5 +24,5 @@ spec:
           port: {{ .Values.image.containerPort }}
       middlewares:
       - name: "{{ include ".helm.fullname" . }}-forward-auth"
-      - name: "{{ include ".helm.fullname" . }}-strip"
+      - name: "{{ include ".helm.fullname" . }}-strip-test-stack"
 {{ end }}
