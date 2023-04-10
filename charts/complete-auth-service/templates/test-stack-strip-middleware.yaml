@@ -1,0 +1,11 @@
+{{ if .Values.testStack.enabled }}
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: "{{ include ".helm.fullname" . }}-strip-test-stack"
+  namespace: {{ .Values.namespace }}
+spec:
+  stripPrefixRegex:
+    regex:
+      - "/{{ .Values.testStack.domainPath }}"
+{{ end }}
