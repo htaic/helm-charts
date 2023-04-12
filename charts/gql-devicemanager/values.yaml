@@ -10,21 +10,43 @@ image:
   hostname: gql-devicemanager
   domainPath: "graphql"
   noStripPath: true
-  env:
-    - name: OPERATION_ENV
-      value: "EDGE"
-    - name: DATABASE_HOST
-      value: "baseline-postgresql"
-    - name: DATABASE_TYPE
-      value: "postgres"
-    - name: DATABASE_PORT
-      value: "YOUR_POSTGRES_PORT"
   envFrom:
     secretRefs:
       - baseline-redis-secret
       - iss-service-secret
     configMapRefs:
       - baseline-configmap
+  env:
+    - name: OPERATION_ENV
+      value: "EDGE"
+    - name: DATABASE_HOST
+      value: "YOUR_POSTGRES_HOST"
+    - name: DATABASE_TYPE
+      value: "postgres"
+    - name: DATABASE_PORT
+      value: "YOUR_POSTGRES_PORT"
+    - name: AWS_IOTCORE_ENDPOINT
+      value: 'YOUR_AWS_IOTCORE_ENDPOINT'
+    - name: AWS_IOTCORE_CLIENTID
+      value: "device_install_service_01"
+    - name: AWS_IOTCORE_API_VERSION
+      value: "2015-05-28"
+    - name: AWS_IOTCORE_CONTROL_PLANE
+      value: 'YOUR_AWS_IOTCORE_CONTROL_PLANE'
+    - name: AWS_IOTCORE_POLICY_NAME
+      value: 'YOUR_AWS_IOTCORE_POLICY_NAME'
+    - name: AWS_IOTCORE_REGION
+      value: 'YOUR_AWS_REGION'
+    - name: AWS_S3_API_VERSION
+      value: "2006-03-01"
+    - name: AWS_S3_REGION
+      value: 'YOUR_AWS_REGION'
+    - name: AWS_S3_OPENAPP_BUCKET
+      value: 'saas-dapp-d-uw2'
+    - name: AWS_S3_OPENAPP_KEY_PREFIX
+      value: "openapp"
+    - name: AWS_REGION
+      value: "us-west-2"
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
