@@ -6,7 +6,7 @@ image:
   replicaCount: 1
   repository: ghcr.io/htaic/kafka-rest-consumer-service
   pullPolicy: Always
-  tag: "sha-06e2d71"
+  tag: "sha-2e9dd44"
   secretref: "baseline-postgresql-secret" # this is the secret where the database information will be pulled from
   env:
     - name: APP_DATA_VERSION
