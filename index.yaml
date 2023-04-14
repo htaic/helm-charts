@@ -2555,6 +2555,17 @@ entries:
   kafka-rest-consumer-service:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-04-14T19:33:01.472374698Z"
+    description: A Helm chart for Kubernetes micro front ends deployed behind a traefik
+      ingress
+    digest: 27460610b9814c51039d437db8ec3938cc88c7df9a54205419523c3e62c0aefb
+    name: kafka-rest-consumer-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/kafka-rest-consumer-service-0.0.6/kafka-rest-consumer-service-0.0.6.tgz
+    version: 0.0.6
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-03-30T22:41:01.493782735Z"
     description: A Helm chart for Kubernetes micro front ends deployed behind a traefik
       ingress
@@ -3294,4 +3305,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2023-04-10T23:12:19.851408583Z"
+generated: "2023-04-14T19:33:01.669016847Z"
