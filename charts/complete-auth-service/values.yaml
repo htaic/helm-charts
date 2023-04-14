@@ -25,7 +25,7 @@ image:
   repository: ghcr.io/htaic/auth-service
   pullPolicy: Always
   containerPort: 3000
-  tag: "sha-07d8a05"
+  tag: "sha-5c2d386"
   hostname: auth
   domainPath: "auth"
   env:
