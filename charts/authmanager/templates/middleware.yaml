@@ -2,7 +2,29 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: "{{ include ".helm.fullname" . }}-strip"
+  name: "{{ include ".helm.fullname" . }}-path-fix-chain"
+  namespace: {{ .Values.namespace }}
+spec:
+  chain:
+    middlewares:
+      - name: "{{ include ".helm.fullname" . }}-redirect-no-slash"
+      - name: "{{ include ".helm.fullname" . }}-strip-prefix"
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: "{{ include ".helm.fullname" . }}-redirect-no-slash"
+  namespace: {{ .Values.namespace }}
+spec:
+  redirectRegex:
+    regex: "^(https?://[^/]+/[a-z0-9_]+)$$"
+    replacement: ${1}/
+    permanent: true
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: "{{ include ".helm.fullname" . }}-strip-prefix"
   namespace: {{ .Values.namespace }}
 spec:
   stripPrefix:
