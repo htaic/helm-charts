@@ -499,6 +499,16 @@ entries:
   authmanager:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-04-17T21:32:00.374156898Z"
+    description: A Helm chart for Kubernetes
+    digest: 8ebba772a3730b1f92f230971f6c21f5f6cfc54e642f04bd05f5c9b92d4b9608
+    name: authmanager
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/authmanager-0.0.3/authmanager-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-03-01T23:51:09.687060648Z"
     description: A Helm chart for Kubernetes
     digest: 1d3de696f09e7315ef3353ba3f4019db7dceb4c84a2e4e17782d62cf90718616
@@ -3325,4 +3335,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2023-04-14T20:01:28.666778946Z"
+generated: "2023-04-17T21:32:00.374459902Z"
