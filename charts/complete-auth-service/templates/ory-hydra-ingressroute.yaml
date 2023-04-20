@@ -1,7 +1,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: "{{ include ".helm.fullname" . }}-ory-keto-route"
+  name: "{{ include ".helm.fullname" . }}-ory-hydra-route"
   namespace: {{ .Values.namespace }}
 spec:
   entryPoints:
@@ -10,9 +10,8 @@ spec:
     - kind: Rule
       match: (PathPrefix("/ory"))
       services:
-        - name: "{{ .Release.Name }}-keto-read"
+        - name: "{{ .Release.Name }}-hydra-public"
           kind: Service
           port: 80
       middlewares:
-      - name: "{{ include ".helm.fullname" . }}-headers"
-      - name: "{{ include ".helm.fullname" . }}-ory-keto-strip"
+      - name: "{{ include ".helm.fullname" . }}-ory-hydra-strip"
