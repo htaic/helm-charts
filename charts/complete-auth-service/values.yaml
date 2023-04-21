@@ -858,7 +858,6 @@ oathkeeper:
           ]
         }
       ]
-
 kratos:
   autoscaling:
     enabled: false
@@ -947,7 +946,7 @@ kratos:
     config:
       dsn: "postgres://postgres:YOUR_POSTGRES_PASSWORD@YOUR_POSTGRES_HOST:5432/ory?sslmode=disable&max_conn_lifetime=10s"
       selfservice:
-        default_browser_return_url: https://ui.domain.com
+        default_browser_return_url: https://hanwha.com
         methods:
           password:
             enabled: true
@@ -999,3 +998,17 @@ keto:
       dsn: "postgres://postgres:YOUR_POSTGRES_PASSWORD@YOUR_POSTGRES_HOST:5432/ory?sslmode=disable&max_conn_lifetime=10s"
     log:
       leak_sensitive_values: false
+hydra:
+  cloud: false
+  maester:
+    enabled: false
+  hydra:
+    automigration:
+      enabled: true
+      customCommand:
+        - hydra
+    config:
+      dsn: "postgres://postgres:YOUR_POSTGRES_PASSWORD@YOUR_POSTGRES_HOST:5432/ory-hydra?sslmode=disable&max_conn_lifetime=10s"
+      urls:
+        self:
+          issuer: https://hanwha.com
