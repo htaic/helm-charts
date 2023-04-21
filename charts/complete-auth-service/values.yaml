@@ -999,7 +999,7 @@ keto:
     log:
       leak_sensitive_values: false
 hydra:
-  enabled: false
+  cloud: false
   maester:
     enabled: false
   hydra:
