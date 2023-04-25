@@ -1,0 +1,57 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include ".helm.fullname" . }}-pre-deployment
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include ".helm.labels" . | nindent 4 }}
+  annotations:
+    helm.sh/hook: pre-install,pre-upgrade
+    helm.sh/hook-delete-policy: before-hook-creation
+    helm.sh/hook-weight: "-9"
+spec:
+  template:
+    metadata:
+      annotations:
+        helm.sh/hook: pre-install,pre-upgrade
+        helm.sh/hook-delete-policy: before-hook-creation
+        helm.sh/hook-weight: "-9"
+        {{- with .Values.podAnnotations }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include ".helm.serviceAccountName" . }}-pre-job-sa
+      restartPolicy: Never
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+      - name: {{ .Chart.Name }}-db-creator
+        {{- if hasKey .Values.postgresUpdater "tag" }}
+        image: {{ .Values.postgresUpdater.image }}:{{ .Values.postgresUpdater.tag }}
+        {{ else }}
+        image: {{ .Values.postgresUpdater.image }}:{{ .Values.image.tag }}
+        {{- end }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        command: ['sh', '-c', '/home/developer/predeployment.sh']
+        envFrom:
+            - secretRef:
+                name: "baseline-postgresql-secret"
+            - configMapRef:
+                name: "baseline-configmap"
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+  backoffLimit: 3

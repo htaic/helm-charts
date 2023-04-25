@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: "{{ .Release.Name }}-ory-keto-configmap"
+  name: "{{ .Release.Name }}-ory-configmap"
 data:
   ORY_KRATOS_BASE_ADMIN_URL: "http://{{ .Release.Name }}-kratos-admin"
   ORY_KRATOS_BASE_PUBLIC_URL: "http://{{ .Release.Name }}-kratos-public"
