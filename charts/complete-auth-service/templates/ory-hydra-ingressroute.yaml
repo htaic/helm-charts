@@ -12,6 +12,6 @@ spec:
       services:
         - name: "{{ .Release.Name }}-hydra-public"
           kind: Service
-          port: 80
+          port: http
       middlewares:
       - name: "{{ include ".helm.fullname" . }}-ory-hydra-strip"

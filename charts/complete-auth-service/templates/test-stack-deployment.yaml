@@ -64,7 +64,7 @@ spec:
             - secretRef:
                 name: "auth-service-secret"
             - configMapRef:
-                name: "{{ .Release.Name }}-ory-keto-configmap"           
+                name: "{{ .Release.Name }}-ory-configmap"
             - configMapRef:
                 name: "baseline-configmap"
           livenessProbe:
