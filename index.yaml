@@ -1969,6 +1969,15 @@ entries:
   cp-kafka-rest:
   - apiVersion: v1
     appVersion: "1.0"
+    created: "2023-04-26T18:24:37.323559051Z"
+    description: A Helm chart for Confluent Kafka REST Proxy on Kubernetes
+    digest: fe4e27353cfa17aa12bc2912b1f646808484daaf00786316cf368640f04346c4
+    name: cp-kafka-rest
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/cp-kafka-rest-0.2.0/cp-kafka-rest-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v1
+    appVersion: "1.0"
     created: "2023-02-18T09:08:25.627385532Z"
     description: A Helm chart for Confluent Kafka REST Proxy on Kubernetes
     digest: cf1ceaa5d493bb8af49317bb4acd898921a3da8f848392d7ed569c18d508a702
@@ -3405,4 +3414,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2023-04-26T00:39:41.763259816Z"
+generated: "2023-04-26T18:24:37.323849554Z"
