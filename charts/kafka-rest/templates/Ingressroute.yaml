@@ -14,5 +14,5 @@ spec:
           kind: Service
           port: 8082
       middlewares:
-      - name: "{{ include ".helm.fullname" . }}-strip"
       - name: "{{ include ".helm.fullname" . }}-forward-auth"
+      - name: "{{ include ".helm.fullname" . }}-strip"
