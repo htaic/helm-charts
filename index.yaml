@@ -2965,6 +2965,17 @@ entries:
   portletmedia:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-04-26T00:39:41.762860315Z"
+    description: A Helm chart for Kubernetes micro front ends deployed behind a traefik
+      ingress
+    digest: 0a0e7000b0fabd096aef73170548caa14b678472593a463b13e1ed01c1e192f6
+    name: portletmedia
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/portletmedia-0.0.2/portletmedia-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-03-22T16:16:11.6948111Z"
     description: A Helm chart for Kubernetes micro front ends deployed behind a traefik
       ingress
@@ -3394,4 +3405,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2023-04-25T23:26:53.210956265Z"
+generated: "2023-04-26T00:39:41.763259816Z"
