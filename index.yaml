@@ -2982,6 +2982,18 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/organization-stack-0.0.1/organization-stack-0.0.1.tgz
     version: 0.0.1
+  poc-frontend:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-05-31T06:55:49.53356159Z"
+    description: A Helm chart for Kubernetes poc frontend deployed behind a traefik
+      ingress
+    digest: 52c82fe8249813719d70f1d2b6455ba71d4659d4cb4fb354dc31634f44b9351b
+    name: poc-frontend
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/poc-frontend-0.0.6/poc-frontend-0.0.6.tgz
+    version: 0.0.6
   portletmedia:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -3425,4 +3437,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2023-04-27T15:34:48.024870123Z"
+generated: "2023-05-31T06:55:49.534095397Z"
