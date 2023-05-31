@@ -1,0 +1,17 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: "{{ include ".helm.fullname" . }}-route"
+  namespace: {{ .Values.namespace }}
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: Host(`poc-frontend.dev.hticdev.net`)
+      services:
+        - name: {{ include ".helm.fullname" . }}
+          kind: Service
+          port: {{ .Values.image.containerPort }}
+      middlewares:
+      - name: "{{ include ".helm.fullname" . }}-headers"
