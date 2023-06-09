@@ -1,0 +1,40 @@
+namespace: "hanwha"
+fullnameOverride: anaheim-project-service
+
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/anaheim-project-service
+  pullPolicy: Always
+  containerPort: 3014
+  tag: "latest"
+  livenessProbe: healthcheck
+  readinessProbe: healthcheck
+  hostname: anaheim-project-service
+  envFrom:
+    secretRefs:
+      - hasura-secret
+  env:
+    - name: GRAPHQLURL
+      value: "/hasura/v1/graphql"
+
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 150Mi
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
