@@ -1,5 +1,17 @@
 apiVersion: v1
 entries:
+  anaheim-annotator-service:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-06-14T19:06:27.926232044Z"
+    description: A Helm chart for Kubernetes anaheim-annotator-service deployed behind
+      a traefik ingress
+    digest: 67c0eb967ca9a8473188bf6c07f995d8ce3d506385f6f8c90e51e003d0cc5c31
+    name: anaheim-annotator-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-annotator-service-0.0.1/anaheim-annotator-service-0.0.1.tgz
+    version: 0.0.1
   anaheim-baseline:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -3485,4 +3497,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2023-06-14T18:45:57.117424701Z"
+generated: "2023-06-14T19:06:27.926631246Z"
