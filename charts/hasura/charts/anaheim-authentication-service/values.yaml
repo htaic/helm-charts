@@ -1,0 +1,31 @@
+namespace: "hanwha"
+domainPath: "auth"
+
+image:
+  repository: ghcr.io/htaic/anaheim-authentication-service
+  tag: latest
+  pullPolicy: Always
+  containerPort: 9876
+  hostname: auth-service
+  #env:
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 250Mi
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80

@@ -2,7 +2,7 @@ namespace: "hanwha"
 domainPath: "hasura"
 replicaCount: 1
 postgresProvisioner:
-  image: ghcr.io/htaic/graphql-db-postgres-provisioner
+  image: ghcr.io/htaic/anaheim-graphql-postgres-provisioner
   databaseName: graphql
   databaseUser: YOUR_HASURA_USER
   databasePassword: YOUR_HASURA_PASSWORD
