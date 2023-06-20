@@ -6,7 +6,9 @@ postgresProvisioner:
   databaseName: graphql
   databaseUser: YOUR_HASURA_USER
   databasePassword: YOUR_HASURA_PASSWORD
+  databaseHost: YOUR_POSTGRES_HOST
 
+authServiceCookieOptionsDomain: YOUR_K8S_DOMAIN
 hasuraToken: YOUR_ADMIN_SECRET
 
 image:
@@ -16,8 +18,6 @@ image:
   containerPort: 8080
   hostname: hasura
   env:
-    - name: HASURA_GRAPHQL_METADATA_DATABASE_URL
-      value: postgres://YOUR_HASURA_USER:YOUR_HASURA_PASSWORD@YOUR_POSTGRES_HOST:YOUR_POSTGRES_PORT/graphql
       ## enable the console served by server
     - name: HASURA_GRAPHQL_ENABLE_CONSOLE
       value: "true" # set to "false" to disable console
