@@ -1,5 +1,6 @@
 namespace: "hanwha"
 fullnameOverride: anaheim-project-service
+domainPath: "projects"
 
 image:
   replicaCount: 1
