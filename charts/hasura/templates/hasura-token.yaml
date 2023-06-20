@@ -4,3 +4,6 @@ metadata:
   name: "hasura-secret"
 data:
   HASURA_GRAPHQL_ADMIN_SECRET: {{ .Values.hasuraToken | b64enc }}
+stringData:
+  HASURA_GRAPHQL_METADATA_DATABASE_URL: "postgres://{{ .Values.postgresProvisioner.databaseUser }}:{{ .Values.postgresProvisioner.databasePassword }}@{{ .Values.postgresProvisioner.databaseHost }}:5432/{{ .Values.postgresProvisioner.databaseName }}"
+  COOKIEOPTIONS_DOMAIN: {{ .Values.authServiceCookieOptionsDomain }}

@@ -35,11 +35,16 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          # envFrom:
-          #   - secretRef:
-          #       name: "hasura-secret"
-          {{- if .Values.image.env }}
+          envFrom:
+            - secretRef:
+                name: "hasura-secret"
           env: 
+            - name: POSTGRESURI
+              valueFrom:
+                secretKeyRef:
+                  name: "hasura-secret"
+                  key: HASURA_GRAPHQL_METADATA_DATABASE_URL
+          {{- if .Values.image.env }}
             {{- toYaml .Values.image.env | nindent 12 }}
           {{- end }}
           args: [ {{.Values.image.args}} ]
