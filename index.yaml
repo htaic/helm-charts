@@ -14,6 +14,29 @@ entries:
     version: 0.0.1
   anaheim-baseline:
   - apiVersion: v2
+    appVersion: 0.0.3
+    created: "2023-06-20T16:20:55.401473393Z"
+    dependencies:
+    - name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: ^10.24.2
+    - name: aws-efs-csi-driver
+      repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
+      version: ^2.3.6
+    - name: postgresql
+      repository: https://htaic.github.io/helm-charts
+      version: ^0.1.9
+    - name: redis
+      repository: https://htaic.github.io/helm-charts
+      version: ^0.0.5
+    description: A Helm chart for Kubernetes
+    digest: a6ed4cdebb4bde845c3838a762058577b9e306faf2ae77bd4070d24f17272944
+    name: anaheim-baseline
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-baseline-0.0.3/anaheim-baseline-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
     appVersion: 0.0.2
     created: "2023-06-20T02:05:19.516601867Z"
     dependencies:
@@ -3576,4 +3599,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2023-06-20T02:05:19.516888566Z"
+generated: "2023-06-20T16:20:55.402020222Z"
