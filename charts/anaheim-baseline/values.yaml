@@ -13,18 +13,8 @@ traefik:
     type: NodePort
   ports:
     web:
-      # internal web port
-      port: 80
       nodePort: 32414
       targetPort: web
-  securityContext:
-    capabilities:
-      drop: [ALL]
-      add: [NET_BIND_SERVICE]
-    readOnlyRootFilesystem: true
-    runAsGroup: 0
-    runAsNonRoot: false
-    runAsUser: 0
 
 redis:
   redis:
