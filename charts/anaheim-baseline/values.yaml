@@ -14,7 +14,7 @@ traefik:
   ports:
     web:
       # internal web port
-      port: 80
+      port: 8080
       nodePort: 32414
       targetPort: web
 
