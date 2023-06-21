@@ -14,6 +14,29 @@ entries:
     version: 0.0.1
   anaheim-baseline:
   - apiVersion: v2
+    appVersion: 0.0.4
+    created: "2023-06-21T00:03:30.625596963Z"
+    dependencies:
+    - name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: ^10.24.2
+    - name: aws-efs-csi-driver
+      repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
+      version: ^2.3.6
+    - name: postgresql
+      repository: https://htaic.github.io/helm-charts
+      version: ^0.1.9
+    - name: redis
+      repository: https://htaic.github.io/helm-charts
+      version: ^0.0.5
+    description: A Helm chart for Kubernetes
+    digest: ad3a4df0ff7620666f3a7dc960401211cabb3093938bb45df97f071aa66d1501
+    name: anaheim-baseline
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-baseline-0.0.4/anaheim-baseline-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
     appVersion: 0.0.3
     created: "2023-06-20T16:20:55.401473393Z"
     dependencies:
@@ -106,6 +129,17 @@ entries:
     - https://github.com/htaic/helm-charts/releases/download/anaheim-project-service-0.0.1/anaheim-project-service-0.0.1.tgz
     version: 0.0.1
   anaheim-training-assets-service:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-06-21T00:03:30.797528936Z"
+    description: A Helm chart for Kubernetes anaheim-training-assets-service deployed
+      behind a traefik ingress
+    digest: 63f15034cd07534931a0807d9b80aed64ed731728d2a4492b9b5c3f34feef357
+    name: anaheim-training-assets-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-training-assets-service-0.0.2/anaheim-training-assets-service-0.0.2.tgz
+    version: 0.0.2
   - apiVersion: v2
     appVersion: 0.0.1
     created: "2023-06-14T18:45:57.117062676Z"
@@ -3610,4 +3644,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2023-06-20T22:11:51.927184611Z"
+generated: "2023-06-21T00:03:30.797880548Z"
