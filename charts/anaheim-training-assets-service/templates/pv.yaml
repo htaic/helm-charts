@@ -1,0 +1,18 @@
+{{- if and .Values.storage (not (hasKey .Values.storage "disableCreate")) }}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: "{{ include ".helm.fullname" . }}-volume"
+  namespace: {{ .Values.Namespace }}
+spec:
+  storageClassName: {{ .Values.storage.className }}
+  capacity:
+    storage: {{ .Values.storage.capacity }}
+  volumeMode: {{ .Values.storage.volumeMode }}
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  csi:
+    driver: {{ .Values.storage.provisioner }}
+    {{- toYaml .Values.storage.csi | nindent 4 }}
+{{- end }}

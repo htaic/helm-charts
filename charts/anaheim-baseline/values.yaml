@@ -17,14 +17,6 @@ traefik:
       port: 80
       nodePort: 32414
       targetPort: web
-  securityContext:
-    capabilities:
-      drop: [ALL]
-      add: [NET_BIND_SERVICE]
-    readOnlyRootFilesystem: true
-    runAsGroup: 0
-    runAsNonRoot: false
-    runAsUser: 0
 
 redis:
   redis:
@@ -75,16 +67,16 @@ postgresql:
       # https://hub.docker.com/_/postgres
       - name: PGDATA
         value: /var/lib/postgresql/data/postgres # # To enable EFS on the cluster, use the following values in the root helm chart
-  storage:
-    className: efs-storageclass
-    provisioner: efs.csi.aws.com
-    capacity: 20Gi
-    volumeMode: Filesystem
-    csi:
-      volumeHandle: YOUR_FILESYSTEM_ID
-      volumeAttributes:
-        encryptInTransit: "true"
-    volumeMountPath: /var/lib/postgresql/data
+  # storage:
+  #   className: efs-storageclass
+  #   provisioner: efs.csi.aws.com
+  #   capacity: 20Gi
+  #   volumeMode: Filesystem
+  #   csi:
+  #     volumeHandle: YOUR_FILESYSTEM_ID
+  #     volumeAttributes:
+  #       encryptInTransit: "true"
+  #   volumeMountPath: /var/lib/postgresql/data
   # RDS:
   #   host: "YOUR_RDS_HOST"
 

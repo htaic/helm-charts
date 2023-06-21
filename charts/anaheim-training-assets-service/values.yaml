@@ -1,5 +1,7 @@
 namespace: "hanwha"
 fullnameOverride: anaheim-training-assets-service
+domainPath: "assets"
+
 
 image:
   replicaCount: 1
@@ -14,6 +16,10 @@ image:
   env:
     - name: GRAPHQLURL
       value: "/hasura/v1/graphql"
+    - name: STORAGE_BASE_PATH
+      value: "/assets"
+    - name: HASURA_GRAPHQL_ADMIN_SECRET
+      value: YOUR_ADMIN_SECRET
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
@@ -36,3 +42,14 @@ autoscaling:
   minReplicas: 1
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
+
+storage:
+  className: efs-storageclass
+  provisioner: efs.csi.aws.com
+  capacity: 50Gi
+  volumeMode: Filesystem
+  csi:
+    volumeHandle: YOUR_FILESYSTEM_ID
+    volumeAttributes:
+      encryptInTransit: "true"
+  volumeMountPath: /assets
