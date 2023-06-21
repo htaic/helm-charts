@@ -1,4 +1,4 @@
-{{- if and .Values.storage (not (hasKey .Values.storage "disableCreate")) }}
+# {{- if and .Values.storage (not (hasKey .Values.storage "disableCreate")) }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -11,4 +11,4 @@ spec:
   resources:
     requests:
       storage: {{ .Values.storage.capacity }}
-{{- end }}
+# {{- end }}
