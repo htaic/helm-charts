@@ -15,11 +15,9 @@ image:
       - hasura-secret
   env:
     - name: GRAPHQLURL
-      value: "/hasura/v1/graphql"
+      value: "./hasura/v1/graphql"
     - name: STORAGE_BASE_PATH
       value: "/assets"
-    - name: HASURA_GRAPHQL_ADMIN_SECRET
-      value: YOUR_ADMIN_SECRET
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
