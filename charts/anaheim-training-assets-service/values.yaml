@@ -10,6 +10,8 @@ image:
   containerPort: 3010
   tag: "latest"
   hostname: anaheim-training-assets-service
+  readinessProbe: healthcheck
+  livenessProbePeriodSeconds: healthcheck
   envFrom:
     secretRefs:
       - hasura-secret
@@ -47,7 +49,7 @@ storage:
   capacity: 50Gi
   volumeMode: Filesystem
   csi:
-    volumeHandle: YOUR_FILESYSTEM_ID
+    volumeHandle: fs-0c0a36d725a10d757
     volumeAttributes:
       encryptInTransit: "true"
   volumeMountPath: /assets
