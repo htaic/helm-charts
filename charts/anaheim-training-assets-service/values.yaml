@@ -10,12 +10,14 @@ image:
   containerPort: 3010
   tag: "latest"
   hostname: anaheim-training-assets-service
+  readinessProbe: healthcheck
+  livenessProbePeriodSeconds: healthcheck
   envFrom:
     secretRefs:
       - hasura-secret
   env:
     - name: GRAPHQLURL
-      value: "http://hasura:8080/v1/graphql"
+      value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
     - name: STORAGE_BASE_PATH
       value: "/assets"
 
