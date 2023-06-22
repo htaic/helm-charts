@@ -17,7 +17,7 @@ image:
       - hasura-secret
   env:
     - name: GRAPHQLURL
-      value: "http://hasura:8080/v1/graphql"
+      value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
     - name: STORAGE_BASE_PATH
       value: "/assets"
 
