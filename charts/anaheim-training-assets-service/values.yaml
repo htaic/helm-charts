@@ -15,7 +15,7 @@ image:
       - hasura-secret
   env:
     - name: GRAPHQLURL
-      value: "./hasura/v1/graphql"
+      value: "http://hasura:8080/v1/graphql"
     - name: STORAGE_BASE_PATH
       value: "/assets"
 

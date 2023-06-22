@@ -16,7 +16,7 @@ image:
       - hasura-secret
   env:
     - name: GRAPHQLURL
-      value: "./hasura/v1/graphql"
+      value: "http://hasura:8080/v1/graphql"
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
