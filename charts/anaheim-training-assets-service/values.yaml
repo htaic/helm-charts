@@ -11,7 +11,7 @@ image:
   tag: "latest"
   hostname: anaheim-training-assets-service
   readinessProbe: healthcheck
-  livenessProbePeriodSeconds: healthcheck
+  livenessProbe: healthcheck
   envFrom:
     secretRefs:
       - hasura-secret
