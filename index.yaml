@@ -3350,6 +3350,17 @@ entries:
   poc-frontend:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-06-23T00:43:17.860951663Z"
+    description: A Helm chart for Kubernetes poc frontend deployed behind a traefik
+      ingress
+    digest: 3a1f2170b6c9319cde9027ccb959a7041be728e295d0d48de8c43c7d567b955a
+    name: poc-frontend
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/poc-frontend-0.0.7/poc-frontend-0.0.7.tgz
+    version: 0.0.7
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-05-31T06:55:49.53356159Z"
     description: A Helm chart for Kubernetes poc frontend deployed behind a traefik
       ingress
@@ -3802,4 +3813,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2023-06-22T23:34:30.017111219Z"
+generated: "2023-06-23T00:43:17.861263062Z"
