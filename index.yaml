@@ -150,6 +150,18 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/anaheim-baseline-0.0.1/anaheim-baseline-0.0.1.tgz
     version: 0.0.1
+  anaheim-portal:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-06-29T18:20:58.983839659Z"
+    description: A Helm chart for Kubernetes anaheim-portal deployed behind a traefik
+      ingress
+    digest: d5a1f4f1ca8ee369ee0ee6842fa35b59b26478c0a4f29325ec510f3f93c2a9da
+    name: anaheim-portal
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-portal-0.0.1/anaheim-portal-0.0.1.tgz
+    version: 0.0.1
   anaheim-project-service:
   - apiVersion: v2
     appVersion: 0.0.2
@@ -3813,4 +3825,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2023-06-23T00:43:17.861263062Z"
+generated: "2023-06-29T18:20:58.984447665Z"
