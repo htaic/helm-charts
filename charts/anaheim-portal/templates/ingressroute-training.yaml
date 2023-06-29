@@ -1,7 +1,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: "{{ include ".helm.fullname" . }}-route"
+  name: "{{ include ".helm.fullname" . }}-training-route"
   namespace: {{ .Values.namespace }}
 spec:
   entryPoints:
