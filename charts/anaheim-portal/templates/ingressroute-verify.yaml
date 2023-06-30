@@ -10,6 +10,6 @@ spec:
     - match: PathPrefix("/verify")
       kind: Rule
       services:
-        - name: {{ include ".helm.fullname" . }}
+        - name: {{ include ".helm.fullname" . }}-verify
           kind: Service
           port: 3002

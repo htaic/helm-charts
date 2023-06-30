@@ -10,6 +10,6 @@ spec:
     - match: PathPrefix("/training")
       kind: Rule
       services:
-        - name: {{ include ".helm.fullname" . }}
+        - name: {{ include ".helm.fullname" . }}-training
           kind: Service
           port: 3001
