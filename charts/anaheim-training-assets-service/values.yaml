@@ -1,6 +1,6 @@
 namespace: "hanwha"
 fullnameOverride: anaheim-training-assets-service
-domainPath: "assets"
+domainPath: "training-assets"
 
 
 image:
