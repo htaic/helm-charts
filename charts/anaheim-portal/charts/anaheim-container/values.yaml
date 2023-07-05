@@ -4,7 +4,7 @@ image:
   pullPolicy: Always
   containerPort: 3000
   tag: "latest"
-  hostname: anaheim-portal/anaheim-container
+  hostname: anaheim-container
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com

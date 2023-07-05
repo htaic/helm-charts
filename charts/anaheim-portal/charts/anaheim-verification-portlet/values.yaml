@@ -4,7 +4,7 @@ image:
   pullPolicy: Always
   containerPort: 3002
   tag: "latest"
-  hostname: anaheim-portal/anaheim-verification-portlet
+  hostname: anaheim-verification-portlet
   domainPath: "/training"
 
 imagePullSecrets:
