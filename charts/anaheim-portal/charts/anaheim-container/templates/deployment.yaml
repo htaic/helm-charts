@@ -44,6 +44,8 @@ spec:
           envFrom: 
             - secretRef:
                 name: "hasura-secret"
+            - configMapRef:
+                name: "{{ .Release.Name }}-configmap"
           {{- if .Values.image.env }}
           env: 
             {{- toYaml .Values.image.env | nindent 12 }}

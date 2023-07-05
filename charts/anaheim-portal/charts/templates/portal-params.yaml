@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "{{ .Release.Name }}-configmap"
+data:
+  VITE_DEV_APP_TRAINING: "/training/assets/remoteEntry.js"
+  VITE_DEV_APP_VERIFICATION: "/verify/assets/remoteEntry.js"
+  VITE_PROJECTS_API: "/projects"
+  VITE_ASSETS_API: "/training-assets"
