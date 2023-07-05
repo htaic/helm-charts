@@ -1,3 +1,4 @@
+{{- if ((.Values.service).type) -}}
 apiVersion: v1
 kind: Service
 metadata:
@@ -6,7 +7,7 @@ metadata:
   labels:
     {{- include ".helm.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.service.type }}
+  type: {{ ((.Values.service).type) }}
   ports:
     - port: {{ .Values.image.containerPort }}
       targetPort: {{ .Values.image.containerPort }}
@@ -14,3 +15,4 @@ spec:
       name: http
   selector:
     {{- include ".helm.selectorLabels" . | nindent 4 }}
+{{- end }}

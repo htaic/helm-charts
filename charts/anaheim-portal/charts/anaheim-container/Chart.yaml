@@ -1,6 +1,6 @@
 apiVersion: v2
-name: anaheim-portal
-description: A Helm chart for Kubernetes anaheim-portal deployed behind a traefik ingress
+name: anaheim-container
+description: Helm chart for Sites Management back end service
 
 # A chart can be either an 'application' or a 'library' chart.
 #
@@ -15,13 +15,14 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.0.5
+version: 0.0.1
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
 appVersion: "0.0.1"
+# kubeVersion: ">=1.17.0-0"
 
 dependencies:
   - name: anaheim-container
@@ -32,4 +33,4 @@ dependencies:
     repository: "file://./charts/anaheim-training-portlet"
   - name: anaheim-verification-portlet
     version: "^0"
-    repository: "file://./charts/anaheim-verification-portlet
+    repository: "file://./charts/anaheim-verification-portlet"

@@ -1,0 +1,29 @@
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/anaheim-portal/anaheim-container
+  pullPolicy: Always
+  containerPort: 3000
+  tag: "latest"
+  hostname: anaheim-portal/anaheim-container
+
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 150Mi
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80

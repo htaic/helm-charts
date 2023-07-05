@@ -6,8 +6,8 @@ metadata:
   labels:
     {{- include ".helm.labels" . | nindent 4 }}
 spec:
-  {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.image.replicaCount }}
+  {{- if not ((.Values.autoscaling).enabled) }}
+  replicas: {{ ((.Values.image).replicaCount) }}
   {{- end }}
   selector:
     matchLabels:
@@ -35,7 +35,7 @@ spec:
         - name: "{{ .Values.sidecarimage.name }}"
           image: "{{ .Values.sidecarimage.repository }}:{{ .Values.sidecarimage.tag }}"
           imagePullPolicy: {{ .Values.sidecarimage.pullPolicy }}
-        {{- end }}      
+        {{- end }}  
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
@@ -45,36 +45,11 @@ spec:
           env: 
             {{- toYaml .Values.image.env | nindent 12 }}
           {{- end }}
-          {{- if .Values.image.envFrom }}
-          envFrom:
-            {{- range .Values.image.envFrom.secretRefs }}
-              - secretRef:
-                  name: {{ . }}
-            {{- end }}
-            {{- range .Values.image.envFrom.configMapRefs }}
-              - configMapRef:
-                  name: {{ . }}
-            {{- end }}
-          {{- end }}
           args: [ {{.Values.image.args}} ]
           ports:
             - name: http
               containerPort: {{ .Values.image.containerPort }}
               protocol: TCP
-          # livenessProbe:
-          #   httpGet:
-          #     path: /{{ .Values.image.livenessProbe }}
-          #     port: http
-          #   {{- if .Values.image.livenessProbePeriodSeconds }}
-          #   periodSeconds: {{ .Values.image.livenessProbePeriodSeconds }}
-          #   {{- end }}
-          # readinessProbe:
-          #   httpGet:
-          #     path: /{{ .Values.image.readinessProbe }}
-          #     port: http
-          #   {{- if .Values.image.readinessProbePeriodSeconds }}
-          #   periodSeconds: {{ .Values.image.readinessProbePeriodSeconds }}
-          #   {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
