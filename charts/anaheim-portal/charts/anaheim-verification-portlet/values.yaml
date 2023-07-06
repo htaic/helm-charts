@@ -5,7 +5,7 @@ image:
   containerPort: 3002
   tag: "latest"
   hostname: anaheim-verification-portlet
-  domainPath: "/training"
+  domainPath: "verify"
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
