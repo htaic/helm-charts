@@ -20,6 +20,8 @@ image:
       value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
     - name: STORAGE_BASE_PATH
       value: "/assets"
+    - name: BASE_URL_POSTFIX
+      value: "training-assets"  
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
