@@ -5,7 +5,7 @@ image:
   containerPort: 3001
   tag: "latest"
   hostname: anaheim-training-portlet
-  domainPath: "/training"
+  domainPath: "training"
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
