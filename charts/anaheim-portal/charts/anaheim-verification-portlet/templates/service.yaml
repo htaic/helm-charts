@@ -1,16 +1,18 @@
+{{- if ((.Values.service).type) -}}
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include ".helm.fullname" . }}-verify
+  name: {{ include ".helm.fullname" . }}
   namespace: {{ .Values.namespace }}
   labels:
     {{- include ".helm.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.service.type }}
+  type: {{ ((.Values.service).type) }}
   ports:
-    - port: 3002
-      targetPort: 3002
+    - port: {{ .Values.image.containerPort }}
+      targetPort: {{ .Values.image.containerPort }}
       protocol: TCP
       name: http
   selector:
     {{- include ".helm.selectorLabels" . | nindent 4 }}
+{{- end }}

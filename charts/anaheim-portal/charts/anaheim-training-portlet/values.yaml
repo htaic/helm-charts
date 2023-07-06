@@ -1,13 +1,11 @@
-namespace: "hanwha"
-fullnameOverride: anaheim-portal
-
 image:
   replicaCount: 1
-  repository: ghcr.io/htaic/anaheim-portal
+  repository: ghcr.io/htaic/anaheim-portal/anaheim-training-portlet
   pullPolicy: Always
-  containerPort: 3000
+  containerPort: 3001
   tag: "latest"
-  hostname: anaheim-portal
+  hostname: anaheim-training-portlet
+  domainPath: "/training"
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
