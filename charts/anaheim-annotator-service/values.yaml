@@ -8,6 +8,7 @@ image:
   containerPort: 3012
   tag: "latest"
   hostname: anaheim-annotator-service
+  domainPath: annotations
   envFrom:
     secretRefs:
       - hasura-secret
