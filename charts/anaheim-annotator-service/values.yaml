@@ -15,6 +15,8 @@ image:
   env:
     - name: GRAPHQLURL
       value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
+    - name: APIURLASSETS
+      value: "http://anaheim-training-assets-service:3010"
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
