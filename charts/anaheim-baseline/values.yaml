@@ -4,6 +4,8 @@ enableTraefikDashboard: true
 AWS:
   region: YOUR_AWS_REGION
   accountId: "YOUR_AWS_ACCOUNT_ID"
+  event_bridge_key_id: YOUR_EVENT_BRIDGE_KEY
+  event_bridge_key_secret: YOUR_EVENT_BRIDGE_KEY_SECRET
 
 # https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml
 traefik:
