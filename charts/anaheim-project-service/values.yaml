@@ -15,6 +15,8 @@ image:
     secretRefs:
       - hasura-secret
       - aws-eventbridge-secret
+    configMapRefs:
+      - aws-account-configmap
   env:
     - name: GRAPHQLURL
       value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
