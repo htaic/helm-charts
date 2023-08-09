@@ -20,6 +20,8 @@ image:
   env:
     - name: GRAPHQLURL
       value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
+    - name: API_ANNOTATION_SERVICE
+      value: "http://anaheim-annotator-service:3012"
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
