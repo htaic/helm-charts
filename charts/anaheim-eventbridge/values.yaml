@@ -1,0 +1,47 @@
+namespace: "hanwha"
+fullnameOverride: anaheim-eventbridge
+domainPath: "eventbridge"
+
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/anaheim-eventbridge
+  pullPolicy: Always
+  containerPort: 9877
+  tag: "latest"
+  livenessProbe: /api/v1/livez
+  readinessProbe: /api/v1/readyz
+  hostname: anaheim-eventbridge
+  envFrom:
+    secretRefs:
+      - aws-eventbridge-secret
+    configMapRefs:
+      - aws-account-configmap
+  env:
+    - name: SERVICEHOST
+      value: "anaheim-eventbridge"
+    - name: SERVICEPORT
+      value: "9877"
+    - name: EVENT_SOURCE
+      value: "com.hanwha.anaheim.app"
+
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 150Mi
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
