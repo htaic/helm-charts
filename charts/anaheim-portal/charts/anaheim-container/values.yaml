@@ -5,6 +5,14 @@ image:
   containerPort: 3000
   tag: "latest"
   hostname: anaheim-container
+  envFrom:
+    secretRefs:
+      - hasura-secret
+  env:
+    - name: GRAPHQLURL
+      value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
+    - name: GRAPHQLWSURL
+      value: "wss://anaheim-graphql-service-hasura:8080/v1/graphql"
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
