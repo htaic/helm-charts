@@ -6,6 +6,14 @@ image:
   tag: "latest"
   hostname: anaheim-verification-portlet
   domainPath: "verify"
+  envFrom:
+    secretRefs:
+      - hasura-secret
+  env:
+    - name: GRAPHQLURL
+      value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
+    - name: GRAPHQLWSURL
+      value: "wss://anaheim-graphql-service-hasura:8080/v1/graphql"
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
