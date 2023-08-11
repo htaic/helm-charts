@@ -17,6 +17,8 @@ image:
       value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
     - name: APIURLASSETS
       value: "http://anaheim-training-assets-service:3010"
+    - name: APIURLPROJECTS
+      value: "http://anaheim-project-service:3014"
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
