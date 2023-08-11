@@ -12,8 +12,6 @@ image:
   readinessProbe: /api/v1/readyz
   hostname: anaheim-eventbridge
   envFrom:
-    secretRefs:
-      - aws-eventbridge-secret
     configMapRefs:
       - aws-account-configmap
   env:
