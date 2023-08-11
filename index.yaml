@@ -221,6 +221,17 @@ entries:
   anaheim-eventbridge:
   - apiVersion: v2
     appVersion: 0.0.2
+    created: "2023-08-11T21:27:03.696360717Z"
+    description: A Helm chart for Kubernetes anaheim-eventbridge deployed behind a
+      traefik ingress
+    digest: 0ebb7422da0624dccab9fed738ca849770a19fa05565ee7e3a3f005b4a1cef26
+    name: anaheim-eventbridge
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-eventbridge-0.0.2/anaheim-eventbridge-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 0.0.2
     created: "2023-08-11T17:43:20.030639466Z"
     description: A Helm chart for Kubernetes anaheim-eventbridge deployed behind a
       traefik ingress
@@ -4045,4 +4056,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2023-08-11T17:50:39.664239094Z"
+generated: "2023-08-11T21:27:03.697005027Z"
