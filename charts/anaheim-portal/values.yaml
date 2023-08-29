@@ -1,0 +1,121 @@
+fullnameOverride: "anaheim-portal"
+anaheim-container:
+  image:
+    replicaCount: 1
+    repository: ghcr.io/htaic/anaheim-portal/anaheim-container
+    pullPolicy: Always
+    containerPort: 3000
+    tag: "latest"
+    hostname: anaheim-container
+    envFrom:
+      secretRefs:
+        - hasura-secret
+    env:
+      - name: GRAPHQLURL
+        value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
+      - name: GRAPHQLWSURL
+        value: "wss://anaheim-graphql-service-hasura:8080/v1/graphql"
+
+  imagePullSecrets:
+    - name: dockerconfigjson-github-com
+
+  service:
+    type: ClusterIP
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 150Mi
+
+  serviceAccount:
+    create: true
+    annotations: {}
+    name: ""
+
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 80
+anaheim-training-portlet:
+  image:
+    replicaCount: 1
+    repository: ghcr.io/htaic/anaheim-portal/anaheim-training-portlet
+    pullPolicy: Always
+    containerPort: 3001
+    tag: "latest"
+    hostname: anaheim-training-portlet
+    domainPath: "training"
+    envFrom:
+      secretRefs:
+        - hasura-secret
+    env:
+      - name: GRAPHQLURL
+        value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
+      - name: GRAPHQLWSURL
+        value: "wss://anaheim-graphql-service-hasura:8080/v1/graphql"
+      - name: VITE_CREATE_PROJECT
+        value: false
+      - name: VITE_DELETE_PROJECT
+        value: true
+
+  imagePullSecrets:
+    - name: dockerconfigjson-github-com
+
+  service:
+    type: ClusterIP
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 150Mi
+
+  serviceAccount:
+    create: true
+    annotations: {}
+    name: ""
+
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 80
+anaheim-verification-portlet:
+  image:
+    replicaCount: 1
+    repository: ghcr.io/htaic/anaheim-portal/anaheim-verification-portlet
+    pullPolicy: Always
+    containerPort: 3002
+    tag: "latest"
+    hostname: anaheim-verification-portlet
+    domainPath: "verify"
+    envFrom:
+      secretRefs:
+        - hasura-secret
+    env:
+      - name: GRAPHQLURL
+        value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
+      - name: GRAPHQLWSURL
+        value: "wss://anaheim-graphql-service-hasura:8080/v1/graphql"
+
+  imagePullSecrets:
+    - name: dockerconfigjson-github-com
+
+  service:
+    type: ClusterIP
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 150Mi
+
+  serviceAccount:
+    create: true
+    annotations: {}
+    name: ""
+
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 80
