@@ -11,12 +11,6 @@ image:
   livenessProbe: healthcheck
   readinessProbe: healthcheck
   hostname: anaheim-project-service
-  envFrom:
-    secretRefs:
-      - hasura-secret
-      - aws-eventbridge-secret
-    configMapRefs:
-      - aws-account-configmap
   env:
     - name: GRAPHQLURL
       value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
