@@ -55,9 +55,9 @@ anaheim-training-portlet:
       - name: GRAPHQLWSURL
         value: "wss://anaheim-graphql-service-hasura:8080/v1/graphql"
       - name: VITE_CREATE_PROJECT
-        value: false
+        value: "false"
       - name: VITE_DELETE_PROJECT
-        value: true
+        value: "true"
 
   imagePullSecrets:
     - name: dockerconfigjson-github-com
