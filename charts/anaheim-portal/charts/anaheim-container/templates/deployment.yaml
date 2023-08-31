@@ -46,8 +46,13 @@ spec:
                 name: "hasura-secret"
             - configMapRef:
                 name: "{{ .Release.Name }}-configmap"
-          {{- if .Values.image.env }}
           env: 
+            - name: GRAPHQLSERVERTOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: hasura-secret
+                  key: HASURA_GRAPHQL_ADMIN_SECRET
+          {{- if .Values.image.env }}
             {{- toYaml .Values.image.env | nindent 12 }}
           {{- end }}
           args: [ {{.Values.image.args}} ]
