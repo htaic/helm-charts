@@ -50,15 +50,13 @@ spec:
           {{- if .Values.image.env }}
             {{- toYaml .Values.image.env | nindent 12 }}
           {{- end }}
-          {{- if .Values.image.envFrom }}
           envFrom:
-            {{- range .Values.image.envFrom.secretRefs }}
+              - secretRef:
+                  name: hasura-secret
               - secretRef:
                   name: aws-eventbridge-secret
               - configMapRef:
-                  name: {{ . }}
-            {{- end }}
-          {{- end }}
+                  name: aws-account-configmap
           args: [ {{.Values.image.args}} ]
           ports:
             - name: http
