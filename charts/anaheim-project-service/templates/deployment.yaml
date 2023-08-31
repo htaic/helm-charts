@@ -41,8 +41,13 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          {{- if .Values.image.env }}
           env: 
+            - name: GRAPHQLSERVERTOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: hasura-secret
+                  key: HASURA_GRAPHQL_ADMIN_SECRET
+          {{- if .Values.image.env }}
             {{- toYaml .Values.image.env | nindent 12 }}
           {{- end }}
           envFrom:

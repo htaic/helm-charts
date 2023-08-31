@@ -12,9 +12,6 @@ image:
   hostname: anaheim-training-assets-service
   readinessProbe: healthcheck
   livenessProbe: healthcheck
-  envFrom:
-    secretRefs:
-      - hasura-secret
   env:
     - name: GRAPHQLURL
       value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
