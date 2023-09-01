@@ -2,7 +2,6 @@ namespace: "hanwha"
 fullnameOverride: anaheim-training-assets-service
 domainPath: "training-assets"
 
-
 image:
   replicaCount: 1
   repository: ghcr.io/htaic/anaheim-training-assets-service
@@ -10,13 +9,15 @@ image:
   containerPort: 3010
   tag: "latest"
   hostname: anaheim-training-assets-service
-  readinessProbe: healthcheck
-  livenessProbe: healthcheck
+  envFrom:
+    secretRefs:
+      - hasura-secret
   env:
     - name: GRAPHQLURL
       value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
     - name: STORAGE_BASE_PATH
       value: "/assets"
+
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
@@ -43,7 +44,7 @@ autoscaling:
 storage:
   className: efs-storageclass
   provisioner: efs.csi.aws.com
-  capacity: 50Gi
+  capacity: 100Gi
   volumeMode: Filesystem
   csi:
     volumeHandle: YOUR_FILESYSTEM_ID
