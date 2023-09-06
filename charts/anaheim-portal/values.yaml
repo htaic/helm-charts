@@ -57,7 +57,7 @@ anaheim-training-portlet:
       - name: VITE_CREATE_PROJECT
         value: "false"
       - name: VITE_DELETE_PROJECT
-        value: "true"
+        value: "false"
 
   imagePullSecrets:
     - name: dockerconfigjson-github-com
