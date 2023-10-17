@@ -8,7 +8,10 @@ AWS:
   event_bridge_key_secret: YOUR_EVENT_BRIDGE_KEY_SECRET
 
 # https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml
+# changed Traefik deployment to Deamonset
 traefik:
+  deployment:
+    kind: DaemonSet
   image:
     pullPolicy: Always
   service:
@@ -35,12 +38,12 @@ aws-efs-csi-driver:
       annotations:
         eks.amazonaws.com/role-arn: arn:aws:iam::YOUR_AWS_ACCOUNT_ID:role/YOUR_EKS_ROLE
   storageClasses:
-    - name: efs-storageclass
-      mountOptions:
-        - tls
-      parameters:
-        provisioningMode: efs-ap
-        fileSystemId: YOUR_FILESYSTEM_ID
+  - name: efs-storageclass
+    mountOptions:
+    - tls
+    parameters:
+      provisioningMode: efs-ap
+      fileSystemId: YOUR_FILESYSTEM_ID
 
 postgresql:
   service:
@@ -68,9 +71,9 @@ postgresql:
     pullPolicy: Always
     containerPort: 5432
     env:
-      # https://hub.docker.com/_/postgres
-      - name: PGDATA
-        value: /var/lib/postgresql/data/postgres # # To enable EFS on the cluster, use the following values in the root helm chart
+    # https://hub.docker.com/_/postgres
+    - name: PGDATA
+      value: /var/lib/postgresql/data/postgres # # To enable EFS on the cluster, use the following values in the root helm chart
   # storage:
   #   className: efs-storageclass
   #   provisioner: efs.csi.aws.com
