@@ -70,11 +70,7 @@ spec:
             periodSeconds: {{ .Values.image.readinessProbePeriodSeconds }}
             {{- end }}
           resources:
-            {{- toYaml .Values.resources | nindent 12 }}
-          volumeMounts:
-          
-          - name: efs-vol-mount
-            mountPath: {{ .Values.storage.volumeMountPath }}
+            {{- toYaml .Values.resources | nindent 12 }}          
       volumes:
         
         - name: efs-vol-mount
