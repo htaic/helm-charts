@@ -1,0 +1,38 @@
+namespace: "hanwha"
+fullnameOverride: anaheim-wavesync-adapter-service
+domainPath: "wavesync-adapter"
+
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/anaheim-wavesync-adapter-service
+  pullPolicy: Always
+  containerPort: 3018
+  tag: "latest"
+  livenessProbe: healthcheck
+  readinessProbe: healthcheck
+  hostname: anaheim-wavesync-adapter-service
+  env:
+    - name: GRAPHQLURL
+      value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
+
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 150Mi
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
