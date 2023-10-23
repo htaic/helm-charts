@@ -19,6 +19,9 @@ image:
       value: "http://anaheim-training-assets-service:3010"
     - name: APIURLPROJECTS
       value: "http://anaheim-project-service:3014"
+    - name: SERVICE_ENV
+      value: "non-local"
+
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
