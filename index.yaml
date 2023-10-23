@@ -703,6 +703,17 @@ entries:
     version: 0.0.1
   anaheim-wavesync-adapter-service:
   - apiVersion: v2
+    appVersion: 0.0.4
+    created: "2023-10-23T23:05:04.769212473Z"
+    description: A Helm chart for Kubernetes anaheim-wavesync-adapter-service deployed
+      behind a traefik ingress
+    digest: 4291553d6499245482370bf1eb514f1bc79461683c6c347476bfd532f9e33bca
+    name: anaheim-wavesync-adapter-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-wavesync-adapter-service-0.0.4/anaheim-wavesync-adapter-service-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
     appVersion: 0.0.2
     created: "2023-10-19T22:10:31.510123346Z"
     description: A Helm chart for Kubernetes anaheim-wavesync-adapter-service deployed
@@ -4253,4 +4264,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2023-10-23T17:44:14.472809844Z"
+generated: "2023-10-23T23:05:04.769882277Z"
