@@ -15,7 +15,7 @@ image:
     - name: GRAPHQLURL
       value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
     - name: WAVESYNC_BASE_URL
-      value: https://sync.wavevms.com
+      value: "https://sync.wavevms.com"
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
