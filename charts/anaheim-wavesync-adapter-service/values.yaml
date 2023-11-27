@@ -16,8 +16,8 @@ image:
       value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
     - name: WAVESYNC_BASE_URL
       value: "https://sync.wavevms.com"
-    - name: WAVESYNC_BOOKMARKS_URL
-      value: "relay-la.vmsproxy.com/rest/v2/devices/*/bookmarks"
+    - name: WAVESYNC_API_URL
+      value: "relay.vmsproxy.com"
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
