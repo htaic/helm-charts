@@ -18,6 +18,8 @@ image:
       value: "https://sync.wavevms.com"
     - name: WAVESYNC_API_URL
       value: "relay.vmsproxy.com"
+    - name: TRAINING_ASSETS_SERVICE_URL
+      value: "http://anaheim-training-assets-service:3010"
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
