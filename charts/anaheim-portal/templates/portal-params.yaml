@@ -9,3 +9,4 @@ data:
   VITE_ASSETS_API: "/training-assets"
   VITE_ANNOTATOR_API: "/annotations"
   VITE_FEATURE_FLAGS_API: "/feature-flags-service"
+  VITE_WAVESYNC_API: "/wavesync-adapter"
