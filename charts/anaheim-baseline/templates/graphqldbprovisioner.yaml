@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: "hasura-postgresql-secret"
+data:
+  DATABASE_PASSWORD: {{ .Values.graphql.databasePassword | b64enc }}
+stringData:
+  DATABASE_HOST: {{ .Values.graphql.databaseHost }}
+  DATABASE_NAME: {{ .Values.graphql.databaseName }}
+  DATABASE_USER: {{ .Values.graphql.databaseUser }}
