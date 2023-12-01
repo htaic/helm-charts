@@ -43,7 +43,7 @@ anaheim-training-portlet:
     repository: ghcr.io/htaic/anaheim-portal/anaheim-training-portlet
     pullPolicy: Always
     containerPort: 3001
-    tag: latest
+    tag: 0.0.290-0
     hostname: anaheim-training-portlet
     domainPath: "training"
     envFrom:
@@ -57,6 +57,11 @@ anaheim-training-portlet:
 
   imagePullSecrets:
     - name: dockerconfigjson-github-com
+
+  middleWare:
+    forwardAuthaddress: http://anaheim-graphql-service-anaheim-authentication-service:9876/api/v1/validate
+    trustForwardHeader: true
+    authResponseHeadersRegex: ^X-
 
   service:
     type: ClusterIP
