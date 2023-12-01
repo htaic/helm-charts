@@ -92,6 +92,26 @@ entries:
   anaheim-baseline:
   - apiVersion: v2
     appVersion: 0.0.4
+    created: "2023-12-01T17:59:06.999476749Z"
+    dependencies:
+    - name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: ^10.24.2
+    - name: aws-efs-csi-driver
+      repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
+      version: ^2.3.6
+    - name: postgresql
+      repository: https://htaic.github.io/helm-charts
+      version: ^0.1.9
+    description: A Helm chart for Kubernetes
+    digest: 5320a1cafce4ac501b0acf5284595a50ac03d095f3b29d97f5bcccc8813fabcf
+    name: anaheim-baseline
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-baseline-0.0.9/anaheim-baseline-0.0.9.tgz
+    version: 0.0.9
+  - apiVersion: v2
+    appVersion: 0.0.4
     created: "2023-08-11T21:28:07.950537701Z"
     dependencies:
     - name: traefik
@@ -3455,6 +3475,20 @@ entries:
   hasura:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-12-01T17:59:07.354748601Z"
+    dependencies:
+    - name: anaheim-authentication-service
+      repository: file://./charts/anaheim-authentication-service
+      version: ^0
+    description: A dependent Helm chart for Kubernetes micro auth services
+    digest: f1f38be84064e09ebd0ab08c6fe63000a57019f9eaa23bfc82dfc31ca2e304c8
+    name: hasura
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/hasura-0.0.10/hasura-0.0.10.tgz
+    version: 0.0.10
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-11-28T22:05:44.575858804Z"
     dependencies:
     - name: anaheim-authentication-service
@@ -4376,4 +4410,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2023-11-29T21:58:51.137629099Z"
+generated: "2023-12-01T17:59:07.355099577Z"
