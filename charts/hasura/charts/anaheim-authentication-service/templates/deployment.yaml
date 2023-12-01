@@ -43,7 +43,7 @@ spec:
             - name: POSTGRESURI
               valueFrom:
                 secretKeyRef:
-                  name: "hasura-secret"
+                  name: "graphql-auth-secret"
                   key: HASURA_GRAPHQL_METADATA_DATABASE_URL
           {{- if .Values.image.env }}
             {{- toYaml .Values.image.env | nindent 12 }}

@@ -6,6 +6,21 @@ AWS:
   accountId: "YOUR_AWS_ACCOUNT_ID"
   event_bridge_key_id: YOUR_EVENT_BRIDGE_KEY
   event_bridge_key_secret: YOUR_EVENT_BRIDGE_KEY_SECRET
+  event_bus_arn: YOUR_EVENTBUS_ARN
+  eventbridge_hostname: YOUR_EVENT_BRIDGE_URL
+  auth_hostname: YOUR_AUTH_SERVICE_URL
+  authServiceCookieOptionsDomain: YOUR_AUTH_SERVICE_DOMAIN
+
+dockerCredentials:
+  username: YOUR_GITHUB_USER
+  token: YOUR_GITHUB_TOKEN
+
+graphql:
+  hasuraToken: YOUR_HASURA_TOKEN
+  databasePassword: YOUR_HASURA_DB_PASSWORD
+  databaseName: YOUR_HASURA_DB_NAME
+  databaseUser: YOUR_HASURA_DB_USER
+  databaseHost: YOUR_RDS_HOST
 
 # https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml
 traefik:
@@ -21,10 +36,6 @@ traefik:
     kubernetesCRD:
       allowCrossNamespace: true
       allowExternalNameServices: true
-
-redis:
-  redis:
-    password: YOUR_REDIS_PASSWORD
 
 # https://github.com/kubernetes-sigs/aws-efs-csi-driver/blob/master/charts/aws-efs-csi-driver/values.yaml
 aws-efs-csi-driver:
