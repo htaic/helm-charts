@@ -3,13 +3,14 @@ domainPath: "hasura"
 replicaCount: 1
 postgresProvisioner:
   image: ghcr.io/htaic/anaheim-graphql-postgres-provisioner
-  databaseName: graphql
-  databaseUser: YOUR_HASURA_USER
-  databasePassword: YOUR_HASURA_PASSWORD
-  databaseHost: YOUR_POSTGRES_HOST
+# these are in baselines now
+  # databaseName: graphql
+  # databaseUser: YOUR_HASURA_USER
+  # databasePassword: YOUR_HASURA_PASSWORD
+  # databaseHost: YOUR_POSTGRES_HOST
 
-authServiceCookieOptionsDomain: YOUR_K8S_DOMAIN
-hasuraToken: YOUR_ADMIN_SECRET
+# authServiceCookieOptionsDomain: YOUR_K8S_DOMAIN
+# hasuraToken: YOUR_ADMIN_SECRET
 
 image:
   repository: hasura/graphql-engine
