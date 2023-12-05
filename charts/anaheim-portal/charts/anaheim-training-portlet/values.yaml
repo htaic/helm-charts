@@ -1,3 +1,6 @@
+forwardAuthaddress: http://anaheim-graphql-service-anaheim-authentication-service:9876/api/v1/validate
+trustForwardHeader: true
+authResponseHeadersRegex: ^X-
 image:
   replicaCount: 1
   repository: ghcr.io/htaic/anaheim-portal/anaheim-training-portlet
@@ -6,9 +9,6 @@ image:
   tag: "0.0.290-0"
   hostname: anaheim-training-portlet
   domainPath: "training"
-  forwardAuthaddress: http://anaheim-graphql-service-anaheim-authentication-service:9876/api/v1/validate
-  trustForwardHeader: true
-  authResponseHeadersRegex: ^X-
 
   envFrom:
     secretRefs:
@@ -37,6 +37,6 @@ serviceAccount:
 
 autoscaling:
   enabled: false
-  minReplicas: 1
+  minReplicas: 3
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
