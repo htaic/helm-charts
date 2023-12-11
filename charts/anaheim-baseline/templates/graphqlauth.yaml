@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: "graphql-auth-secret"
+data:
+  AWS_EVENTBRIDGE_HOSTNAME: {{ .Values.AWS.eventbridge_hostname | b64enc }}
+  AUTHENTICATION_HOSTNAME: {{ .Values.AWS.auth_hostname | b64enc }}
+stringData:
+  HASURA_GRAPHQL_METADATA_DATABASE_URL: "postgres://{{ .Values.graphql.databaseUser }}:{{ .Values.graphql.databasePassword }}@{{ .Values.graphql.databaseHost }}:5432/{{ .Values.graphql.databaseName }}"
+  COOKIEOPTIONS_DOMAIN: {{ .Values.AWS.authServiceCookieOptionsDomain }}
