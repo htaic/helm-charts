@@ -8,8 +8,10 @@ image:
   pullPolicy: Always
   containerPort: 3010
   tag: "latest"
+  livenessProbe: healthcheck
+  readinessProbe: healthcheck
   hostname: anaheim-training-assets-service
-  
+
   env:
     - name: GRAPHQLURL
       value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
@@ -17,7 +19,6 @@ image:
       value: "/assets"
     - name: FF_SHARE_ACROSS_VERSION
       value: "false"
-
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
