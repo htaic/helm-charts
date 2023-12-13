@@ -3,6 +3,17 @@ entries:
   anaheim-annotator-service:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-12-13T00:15:03.699141378Z"
+    description: A Helm chart for Kubernetes anaheim-annotator-service deployed behind
+      a traefik ingress
+    digest: 5e33cb809911981855851a0e647eb2514c919f258e6d4ffcc4cc00145c41dcb5
+    name: anaheim-annotator-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-annotator-service-0.0.9/anaheim-annotator-service-0.0.9.tgz
+    version: 0.0.9
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-10-23T17:44:14.472381444Z"
     description: A Helm chart for Kubernetes anaheim-annotator-service deployed behind
       a traefik ingress
@@ -295,6 +306,17 @@ entries:
     - https://github.com/htaic/helm-charts/releases/download/anaheim-baseline-0.0.1/anaheim-baseline-0.0.1.tgz
     version: 0.0.1
   anaheim-eventbridge:
+  - apiVersion: v2
+    appVersion: 0.0.2
+    created: "2023-12-13T00:15:03.885726241Z"
+    description: A Helm chart for Kubernetes anaheim-eventbridge deployed behind a
+      traefik ingress
+    digest: 12374ab6e75da31d49d9610ca96e0e1a9e5ea2ac5955444681ea0cd41d0b779c
+    name: anaheim-eventbridge
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-eventbridge-0.0.3/anaheim-eventbridge-0.0.3.tgz
+    version: 0.0.3
   - apiVersion: v2
     appVersion: 0.0.2
     created: "2023-08-11T21:27:03.696360717Z"
@@ -686,6 +708,17 @@ entries:
     - https://github.com/htaic/helm-charts/releases/download/anaheim-project-service-0.0.1/anaheim-project-service-0.0.1.tgz
     version: 0.0.1
   anaheim-training-assets-service:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-12-13T00:15:04.05372372Z"
+    description: A Helm chart for Kubernetes anaheim-training-assets-service deployed
+      behind a traefik ingress
+    digest: 52cbddb17ec78d520ad49acc7cc5478e1b82db14eb1c970f011ea36d2ef662d3
+    name: anaheim-training-assets-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-training-assets-service-0.0.13/anaheim-training-assets-service-0.0.13.tgz
+    version: 0.0.13
   - apiVersion: v2
     appVersion: 0.0.1
     created: "2023-11-14T22:24:02.794500957Z"
@@ -4431,4 +4464,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2023-12-02T00:27:00.832960902Z"
+generated: "2023-12-13T00:15:04.216205618Z"
