@@ -46,8 +46,7 @@ spec:
                 name: "aws-eventbridge-secret"
             - configMapRef: 
                 name: "aws-account-configmap"
-
-                
+         
           env: 
             - name: GRAPHQLSERVERTOKEN
               valueFrom:

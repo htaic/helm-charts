@@ -2,40 +2,40 @@ fullnameOverride: "baseline"
 enableTraefikDashboard: true
 
 AWS:
-  region: YOUR_AWS_REGION
-  accountId: "YOUR_AWS_ACCOUNT_ID"
-  event_bridge_key_id: YOUR_EVENT_BRIDGE_KEY
-  event_bridge_key_secret: YOUR_EVENT_BRIDGE_KEY_SECRET
-  event_bus_arn: YOUR_EVENTBUS_ARN
-  eventbridge_hostname: YOUR_EVENT_BRIDGE_URL
-  auth_hostname: YOUR_AUTH_SERVICE_URL
-  authServiceCookieOptionsDomain: YOUR_AUTH_SERVICE_DOMAIN
-
+  region: us-west-2
+  accountId: "918169021225"
+  event_bridge_key_id: AKIA5LRZDNMU4ZLQOZSM
+  event_bridge_key_secret: 5uMfVP0dHXKzMxpfv92UTdfkD+1ZK2rv6EyZ1ISV
+  event_bus_arn: arn:aws:events:us-west-2:918169021225:event-bus/pvt-hv-wddl-wdev-ml-bus
+  eventbridge_hostname: https://pvt-k8s-hv-wdev-wddl-uw2-1.wdev.hticdev.net/eventbridge
+  auth_hostname: https://pvt-k8s-hv-wdev-wddl-uw2-1.wdev.hticdev.net/auth
+  authServiceCookieOptionsDomain: pvt-k8s-hv-wdev-wddl-uw2-1.wdev.hticdev.net
+  sqs_url_arn: https://sqs.us-west-2.amazonaws.com/918169021225/pvt-sqs-wddl-wdev-training-assets-verification-uw2-q
+  sqs_name: pvt-sqs-wddl-wdev-training-assets-verification-uw2-q
 dockerCredentials:
-  username: YOUR_GITHUB_USER
-  token: YOUR_GITHUB_TOKEN
+  username: HanwhaAutomation
+  token: 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
 
 graphql:
-  hasuraToken: YOUR_HASURA_TOKEN
-  databasePassword: YOUR_HASURA_DB_PASSWORD
-  databaseName: YOUR_HASURA_DB_NAME
-  databaseUser: YOUR_HASURA_DB_USER
-  databaseHost: YOUR_RDS_HOST
+  hasuraToken: iw0vKKDTDo8gSs3Mwhaq3rOq
+  databasePassword: _ePhp3URwD1laXjDDPzCWg.~
+  databaseName: graphqlpvt
+  databaseUser: graphqlpvt
+  databaseHost: db-hv-wdev-wddl-uw2-1.cathbpeuoycp.us-west-2.rds.amazonaws.com
 
 # https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml
 traefik:
+  deployment:
+    kind: Deployment
   image:
     pullPolicy: Always
   service:
     type: NodePort
   ports:
     web:
+      # port to alb
       nodePort: 32414
       targetPort: web
-  providers:
-    kubernetesCRD:
-      allowCrossNamespace: true
-      allowExternalNameServices: true
 
 # https://github.com/kubernetes-sigs/aws-efs-csi-driver/blob/master/charts/aws-efs-csi-driver/values.yaml
 aws-efs-csi-driver:
@@ -44,14 +44,14 @@ aws-efs-csi-driver:
       create: true
       name: efs-csi-controller-sa
       annotations:
-        eks.amazonaws.com/role-arn: arn:aws:iam::YOUR_AWS_ACCOUNT_ID:role/YOUR_EKS_ROLE
+        eks.amazonaws.com/role-arn: arn:aws:iam::918169021225:role/pvt-k8s-hv-wdev-wddl-uw2-1-cluster-basicrole
   storageClasses:
     - name: efs-storageclass
       mountOptions:
         - tls
       parameters:
         provisioningMode: efs-ap
-        fileSystemId: YOUR_FILESYSTEM_ID
+        fileSystemId: fs-0c0a36d725a10d757
 
 postgresql:
   service:
@@ -72,7 +72,7 @@ postgresql:
   postgres:
     db: postgres
     user: postgres
-    password: "YOUR_POSTGRES_PASSWORD"
+    password: zD-.xBOMEZl37jPBvB-aUJ07
     replicaCount: 1
     repository: postgres
     tag: 14
@@ -82,16 +82,5 @@ postgresql:
       # https://hub.docker.com/_/postgres
       - name: PGDATA
         value: /var/lib/postgresql/data/postgres # # To enable EFS on the cluster, use the following values in the root helm chart
-  # storage:
-  #   className: efs-storageclass
-  #   provisioner: efs.csi.aws.com
-  #   capacity: 20Gi
-  #   volumeMode: Filesystem
-  #   csi:
-  #     volumeHandle: YOUR_FILESYSTEM_ID
-  #     volumeAttributes:
-  #       encryptInTransit: "true"
-  #   volumeMountPath: /var/lib/postgresql/data
-  # RDS:
-  #   host: "YOUR_RDS_HOST"
-
+  RDS:
+    host: db-hv-wdev-wddl-uw2-1.cathbpeuoycp.us-west-2.rds.amazonaws.com
