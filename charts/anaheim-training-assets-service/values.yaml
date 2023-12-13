@@ -10,6 +10,8 @@ image:
   pullPolicy: Always
   containerPort: 3010
   tag: "latest"
+  livenessProbe: healthcheck
+  readinessProbe: healthcheck
   hostname: anaheim-training-assets-service
 
   env:
