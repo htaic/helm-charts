@@ -7,6 +7,8 @@ image:
   pullPolicy: Always
   containerPort: 3012
   tag: "latest"
+  livenessProbe: livez
+  readinessProbe: readyz
   hostname: anaheim-annotator-service
   domainPath: annotations
   envFrom:
@@ -21,7 +23,6 @@ image:
       value: "http://anaheim-project-service:3014"
     - name: SERVICE_ENV
       value: "non-local"
-
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
