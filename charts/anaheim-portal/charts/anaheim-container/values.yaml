@@ -4,6 +4,8 @@ image:
   pullPolicy: Always
   containerPort: 3000
   tag: "latest"
+  livenessProbe: livez
+  readinessProbe: readyz
   hostname: anaheim-container
   envFrom:
     secretRefs:
