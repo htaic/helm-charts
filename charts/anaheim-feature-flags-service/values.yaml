@@ -1,7 +1,9 @@
 namespace: "hanwha"
 fullnameOverride: anaheim-feature-flags-service
 domainPath: "feature-flags-service"
-
+forwardAuthaddress: http://anaheim-graphql-service-anaheim-authentication-service:9876/api/v1/validate
+Auth Response Headers Regex: ^X-
+Trust Forward Header: true
 image:
   replicaCount: 1
   repository: ghcr.io/htaic/anaheim-feature-flags-service
