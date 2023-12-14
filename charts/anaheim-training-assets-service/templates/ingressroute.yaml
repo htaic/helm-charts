@@ -18,4 +18,3 @@ spec:
       {{ if (not (hasKey .Values "noStripPath")) }}
       - name: "{{ include ".helm.fullname" . }}-strip"
       {{ end }}
-{{ end }}
