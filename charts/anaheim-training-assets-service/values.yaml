@@ -1,9 +1,7 @@
 namespace: "hanwha"
 fullnameOverride: anaheim-training-assets-service
 domainPath: "training-assets"
-forwardAuthaddress: http://anaheim-graphql-service-anaheim-authentication-service:9876/api/v1/validate
-trustForwardHeader: true
-authResponseHeadersRegex: ^X-
+
 image:
   replicaCount: 1
   repository: ghcr.io/htaic/anaheim-training-assets-service
@@ -13,7 +11,7 @@ image:
   livenessProbe: healthcheck
   readinessProbe: healthcheck
   hostname: anaheim-training-assets-service
-
+  
   env:
     - name: GRAPHQLURL
       value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
@@ -21,8 +19,7 @@ image:
       value: "/assets"
     - name: FF_SHARE_ACROSS_VERSION
       value: "false"
-    - name: FEATURE_FLAGS_API_URL
-      value: "https://pvt-k8s-hv-wdev-wddl-uw2-1.wdev.hticdev.net/feature-flags-service"
+
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
@@ -52,7 +49,7 @@ storage:
   capacity: 100Gi
   volumeMode: Filesystem
   csi:
-    volumeHandle: fs-0ba685ad88487dfee
+    volumeHandle: YOUR_FILESYSTEM_ID
     volumeAttributes:
       encryptInTransit: "true"
   volumeMountPath: /assets

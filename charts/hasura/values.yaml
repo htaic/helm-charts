@@ -1,16 +1,13 @@
 namespace: "hanwha"
 domainPath: "hasura"
 replicaCount: 1
-forwardAuthaddress: http://anaheim-graphql-service-anaheim-authentication-service:9876/api/v1/validate
-trustForwardHeader: true
-authResponseHeadersRegex: ^X-
 postgresProvisioner:
   image: ghcr.io/htaic/anaheim-graphql-postgres-provisioner
 # these are in baselines now
-# databaseName: graphql
-# databaseUser: YOUR_HASURA_USER
-# databasePassword: YOUR_HASURA_PASSWORD
-# databaseHost: YOUR_POSTGRES_HOST
+  # databaseName: graphql
+  # databaseUser: YOUR_HASURA_USER
+  # databasePassword: YOUR_HASURA_PASSWORD
+  # databaseHost: YOUR_POSTGRES_HOST
 
 # authServiceCookieOptionsDomain: YOUR_K8S_DOMAIN
 # hasuraToken: YOUR_ADMIN_SECRET
@@ -22,7 +19,7 @@ image:
   containerPort: 8080
   hostname: hasura
   env:
-    ## enable the console served by server
+      ## enable the console served by server
     - name: HASURA_GRAPHQL_ENABLE_CONSOLE
       value: "true" # set to "false" to disable console
       ## enable debugging mode. It is recommended to disable this in production

@@ -1,8 +1,6 @@
 namespace: "hanwha"
 fullnameOverride: anaheim-annotator-service
-forwardAuthaddress: http://anaheim-graphql-service-anaheim-authentication-service:9876/api/v1/validate
-trustForwardHeader: true
-authResponseHeadersRegex: ^X-
+
 image:
   replicaCount: 1
   repository: ghcr.io/htaic/anaheim-annotator-service
@@ -25,6 +23,7 @@ image:
       value: "http://anaheim-project-service:3014"
     - name: SERVICE_ENV
       value: "non-local"
+
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
