@@ -10,6 +10,8 @@ AWS:
   eventbridge_hostname: YOUR_EVENT_BRIDGE_URL
   auth_hostname: YOUR_AUTH_SERVICE_URL
   authServiceCookieOptionsDomain: YOUR_AUTH_SERVICE_DOMAIN
+  sqs_name: YOUR_SQS_NAME
+  sqs_url: YOUR_SQS_URL
 
 dockerCredentials:
   username: YOUR_GITHUB_USER
