@@ -103,6 +103,26 @@ entries:
   anaheim-baseline:
   - apiVersion: v2
     appVersion: 0.0.4
+    created: "2023-12-14T22:15:17.929381612Z"
+    dependencies:
+    - name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: ^10.24.2
+    - name: aws-efs-csi-driver
+      repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
+      version: ^2.3.6
+    - name: postgresql
+      repository: https://htaic.github.io/helm-charts
+      version: ^0.1.9
+    description: A Helm chart for Kubernetes
+    digest: c6fbc2c55e117b4b7d2952f1ccc089bcd51877449368b61a03d3b095e290621a
+    name: anaheim-baseline
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-baseline-0.0.10/anaheim-baseline-0.0.10.tgz
+    version: 0.0.10
+  - apiVersion: v2
+    appVersion: 0.0.4
     created: "2023-12-01T17:59:06.999476749Z"
     dependencies:
     - name: traefik
@@ -729,6 +749,17 @@ entries:
     - https://github.com/htaic/helm-charts/releases/download/anaheim-project-service-0.0.1/anaheim-project-service-0.0.1.tgz
     version: 0.0.1
   anaheim-training-assets-service:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-12-14T22:15:18.242390393Z"
+    description: A Helm chart for Kubernetes anaheim-training-assets-service deployed
+      behind a traefik ingress
+    digest: 0de3f391e027c1f27da6285f06831589de9ce535a5c491942f7b31201fca314c
+    name: anaheim-training-assets-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-training-assets-service-0.0.14/anaheim-training-assets-service-0.0.14.tgz
+    version: 0.0.14
   - apiVersion: v2
     appVersion: 0.0.1
     created: "2023-12-13T00:15:04.05372372Z"
@@ -4485,4 +4516,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2023-12-13T20:49:37.670507261Z"
+generated: "2023-12-14T22:15:18.242886182Z"
