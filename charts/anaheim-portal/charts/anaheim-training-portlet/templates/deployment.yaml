@@ -62,6 +62,20 @@ spec:
               protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          livenessProbe:
+            httpGet:
+              path: /{{ .Values.image.livenessProbe }}
+              port: http
+            {{- if .Values.image.livenessProbePeriodSeconds }}
+            periodSeconds: {{ .Values.image.livenessProbePeriodSeconds }}
+            {{- end }}
+          readinessProbe:
+            httpGet:
+              path: /{{ .Values.image.readinessProbe }}
+              port: http
+            {{- if .Values.image.readinessProbePeriodSeconds }}
+            periodSeconds: {{ .Values.image.readinessProbePeriodSeconds }}
+            {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
