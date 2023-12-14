@@ -43,11 +43,11 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom: 
             - secretRef:
+                name: "aws-sqs-secret"
+            - secretRef:
                 name: "aws-eventbridge-secret"
             - configMapRef: 
                 name: "aws-account-configmap"
-
-                
           env: 
             - name: GRAPHQLSERVERTOKEN
               valueFrom:
