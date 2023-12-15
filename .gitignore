@@ -3,6 +3,7 @@
 **/*.tgz
 **/*.key
 **/*.crt
+**/.values*
 
 # etc
 *.DS_Store
