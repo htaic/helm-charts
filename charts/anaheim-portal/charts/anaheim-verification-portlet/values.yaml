@@ -4,6 +4,8 @@ image:
   pullPolicy: Always
   containerPort: 3002
   tag: "latest"
+  livenessProbe: livez
+  readinessProbe: readyz
   hostname: anaheim-verification-portlet
   domainPath: "verify"
   envFrom:
