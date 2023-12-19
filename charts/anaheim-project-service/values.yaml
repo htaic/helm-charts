@@ -1,7 +1,9 @@
 namespace: "hanwha"
 fullnameOverride: anaheim-project-service
 domainPath: "projects"
-
+forwardAuthaddress: http://anaheim-graphql-service-anaheim-authentication-service:9876/api/v1/validate
+authResponseHeadersRegex Regex: ^X-
+trustForwardHeader: true
 image:
   replicaCount: 1
   repository: ghcr.io/htaic/anaheim-project-service

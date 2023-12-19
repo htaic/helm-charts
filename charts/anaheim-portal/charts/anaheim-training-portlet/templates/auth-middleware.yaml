@@ -1,0 +1,16 @@
+{{ if eq .Values.trustForwardHeader true }}
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: "{{ include ".helm.fullname" . }}-auth"
+  namespace: {{ .Values.namespace }}
+spec:
+  forwardAuth:
+    address: {{ .Values.forwardAuthaddress }}
+    authResponseHeadersRegex: {{ .Values.authResponseHeadersRegex }}
+    trustForwardHeader: {{ .Values.trustForwardHeader }}
+{{ end }}
+    # authRequestHeaders:
+    # - accept
+    # - accept-encoding
+    # - authorization
