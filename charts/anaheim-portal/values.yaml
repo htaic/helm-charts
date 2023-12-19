@@ -38,6 +38,9 @@ anaheim-container:
     maxReplicas: 100
     targetCPUUtilizationPercentage: 80
 anaheim-training-portlet:
+  forwardAuthaddress: http://anaheim-graphql-service-anaheim-authentication-service:9876/api/v1/validate
+  authResponseHeadersRegex Regex: ^X-
+  trustForwardHeader: true
   image:
     replicaCount: 1
     repository: ghcr.io/htaic/anaheim-portal/anaheim-training-portlet
@@ -76,6 +79,7 @@ anaheim-training-portlet:
     minReplicas: 1
     maxReplicas: 100
     targetCPUUtilizationPercentage: 80
+
 anaheim-verification-portlet:
   image:
     replicaCount: 1
