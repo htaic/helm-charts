@@ -1,3 +1,4 @@
+{{ if eq .Values.trustForwardHeader true }}
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
@@ -8,6 +9,7 @@ spec:
     address: {{ .Values.forwardAuthaddress }}
     authResponseHeadersRegex: {{ .Values.authResponseHeadersRegex }}
     trustForwardHeader: {{ .Values.trustForwardHeader }}
+{{ end }}
     # authRequestHeaders:
     # - accept
     # - accept-encoding
