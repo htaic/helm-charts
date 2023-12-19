@@ -28,7 +28,7 @@ dependencies:
     version: "^0"
     repository: "file://./charts/anaheim-container"
   - name: anaheim-training-portlet
-    version: "^0"
+    version: "^1"
     repository: "file://./charts/anaheim-training-portlet"
   - name: anaheim-verification-portlet
     version: "^0"
