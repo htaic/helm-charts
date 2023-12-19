@@ -8,7 +8,9 @@ image:
   containerPort: 3001
   tag: "latest"
   livenessProbe: livez
+  livenessProbePeriodSeconds: 240
   readinessProbe: readyz
+  readinessProbePeriodSeconds: 240
   hostname: anaheim-training-portlet
   domainPath: "training"
   envFrom:

@@ -47,6 +47,10 @@ anaheim-training-portlet:
     pullPolicy: Always
     containerPort: 3001
     tag: latest
+    livenessProbe: livez
+    livenessProbePeriodSeconds: 240
+    readinessProbe: readyz
+    readinessProbePeriodSeconds: 240
     hostname: anaheim-training-portlet
     domainPath: "training"
     envFrom:
@@ -87,6 +91,10 @@ anaheim-verification-portlet:
     pullPolicy: Always
     containerPort: 3002
     tag: latest
+    livenessProbe: livez
+    livenessProbePeriodSeconds: 240
+    readinessProbe: readyz
+    readinessProbePeriodSeconds: 240
     hostname: anaheim-verification-portlet
     domainPath: "verify"
     envFrom:
