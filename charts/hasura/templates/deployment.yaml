@@ -59,6 +59,8 @@ spec:
                 name: "hasura-secret"
             - secretRef:
                 name: "graphql-auth-secret" 
+            - configMapRef:
+                name: "duclo-configmap"                  
           env: 
             - name: EVENTBRIDGE_HOSTNAME
               valueFrom:
