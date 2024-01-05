@@ -12,6 +12,7 @@ AWS:
   authServiceCookieOptionsDomain: YOUR_AUTH_SERVICE_DOMAIN
   sqs_name: YOUR_SQS_NAME
   sqs_url: YOUR_SQS_URL
+  duclo_domain: YOUR_DUCLO_DOMAIN
 
 dockerCredentials:
   username: YOUR_GITHUB_USER
@@ -96,4 +97,3 @@ postgresql:
   #   volumeMountPath: /var/lib/postgresql/data
   # RDS:
   #   host: "YOUR_RDS_HOST"
-
