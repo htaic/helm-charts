@@ -47,6 +47,8 @@ spec:
                 name: "hasura-postgresql-secret"
             - configMapRef:
                 name: "baseline-configmap"
+            - configMapRef:
+                name: "duclo-configmap"
       {{- end }}
       containers:
         - name: {{ .Chart.Name }}
