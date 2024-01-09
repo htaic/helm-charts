@@ -13,6 +13,7 @@ AWS:
   sqs_name: YOUR_SQS_NAME
   sqs_url: YOUR_SQS_URL
   duclo_domain: YOUR_DUCLO_DOMAIN
+  duclo_auth_certs_url: YOUR_DUCLO_AUTH_CERTS_URL
 
 dockerCredentials:
   username: YOUR_GITHUB_USER

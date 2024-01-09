@@ -39,6 +39,10 @@ spec:
           envFrom:
             - secretRef:
                 name: "hasura-secret"
+            - configMapRef:
+                name: "baseline-configmap"
+            - configMapRef:
+                name: "duclo-configmap"
           env: 
             - name: POSTGRESURI
               valueFrom:
