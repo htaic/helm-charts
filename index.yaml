@@ -433,6 +433,18 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/anaheim-feature-flags-service-0.0.1/anaheim-feature-flags-service-0.0.1.tgz
     version: 0.0.1
+  anaheim-gatekeeper-service:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2024-01-24T19:04:21.735638868Z"
+    description: A Helm chart for Kubernetes anaheim-gatekeeper-service deployed behind
+      a traefik ingress
+    digest: 3ab9c1469e03a8a774a4e94ff2e0cbe0b54fb15befbdd6e3a4d11f7f72b535df
+    name: anaheim-gatekeeper-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-gatekeeper-service-0.0.1/anaheim-gatekeeper-service-0.0.1.tgz
+    version: 0.0.1
   anaheim-portal:
   - apiVersion: v2
     appVersion: 1.0.0
@@ -4692,4 +4704,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2024-01-16T22:48:26.185524036Z"
+generated: "2024-01-24T19:04:21.736075442Z"
