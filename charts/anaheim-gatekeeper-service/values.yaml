@@ -1,0 +1,41 @@
+namespace: "hanwha"
+fullnameOverride: anaheim-gatekeeper-service
+domainPath: "gatekeeper-service"
+#forwardAuthaddress: http://anaheim-graphql-service-anaheim-authentication-service:9876/api/v1/validate
+#authResponseHeadersRegex Regex: ^X-
+#trustForwardHeader: true
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/anaheim-gatekeeper-service
+  pullPolicy: Always
+  containerPort: 3010
+  tag: latest
+  #livenessProbe: healthcheck
+  #readinessProbe: healthcheck
+  hostname: anaheim-gatekeeper-service
+
+ # env:
+ #   - name: GRAPHQLURL
+ #     value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
+
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 150Mi
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
