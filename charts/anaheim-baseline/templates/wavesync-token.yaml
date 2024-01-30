@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: "wavesync-secret"
+data:
+  TOKEN_SECRET_KEY: {{ .Values.wavesync.token | b64enc }}
+
