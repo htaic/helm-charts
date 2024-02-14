@@ -14,10 +14,9 @@ AWS:
   sqs_url: YOUR_SQS_URL
   duclo_domain: YOUR_DUCLO_DOMAIN
   duclo_auth_certs_url: YOUR_DUCLO_AUTH_CERTS_URL
-  aws_project_sqs_name: YOUR_AWS_PROJECT_SQS_NAME
-  aws_project_sqs_url: YOUR_AWS_PROJECT_SQS_URL
+  project_sqs_name: YOUR_AWS_PROJECT_SQS_NAME
+  project_sqs_url: YOUR_AWS_PROJECT_SQS_URL
 
-  
 dockerCredentials:
   username: YOUR_GITHUB_USER
   token: YOUR_GITHUB_TOKEN
@@ -48,7 +47,7 @@ traefik:
   providers:
   kubernetesCRD:
     allowCrossNamespace: true
-    allowExternalNameServices: true    
+    allowExternalNameServices: true
 
 # https://github.com/kubernetes-sigs/aws-efs-csi-driver/blob/master/charts/aws-efs-csi-driver/values.yaml
 aws-efs-csi-driver:
