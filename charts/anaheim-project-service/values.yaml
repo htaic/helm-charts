@@ -25,9 +25,6 @@ image:
     - name: AWS_PROJECT_SQS_NAME
       value: pvt-sqs-wddl-${var.default_tags.Environment}-project-service-uw2-q
 
-    aws_project_sqs_url: https://sqs.${deploy_region}.amazonaws.com/${account_id}/pvt-sqs-wddl-${var.default_tags.Environment}-project-service-uw2-q
-  aws_project_sqs_name: pvt-sqs-wddl-${var.default_tags.Environment-project-service-uw2-q  
-
 imagePullSecrets:
   - name: dockerconfigjson-github-com
 
