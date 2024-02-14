@@ -55,6 +55,8 @@ spec:
                   name: hasura-secret
               - secretRef:
                   name: aws-eventbridge-secret
+              - secretRef:
+                  name: aws-sqs-secret
               - configMapRef:
                   name: aws-account-configmap
           args: [ {{.Values.image.args}} ]

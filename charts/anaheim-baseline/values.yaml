@@ -14,13 +14,15 @@ AWS:
   sqs_url: YOUR_SQS_URL
   duclo_domain: YOUR_DUCLO_DOMAIN
   duclo_auth_certs_url: YOUR_DUCLO_AUTH_CERTS_URL
-  
-wavesync:
-  token: YOUR_WAVESYNC_TOKEN
+  project_sqs_name: YOUR_AWS_PROJECT_SQS_NAME
+  project_sqs_url: YOUR_AWS_PROJECT_SQS_URL
 
 dockerCredentials:
   username: YOUR_GITHUB_USER
   token: YOUR_GITHUB_TOKEN
+
+wavesync:
+  token: YOUR_WAVESYNC_TOKEN
 
 graphql:
   hasuraToken: YOUR_HASURA_TOKEN
@@ -31,18 +33,21 @@ graphql:
 
 # https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml
 traefik:
+  deployment:
+    kind: Deployment
   image:
     pullPolicy: Always
   service:
     type: NodePort
   ports:
     web:
+      # port to alb
       nodePort: 32414
       targetPort: web
   providers:
-    kubernetesCRD:
-      allowCrossNamespace: true
-      allowExternalNameServices: true
+  kubernetesCRD:
+    allowCrossNamespace: true
+    allowExternalNameServices: true
 
 # https://github.com/kubernetes-sigs/aws-efs-csi-driver/blob/master/charts/aws-efs-csi-driver/values.yaml
 aws-efs-csi-driver:
