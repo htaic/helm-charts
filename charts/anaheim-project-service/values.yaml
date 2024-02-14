@@ -20,6 +20,10 @@ image:
       value: "http://anaheim-annotator-service:3012"
     - name: TRAINING_ASSETS_SERVICE_URL
       value: "http://anaheim-training-assets-service:3010"
+    - name: AWS_PROJECT_SQS_URL
+      value: "https://sqs.${deploy_region}.amazonaws.com/${account_id}/pvt-sqs-wddl-${var.default_tags.Environment}-project-service-uw2-q"
+    - name: AWS_PROJECT_SQS_NAME
+      value: pvt-sqs-wddl-${var.default_tags.Environment}-project-service-uw2-q
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com

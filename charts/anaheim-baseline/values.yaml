@@ -2,47 +2,46 @@ fullnameOverride: "baseline"
 enableTraefikDashboard: true
 
 AWS:
-  region: YOUR_AWS_REGION
-  accountId: "YOUR_AWS_ACCOUNT_ID"
-  event_bridge_key_id: YOUR_EVENT_BRIDGE_KEY
-  event_bridge_key_secret: YOUR_EVENT_BRIDGE_KEY_SECRET
-  event_bus_arn: YOUR_EVENTBUS_ARN
-  eventbridge_hostname: YOUR_EVENT_BRIDGE_URL
-  auth_hostname: YOUR_AUTH_SERVICE_URL
-  authServiceCookieOptionsDomain: YOUR_AUTH_SERVICE_DOMAIN
-  sqs_name: YOUR_SQS_NAME
-  sqs_url: YOUR_SQS_URL
-  duclo_domain: YOUR_DUCLO_DOMAIN
-  duclo_auth_certs_url: YOUR_DUCLO_AUTH_CERTS_URL
+  region: us-west-2
+  accountId: "040054290357"
+  event_bridge_key_id: AKIAQSU3L6626HE4DKTS
+  event_bridge_key_secret: F+CXWdWFJg2AKhDHHKazifmHcbaNWPvgOaUt9TkO
+  event_bus_arn: arn:aws:events:us-west-2:040054290357:event-bus/pvt-hv-wddl-wci-ml-bus
+  eventbridge_hostname: https://pvt-k8s-hv-wci-wddl-uw2-1.wci.hticdev.net/eventbridge
+  auth_hostname: https://pvt-k8s-hv-wci-wddl-uw2-1.wci.hticdev.net/auth
+  authServiceCookieOptionsDomain: pvt-k8s-hv-wci-wddl-uw2-1.wci.hticdev.net
+  sqs_name: pvt-sqs-wddl-wci-training-assets-verification-uw2-q
+  sqs_url: https://sqs.us-west-2.amazonaws.com/040054290357/pvt-sqs-wddl-wci-training-assets-verification-uw2-q
+  duclo_domain: api.dev.platform.hanwhavision.cloud
+  duclo_auth_certs_url: https://auth.duclo.net/realms/HvaVmsAppRealm/protocol/openid-connect/certs
   
-wavesync:
-  token: YOUR_WAVESYNC_TOKEN
-
 dockerCredentials:
-  username: YOUR_GITHUB_USER
-  token: YOUR_GITHUB_TOKEN
+  username: HanwhaAutomation
+  token: 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
+
+wavesync:
+  token: _XHbMXve8E2gLJbeI5NrchgJ
 
 graphql:
-  hasuraToken: YOUR_HASURA_TOKEN
-  databasePassword: YOUR_HASURA_DB_PASSWORD
-  databaseName: YOUR_HASURA_DB_NAME
-  databaseUser: YOUR_HASURA_DB_USER
-  databaseHost: YOUR_RDS_HOST
+  hasuraToken: HALDBzeLLBhZtg2hmc517PVV
+  databasePassword: tWTOeSaoDNFu6JemaU9h5jwM
+  databaseName: graphqlpvt
+  databaseUser: graphqlpvt
+  databaseHost: db-hv-wci-wddl-uw2-1.chozznczc4ut.us-west-2.rds.amazonaws.com
 
 # https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml
 traefik:
+  deployment:
+    kind: Deployment
   image:
     pullPolicy: Always
   service:
     type: NodePort
   ports:
     web:
+      # port to alb
       nodePort: 32414
       targetPort: web
-  providers:
-    kubernetesCRD:
-      allowCrossNamespace: true
-      allowExternalNameServices: true
 
 # https://github.com/kubernetes-sigs/aws-efs-csi-driver/blob/master/charts/aws-efs-csi-driver/values.yaml
 aws-efs-csi-driver:
@@ -51,14 +50,14 @@ aws-efs-csi-driver:
       create: true
       name: efs-csi-controller-sa
       annotations:
-        eks.amazonaws.com/role-arn: arn:aws:iam::YOUR_AWS_ACCOUNT_ID:role/YOUR_EKS_ROLE
+        eks.amazonaws.com/role-arn: arn:aws:iam::040054290357:role/pvt-k8s-hv-wci-wddl-uw2-1-cluster-basicrole
   storageClasses:
     - name: efs-storageclass
       mountOptions:
         - tls
       parameters:
         provisioningMode: efs-ap
-        fileSystemId: YOUR_FILESYSTEM_ID
+        fileSystemId: fs-03a2549a17944ff69
 
 postgresql:
   service:
@@ -79,7 +78,7 @@ postgresql:
   postgres:
     db: postgres
     user: postgres
-    password: "YOUR_POSTGRES_PASSWORD"
+    password: SbdIDJC6xW2oJN5C.n8Az.NY
     replicaCount: 1
     repository: postgres
     tag: 14
@@ -89,15 +88,5 @@ postgresql:
       # https://hub.docker.com/_/postgres
       - name: PGDATA
         value: /var/lib/postgresql/data/postgres # # To enable EFS on the cluster, use the following values in the root helm chart
-  # storage:
-  #   className: efs-storageclass
-  #   provisioner: efs.csi.aws.com
-  #   capacity: 20Gi
-  #   volumeMode: Filesystem
-  #   csi:
-  #     volumeHandle: YOUR_FILESYSTEM_ID
-  #     volumeAttributes:
-  #       encryptInTransit: "true"
-  #   volumeMountPath: /var/lib/postgresql/data
-  # RDS:
-  #   host: "YOUR_RDS_HOST"
+  RDS:
+    host: db-hv-wci-wddl-uw2-1.chozznczc4ut.us-west-2.rds.amazonaws.com
