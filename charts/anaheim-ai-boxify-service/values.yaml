@@ -1,0 +1,80 @@
+namespace: "hanwha"
+fullnameOverride: anaheim-ai-service
+domainPath: "ai-boxify"
+
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/anaheim-ai-boxify-service
+  pullPolicy: Always
+  containerPort: 3022
+  tag: "latest"
+  livenessProbe: /livez
+  readinessProbe: /readyz
+  hostname: anaheim-ai-boxify-service
+  envFrom:
+    configMapRefs:
+      - aws-account-configmap
+  env:
+    - name: HOSTNAME
+      value: "anaheim-ai-boxify-service"
+    - name: LOG_LEVEL
+      value: "INFO"
+    - name: LOG_JSON
+      value: "false"
+    - name: DD_ENABLED
+      value: "false"
+    - name: MODEL_DEST_RELATIVE_PATH
+      value: "model/FastSAM-s.pt"
+    - name: MODEL_S3_URI_PATH
+      value: "s3://pvt-hv-s3-sagemaker-wddl-wdev-uw2-objects/inference/boxify"
+    - name: MODEL_S3_NAME
+      value: "FastSAM-s.pt"
+    - name: MODEL_S3_INPUTS
+      value: "model-input-params.yaml"
+    - name: MODEL_INPUT_DATA_DEVICE_TYPE
+      value: "cpu"
+    - name: MODEL_INPUT_DATA_RETINA_MASKS
+      value: "true"
+    - name: MODEL_INPUT_DATA_IMAGE_SIZE
+      value: "1024"
+    - name: MODEL_INPUT_DATA_CONFIDENCE
+      value: "0.25"
+    - name: MODEL_INPUT_DATA_IOU
+      value: "0.7"
+    - name: STORAGE_BASE_PATH
+      value: "/assets"
+    - name: REST_ENDPOINT_PORT
+      value: "3022"
+
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 150Mi
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+
+storage:
+  className: efs-storageclass
+  provisioner: efs.csi.aws.com
+  capacity: 100Gi
+  volumeMode: Filesystem
+  csi:
+    volumeHandle: YOUR_FILESYSTEM_ID
+    volumeAttributes:
+      encryptInTransit: "true"
+  volumeMountPath: /assets
