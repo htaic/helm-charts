@@ -1,5 +1,5 @@
 namespace: "hanwha"
-fullnameOverride: anaheim-ai-service
+fullnameOverride: anaheim-ai-boxify-service
 domainPath: "ai-boxify"
 
 image:
