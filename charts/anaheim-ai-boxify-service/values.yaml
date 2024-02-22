@@ -8,8 +8,8 @@ image:
   pullPolicy: Always
   containerPort: 3022
   tag: "latest"
-  livenessProbe: /livez
-  readinessProbe: /readyz
+  # livenessProbe: /livez
+  # readinessProbe: /readyz
   hostname: anaheim-ai-boxify-service
   envFrom:
     configMapRefs:
