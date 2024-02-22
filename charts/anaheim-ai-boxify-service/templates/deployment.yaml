@@ -44,16 +44,6 @@ spec:
           {{- if .Values.image.env }}
           env: 
             {{- toYaml .Values.image.env | nindent 12 }}
-            - name: ACCESS_KEY_ID
-              valueFrom:
-                secretKeyRef:
-                  name: aws-ai-boxify-secret
-                  key: AWS_ACCESS_KEY
-            - name: SECRET_ACCESS_KEY_ID
-              valueFrom:
-                secretKeyRef:
-                  name: aws-ai-boxify-secret
-                  key: AWS_SECRET_ACCESS_KEY
           {{- end }}
           {{- if .Values.image.envFrom }}
           envFrom:
