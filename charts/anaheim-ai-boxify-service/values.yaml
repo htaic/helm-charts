@@ -8,8 +8,8 @@ image:
   pullPolicy: Always
   containerPort: 3022
   tag: "latest"
-  livenessProbe: /livez
-  readinessProbe: /readyz
+  livenessProbe: livez
+  readinessProbe: readyz
   hostname: anaheim-ai-boxify-service
   envFrom:
     configMapRefs:
@@ -69,12 +69,12 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
 
 storage:
-  className: efs-storageclass
-  provisioner: efs.csi.aws.com
-  capacity: 100Gi
-  volumeMode: Filesystem
+  className: ""
+  provisioner: s3.csi.aws.com
+  capacity: 1200Gi
+  # volumeMode: Filesystem
   csi:
-    volumeHandle: YOUR_FILESYSTEM_ID
+    volumeHandle: s3-csi-driver-volume
     volumeAttributes:
-      encryptInTransit: "true"
-  volumeMountPath: /assets
+      bucketName: YOUR_BUCKET_NAME
+  volumeMountPath: /boxify
