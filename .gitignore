@@ -4,6 +4,6 @@
 **/*.key
 **/*.crt
 **/.values*
-**/values.yaml*
+**/values.yaml
 # etc
 *.DS_Store

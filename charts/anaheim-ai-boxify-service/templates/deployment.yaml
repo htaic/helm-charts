@@ -61,22 +61,29 @@ spec:
             - name: http
               containerPort: {{ .Values.image.containerPort }}
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /{{ .Values.image.livenessProbe }}
-              port: http
-            {{- if .Values.image.livenessProbePeriodSeconds }}
-            periodSeconds: {{ .Values.image.livenessProbePeriodSeconds }}
-            {{- end }}
-          readinessProbe:
-            httpGet:
-              path: /{{ .Values.image.readinessProbe }}
-              port: http
-            {{- if .Values.image.readinessProbePeriodSeconds }}
-            periodSeconds: {{ .Values.image.readinessProbePeriodSeconds }}
-            {{- end }}
+          # livenessProbe:
+          #   httpGet:
+          #     path: /{{ .Values.image.livenessProbe }}
+          #     port: http
+          #   {{- if .Values.image.livenessProbePeriodSeconds }}
+          #   periodSeconds: {{ .Values.image.livenessProbePeriodSeconds }}
+          #   {{- end }}
+          # readinessProbe:
+          #   httpGet:
+          #     path: /{{ .Values.image.readinessProbe }}
+          #     port: http
+          #   {{- if .Values.image.readinessProbePeriodSeconds }}
+          #   periodSeconds: {{ .Values.image.readinessProbePeriodSeconds }}
+          #   {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+          - name: s3-vol-mount
+            mountPath: {{ .Values.storage.volumeMountPath }}
+      volumes: 
+        - name: s3-vol-mount
+          persistentVolumeClaim:
+            claimName: "{{ include ".helm.fullname" . }}-claim"
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
