@@ -77,6 +77,13 @@ spec:
             {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+          - name: efs-vol-mount
+            mountPath: {{ .Values.storage.volumeMountPath }}
+      volumes:
+        - name: efs-vol-mount
+          persistentVolumeClaim:
+            claimName: "{{ include ".helm.fullname" . }}-efs-claim"
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
