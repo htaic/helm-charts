@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: (PathPrefix("/{{ .Values.image.domainPath }}"))
+    - match: (PathPrefix("/{{ .Values.image.domainPath }}")) # || PathPrefix("/training-assets") || PathPrefix("/help") || PathPrefix("/project/:id")) # || PathPrefix("/training-assets"))
       kind: Rule
       services:
         - name: {{ include ".helm.fullname" . }}
