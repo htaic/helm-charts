@@ -15,6 +15,8 @@ image:
   hostname: anaheim-training-assets-service
 
   env:
+    - name: PROJECTS_API_URL
+      value: "http://anaheim-project-service:3014"
     - name: GRAPHQLURL
       value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
     - name: STORAGE_BASE_PATH
@@ -52,7 +54,7 @@ storage:
   capacity: 100Gi
   volumeMode: Filesystem
   csi:
-    volumeHandle: YOUR_FILESYSTEM_ID
+    volumeHandle: fs-0ba685ad88487dfee
     volumeAttributes:
       encryptInTransit: "true"
   volumeMountPath: /assets
