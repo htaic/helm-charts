@@ -7,7 +7,8 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: (PathPrefix("/{{ .Values.image.domainPath }}")) # || PathPrefix("/training-assets") || PathPrefix("/help") || PathPrefix("/project/:id")) # || PathPrefix("/training-assets"))
+    - match: (PathPrefix("/{{ .Values.image.domainPath }}"))
+      priority: 1 # || PathPrefix("/training-assets") || PathPrefix("/help") || PathPrefix("/project/:id")) # || PathPrefix("/training-assets"))
       kind: Rule
       services:
         - name: {{ include ".helm.fullname" . }}
@@ -20,3 +21,32 @@ spec:
       {{ if (not (hasKey .Values.image "noStripPath")) }}
       - name: "{{ include ".helm.fullname" . }}-strip"
       {{ end }}
+    - match: (PathPrefix("/help"))
+      priority: 100 # || PathPrefix("/training-assets") || PathPrefix("/help") || PathPrefix("/project/:id")) # || PathPrefix("/training-assets"))
+      kind: Rule
+      services:
+        - name: {{ include ".helm.fullname" . }}
+          kind: Service
+          port: {{ .Values.image.containerPort }}
+      middlewares:
+      {{- if eq .Values.trustForwardHeader true }}
+      - name: "{{ include ".helm.fullname" . }}-auth"
+      {{- end }}
+      {{ if (not (hasKey .Values.image "noStripPath")) }}
+      - name: "{{ include ".helm.fullname" . }}-strip"
+      {{ end }}
+    - match: (PathPrefix("/project/:id"))
+      priority: 100 # || PathPrefix("/training-assets") || PathPrefix("/help") || PathPrefix("/project/:id")) # || PathPrefix("/training-assets"))
+      kind: Rule
+      services:
+        - name: {{ include ".helm.fullname" . }}
+          kind: Service
+          port: {{ .Values.image.containerPort }}
+      middlewares:
+      {{- if eq .Values.trustForwardHeader true }}
+      - name: "{{ include ".helm.fullname" . }}-auth"
+      {{- end }}
+      {{ if (not (hasKey .Values.image "noStripPath")) }}
+      - name: "{{ include ".helm.fullname" . }}-strip"
+      {{ end }}
+    
