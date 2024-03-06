@@ -55,9 +55,10 @@ imagePullSecrets:
 service:
   type: ClusterIP
 
+# Increase CPU to one physical core
 resources:
   requests:
-    cpu: 250m
+    cpu: 1000m
     memory: 2Gi
 
 serviceAccount:
