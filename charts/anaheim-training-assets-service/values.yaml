@@ -21,6 +21,8 @@ image:
       value: "/assets"
     - name: FEATURE_FLAGS_API_URL
       value: "http://anaheim-feature-flags-service:3020"
+    - name: PROJECTS_API_URL
+      value: "http://anaheim-project-service:3014"
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
