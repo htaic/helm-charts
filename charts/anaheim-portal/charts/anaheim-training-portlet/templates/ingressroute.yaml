@@ -8,7 +8,7 @@ spec:
     - web
   routes:
     - match: (PathPrefix("/{{ .Values.image.domainPath }}"))
-      priority: 1 # || PathPrefix("/training-assets") || PathPrefix("/help") || PathPrefix("/project/:id")) # || PathPrefix("/training-assets"))
+      priority: 1 
       kind: Rule
       services:
         - name: {{ include ".helm.fullname" . }}
@@ -22,7 +22,7 @@ spec:
       - name: "{{ include ".helm.fullname" . }}-strip"
       {{ end }}
     - match: (PathPrefix("/help"))
-      priority: 100 # || PathPrefix("/training-assets") || PathPrefix("/help") || PathPrefix("/project/:id")) # || PathPrefix("/training-assets"))
+      priority: 
       kind: Rule
       services:
         - name: {{ include ".helm.fullname" . }}
@@ -35,8 +35,8 @@ spec:
       {{ if (not (hasKey .Values.image "noStripPath")) }}
       - name: "{{ include ".helm.fullname" . }}-strip"
       {{ end }}
-    - match: (PathPrefix("/project/:id"))
-      priority: 100 # || PathPrefix("/training-assets") || PathPrefix("/help") || PathPrefix("/project/:id")) # || PathPrefix("/training-assets"))
+    - match: (PathPrefix("/product"))
+      priority: 100 
       kind: Rule
       services:
         - name: {{ include ".helm.fullname" . }}

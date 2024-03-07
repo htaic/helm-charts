@@ -9,5 +9,5 @@ spec:
     prefixes:
       - "/{{ .Values.image.domainPath }}"
       - "/help"
-      - "/project/:id"
+      - "/product"
 {{ end }}
