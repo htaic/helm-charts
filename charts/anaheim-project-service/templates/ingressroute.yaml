@@ -8,6 +8,7 @@ spec:
     - web
   routes:
     - match: (PathPrefix("/{{ .Values.domainPath }}"))
+      priority: 50
       kind: Rule
       services:
         - name: {{ include ".helm.fullname" . }}
