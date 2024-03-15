@@ -5,4 +5,4 @@ metadata:
 data:
   AWS_REGION: {{ .Values.AWS.region }}
   AWS_ACCOUNT_ID: "{{ .Values.AWS.accountId }}"
-  AWS_MODEL_S3_URI_PATH: {{ .Values.AWS.aws_model_s3_uri_path }}
+  MODEL_S3_URI_PATH: {{ .Values.AWS.aws_model_s3_uri_path }}
