@@ -15,6 +15,17 @@ entries:
   anaheim-ai-boxify-service:
   - apiVersion: v2
     appVersion: 0.0.5
+    created: "2024-03-15T18:42:04.322173913Z"
+    description: A Helm chart for Kubernetes anaheim-ai-boxify-service deployed behind
+      a traefik ingress
+    digest: 378076e9b90c0c978104c7b79365f377e5c91e1bea2aef74bf72f40eb3e0b508
+    name: anaheim-ai-boxify-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-ai-boxify-service-1.0.2/anaheim-ai-boxify-service-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
+    appVersion: 0.0.5
     created: "2024-03-13T17:55:33.29692537Z"
     description: A Helm chart for Kubernetes anaheim-ai-boxify-service deployed behind
       a traefik ingress
@@ -4943,4 +4954,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2024-03-13T17:55:33.542487512Z"
+generated: "2024-03-15T18:42:04.541812439Z"
