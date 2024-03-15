@@ -54,6 +54,8 @@ spec:
             {{- range .Values.image.envFrom.configMapRefs }}
               - configMapRef:
                   name: {{ . }}
+              - configMapRef:
+                  name: "aws-account-configmap"
             {{- end }}
           {{- end }}
           args: [ {{.Values.image.args}} ]
