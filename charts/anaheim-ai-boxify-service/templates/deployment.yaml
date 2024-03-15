@@ -83,7 +83,7 @@ spec:
       volumes:
         - name: efs-vol-mount
           persistentVolumeClaim:
-            claimName: "{{ include ".helm.fullname" . }}-claim"
+            claimName: "{{ include ".helm.fullname" . }}-efs-claim"
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
