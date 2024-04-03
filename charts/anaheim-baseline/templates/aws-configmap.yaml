@@ -6,3 +6,5 @@ data:
   AWS_REGION: {{ .Values.AWS.region }}
   AWS_ACCOUNT_ID: "{{ .Values.AWS.accountId }}"
   MODEL_S3_URI_PATH: {{ .Values.AWS.aws_model_s3_uri_path }}
+  REVERSE_PROXY_ORIGIN: {{ .Values.AWS.reverse_proxy_origin }} 
+  #http://10.16.52.87:8000
