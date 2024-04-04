@@ -14,6 +14,8 @@ image:
   env:
     - name: GRAPHQLURL
       value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
+    - name: FEATURE_FLAGS_API_URL
+      value: "http://anaheim-feature-flags-service:3020"
     - name: WAVESYNC_BASE_URL
       value: "https://sync.wavevms.com"
     - name: WAVESYNC_API_URL
@@ -22,9 +24,6 @@ image:
       value: "production"
     - name: TRAINING_ASSETS_SERVICE_URL
       value: "http://anaheim-training-assets-service:3010"
-    - name: FEATURE_FLAGS_API_URL
-      value: "http://anaheim-feature-flags-service:3020"
-
 imagePullSecrets:
   - name: dockerconfigjson-github-com
 
