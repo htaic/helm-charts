@@ -18,17 +18,17 @@ spec:
                 name:  {{ include ".helm.fullname" . }}
                 port:
                   number: {{ .Values.image.containerPort }}
-          - path: /help
-            pathType: Prefix
-            backend:
-              service:
-                name:  {{ include ".helm.fullname" . }}
-                port:
-                  number: {{ .Values.image.containerPort }}
-          - path: /project/:id
-            pathType: Prefix
-            backend:
-              service:
-                name:  {{ include ".helm.fullname" . }}
-                port:
-                  number: {{ .Values.image.containerPort }}
+       #   - path: /help
+       #     pathType: Prefix
+       #     backend:
+       #       service:
+       #         name:  {{ include ".helm.fullname" . }}
+       #         port:
+       #           number: {{ .Values.image.containerPort }}
+       #   - path: /project/:id
+       #     pathType: Prefix
+       #     backend:
+       #       service:
+       #         name:  {{ include ".helm.fullname" . }}
+       #         port:
+       #           number: {{ .Values.image.containerPort }}
