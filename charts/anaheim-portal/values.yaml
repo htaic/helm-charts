@@ -1,7 +1,7 @@
 fullnameOverride: "anaheim-portal"
 anaheim-container:
   image:
-    replicaCount: 1
+    replicaCount: 3
     repository: ghcr.io/htaic/anaheim-portal/anaheim-container
     pullPolicy: Always
     containerPort: 3000
@@ -42,7 +42,7 @@ anaheim-training-portlet:
   authResponseHeadersRegex Regex: ^X-
   trustForwardHeader: true
   image:
-    replicaCount: 1
+    replicaCount: 3
     repository: ghcr.io/htaic/anaheim-portal/anaheim-training-portlet
     pullPolicy: Always
     containerPort: 3001
@@ -86,7 +86,7 @@ anaheim-training-portlet:
 
 anaheim-verification-portlet:
   image:
-    replicaCount: 1
+    replicaCount: 3
     repository: ghcr.io/htaic/anaheim-portal/anaheim-verification-portlet
     pullPolicy: Always
     containerPort: 3002
