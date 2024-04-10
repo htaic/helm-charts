@@ -1,5 +1,5 @@
 image:
-  replicaCount: 1
+  replicaCount: 3
   repository: ghcr.io/htaic/anaheim-portal/anaheim-container
   pullPolicy: Always
   containerPort: 3000
