@@ -23,13 +23,11 @@ image:
     - name: LOG_LEVEL
       value: "INFO"
     - name: LOG_JSON
-      value: "false"
+      value: "true"
     - name: DD_ENABLED
       value: "false"
     - name: MODEL_DEST_RELATIVE_PATH
       value: "model/FastSAM-s.pt"
-    # - name: MODEL_S3_URI_PATH
-    #   value: YOUR_S3_ID
     - name: MODEL_S3_NAME
       value: "FastSAM-s.pt"
     - name: MODEL_S3_INPUTS
@@ -48,6 +46,8 @@ image:
       value: "/assets"
     - name: REST_ENDPOINT_PORT
       value: "3022"
+    - name: REVERSE_PROXY_ORIGIN
+      value: ""
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
@@ -57,8 +57,8 @@ service:
 
 resources:
   requests:
-    cpu: 2000m
-    memory: 2Gi
+    cpu: 4000m
+    memory: 8Gi
 
 serviceAccount:
   create: true
@@ -71,13 +71,15 @@ autoscaling:
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
 
+# podAnnotations:
+#   admission.datadoghq.com/python-lib.version: v2.8.0
 storage:
   className: efs-storageclass
   provisioner: efs.csi.aws.com
   capacity: 100Gi
   volumeMode: Filesystem
   csi:
-    volumeHandle: YOUR_FILESYSTEM_ID
+    volumeHandle: fs-0ba685ad88487dfee
     volumeAttributes:
       encryptInTransit: "true"
   volumeMountPath: /assets
