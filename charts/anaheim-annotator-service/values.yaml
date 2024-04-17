@@ -8,7 +8,7 @@ image:
   repository: ghcr.io/htaic/anaheim-annotator-service
   pullPolicy: Always
   containerPort: 3012
-  tag: "latest"
+  tag: "stable"
   livenessProbe: livez
   readinessProbe: readyz
   hostname: anaheim-annotator-service

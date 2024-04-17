@@ -9,7 +9,7 @@ image:
   repository: ghcr.io/htaic/anaheim-training-assets-service
   pullPolicy: Always
   containerPort: 3010
-  tag: latest
+  tag: stable
   livenessProbe: healthcheck
   readinessProbe: healthcheck
   hostname: anaheim-training-assets-service

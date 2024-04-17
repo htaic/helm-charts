@@ -10,7 +10,7 @@ image:
   repository: ghcr.io/htaic/anaheim-ai-boxify-service
   pullPolicy: Always
   containerPort: 3022
-  tag: "latest"
+  tag: "0.0.86-0"
   livenessProbe: livez
   readinessProbe: readyz
   hostname: anaheim-ai-boxify-service
@@ -77,7 +77,7 @@ storage:
   capacity: 100Gi
   volumeMode: Filesystem
   csi:
-    volumeHandle: YOUR_FILESYSTEM_ID
+    volumeHandle: fs-02b9977ca5e1427cc
     volumeAttributes:
       encryptInTransit: "true"
   volumeMountPath: /assets

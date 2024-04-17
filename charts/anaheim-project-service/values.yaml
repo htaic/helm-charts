@@ -9,7 +9,7 @@ image:
   repository: ghcr.io/htaic/anaheim-project-service
   pullPolicy: Always
   containerPort: 3014
-  tag: "latest"
+  tag: "stable"
   livenessProbe: healthcheck
   readinessProbe: healthcheck
   hostname: anaheim-project-service

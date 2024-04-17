@@ -9,7 +9,7 @@ image:
   repository: ghcr.io/htaic/anaheim-feature-flags-service
   pullPolicy: Always
   containerPort: 3020
-  tag: "latest"
+  tag: "stable"
   livenessProbe: healthcheck
   readinessProbe: healthcheck
   hostname: anaheim-feature-flags-service
