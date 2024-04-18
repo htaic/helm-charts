@@ -25,7 +25,7 @@ image:
     - name: LOG_JSON
       value: "true"
     - name: DD_ENABLED
-      value: "false"
+      value: "true"
     - name: MODEL_DEST_RELATIVE_PATH
       value: "model/FastSAM-s.pt"
     - name: MODEL_S3_NAME
@@ -48,6 +48,8 @@ image:
       value: "3022"
     - name: REVERSE_PROXY_ORIGIN
       value: ""
+    - name: DD_LOGS_INJECTION
+      value: "true"
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
@@ -71,8 +73,8 @@ autoscaling:
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
 
-# podAnnotations:
-#   admission.datadoghq.com/python-lib.version: v2.8.0
+podAnnotations:
+  admission.datadoghq.com/python-lib.version: v2.8.0
 storage:
   className: efs-storageclass
   provisioner: efs.csi.aws.com
