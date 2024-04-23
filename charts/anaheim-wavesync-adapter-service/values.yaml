@@ -24,6 +24,12 @@ image:
       value: "production"
     - name: TRAINING_ASSETS_SERVICE_URL
       value: "http://anaheim-training-assets-service:3010"
+    - name: DD_LOGS_INJECTION
+      value: "true"
+    - name: DD_AGENT_HOST
+      valueFrom:
+        fieldRef:
+          fieldPath: status.hostIP
 imagePullSecrets:
   - name: dockerconfigjson-github-com
 
@@ -39,6 +45,9 @@ serviceAccount:
   create: true
   annotations: {}
   name: ""
+
+podAnnotations:
+  admission.datadoghq.com/js-lib.version: v3.6.0
 
 autoscaling:
   enabled: false
