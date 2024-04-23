@@ -15,6 +15,17 @@ entries:
   anaheim-ai-boxify-service:
   - apiVersion: v2
     appVersion: 0.0.5
+    created: "2024-04-23T18:50:37.104261906Z"
+    description: A Helm chart for Kubernetes anaheim-ai-boxify-service deployed behind
+      a traefik ingress
+    digest: 1b429482127bb6cccfbe60273fe538544a88ebde3cc0276fc3597c673dd120c4
+    name: anaheim-ai-boxify-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-ai-boxify-service-1.1.9/anaheim-ai-boxify-service-1.1.9.tgz
+    version: 1.1.9
+  - apiVersion: v2
+    appVersion: 0.0.5
     created: "2024-03-22T22:39:16.894890967Z"
     description: A Helm chart for Kubernetes anaheim-ai-boxify-service deployed behind
       a traefik ingress
@@ -1323,6 +1334,17 @@ entries:
     - https://github.com/htaic/helm-charts/releases/download/anaheim-training-assets-service-0.0.1/anaheim-training-assets-service-0.0.1.tgz
     version: 0.0.1
   anaheim-wavesync-adapter-service:
+  - apiVersion: v2
+    appVersion: 0.0.6
+    created: "2024-04-23T18:50:37.219413526Z"
+    description: A Helm chart for Kubernetes anaheim-wavesync-adapter-service deployed
+      behind a traefik ingress
+    digest: b25c706653fee362a77de65f214b76f227dde6d15394408d8543f77a9472c88d
+    name: anaheim-wavesync-adapter-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-wavesync-adapter-service-2.0.1/anaheim-wavesync-adapter-service-2.0.1.tgz
+    version: 2.0.1
   - apiVersion: v2
     appVersion: 0.0.6
     created: "2024-04-04T20:38:18.39863219Z"
@@ -5018,4 +5040,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2024-04-17T20:03:06.705877524Z"
+generated: "2024-04-23T18:50:37.220578703Z"
