@@ -21,7 +21,7 @@ spec:
       labels:
         date: "{{ now | unixEpoch }}"
         {{- include ".helm.selectorLabels" . | nindent 8 }}
-        admission.datadoghq.com/enabled: "true"
+        # admission.datadoghq.com/enabled: "true"
     spec:
       hostname: {{ .Values.image.hostname }}
       {{- with .Values.imagePullSecrets }}
