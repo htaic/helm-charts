@@ -35,7 +35,7 @@ serviceAccount:
   name: ""
 
 autoscaling:
-  enabled: false
+  enabled: 3
   minReplicas: 1
-  maxReplicas: 100
+  maxReplicas: 3
   targetCPUUtilizationPercentage: 80
