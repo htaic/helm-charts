@@ -15,6 +15,17 @@ entries:
   anaheim-ai-boxify-service:
   - apiVersion: v2
     appVersion: 0.0.5
+    created: "2024-04-25T16:12:40.557090233Z"
+    description: A Helm chart for Kubernetes anaheim-ai-boxify-service deployed behind
+      a traefik ingress
+    digest: 386b9ee3c3e780e13600d0ef6cfa9929e5bcc7010267fd1caf2768556ace0e97
+    name: anaheim-ai-boxify-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-ai-boxify-service-1.2.0/anaheim-ai-boxify-service-1.2.0.tgz
+    version: 1.2.0
+  - apiVersion: v2
+    appVersion: 0.0.5
     created: "2024-04-23T18:50:37.104261906Z"
     description: A Helm chart for Kubernetes anaheim-ai-boxify-service deployed behind
       a traefik ingress
@@ -113,6 +124,17 @@ entries:
     - https://github.com/htaic/helm-charts/releases/download/anaheim-ai-boxify-service-0.0.4/anaheim-ai-boxify-service-0.0.4.tgz
     version: 0.0.4
   anaheim-annotator-service:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2024-04-25T16:12:40.67587934Z"
+    description: A Helm chart for Kubernetes anaheim-annotator-service deployed behind
+      a traefik ingress
+    digest: 900f8e7f52da29bd9e760e5e3aa33a1aaa8e26b2b9937ac3e3339eb0490e7416
+    name: anaheim-annotator-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-annotator-service-1.0.1/anaheim-annotator-service-1.0.1.tgz
+    version: 1.0.1
   - apiVersion: v2
     appVersion: 0.0.1
     created: "2023-12-19T19:38:55.455250612Z"
@@ -511,6 +533,17 @@ entries:
   anaheim-eventbridge:
   - apiVersion: v2
     appVersion: 0.0.2
+    created: "2024-04-25T16:12:40.792600753Z"
+    description: A Helm chart for Kubernetes anaheim-eventbridge deployed behind a
+      traefik ingress
+    digest: ca7e8e6080d56a6051869dfbe17bc694a5ee0f0bdb917083c13517301fe170ab
+    name: anaheim-eventbridge
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-eventbridge-0.0.4/anaheim-eventbridge-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
+    appVersion: 0.0.2
     created: "2023-12-13T00:15:03.885726241Z"
     description: A Helm chart for Kubernetes anaheim-eventbridge deployed behind a
       traefik ingress
@@ -545,6 +578,17 @@ entries:
   anaheim-feature-flags-service:
   - apiVersion: v2
     appVersion: 0.0.2
+    created: "2024-04-25T16:12:40.972896591Z"
+    description: A Helm chart for Kubernetes anaheim-feature-flags-service deployed
+      behind a traefik ingress
+    digest: a0679cedaece1f2c8f4b07b673c0157d386a53ca1d4002b8aac7dab318926290
+    name: anaheim-feature-flags-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-feature-flags-service-1.0.1/anaheim-feature-flags-service-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
+    appVersion: 0.0.2
     created: "2023-12-19T19:38:55.756781516Z"
     description: A Helm chart for Kubernetes anaheim-feature-flags-service deployed
       behind a traefik ingress
@@ -566,6 +610,17 @@ entries:
     - https://github.com/htaic/helm-charts/releases/download/anaheim-feature-flags-service-0.0.1/anaheim-feature-flags-service-0.0.1.tgz
     version: 0.0.1
   anaheim-gatekeeper-service:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2024-04-25T16:12:41.105336691Z"
+    description: A Helm chart for Kubernetes anaheim-gatekeeper-service deployed behind
+      a traefik ingress
+    digest: e5d386c92a8236cc82ad4bc6d17d54f16918f03a7a3fd49079bf3c8e2caaee9e
+    name: anaheim-gatekeeper-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-gatekeeper-service-0.0.2/anaheim-gatekeeper-service-0.0.2.tgz
+    version: 0.0.2
   - apiVersion: v2
     appVersion: 0.0.1
     created: "2024-01-24T19:04:21.735638868Z"
@@ -982,6 +1037,17 @@ entries:
   anaheim-project-service:
   - apiVersion: v2
     appVersion: 0.0.2
+    created: "2024-04-25T16:12:41.366153994Z"
+    description: A Helm chart for Kubernetes anaheim-project-service deployed behind
+      a traefik ingress
+    digest: af2420e650f3e7e4dee686138e570a1ac0d8684bded3a0eaf37995b0a8428933
+    name: anaheim-project-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-project-service-1.0.3/anaheim-project-service-1.0.3.tgz
+    version: 1.0.3
+  - apiVersion: v2
+    appVersion: 0.0.2
     created: "2024-02-14T21:16:28.503504781Z"
     description: A Helm chart for Kubernetes anaheim-project-service deployed behind
       a traefik ingress
@@ -1124,6 +1190,17 @@ entries:
     - https://github.com/htaic/helm-charts/releases/download/anaheim-project-service-0.0.1/anaheim-project-service-0.0.1.tgz
     version: 0.0.1
   anaheim-training-assets-service:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2024-04-25T16:12:41.504895279Z"
+    description: A Helm chart for Kubernetes anaheim-training-assets-service deployed
+      behind a traefik ingress
+    digest: 5e857f02b43978fb2f9e2be90329cee1a856ea762b878af16a5c88f6837d3aed
+    name: anaheim-training-assets-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-training-assets-service-1.1.0/anaheim-training-assets-service-1.1.0.tgz
+    version: 1.1.0
   - apiVersion: v2
     appVersion: 0.0.1
     created: "2024-04-24T18:26:32.777241066Z"
@@ -1345,6 +1422,17 @@ entries:
     - https://github.com/htaic/helm-charts/releases/download/anaheim-training-assets-service-0.0.1/anaheim-training-assets-service-0.0.1.tgz
     version: 0.0.1
   anaheim-wavesync-adapter-service:
+  - apiVersion: v2
+    appVersion: 0.0.6
+    created: "2024-04-25T16:12:41.631933024Z"
+    description: A Helm chart for Kubernetes anaheim-wavesync-adapter-service deployed
+      behind a traefik ingress
+    digest: 589911e2c1e7322fd91a1ea85e4e93255896be7cb0269ec3d679766a01ffbf33
+    name: anaheim-wavesync-adapter-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-wavesync-adapter-service-2.0.2/anaheim-wavesync-adapter-service-2.0.2.tgz
+    version: 2.0.2
   - apiVersion: v2
     appVersion: 0.0.6
     created: "2024-04-23T18:50:37.219413526Z"
@@ -5051,4 +5139,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2024-04-24T18:26:32.77769832Z"
+generated: "2024-04-25T16:12:41.632656964Z"
