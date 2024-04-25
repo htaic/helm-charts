@@ -50,7 +50,7 @@ podAnnotations:
   admission.datadoghq.com/js-lib.version: v3.6.0
 
 autoscaling:
-  enabled: false
+  enabled: true
   minReplicas: 1
-  maxReplicas: 100
+  maxReplicas: 3
   targetCPUUtilizationPercentage: 80

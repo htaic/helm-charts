@@ -123,7 +123,7 @@ anaheim-verification-portlet:
     name: ""
 
   autoscaling:
-    enabled: false
+    enabled: true
     minReplicas: 1
-    maxReplicas: 100
+    maxReplicas: 3
     targetCPUUtilizationPercentage: 80
