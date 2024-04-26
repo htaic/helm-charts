@@ -676,6 +676,18 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/anaheim-gatekeeper-service-0.0.1/anaheim-gatekeeper-service-0.0.1.tgz
     version: 0.0.1
+  anaheim-licensing-adapter:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2024-04-26T17:52:20.031286407Z"
+    description: A Helm chart for Kubernetes anaheim-licensing-adapter deployed behind
+      a traefik ingress
+    digest: 1549fbd69c5db0ec6c56740eea0cb32484f9af153a649f065eb505dfe3485641
+    name: anaheim-licensing-adapter
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-licensing-adapter-0.0.1/anaheim-licensing-adapter-0.0.1.tgz
+    version: 0.0.1
   anaheim-portal:
   - apiVersion: v2
     appVersion: 3.0.0
@@ -5216,4 +5228,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2024-04-25T17:05:58.069480681Z"
+generated: "2024-04-26T17:52:20.165081997Z"
