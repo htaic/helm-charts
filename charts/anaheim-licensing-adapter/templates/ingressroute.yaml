@@ -1,0 +1,23 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: "{{ include ".helm.fullname" . }}-route"
+  namespace: {{ .Values.namespace }}
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: (PathPrefix("/{{ .Values.domainPath }}"))
+      priority: 50
+      kind: Rule
+      services:
+        - name: {{ include ".helm.fullname" . }}
+          kind: Service
+          port: {{ .Values.image.containerPort }}
+      middlewares:
+      {{- if eq .Values.trustForwardHeader true }}
+      - name: "{{ include ".helm.fullname" . }}-auth"
+      {{- end }}
+      {{ if (not (hasKey .Values "noStripPath")) }}
+      - name: "{{ include ".helm.fullname" . }}-strip"
+      {{ end }}
