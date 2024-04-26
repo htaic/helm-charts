@@ -2,7 +2,7 @@ forwardAuthaddress: http://anaheim-graphql-service-anaheim-authentication-servic
 authResponseHeadersRegex Regex: ^X-
 trustForwardHeader: true
 image:
-  replicaCount: 3
+  replicaCount: 1
   repository: ghcr.io/htaic/anaheim-portal/anaheim-training-portlet
   pullPolicy: Always
   containerPort: 3001
