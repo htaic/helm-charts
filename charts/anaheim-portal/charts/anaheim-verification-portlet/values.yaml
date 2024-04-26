@@ -1,5 +1,5 @@
 image:
-  replicaCount: 3
+  replicaCount: 1
   repository: ghcr.io/htaic/anaheim-portal/anaheim-verification-portlet
   pullPolicy: Always
   containerPort: 3002
