@@ -1,0 +1,44 @@
+namespace: "hanwha"
+fullnameOverride: anaheim-licensing-adapter
+domainPath: "projects"
+forwardAuthaddress: http://anaheim-graphql-service-anaheim-authentication-service:9876/api/v1/validate
+authResponseHeadersRegex Regex: ^X-
+trustForwardHeader: true
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/anaheim-licensing-adapter
+  pullPolicy: Always
+  containerPort: 3029
+  tag: "latest"
+  livenessProbe: healthcheck
+  readinessProbe: healthcheck
+  hostname: anaheim-licensing-adapter
+  env:
+    - name: GRAPHQLURL
+      value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
+    - name: API_ANNOTATION_SERVICE
+      value: "http://anaheim-annotator-service:3012"
+    - name: TRAINING_ASSETS_SERVICE_URL
+      value: "http://anaheim-training-assets-service:3010"
+
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 150Mi
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
