@@ -1,0 +1,48 @@
+namespace: "hanwha"
+fullnameOverride: anaheim-licensing-adapter
+domainPath: "licensing-adapter"
+forwardAuthaddress: http://anaheim-graphql-service-anaheim-authentication-service:9876/api/v1/validate
+authResponseHeadersRegex Regex: ^X-
+trustForwardHeader: true
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/anaheim-licensing-adapter
+  pullPolicy: Always
+  containerPort: 3029
+  tag: "latest"
+  livenessProbe: healthcheck
+  readinessProbe: healthcheck
+  hostname: anaheim-licensing-adapter
+  env:
+    - name: GRAPHQLURL
+      value: 'http://anaheim-graphql-service-hasura:8080/v1/graphql'
+    - name: DUCLO_LICENSE_URL
+      value: 'https://partner.dev.platform.hanwhavision.cloud'
+    - name: REST_ENDPOINT_PORT
+      value: '3022'
+    - name: NODE_ENV
+      value: 'production'
+    - name: AWS_REGION
+      value: 'us-west-2'
+
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 150Mi
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
