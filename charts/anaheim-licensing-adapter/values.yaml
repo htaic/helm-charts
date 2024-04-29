@@ -17,9 +17,7 @@ image:
     - name: GRAPHQLURL
       value: 'http://anaheim-graphql-service-hasura:8080/v1/graphql'
     - name: DUCLO_LICENSE_URL
-      value: 'https://partner.dev.platform.hanwhavision.cloud'
-    - name: REST_ENDPOINT_PORT
-      value: '3022'
+      value: {{ .Values.AWS.duclo_auth_certs_url }}
     - name: NODE_ENV
       value: 'production'
     - name: AWS_REGION
