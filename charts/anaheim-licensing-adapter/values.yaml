@@ -16,10 +16,6 @@ image:
   env:
     - name: GRAPHQLURL
       value: 'http://anaheim-graphql-service-hasura:8080/v1/graphql'
-    - name: DUCLO_LICENSE_URL
-      value: 'https://partner.dev.platform.hanwhavision.cloud'
-    - name: REST_ENDPOINT_PORT
-      value: '3022'
     - name: NODE_ENV
       value: 'production'
     - name: AWS_REGION
@@ -42,7 +38,7 @@ serviceAccount:
   name: ""
 
 autoscaling:
-  enabled: false
+  enabled: true
   minReplicas: 1
   maxReplicas: 3
   targetCPUUtilizationPercentage: 80
