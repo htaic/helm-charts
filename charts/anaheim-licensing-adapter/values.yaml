@@ -16,8 +16,6 @@ image:
   env:
     - name: GRAPHQLURL
       value: 'http://anaheim-graphql-service-hasura:8080/v1/graphql'
-    - name: DUCLO_LICENSE_URL
-      value: {{ .Values.AWS.duclo_auth_certs_url }}
     - name: NODE_ENV
       value: 'production'
     - name: AWS_REGION

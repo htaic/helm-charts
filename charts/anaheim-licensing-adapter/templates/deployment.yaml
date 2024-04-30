@@ -47,6 +47,11 @@ spec:
                 secretKeyRef:
                   name: hasura-secret
                   key: HASURA_GRAPHQL_ADMIN_SECRET
+            - name: DCUCLO_LICENSE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: duclo-configmap
+                  key: DUCLO_AUTH_CERTS_URL
           {{- if .Values.image.env }}
             {{- toYaml .Values.image.env | nindent 12 }}
           {{- end }}
@@ -59,6 +64,8 @@ spec:
                   name: aws-sqs-secret
               - configMapRef:
                   name: aws-account-configmap
+              - configMapRef:
+                  name: duclo-configmap
           args: [ {{.Values.image.args}} ]
           ports:
             - name: http
