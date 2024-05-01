@@ -1,0 +1,9 @@
+# templates/app-service-env.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.appConfigMap.name }}
+data:
+  {{- range $key, $value := .Values.appConfigMap.data }}
+  {{ $key }}: {{ $value | quote }}
+  {{- end }}
