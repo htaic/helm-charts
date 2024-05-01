@@ -46,10 +46,10 @@ image:
       value: "/assets"
     - name: REST_ENDPOINT_PORT
       value: "3022"
-    - name: REVERSE_PROXY_ORIGIN
-      value: ""
+    # - name: REVERSE_PROXY_ORIGIN
+    #   value: ""
     # - name: DD_LOGS_INJECTION
-    #   value: "true"
+    #   value: "false"
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
@@ -75,13 +75,14 @@ autoscaling:
 
 # podAnnotations:
 #   admission.datadoghq.com/python-lib.version: v2.8.0
+
 storage:
   className: efs-storageclass
   provisioner: efs.csi.aws.com
   capacity: 100Gi
   volumeMode: Filesystem
   csi:
-    volumeHandle: YOUR_FILESYSTEM_ID
+    volumeHandle: fs-0ba685ad88487dfee
     volumeAttributes:
       encryptInTransit: "true"
   volumeMountPath: /assets
