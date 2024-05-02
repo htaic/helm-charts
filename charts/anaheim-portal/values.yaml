@@ -127,8 +127,3 @@ anaheim-verification-portlet:
     minReplicas: 1
     maxReplicas: 3
     targetCPUUtilizationPercentage: 80
-
-configMap:
-  name: app-service-env
-  data:
-    ENVIRONMENT: "development"
