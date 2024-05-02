@@ -15,11 +15,11 @@ image:
   hostname: anaheim-licensing-adapter
   env:
     - name: GRAPHQLURL
-      value: 'http://anaheim-graphql-service-hasura:8080/v1/graphql'
+      value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
     - name: NODE_ENV
-      value: 'production'
+      value: "production"
     - name: AWS_REGION
-      value: 'us-west-2'
+      value: "us-west-2"
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
@@ -38,7 +38,7 @@ serviceAccount:
   name: ""
 
 autoscaling:
-  enabled: true
+  enabled: false
   minReplicas: 1
   maxReplicas: 3
   targetCPUUtilizationPercentage: 80
