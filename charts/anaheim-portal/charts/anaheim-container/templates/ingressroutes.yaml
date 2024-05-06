@@ -21,7 +21,6 @@ spec:
       {{ if (not (hasKey .Values.image "noStripPath")) }}
       - name: "{{ include ".helm.fullname" . }}-strip"
       {{ end }}
-
    - match: (PathPrefix("/license"))
       priority: 100
       kind: Rule
