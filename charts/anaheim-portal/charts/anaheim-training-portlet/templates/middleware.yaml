@@ -11,5 +11,5 @@ spec:
       - "/help"
       - "/project/:id"
       - "/product"
-      - "/license"
+#      - "/license"
 {{ end }}
