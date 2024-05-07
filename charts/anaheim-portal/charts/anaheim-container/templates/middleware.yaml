@@ -11,6 +11,6 @@ spec:
       - "/license"
       - "/training"
       - "/project"
-      # - "/help"
+      - "/help"
       # - "/project/:id"
 {{ end }}
