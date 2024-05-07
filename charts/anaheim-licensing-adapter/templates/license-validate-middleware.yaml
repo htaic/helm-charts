@@ -5,7 +5,12 @@ metadata:
   name: "{{ include ".helm.fullname" . }}-validate"
   namespace: {{ .Values.namespace }}
 spec:
-  stripPrefixRegex:
-    regex:
-      - "/{{ .Values.domainPath }}/licensing-adapter/license/status-middleware"
+  forwardAuth:
+    address: {{ .Values.forwardAuthaddress }}
+    authResponseHeadersRegex: {{ .Values.authResponseHeadersRegex }}
+    trustForwardHeader: {{ .Values.trustForwardHeader }}
+  # forwardAuth:
+  #   address: /{{ .Values.domainPath }}/license/status-middleware"
+  #   authResponseHeadersRegex: {{ .Values.authResponseHeadersRegex }}
+  #   trustForwardHeader: {{ .Values.trustForwardHeader }}
 {{ end }}
