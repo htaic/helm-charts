@@ -8,7 +8,9 @@ spec:
   stripPrefix:
     prefixes:
       - "/{{ .Values.image.domainPath }}"
-#      - "/license"
+      - "/license"
+      - "/training"
+      - "/project"
       # - "/help"
       # - "/project/:id"
 {{ end }}

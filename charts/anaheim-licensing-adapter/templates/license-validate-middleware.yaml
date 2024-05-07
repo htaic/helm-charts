@@ -7,5 +7,5 @@ metadata:
 spec:
   stripPrefixRegex:
     regex:
-      - "/{{ .Values.domainPath }}/licensing-adapter/license/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/status"
+      - "/{{ .Values.domainPath }}/licensing-adapter/license/status-middleware"
 {{ end }}
