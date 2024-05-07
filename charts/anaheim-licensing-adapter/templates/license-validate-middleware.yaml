@@ -6,11 +6,7 @@ metadata:
   namespace: {{ .Values.namespace }}
 spec:
   forwardAuth:
-    address: {{ .Values.forwardAuthaddress }}
+    address: {{ .Values.licenseAuthaddress }}
     authResponseHeadersRegex: {{ .Values.authResponseHeadersRegex }}
     trustForwardHeader: {{ .Values.trustForwardHeader }}
-  # forwardAuth:
-  #   address: /{{ .Values.domainPath }}/license/status-middleware"
-  #   authResponseHeadersRegex: {{ .Values.authResponseHeadersRegex }}
-  #   trustForwardHeader: {{ .Values.trustForwardHeader }}
 {{ end }}

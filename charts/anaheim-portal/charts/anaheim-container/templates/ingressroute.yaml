@@ -18,4 +18,3 @@ spec:
                 name:  {{ include ".helm.fullname" . }}
                 port:
                   number: {{ .Values.image.containerPort }}
-  

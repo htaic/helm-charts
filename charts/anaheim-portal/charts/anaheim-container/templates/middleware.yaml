@@ -11,4 +11,5 @@ spec:
       - "/license"
       - "/training"
       - "/project"
+      - "/help"
 {{ end }}
