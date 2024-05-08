@@ -67,17 +67,17 @@ spec:
        - name: "{{ include ".helm.fullname" . }}-strip"
       {{ end }}
       
-    - match: (PathPrefix("/help"))
-      priority: 
-      kind: Rule
-      services:
-        - name: {{ include ".helm.fullname" . }}
-          kind: Service
-          port: {{ .Values.image.containerPort }}
-      middlewares:
-      {{- if eq .Values.trustForwardHeader true }}
-       - name: "{{ include ".helm.fullname" . }}-auth"
-      {{- end }}
-      {{ if (not (hasKey .Values.image "noStripPath")) }}
-       - name: "{{ include ".helm.fullname" . }}-strip"
-      {{ end }}
+#    - match: (PathPrefix("/help"))
+#      priority: 
+#      kind: Rule
+#      services:
+#        - name: {{ include ".helm.fullname" . }}
+#          kind: Service
+#          port: {{ .Values.image.containerPort }}
+#      middlewares:
+#      {{- if eq .Values.trustForwardHeader true }}
+#       - name: "{{ include ".helm.fullname" . }}-auth"
+#      {{- end }}
+#      {{ if (not (hasKey .Values.image "noStripPath")) }}
+#       - name: "{{ include ".helm.fullname" . }}-strip"
+#      {{ end }}
