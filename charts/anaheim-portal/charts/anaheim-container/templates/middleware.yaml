@@ -13,5 +13,5 @@ spec:
       # - "/project/:id"
   redirectRegex:
     regex: {{ .Values.image.domainPath }}/help
-    replacement: https://support.hanwhavisionamerica.com/hc/en-us/articles/21707499681947-Welcome-Guide-for-Flex-AI
+    replacement: 'https://support.hanwhavisionamerica.com/hc/en-us/articles/21707499681947-Welcome-Guide-for-Flex-AI'
 {{ end }}
