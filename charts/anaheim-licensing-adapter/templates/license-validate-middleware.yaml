@@ -5,7 +5,8 @@ metadata:
   name: "{{ include ".helm.fullname" . }}-validate"
   namespace: {{ .Values.namespace }}
 spec:
-  stripPrefixRegex:
-    regex:
-      - "/{{ .Values.domainPath }}/licensing-adapter/license/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/status"
+  forwardAuth:
+    address: {{ .Values.licenseAuthaddress }}
+    authResponseHeadersRegex: {{ .Values.authResponseHeadersRegex }}
+    trustForwardHeader: {{ .Values.trustForwardHeader }}
 {{ end }}

@@ -2,6 +2,7 @@ namespace: "hanwha"
 fullnameOverride: anaheim-licensing-adapter
 domainPath: "licensing-adapter"
 forwardAuthaddress: http://anaheim-graphql-service-anaheim-authentication-service:9876/api/v1/validate
+licenseAuthaddress: http://anaheim-licensing-adapter:3029/license/status-middleware
 authResponseHeadersRegex Regex: ^X-
 trustForwardHeader: true
 image:

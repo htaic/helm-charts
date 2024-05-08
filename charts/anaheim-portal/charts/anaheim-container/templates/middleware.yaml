@@ -8,7 +8,11 @@ spec:
   stripPrefix:
     prefixes:
       - "/{{ .Values.image.domainPath }}"
-#      - "/license"
-      # - "/help"
-      # - "/project/:id"
+      - "/license"
+      - "/training"
+      - "/project"
+      - "/help"
+    redirectRegex:
+      regex: {{ .Values.image.domainPath }}/help
+      replacement: https://support.hanwhavisionamerica.com/hc/en-us/articles/21707499681947-Welcome-Guide-for-Flex-AI
 {{ end }}
