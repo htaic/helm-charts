@@ -47,6 +47,11 @@ spec:
                 secretKeyRef:
                   name: hasura-secret
                   key: HASURA_GRAPHQL_ADMIN_SECRET
+            - name: AUTHENTICATION_HOSTNAME
+              valueFrom:
+                secretKeyRef:
+                  name: graphql-auth-secret
+                  key: AUTHENTICATION_HOSTNAME         
             - name: DCUCLO_LICENSE_URL
               valueFrom:
                 configMapKeyRef:
@@ -58,6 +63,8 @@ spec:
           envFrom:
               - secretRef:
                   name: hasura-secret
+              - secretRef:
+                  name: graphql-auth-secret
               - secretRef:
                   name: aws-eventbridge-secret
               - secretRef:
