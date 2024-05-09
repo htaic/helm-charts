@@ -1,37 +1,53 @@
-#apiVersion: traefik.containo.us/v1alpha1
-#kind: IngressRoute
-#metadata:
-#  name: "{{ include ".helm.fullname" . }}-route"
-#  namespace: {{ .Values.namespace }}
-#spec:
-#  entryPoints:
-#    - web
-#  routes:
-#    - match: (PathPrefix("/"))
-#      priority: 
-#      kind: Rule
-#      services:
-#        - name: {{ include ".helm.fullname" . }}
-#          kind: Service
-#          port: {{ .Values.image.containerPort }}
-#      middlewares:
-#      {{- if eq .Values.trustForwardHeader true }}
-#      - name: "{{ include ".helm.fullname" . }}-auth"
-#      {{- end }}
-#      {{ if (not (hasKey .Values.image "noStripPath")) }}
-#      - name: "{{ include ".helm.fullname" . }}-strip"
-#      {{ end }}
-#    - match: (PathPrefix("/license"))
-#      priority: 100
-#      kind: Rule
-#      services:
-#        - name: {{ include ".helm.fullname" . }}
-#          kind: Service
-#          port: {{ .Values.image.containerPort }}
-#      middlewares:
-#      {{- if eq .Values.trustForwardHeader true }}
-#      - name: "{{ include ".helm.fullname" . }}-auth"
-#      {{- end }}
-#      {{ if (not (hasKey .Values.image "noStripPath")) }}
-#      - name: "{{ include ".helm.fullname" . }}-strip"
-#      {{ end }}
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+ name: "{{ include ".helm.fullname" . }}-route"
+ namespace: {{ .Values.namespace }}
+spec:
+ entryPoints:
+   - web
+ routes:
+    - match: (PathPrefix("/project/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"))
+      priority:
+      kind: Rule
+      services:
+        - name: {{ include ".helm.fullname" . }}
+          kind: Service
+          port: {{ .Values.image.containerPort }}
+      middlewares:
+      {{- if eq .Values.trustForwardHeader true }}
+      - name: "{{ include ".helm.fullname" . }}-auth"
+      {{- end }}
+      {{ if (not (hasKey .Values.image "noStripPath")) }}
+      - name: "{{ include ".helm.fullname" . }}-strip"
+      {{ end }}
+
+    - match: (PathPrefix("/license"))
+      priority: 
+      kind: Rule
+      services:
+        - name: {{ include ".helm.fullname" . }}
+          kind: Service
+          port: {{ .Values.image.containerPort }}
+      middlewares:
+      {{- if eq .Values.trustForwardHeader true }}
+       - name: "{{ include ".helm.fullname" . }}-auth"
+      {{- end }}
+      {{ if (not (hasKey .Values.image "noStripPath")) }}
+       - name: "{{ include ".helm.fullname" . }}-strip"
+      {{ end }}
+
+    # - match: (PathPrefix("/training"))
+    #   priority: 
+    #   kind: Rule
+    #   services:
+    #     - name: {{ include ".helm.fullname" . }}
+    #       kind: Service
+    #       port: {{ .Values.image.containerPort }}
+    #   middlewares:
+    #   {{- if eq .Values.trustForwardHeader true }}
+    #    - name: "{{ include ".helm.fullname" . }}-auth"
+    #   {{- end }}
+    #   {{ if (not (hasKey .Values.image "noStripPath")) }}
+    #    - name: "{{ include ".helm.fullname" . }}-strip"
+    #   {{ end }}
