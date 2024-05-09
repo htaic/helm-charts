@@ -34,7 +34,9 @@ image:
       # We use that to validate the query/mutations against the Hanwha approved query/mutation list
       # as well as validate the orgId value if used in the query/mutation.
     - name: HASURA_GRAPHQL_AUTH_HOOK_MODE
-      value: POST  
+      value: POST
+    - name: EVENTBRIDGE_HOSTNAME
+      value: http://anaheim-eventbridge:9877  
      
 imagePullSecrets:
   - name: dockerconfigjson-github-com
