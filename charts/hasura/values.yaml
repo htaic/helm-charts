@@ -28,9 +28,6 @@ image:
     - name: HASURA_GRAPHQL_ENABLED_LOG_TYPES
       value: startup, http-log, webhook-log, websocket-log, query-log
       # We have a readonly role for all users other than Hasura GraphQL admin
-    - name: HASURA_GRAPHQL_UNAUTHORIZED_ROLE
-      value: readonly
-      # This enables the Hasura Authentication webhook for requests without an admin token
     - name: HASURA_GRAPHQL_AUTH_HOOK
       value: http://anaheim-graphql-service-anaheim-authentication-service:9876/api/v1/graphqlHook
       # This sends a POST to the graphqlHook, along with the GraphQL query/mutation and variables.
