@@ -56,6 +56,11 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: duclo-configmap
+                  key: DUCLO_DOMAIN
+            - name: DUCLO_AUTH_CERTS_URL_LICENSE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: duclo-configmap
                   key: DUCLO_AUTH_CERTS_URL
           {{- if .Values.image.env }}
             {{- toYaml .Values.image.env | nindent 12 }}
