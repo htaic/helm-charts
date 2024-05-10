@@ -52,7 +52,7 @@ spec:
                 secretKeyRef:
                   name: graphql-auth-secret
                   key: AUTHENTICATION_HOSTNAME         
-            - name: DUCLO_LICENSE_URL
+            - name: DUCLO_PARTNER_LICENSE_URL
               valueFrom:
                 configMapKeyRef:
                   name: duclo-configmap
