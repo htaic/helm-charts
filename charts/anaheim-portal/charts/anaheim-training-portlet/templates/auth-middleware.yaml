@@ -10,7 +10,3 @@ spec:
     authResponseHeadersRegex: {{ .Values.authResponseHeadersRegex }}
     trustForwardHeader: {{ .Values.trustForwardHeader }}
 {{ end }}
-    # authRequestHeaders:
-    # - accept
-    # - accept-encoding
-    # - authorization
