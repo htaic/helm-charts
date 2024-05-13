@@ -21,7 +21,7 @@ image:
       value: "http://anaheim-annotator-service:3012"
     - name: TRAINING_ASSETS_SERVICE_URL
       value: "http://anaheim-training-assets-service:3010"
-
+      
 imagePullSecrets:
   - name: dockerconfigjson-github-com
 
