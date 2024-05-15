@@ -19,6 +19,8 @@ image:
     secretRefs:
       - hasura-secret
   env:
+    - name: ENVIRONMENT
+      value: " "  
     - name: GRAPHQLURL
       value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
     - name: APIURLASSETS
@@ -27,8 +29,6 @@ image:
       value: "http://anaheim-project-service:3014"
     - name: SERVICE_ENV
       value: "non-local"
-    - name: ENVIRONMENT
-      value: " "  
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
