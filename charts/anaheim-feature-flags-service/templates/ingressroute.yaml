@@ -14,4 +14,9 @@ spec:
           kind: Service
           port: {{ .Values.image.containerPort }}
       middlewares:
-      - name: "{{ include ".helm.fullname" . }}-secured"
+      {{- if eq .Values.trustForwardHeader true }}
+      - name: "{{ include ".helm.fullname" . }}-auth"
+      {{- end }}
+      {{ if (not (hasKey .Values "noStripPath")) }}
+      - name: "{{ include ".helm.fullname" . }}-strip"
+      {{ end }}
