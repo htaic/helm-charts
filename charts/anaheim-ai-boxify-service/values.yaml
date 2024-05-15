@@ -3,6 +3,7 @@ fullnameOverride: anaheim-ai-boxify-service
 forwardAuthaddress: http://anaheim-graphql-service-anaheim-authentication-service:9876/api/v1/validate
 authResponseHeadersRegex Regex: ^X-
 trustForwardHeader: true
+licenseAuthaddress: http://anaheim-licensing-adapter:3029/license/status-middleware
 domainPath: "ai-boxify"
 
 image:
@@ -81,7 +82,7 @@ storage:
   capacity: 100Gi
   volumeMode: Filesystem
   csi:
-    volumeHandle: YOUR_FILESYSTEM_ID
+    volumeHandle: fs-0ba685ad88487dfee
     volumeAttributes:
       encryptInTransit: "true"
   volumeMountPath: /assets

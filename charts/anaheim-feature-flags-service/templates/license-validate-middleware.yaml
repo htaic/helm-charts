@@ -1,12 +1,12 @@
-{{ if eq .Values.trustForwardHeader true }}
+{{ if and (ne .Values.domainPath "") (hasKey .Values "domainPath") }}
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: "{{ include ".helm.fullname" . }}-auth"
+  name: "{{ include ".helm.fullname" . }}-validate"
   namespace: {{ .Values.namespace }}
 spec:
   forwardAuth:
-    address: {{ .Values.forwardAuthaddress }}
+    address: {{ .Values.licenseAuthaddress }}
     authResponseHeadersRegex: {{ .Values.authResponseHeadersRegex }}
     trustForwardHeader: {{ .Values.trustForwardHeader }}
 {{ end }}

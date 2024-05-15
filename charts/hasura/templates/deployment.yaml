@@ -74,6 +74,7 @@ spec:
                   name: "graphql-auth-secret"
                   key: AWS_EVENTBRIDGE_HOSTNAME          
           {{- if .Values.image.env }}
+          env: 
             {{- toYaml .Values.image.env | nindent 12 }}
           {{- end }}
           args: [ {{.Values.image.args}} ]

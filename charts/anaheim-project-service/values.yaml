@@ -4,6 +4,7 @@ domainPath: "projects"
 forwardAuthaddress: http://anaheim-graphql-service-anaheim-authentication-service:9876/api/v1/validate
 authResponseHeadersRegex Regex: ^X-
 trustForwardHeader: true
+licenseAuthaddress: http://anaheim-licensing-adapter:3029/license/status-middleware
 image:
   replicaCount: 1
   repository: ghcr.io/htaic/anaheim-project-service
@@ -20,7 +21,7 @@ image:
       value: "http://anaheim-annotator-service:3012"
     - name: TRAINING_ASSETS_SERVICE_URL
       value: "http://anaheim-training-assets-service:3010"
-
+      
 imagePullSecrets:
   - name: dockerconfigjson-github-com
 
