@@ -27,6 +27,8 @@ image:
       value: "http://anaheim-project-service:3014"
     - name: SERVICE_ENV
       value: "non-local"
+    - name: ENVIRONMENT
+      value: " "  
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
