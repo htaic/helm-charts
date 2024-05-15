@@ -49,6 +49,8 @@ spec:
                 name: "baseline-configmap"
             - configMapRef:
                 name: "duclo-configmap"
+            - configMapRef:
+                name: "aws-account-configmap"
       {{- end }}
       containers:
         - name: {{ .Chart.Name }}
@@ -62,7 +64,9 @@ spec:
             - secretRef:
                 name: "graphql-auth-secret" 
             - configMapRef:
-                name: "duclo-configmap"                  
+                name: "duclo-configmap"
+            - configMapRef:
+                name: "aws-account-configmap"               
           env: 
             - name: EVENTBRIDGE_HOSTNAME
               valueFrom:

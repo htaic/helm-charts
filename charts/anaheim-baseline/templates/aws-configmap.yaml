@@ -6,5 +6,7 @@ data:
   AWS_REGION: {{ .Values.AWS.region }}
   AWS_ACCOUNT_ID: "{{ .Values.AWS.accountId }}"
   MODEL_S3_URI_PATH: {{ .Values.AWS.aws_model_s3_uri_path }}
-  REVERSE_PROXY_ORIGIN: {{ .Values.AWS.reverse_proxy_origin }} 
+  REVERSE_PROXY_ORIGIN: {{ .Values.AWS.reverse_proxy_origin }}
+  HASURA_GRAPHQL_AUTH_HOOK: "http://anaheim-graphql-service-anaheim-authentication-service:9876/api/v1/graphqlHook"
+  HASURA_GRAPHQL_AUTH_HOOK_MODE: POST
   #http://10.16.52.87:8000
