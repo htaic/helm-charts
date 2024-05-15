@@ -148,6 +148,17 @@ entries:
   anaheim-annotator-service:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2024-05-15T20:37:22.955843825Z"
+    description: A Helm chart for Kubernetes anaheim-annotator-service deployed behind
+      a traefik ingress
+    digest: d1d57ac9ca7ac3bce554638196e145a867ee64d967775448a7cb41d5ab340539
+    name: anaheim-annotator-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-annotator-service-1.0.6/anaheim-annotator-service-1.0.6.tgz
+    version: 1.0.6
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2024-05-15T15:02:07.242086739Z"
     description: A Helm chart for Kubernetes anaheim-annotator-service deployed behind
       a traefik ingress
@@ -312,6 +323,26 @@ entries:
     - https://github.com/htaic/helm-charts/releases/download/anaheim-annotator-service-0.0.1/anaheim-annotator-service-0.0.1.tgz
     version: 0.0.1
   anaheim-baseline:
+  - apiVersion: v2
+    appVersion: 0.0.8
+    created: "2024-05-15T20:37:23.521971829Z"
+    dependencies:
+    - name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: ^10.24.2
+    - name: aws-efs-csi-driver
+      repository: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
+      version: ^2.3.6
+    - name: postgresql
+      repository: https://htaic.github.io/helm-charts
+      version: ^0.1.9
+    description: A Helm chart for Kubernetes
+    digest: ebe29073866d5dfe945e207a2068cdf6d38a2c073287c49c631aaf5488c9bbe8
+    name: anaheim-baseline
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-baseline-1.0.3/anaheim-baseline-1.0.3.tgz
+    version: 1.0.3
   - apiVersion: v2
     appVersion: 0.0.4
     created: "2024-01-30T23:42:21.415934673Z"
@@ -5608,4 +5639,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2024-05-15T15:02:07.242662022Z"
+generated: "2024-05-15T20:37:23.687705769Z"
