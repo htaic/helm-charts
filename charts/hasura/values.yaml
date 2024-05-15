@@ -38,7 +38,7 @@ image:
     - name: EVENTBRIDGE_HOSTNAME
       value: http://anaheim-eventbridge:9877
     - name: AUTHENTICATION_HOSTNAME
-      value: http://auth:9876
+      value: http://anaheim-graphql-service-anaheim-authentication-service:9876
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
