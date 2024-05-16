@@ -5,3 +5,4 @@ metadata:
 data:
   DUCLO_DOMAIN: {{ .Values.AWS.duclo_domain }}
   DUCLO_AUTH_CERTS_URL: {{ .Values.AWS.duclo_auth_certs_url }}
+  DUCLO_PARTNER_LICENSE_URL: {{ .Values.AWS.duclo_partner_license_url }}

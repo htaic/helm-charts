@@ -56,7 +56,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: duclo-configmap
-                  key: DUCLO_DOMAIN
+                  key: DUCLO_PARTNER_LICENSE_URL
             - name: DUCLO_AUTH_CERTS_URL_LICENSE_URL
               valueFrom:
                 configMapKeyRef:
