@@ -52,7 +52,7 @@ anaheim-training-portlet:
     readinessProbe: readyz
     readinessProbePeriodSeconds: 240
     hostname: anaheim-training-portlet
-    domainPath: "training"
+    domainPath: "training-portlet"
     envFrom:
       secretRefs:
         - hasura-secret
