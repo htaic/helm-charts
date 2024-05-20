@@ -51,3 +51,14 @@ spec:
       {{ if (not (hasKey .Values.image "noStripPath")) }}
        - name: "{{ include ".helm.fullname" . }}-strip"
       {{ end }}
+
+    - match: (PathPrefix("/help"))
+      priority:
+      kind: Rule
+      services:
+        - name: {{ include ".helm.fullname" . }}
+          kind: Service
+          port: {{ .Values.image.containerPort }}
+      middlewares:
+        - name: app-redirect
+
