@@ -20,6 +20,6 @@ metadata:
   namespace: {{ .Values.namespace }}
 spec:
   redirectRegex:
-    regex: ^https://[^/]+/help
+    regex: .*\/help$
     replacement: https://support.hanwhavisionamerica.com/hc/en-us/articles/21707499681947-Welcome-Guide-for-Flex-AI/${1}
     permanent: true
