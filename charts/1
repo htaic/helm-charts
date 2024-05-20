@@ -1,0 +1,53 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  annotations:
+    meta.helm.sh/release-name: anaheim-licensing-adapter
+    meta.helm.sh/release-namespace: hanwha
+  creationTimestamp: "2024-05-20T16:07:13Z"
+  labels:
+    app.kubernetes.io/instance: anaheim-licensing-adapter
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: anaheim-licensing-adapter
+    app.kubernetes.io/version: 0.0.1
+    helm.sh/chart: anaheim-licensing-adapter-0.0.5
+  name: anaheim-licensing-adapter
+  namespace: hanwha
+  resourceVersion: "52493965"
+  uid: 17612e21-e991-47fc-ad18-f185020e6042
+spec:
+  maxReplicas: 2
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 50
+        type: Utilization
+    type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: anaheim-licensing-adapter
+status:
+  conditions:
+  - lastTransitionTime: "2024-05-20T16:07:28Z"
+    message: the HPA controller was able to get the target's current scale
+    reason: SucceededGetScale
+    status: "True"
+    type: AbleToScale
+  - lastTransitionTime: "2024-05-20T16:07:43Z"
+    message: 'the HPA was unable to compute the replica count: failed to get cpu utilization:
+      unable to get metrics for resource cpu: unable to fetch metrics from resource
+      metrics API: the server could not find the requested resource (get pods.metrics.k8s.io)'
+    reason: FailedGetResourceMetric
+    status: "False"
+    type: ScalingActive
+  currentMetrics: null
+  currentReplicas: 3
+  desiredReplicas: 3
+  lastScaleTime: "2024-05-20T17:07:03Z"
