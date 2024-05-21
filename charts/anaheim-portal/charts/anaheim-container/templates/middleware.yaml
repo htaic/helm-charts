@@ -11,7 +11,15 @@ spec:
       - "/license"
       #- "/help"
       - "/project/:id"
-  # redirectRegex:
-  #   regex: "/help"
-  #   replacement: 'https://support.hanwhavisionamerica.com/hc/en-us/articles/21707499681947-Welcome-Guide-for-Flex-AI'
 {{ end }}
+
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: app-redirect
+  namespace: {{ .Values.namespace }}
+spec:
+  redirectRegex:
+    regex: .*\/help$
+    replacement: https://support.hanwhavisionamerica.com/hc/en-us/articles/21707499681947-Welcome-Guide-for-Flex-AI/${1}
+    permanent: true
