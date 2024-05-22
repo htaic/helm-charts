@@ -12,6 +12,8 @@ image:
   readinessProbe: healthcheck
   hostname: anaheim-wavesync-adapter-service
   env:
+    - name: ENVIRONMENT
+      value: " "
     - name: GRAPHQLURL
       value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
     - name: FEATURE_FLAGS_API_URL
