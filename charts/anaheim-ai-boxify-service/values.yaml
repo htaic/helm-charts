@@ -20,7 +20,7 @@ image:
       - aws-account-configmap
   env:
     - name: ENVIRONMENT
-      value: " "  
+      value: " "
     - name: HOSTNAME
       value: "anaheim-ai-boxify-service"
     - name: LOG_LEVEL
