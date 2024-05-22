@@ -82,7 +82,7 @@ storage:
   capacity: 100Gi
   volumeMode: Filesystem
   csi:
-    volumeHandle: fs-0ba685ad88487dfee
+    volumeHandle: YOUR_FILESYSTEM_ID
     volumeAttributes:
       encryptInTransit: "true"
   volumeMountPath: /assets
