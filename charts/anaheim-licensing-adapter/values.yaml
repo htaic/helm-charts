@@ -15,7 +15,7 @@ image:
   hostname: anaheim-licensing-adapter
   env:
     - name: ENVIRONMENT
-      value: " "  
+      value: " "
     - name: GRAPHQLURL
       value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
     - name: NODE_ENV
