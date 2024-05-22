@@ -16,7 +16,7 @@ image:
       - aws-account-configmap
   env:
     - name: ENVIRONMENT
-      value: " "  
+      value: " "
     - name: SERVICEHOST
       value: "anaheim-eventbridge"
     - name: SERVICEPORT
