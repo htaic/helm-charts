@@ -4,7 +4,7 @@ domainPath: "feature-flags-service"
 forwardAuthaddress: http://anaheim-graphql-service-anaheim-authentication-service:9876/api/v1/validate
 authResponseHeadersRegex Regex: ^X-
 trustForwardHeader: true
-licenseAuthaddress: http://anaheim-licensing-service:3029/license/status-middleware
+licenseAuthaddress: http://anaheim-licensing-adapter:3029/license/status-middleware
 
 image:
   replicaCount: 1
