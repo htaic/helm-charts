@@ -11,6 +11,8 @@ anaheim-container:
       secretRefs:
         - hasura-secret
     env:
+      - name: ENVIRONMENT
+        value: " "
       - name: GRAPHQLURL
         value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
       - name: GRAPHQLWSURL
