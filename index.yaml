@@ -708,6 +708,17 @@ entries:
   anaheim-feature-flags-service:
   - apiVersion: v2
     appVersion: 0.0.2
+    created: "2024-05-22T16:11:57.793377619Z"
+    description: A Helm chart for Kubernetes anaheim-feature-flags-service deployed
+      behind a traefik ingress
+    digest: 32530669934ac8d6265a52398d678da3a103f9ee4d5bf408059cc43d55ab411e
+    name: anaheim-feature-flags-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-feature-flags-service-1.0.4/anaheim-feature-flags-service-1.0.4.tgz
+    version: 1.0.4
+  - apiVersion: v2
+    appVersion: 0.0.2
     created: "2024-05-09T22:16:13.850720423Z"
     description: A Helm chart for Kubernetes anaheim-feature-flags-service deployed
       behind a traefik ingress
@@ -5753,4 +5764,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2024-05-22T16:09:46.258996686Z"
+generated: "2024-05-22T16:11:57.793976236Z"
