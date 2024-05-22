@@ -43,8 +43,9 @@ serviceAccount:
 autoscaling:
   enabled: true
   minReplicas: 1
-  maxReplicas: 3
+  maxReplicas: 4
   targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
 
 affinity:
   #Preferred if nodes are less please use this block
@@ -66,7 +67,7 @@ affinity:
   #         - key: app.kubernetes.io/name
   #           operator: In
   #           values:
-  #           - anaheim-licensing-adapter
+  #           - anaheim-project-service
   #       topologyKey: "topology.kubernetes.io/zone"
 
 topologySpreadConstraints:
@@ -75,4 +76,4 @@ topologySpreadConstraints:
     whenUnsatisfiable: DoNotSchedule
     labelSelector:
       matchLabels:
-        app.kubernetes.io/name: anaheim-licensing-adapter
+        app.kubernetes.io/name: anaheim-project-service

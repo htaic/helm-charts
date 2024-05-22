@@ -4,7 +4,7 @@ domainPath: "feature-flags-service"
 forwardAuthaddress: http://anaheim-graphql-service-anaheim-authentication-service:9876/api/v1/validate
 authResponseHeadersRegex Regex: ^X-
 trustForwardHeader: true
-licenseAuthaddress: http://anaheim-licensing-adapter:3029/license/status-middleware
+licenseAuthaddress: http://anaheim-licensing-service:3029/license/status-middleware
 
 image:
   replicaCount: 1
@@ -38,7 +38,40 @@ serviceAccount:
   name: ""
 
 autoscaling:
-  enabled: false
+  enabled: true
   minReplicas: 1
-  maxReplicas: 3
+  maxReplicas: 4
   targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
+
+affinity:
+  #Preferred if nodes are less please use this block
+  podAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+     - weight: 100
+       podAffinityTerm:
+         labelSelector:
+           matchExpressions:
+           - key: app.kubernetes.io/name
+             operator: In
+             values:
+               - anaheim-feature-flags-service
+         topologyKey: "topology.kubernetes.io/zone"
+
+  # podAffinity:
+  #   requiredDuringSchedulingIgnoredDuringExecution:
+  #     - labelSelector:
+  #         matchExpressions:
+  #         - key: app.kubernetes.io/name
+  #           operator: In
+  #           values:
+  #           - anaheim-licensing-adapter
+  #       topologyKey: "topology.kubernetes.io/zone"
+
+topologySpreadConstraints:
+  - maxSkew: 1
+    topologyKey: "topology.kubernetes.io/zone"
+    whenUnsatisfiable: DoNotSchedule
+    labelSelector:
+      matchLabels:
+        app.kubernetes.io/name: anaheim-feature-flags-service
