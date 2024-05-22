@@ -17,6 +17,8 @@ image:
   hostname: anaheim-training-assets-service
 
   env:
+    - name: ENVIRONMENT
+      value: " "  
     - name: PROJECTS_API_URL
       value: "http://anaheim-project-service:3014"
     - name: GRAPHQLURL
