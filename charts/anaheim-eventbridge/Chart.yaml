@@ -2,8 +2,8 @@ apiVersion: v2
 name: anaheim-eventbridge
 description: A Helm chart for Kubernetes anaheim-eventbridge deployed behind a traefik ingress
 
-# A chart can be either an 'application' or a 'library' chart.1
-#Anil test
+# A chart can be either an 'application' or a 'library' chart.
+#His_branch-add-1
 # Application charts are a collection of templates that can be packaged into versioned archives
 # to be deployed.
 #
