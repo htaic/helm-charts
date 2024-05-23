@@ -4,6 +4,7 @@ description: A Helm chart for Kubernetes anaheim-eventbridge deployed behind a t
 
 # A chart can be either an 'application' or a 'library' chart.
 #His_branch-add-1
+#His_branch-add-2
 # Application charts are a collection of templates that can be packaged into versioned archives
 # to be deployed.
 #
