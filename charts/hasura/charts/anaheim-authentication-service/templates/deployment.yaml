@@ -49,6 +49,11 @@ spec:
                 secretKeyRef:
                   name: "graphql-auth-secret"
                   key: HASURA_GRAPHQL_METADATA_DATABASE_URL
+            - name: DUCLOXAPIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: "duclo-api-key-secret"
+                  key: DUCLO_API_KEY
           {{- if .Values.image.env }}
             {{- toYaml .Values.image.env | nindent 12 }}
           {{- end }}
