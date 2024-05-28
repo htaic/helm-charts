@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: (PathPrefix("/{{ .Values.domainPath }}/healthcheck"))
+    - match: (PathPrefix("/{{ .Values.image.domainPath }}/healthcheck"))
       priority: 65
       kind: Rule
       services:
@@ -18,7 +18,7 @@ spec:
       {{ if (not (hasKey .Values "noStripPath")) }}
       - name: "{{ include ".helm.fullname" . }}-strip"
       {{ end }}  
-    - match: (PathPrefix("/{{ .Values.domainPath }}/api"))
+    - match: (PathPrefix("/{{ .Values.image.domainPath }}/api"))
       priority: 60
       kind: Rule
       services:
