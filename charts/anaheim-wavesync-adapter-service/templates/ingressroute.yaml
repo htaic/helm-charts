@@ -8,6 +8,28 @@ spec:
   entryPoints:
     - web
   routes:
+    - match: (PathPrefix("/{{ .Values.domainPath }}/healthcheck"))
+      priority: 65
+      kind: Rule
+      services:
+        - name: {{ include ".helm.fullname" . }}
+          kind: Service
+          port: {{ .Values.image.containerPort }}  
+      middlewares:
+      {{ if (not (hasKey .Values "noStripPath")) }}
+      - name: "{{ include ".helm.fullname" . }}-strip"
+      {{ end }}  
+    - match: (PathPrefix("/{{ .Values.domainPath }}/api"))
+      priority: 60
+      kind: Rule
+      services:
+        - name: {{ include ".helm.fullname" . }}
+          kind: Service
+          port: {{ .Values.image.containerPort }}  
+      middlewares:
+      {{ if (not (hasKey .Values "noStripPath")) }}
+      - name: "{{ include ".helm.fullname" . }}-strip"
+      {{ end }}   
     - match: (PathPrefix("/{{ .Values.domainPath }}"))
       kind: Rule
       services:
