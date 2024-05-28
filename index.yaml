@@ -181,6 +181,17 @@ entries:
   anaheim-annotator-service:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2024-05-28T21:54:17.517835372Z"
+    description: A Helm chart for Kubernetes anaheim-annotator-service deployed behind
+      a traefik ingress
+    digest: 266f1e02def4765aaf1a702eced8b472bea04e0996291c97e122eaed84bf0265
+    name: anaheim-annotator-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-annotator-service-1.0.8/anaheim-annotator-service-1.0.8.tgz
+    version: 1.0.8
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2024-05-23T17:02:49.702620401Z"
     description: A Helm chart for Kubernetes anaheim-annotator-service deployed behind
       a traefik ingress
@@ -1692,6 +1703,17 @@ entries:
   anaheim-project-service:
   - apiVersion: v2
     appVersion: 0.0.2
+    created: "2024-05-28T21:54:17.628696966Z"
+    description: A Helm chart for Kubernetes anaheim-project-service deployed behind
+      a traefik ingress
+    digest: b6aad1148c37f018d719fad17eecfe5cb55ced7e59bcd5d105d063bf096596f2
+    name: anaheim-project-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-project-service-1.0.7/anaheim-project-service-1.0.7.tgz
+    version: 1.0.7
+  - apiVersion: v2
+    appVersion: 0.0.2
     created: "2024-05-22T16:17:10.676537779Z"
     description: A Helm chart for Kubernetes anaheim-project-service deployed behind
       a traefik ingress
@@ -2165,6 +2187,17 @@ entries:
     - https://github.com/htaic/helm-charts/releases/download/anaheim-training-assets-service-0.0.1/anaheim-training-assets-service-0.0.1.tgz
     version: 0.0.1
   anaheim-wavesync-adapter-service:
+  - apiVersion: v2
+    appVersion: 0.0.6
+    created: "2024-05-28T21:54:17.739059812Z"
+    description: A Helm chart for Kubernetes anaheim-wavesync-adapter-service deployed
+      behind a traefik ingress
+    digest: 8aca642875a518cf7e0f9cd46612b5ee69fcdfe5c8735d0462f6329b880edb26
+    name: anaheim-wavesync-adapter-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-wavesync-adapter-service-2.0.5/anaheim-wavesync-adapter-service-2.0.5.tgz
+    version: 2.0.5
   - apiVersion: v2
     appVersion: 0.0.6
     created: "2024-05-23T17:02:50.893198846Z"
@@ -5974,4 +6007,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2024-05-28T16:28:51.167439367Z"
+generated: "2024-05-28T21:54:17.740679131Z"
