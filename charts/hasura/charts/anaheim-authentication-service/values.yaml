@@ -3,7 +3,7 @@ domainPath: "auth"
 
 image:
   repository: ghcr.io/htaic/anaheim-authentication-service
-  tag: release-1.0.0-1006
+  tag: latest
   pullPolicy: Always
   containerPort: 9876
   hostname: auth-service
