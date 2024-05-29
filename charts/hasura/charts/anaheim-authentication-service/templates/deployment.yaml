@@ -44,18 +44,6 @@ spec:
             - configMapRef:
                 name: "duclo-configmap"
           env: 
-            {{- if or (eq .Values.AWS.accountId "547990419648" ) (eq .Values.AWS.accountId "278837733282") }}
-            - name: HASURA_GRAPHQL_ENABLE_CONSOLE
-              value: "false"
-            - name: HASURA_GRAPHQL_DISABLE_CORS
-              value: "true"
-            - name: HASURA_GRAPHQL_ADMIN_INTERNAL_ERRORS
-              value: "false"
-            - name: HASURA_GRAPHQL_DEV_MODE
-              value: "false"
-            - name: HASURA_GRAPHQL_ENABLED_APIS
-              value: "graphql"
-            {{- end }}
             - name: POSTGRESURI
               valueFrom:
                 secretKeyRef:
