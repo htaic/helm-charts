@@ -68,6 +68,32 @@ spec:
             - configMapRef:
                 name: "aws-account-configmap"               
           env: 
+            {{- if or (eq .Values.AWS.accountId "547990419648" ) (eq .Values.AWS.accountId "278837733282") }}
+            - name: HASURA_GRAPHQL_ENABLE_CONSOLE
+              value: "false"
+            - name: HASURA_GRAPHQL_DISABLE_CORS
+              value: "true"
+            - name: HASURA_GRAPHQL_ADMIN_INTERNAL_ERRORS
+              value: "false"
+            - name: HASURA_GRAPHQL_DEV_MODE
+              value: "false"
+            - name: HASURA_GRAPHQL_ENABLED_APIS
+              value: "graphql"
+            {{- end }}
+            - name: HASURA_GRAPHQL_ENABLED_LOG_TYPES
+              value: "startup, http-log, webhook-log, websocket-log, query-log"
+              # We have a readonly role for all users other than Hasura GraphQL admin
+            - name: HASURA_GRAPHQL_AUTH_HOOK
+              value: http://anaheim-graphql-service-anaheim-authentication-service:9876/api/v1/graphqlHook
+              # This sends a POST to the graphqlHook, along with the GraphQL query/mutation and variables.
+              # We use that to validate the query/mutations against the Hanwha approved query/mutation list
+              # as well as validate the orgId value if used in the query/mutation.
+            - name: HASURA_GRAPHQL_AUTH_HOOK_MODE
+              value: POST
+            - name: EVENTBRIDGE_HOSTNAME
+              value: http://anaheim-eventbridge:9877
+            - name: AUTHENTICATION_HOSTNAME
+              value: http://anaheim-graphql-service-anaheim-authentication-service:9876
             - name: EVENTBRIDGE_HOSTNAME
               valueFrom:
                 secretKeyRef:
