@@ -5018,6 +5018,20 @@ entries:
   hasura:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2024-05-29T21:54:52.586205171Z"
+    dependencies:
+    - name: anaheim-authentication-service
+      repository: file://./charts/anaheim-authentication-service
+      version: ^0
+    description: A dependent Helm chart for Kubernetes micro auth services
+    digest: a6bd48848beb61b4e213488ec82765bb641cc065151f994b90a7a9ff4d5c6199
+    name: hasura
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/hasura-0.0.21/hasura-0.0.21.tgz
+    version: 0.0.21
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2024-05-23T18:42:56.397971393Z"
     dependencies:
     - name: anaheim-authentication-service
@@ -6070,4 +6084,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2024-05-29T17:08:56.609690931Z"
+generated: "2024-05-29T21:54:52.586736549Z"
