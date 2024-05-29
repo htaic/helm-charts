@@ -63,4 +63,4 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
 
 AWS:
-  accountId: ""
+  accountId: "547990419648"
