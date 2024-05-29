@@ -24,7 +24,7 @@ image:
     - name: TRAINING_ASSETS_SERVICE_URL
       value: "http://anaheim-training-assets-service:3010"
     - name: CAN_RETRAIN_MINUTES
-      value: 30
+      value: "30"
       
 imagePullSecrets:
   - name: dockerconfigjson-github-com
