@@ -5442,6 +5442,25 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/microfrontend-0.0.4/microfrontend-0.0.4.tgz
     version: 0.0.4
+  nvidia-device-plugin:
+  - apiVersion: v2
+    appVersion: 0.15.0
+    created: "2024-05-29T17:08:56.609149607Z"
+    dependencies:
+    - alias: nfd
+      condition: nfd.enabled,gfd.enabled
+      name: node-feature-discovery
+      repository: https://kubernetes-sigs.github.io/node-feature-discovery/charts
+      version: 0.15.3
+    description: A Helm chart for the nvidia-device-plugin on Kubernetes
+    digest: 28132ca5bc5641ddd65f8103388c1ffbbe9e0af54c3390259aaf1ea62c4cde8c
+    home: https://github.com/NVIDIA/k8s-device-plugin
+    kubeVersion: '>= 1.10.0-0'
+    name: nvidia-device-plugin
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/nvidia-device-plugin-0.15.0/nvidia-device-plugin-0.15.0.tgz
+    version: 0.15.0
   org-service:
   - apiVersion: v2
     appVersion: 0.0.2
@@ -6051,4 +6070,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2024-05-29T16:49:40.468532644Z"
+generated: "2024-05-29T17:08:56.609690931Z"
