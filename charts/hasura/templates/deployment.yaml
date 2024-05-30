@@ -90,7 +90,7 @@ spec:
               # as well as validate the orgId value if used in the query/mutation.
             - name: HASURA_GRAPHQL_AUTH_HOOK_MODE
               value: POST
-            - name: HASURA_ENABLE_GRAPHQL_CONSOLE
+            - name: HASURA_GRAPHQL_ENABLE_CONSOLE
               value: "true"
             - name: HASURA_GRAPHQL_DEV_MODE
               value: "true"
