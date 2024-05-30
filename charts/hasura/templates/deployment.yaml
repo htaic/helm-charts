@@ -90,6 +90,8 @@ spec:
               # as well as validate the orgId value if used in the query/mutation.
             - name: HASURA_GRAPHQL_AUTH_HOOK_MODE
               value: POST
+            - name: HASURA_ENABLE_GRAPHQL_CONSOLE
+              value: "true"
             - name: AUTHENTICATION_HOSTNAME
               value: http://anaheim-graphql-service-anaheim-authentication-service:9876
             - name: EVENTBRIDGE_HOSTNAME
