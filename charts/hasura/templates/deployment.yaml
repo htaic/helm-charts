@@ -92,6 +92,8 @@ spec:
               value: POST
             - name: HASURA_ENABLE_GRAPHQL_CONSOLE
               value: "true"
+            - name: HASURA_GRAPHQL_ENABLE_CONSOLE
+              value: "true"
             - name: HASURA_GRAPHQL_DEV_MODE
               value: "true"
             - name: AUTHENTICATION_HOSTNAME
