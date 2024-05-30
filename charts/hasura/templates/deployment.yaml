@@ -68,18 +68,18 @@ spec:
             - configMapRef:
                 name: "aws-account-configmap"               
           env: 
-            {{- if or (eq .Values.AWS.accountId "547990419648" ) (eq .Values.AWS.accountId "278837733282") }}
-            - name: HASURA_GRAPHQL_ENABLE_CONSOLE
-              value: "false"
-            - name: HASURA_GRAPHQL_DISABLE_CORS
-              value: "true"
-            - name: HASURA_GRAPHQL_ADMIN_INTERNAL_ERRORS
-              value: "false"
-            - name: HASURA_GRAPHQL_DEV_MODE
-              value: "false"
-            - name: HASURA_GRAPHQL_ENABLED_APIS
-              value: "graphql"
-            {{- end }}
+            # {{- if or (eq .Values.AWS.accountId "547990419648" ) (eq .Values.AWS.accountId "278837733282") }}
+            # - name: HASURA_GRAPHQL_ENABLE_CONSOLE
+            #   value: "false"
+            # - name: HASURA_GRAPHQL_DISABLE_CORS
+            #   value: "true"
+            # - name: HASURA_GRAPHQL_ADMIN_INTERNAL_ERRORS
+            #   value: "false"
+            # - name: HASURA_GRAPHQL_DEV_MODE
+            #   value: "false"
+            # - name: HASURA_GRAPHQL_ENABLED_APIS
+            #   value: "graphql"
+            # {{- end }}
             - name: HASURA_GRAPHQL_ENABLED_LOG_TYPES
               value: "startup, http-log, webhook-log, websocket-log, query-log"
               # We have a readonly role for all users other than Hasura GraphQL admin
