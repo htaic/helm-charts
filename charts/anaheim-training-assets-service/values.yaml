@@ -63,34 +63,3 @@ storage:
     volumeAttributes:
       encryptInTransit: "true"
   volumeMountPath: /assets
-
-affinity:
-  #Preferred if nodes are less please use this block
-  podAffinity:
-    preferredDuringSchedulingIgnoredDuringExecution:
-     - weight: 100
-       podAffinityTerm:
-         labelSelector:
-           matchExpressions:
-           - key: app.kubernetes.io/name
-             operator: In
-             values:
-               - anaheim-training-assets-service
-         topologyKey: "topology.kubernetes.io/zone"
-  # podAffinity:
-  #   requiredDuringSchedulingIgnoredDuringExecution:
-  #     - labelSelector:
-  #         matchExpressions:
-  #         - key: app.kubernetes.io/name
-  #           operator: In
-  #           values:
-  #           - anaheim-training-assets-service
-  #       topologyKey: "topology.kubernetes.io/zone"
-
-topologySpreadConstraints:
-  - maxSkew: 1
-    topologyKey: "topology.kubernetes.io/zone"
-    whenUnsatisfiable: DoNotSchedule
-    labelSelector:
-      matchLabels:
-        app.kubernetes.io/name: anaheim-training-assets-service
