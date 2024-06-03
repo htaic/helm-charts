@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: PathRegexp(`^^/{{ .Values.domainPath }}/video-files/v1/[\w|-]+/stream`)
+    - match: PathRegexp(`^/{{ .Values.domainPath }}/video-files/v1/[\w|-]+/stream`)
       priority: 70
       kind: Rule
       services:
