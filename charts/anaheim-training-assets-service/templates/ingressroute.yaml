@@ -7,13 +7,12 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: PathRegexp(`^/{{ .Values.domainPath }}/video-files/v1/[\w|-]+/stream`)
-      priority: 70
+    - match: (PathPrefix("/{{ .Values.domainPath }}"))
       kind: Rule
       services:
         - name: {{ include ".helm.fullname" . }}
           kind: Service
-          port: {{ .Values.image.containerPort }}  
+          port: {{ .Values.image.containerPort }}
       middlewares:
       {{- if eq .Values.trustForwardHeader true }}
       - name: "{{ include ".helm.fullname" . }}-auth"
@@ -21,35 +20,4 @@ spec:
       {{ if (not (hasKey .Values "noStripPath")) }}
       - name: "{{ include ".helm.fullname" . }}-strip"
       {{ end }}
-    - match: (PathPrefix("/{{ .Values.domainPath }}/healthcheck"))
-      priority: 65
-      kind: Rule
-      services:
-        - name: {{ include ".helm.fullname" . }}
-          kind: Service
-          port: {{ .Values.image.containerPort }}  
-      middlewares:
-      {{ if (not (hasKey .Values "noStripPath")) }}
-      - name: "{{ include ".helm.fullname" . }}-strip"
-      {{ end }}
-    - match: (PathPrefix("/{{ .Values.domainPath }}/api"))
-      priority: 60
-      kind: Rule
-      services:
-        - name: {{ include ".helm.fullname" . }}
-          kind: Service
-          port: {{ .Values.image.containerPort }}
-      middlewares:
-      {{ if (not (hasKey .Values "noStripPath")) }}
-      - name: "{{ include ".helm.fullname" . }}-strip"
-      {{ end }}
-    - match: (PathPrefix("/{{ .Values.domainPath }}"))
-      priority: 50
-      kind: Rule
-      services:
-        - name: {{ include ".helm.fullname" . }}
-          kind: Service
-          port: {{ .Values.image.containerPort }}  
-      middlewares:
-      - name: "{{ include ".helm.fullname" . }}-secured"
 
