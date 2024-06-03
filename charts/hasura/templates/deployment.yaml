@@ -94,6 +94,8 @@ spec:
               value: "true"
             - name: HASURA_GRAPHQL_DEV_MODE
               value: "true"
+            - name: DD_APM_ENABLED
+              value: "false"           
             - name: AUTHENTICATION_HOSTNAME
               value: http://anaheim-graphql-service-anaheim-authentication-service:9876
             - name: EVENTBRIDGE_HOSTNAME
