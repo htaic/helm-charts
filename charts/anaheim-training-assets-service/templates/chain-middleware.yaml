@@ -1,17 +1,17 @@
-{{ if eq .Values.trustForwardHeader true }}
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: "{{ include ".helm.fullname" . }}-secured"
-  namespace: {{ .Values.namespace }}
-spec:
-  chain:
-    middlewares:
-      {{- if eq .Values.trustForwardHeader true }}
-      - name: "{{ include ".helm.fullname" . }}-auth"
-      - name: "{{ include ".helm.fullname" . }}-validate"
-      {{- end }}
-      {{ if (not (hasKey .Values "noStripPath")) }}
-      - name: "{{ include ".helm.fullname" . }}-strip"
-      {{ end }}
-{{ end }}
+# {{ if eq .Values.trustForwardHeader true }}
+# apiVersion: traefik.containo.us/v1alpha1
+# kind: Middleware
+# metadata:
+#   name: "{{ include ".helm.fullname" . }}-secured"
+#   namespace: {{ .Values.namespace }}
+# spec:
+#   chain:
+#     middlewares:
+#       {{- if eq .Values.trustForwardHeader true }}
+#       - name: "{{ include ".helm.fullname" . }}-auth"
+#       - name: "{{ include ".helm.fullname" . }}-validate"
+#       {{- end }}
+#       {{ if (not (hasKey .Values "noStripPath")) }}
+#       - name: "{{ include ".helm.fullname" . }}-strip"
+#       {{ end }}
+# {{ end }}
