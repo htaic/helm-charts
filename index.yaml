@@ -2011,6 +2011,17 @@ entries:
   anaheim-training-assets-service:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2024-06-03T16:40:47.052180177Z"
+    description: A Helm chart for Kubernetes anaheim-training-assets-service deployed
+      behind a traefik ingress
+    digest: 0522d2fece0ff6b208092c52305981af21b6a243172d6e367e6195efeefbb20a
+    name: anaheim-training-assets-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-training-assets-service-1.1.10/anaheim-training-assets-service-1.1.10.tgz
+    version: 1.1.10
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2024-05-31T15:36:23.011247877Z"
     description: A Helm chart for Kubernetes anaheim-training-assets-service deployed
       behind a traefik ingress
@@ -6243,4 +6254,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2024-05-31T19:32:40.783543025Z"
+generated: "2024-06-03T16:40:47.053039994Z"
