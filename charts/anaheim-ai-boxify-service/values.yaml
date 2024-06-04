@@ -51,6 +51,8 @@ image:
       value: "3022"
     - name: REVERSE_PROXY_ORIGIN
       value: ""
+    - name: DD_APM_ENABLED
+      value: "false"   
     # - name: DD_LOGS_INJECTION
     #   value: "true"
 
