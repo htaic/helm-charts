@@ -29,6 +29,8 @@ image:
       value: "true"
     - name: DD_ENABLED
       value: "true"
+    - name: PYTHONPATH
+      value: "/source/anaheim-ai-boxify-service/src:/source/anaheim-ai-boxify-service/src"
     - name: MODEL_DEST_RELATIVE_PATH
       value: "model/FastSAM-s.pt"
     - name: MODEL_S3_NAME
