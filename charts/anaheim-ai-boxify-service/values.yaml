@@ -84,7 +84,7 @@ autoscaling:
 storage:
   className: efs-storageclass
   provisioner: efs.csi.aws.com
-  capacity: 150Gi
+  capacity: 100Gi
   volumeMode: Filesystem
   csi:
     volumeHandle: YOUR_FILESYSTEM_ID
