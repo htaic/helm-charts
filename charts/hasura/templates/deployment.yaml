@@ -68,7 +68,7 @@ spec:
             - configMapRef:
                 name: "aws-account-configmap"               
           env: 
-            {{- if or (eq .Values.AWS.accountId "040054290357" ) (eq .Values.AWS.accountId "278837733282") }}
+            {{- if or (eq .Values.AWS.env "pvt-dev" ) (eq .Values.AWS.env "prod") }}
             - name: HASURA_GRAPHQL_DEV_MODE
               value: "false"
             - name: HASURA_GRAPHQL_ENABLE_CONSOLE
