@@ -68,7 +68,7 @@ spec:
             - configMapRef:
                 name: "aws-account-configmap"               
           env: 
-            {{- if or (eq .Values.AWS.env "pvt-dev" ) (eq .Values.AWS.env "prod") }}
+            {{- if or (eq .Values.AWS.accountId "918169021225" ) (eq .Values.AWS.accountId "278837733282") }}
             - name: HASURA_GRAPHQL_DEV_MODE
               value: "false"
             - name: HASURA_GRAPHQL_ENABLE_CONSOLE
@@ -84,10 +84,10 @@ spec:
               # as well as validate the orgId value if used in the query/mutation.
             - name: HASURA_GRAPHQL_AUTH_HOOK_MODE
               value: POST
-            - name: HASURA_GRAPHQL_ENABLE_CONSOLE
-              value: "true"
-            - name: HASURA_GRAPHQL_DEV_MODE
-              value: "true"
+            # - name: HASURA_GRAPHQL_ENABLE_CONSOLE
+            #   value: "true"
+            # - name: HASURA_GRAPHQL_DEV_MODE
+            #   value: "true"
             - name: DD_APM_ENABLED
               value: "false"           
             - name: AUTHENTICATION_HOSTNAME
