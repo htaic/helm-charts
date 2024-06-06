@@ -20,7 +20,7 @@ image:
   hostname: hasura
   env:
     - name: ENVIRONMENT
-      value: " "  
+      value: ""  
   # env:
   #   # # enable the console served by server
   #   # - name: HASURA_GRAPHQL_ENABLE_CONSOLE
