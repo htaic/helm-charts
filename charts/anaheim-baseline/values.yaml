@@ -47,6 +47,18 @@ traefik:
       # port to alb
       nodePort: 32414
       targetPort: web
+
+  logs:
+    access:
+      # -- To enable access logs
+      enabled: true
+      addInternals:
+      fields:
+        general:
+          # -- Available modes: keep, drop, redact.
+          defaultmode: keep
+
+    
   providers:
   kubernetesCRD:
     allowCrossNamespace: true
