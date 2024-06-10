@@ -68,7 +68,7 @@ spec:
             - configMapRef:
                 name: "aws-account-configmap"               
           env: 
-            {{- if or (eq .Values.image.env.ENVIRONMENT "pvt-dev" ) }}
+            {{- if or (eq .Values.image.env ) }}
             - name: HASURA_GRAPHQL_DEV_MODE
               value: "false"
             - name: HASURA_GRAPHQL_ENABLE_CONSOLE
