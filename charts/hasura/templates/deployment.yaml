@@ -68,12 +68,10 @@ spec:
             - configMapRef:
                 name: "aws-account-configmap"               
           env: 
-            {{- if or (eq .Values.image.env ) }}
             - name: HASURA_GRAPHQL_DEV_MODE
-              value: "false"
+              value: "true"
             - name: HASURA_GRAPHQL_ENABLE_CONSOLE
-              value: "false"
-            {{- end }}
+              value: "true"
             - name: HASURA_GRAPHQL_ENABLED_LOG_TYPES
               value: "startup, http-log, webhook-log, websocket-log, query-log"
               # We have a readonly role for all users other than Hasura GraphQL admin
