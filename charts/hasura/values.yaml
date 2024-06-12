@@ -19,8 +19,6 @@ image:
   containerPort: 8080
   hostname: hasura
   env:
-    - name: ENVIRONMENT
-      value: ""  
   # env:
     # enable the console served by server
     # - name: HASURA_GRAPHQL_ENABLE_CONSOLE
