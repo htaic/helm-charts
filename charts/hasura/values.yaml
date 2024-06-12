@@ -22,26 +22,24 @@ image:
     - name: ENVIRONMENT
       value: ""  
   # env:
-  #   # # enable the console served by server
-  #   # - name: HASURA_GRAPHQL_ENABLE_CONSOLE
-  #   #   value: "true" # set to "false" to disable console
-  #   #   ## enable debugging mode. It is recommended to disable this in production
-  #   # - name: HASURA_GRAPHQL_DEV_MODE
-  #   #   value: "true"
-  #   - name: HASURA_GRAPHQL_ENABLED_LOG_TYPES
-  #     value: startup, http-log, webhook-log, websocket-log, query-log
-  #     # We have a readonly role for all users other than Hasura GraphQL admin
-  #   - name: HASURA_GRAPHQL_AUTH_HOOK
-  #     value: http://anaheim-graphql-service-anaheim-authentication-service:9876/api/v1/graphqlHook
-  #     # This sends a POST to the graphqlHook, along with the GraphQL query/mutation and variables.
-  #     # We use that to validate the query/mutations against the Hanwha approved query/mutation list
-  #     # as well as validate the orgId value if used in the query/mutation.
-  #   - name: HASURA_GRAPHQL_AUTH_HOOK_MODE
-  #     value: POST
-  #   - name: EVENTBRIDGE_HOSTNAME
-  #     value: http://anaheim-eventbridge:9877
-  #   - name: AUTHENTICATION_HOSTNAME
-  #     value: http://anaheim-graphql-service-anaheim-authentication-service:9876
+    # enable the console served by server
+    - name: HASURA_GRAPHQL_ENABLE_CONSOLE
+      value: "true" # set to "false" to disable console
+      ## enable debugging mode. It is recommended to disable this in production
+    - name: HASURA_GRAPHQL_DEV_MODE
+      value: "true"
+    - name: HASURA_GRAPHQL_ENABLED_LOG_TYPES
+      value: startup, http-log, webhook-log, websocket-log, query-log
+      # We have a readonly role for all users other than Hasura GraphQL admin
+    - name: HASURA_GRAPHQL_AUTH_HOOK
+      value: http://anaheim-graphql-service-anaheim-authentication-service:9876/api/v1/graphqlHook
+      # This sends a POST to the graphqlHook, along with the GraphQL query/mutation and variables.
+      # We use that to validate the query/mutations against the Hanwha approved query/mutation list
+      # as well as validate the orgId value if used in the query/mutation.
+    - name: HASURA_GRAPHQL_AUTH_HOOK_MODE
+      value: POST
+    - name: AUTHENTICATION_HOSTNAME
+      value: http://anaheim-graphql-service-anaheim-authentication-service:9876
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
