@@ -69,12 +69,16 @@ spec:
                 name: "aws-account-configmap"               
           env:
             {{- range .Values.image.env }}
-            {{- if and (eq .name "ENVIRONMENT") (eq .value "pvt-dev") }}
+            {{- if or (and (eq .name "ENVIRONMENT") (eq .value "relqa")) (and (eq .name "ENVIRONMENT") (eq .value "pvt-CI")) }}
             - name: HASURA_GRAPHQL_DEV_MODE
               value: "false"
             - name: HASURA_GRAPHQL_ENABLE_CONSOLE
               value: "false"
             {{- end }}
+            - name: HASURA_GRAPHQL_DEV_MODE
+              value: "true"
+            - name: HASURA_GRAPHQL_ENABLE_CONSOLE
+              value: "true"
             {{- end }}
             - name: HASURA_GRAPHQL_ENABLED_LOG_TYPES
               value: "startup, http-log, webhook-log, websocket-log, query-log"
