@@ -68,7 +68,7 @@ spec:
             - configMapRef:
                 name: "aws-account-configmap"               
           env:
-            {{- range .Values.image.env }}
+            {{- range $index, $element := .Values.image.env }}
             {{- if or (and (eq .name "ENVIRONMENT") (eq .value "relqa")) (and (eq .name "ENVIRONMENT") (eq .value "pvt-CI")) }}
             - name: HASURA_GRAPHQL_DEV_MODE
               value: "false"
