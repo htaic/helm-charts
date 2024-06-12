@@ -67,11 +67,15 @@ spec:
                 name: "duclo-configmap"
             - configMapRef:
                 name: "aws-account-configmap"               
-          env: 
+          env:
+            {{- range .Values.image.env }}
+            {{- if and (eq .name "pvt-dev") (eq .value "prod") }}
             - name: HASURA_GRAPHQL_DEV_MODE
-              value: "true"
+              value: "false"
             - name: HASURA_GRAPHQL_ENABLE_CONSOLE
-              value: "true"
+              value: "false"
+            {{- end }}
+            {{- end }}
             - name: HASURA_GRAPHQL_ENABLED_LOG_TYPES
               value: "startup, http-log, webhook-log, websocket-log, query-log"
               # We have a readonly role for all users other than Hasura GraphQL admin
