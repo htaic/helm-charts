@@ -69,7 +69,7 @@ spec:
                 name: "aws-account-configmap"               
           env:
             {{- range .Values.image.env }}
-            {{- if and (eq .name "pvt-dev") (eq .value "prod") }}
+            {{- if and (eq .name "ENVIRONMENT") (eq .value "pvt-dev") }}
             - name: HASURA_GRAPHQL_DEV_MODE
               value: "false"
             - name: HASURA_GRAPHQL_ENABLE_CONSOLE
