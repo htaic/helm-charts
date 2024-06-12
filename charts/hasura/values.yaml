@@ -23,11 +23,11 @@ image:
       value: ""  
   # env:
     # enable the console served by server
-    - name: HASURA_GRAPHQL_ENABLE_CONSOLE
-      value: "true" # set to "false" to disable console
-      ## enable debugging mode. It is recommended to disable this in production
-    - name: HASURA_GRAPHQL_DEV_MODE
-      value: "true"
+    # - name: HASURA_GRAPHQL_ENABLE_CONSOLE
+    #   value: "true" # set to "false" to disable console
+    #   ## enable debugging mode. It is recommended to disable this in production
+    # - name: HASURA_GRAPHQL_DEV_MODE
+    #   value: "true"
     - name: HASURA_GRAPHQL_ENABLED_LOG_TYPES
       value: startup, http-log, webhook-log, websocket-log, query-log
       # We have a readonly role for all users other than Hasura GraphQL admin
