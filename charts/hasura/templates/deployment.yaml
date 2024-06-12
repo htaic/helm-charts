@@ -76,12 +76,13 @@ spec:
               value: "false"
             - name: HASURA_GRAPHQL_ENABLE_CONSOLE
               value: "false"
-            {{- else }}
+            {{- if or (and (eq .name "ENVIRONMENT") (eq .value "relqa")) (and (eq .name "ENVIRONMENT") (eq .value "prod")) }}
             - name: HASURA_GRAPHQL_DEV_MODE
               value: "true"
             - name: HASURA_GRAPHQL_ENABLE_CONSOLE
               value: "true"
             {{- end }}
+            {{- end }} 
             {{- end }} 
             - name: EVENTBRIDGE_HOSTNAME
               valueFrom:
