@@ -71,9 +71,9 @@ spec:
             {{- range .Values.image.env }}
             {{- if and (eq .name "ENVIRONMENT") (eq .value "pvt-dev") }}
             - name: HASURA_GRAPHQL_DEV_MODE
-              value: "true"
+              value: "false"
             - name: HASURA_GRAPHQL_ENABLE_CONSOLE
-              value: "true"
+              value: "false"
             {{- end }}
             {{- end }}
             - name: HASURA_GRAPHQL_ENABLED_LOG_TYPES
