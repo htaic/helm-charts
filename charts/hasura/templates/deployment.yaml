@@ -68,45 +68,23 @@ spec:
             - configMapRef:
                 name: "aws-account-configmap"               
           env:
-            {{- range $index, $element := .Values.image.env }}
+            {{- range .Values.image.env }}
             {{- if or (and (eq .name "ENVIRONMENT") (eq .value "relqa")) (and (eq .name "ENVIRONMENT") (eq .value "pvt-CI")) }}
             - name: HASURA_GRAPHQL_DEV_MODE
               value: "false"
             - name: HASURA_GRAPHQL_ENABLE_CONSOLE
               value: "false"
             {{- end }}
-            - name: HASURA_GRAPHQL_DEV_MODE
-              value: "true"
-            - name: HASURA_GRAPHQL_ENABLE_CONSOLE
-              value: "true"
-            {{- end }}
-            - name: HASURA_GRAPHQL_ENABLED_LOG_TYPES
-              value: "startup, http-log, webhook-log, websocket-log, query-log"
-              # We have a readonly role for all users other than Hasura GraphQL admin
-            - name: HASURA_GRAPHQL_AUTH_HOOK
-              value: http://anaheim-graphql-service-anaheim-authentication-service:9876/api/v1/graphqlHook
-              # This sends a POST to the graphqlHook, along with the GraphQL query/mutation and variables.
-              # We use that to validate the query/mutations against the Hanwha approved query/mutation list
-              # as well as validate the orgId value if used in the query/mutation.
-            - name: HASURA_GRAPHQL_AUTH_HOOK_MODE
-              value: POST
-            # - name: HASURA_GRAPHQL_ENABLE_CONSOLE
-            #   value: "true"
-            # - name: HASURA_GRAPHQL_DEV_MODE
-            #   value: "true"
-            - name: DD_APM_ENABLED
-              value: "false"           
-            - name: AUTHENTICATION_HOSTNAME
-              value: http://anaheim-graphql-service-anaheim-authentication-service:9876
+            {{- end }} 
             - name: EVENTBRIDGE_HOSTNAME
               valueFrom:
                 secretKeyRef:
                   name: "graphql-auth-secret"
-                  key: AWS_EVENTBRIDGE_HOSTNAME          
-          # {{- if .Values.image.env }}
-          # env: 
-          #   {{- toYaml .Values.image.env | nindent 12 }}
-          # {{- end }}
+                  key: AWS_EVENTBRIDGE_HOSTNAME         
+          {{- if .Values.image.env }}
+          env: 
+            {{- toYaml .Values.image.env | nindent 12 }}
+          {{- end }}
           args: [ {{.Values.image.args}} ]
           ports:
             - name: http
