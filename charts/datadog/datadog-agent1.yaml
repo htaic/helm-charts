@@ -1,0 +1,35 @@
+apiVersion: datadoghq.com/v2alpha1
+kind: DatadogAgent
+metadata:
+  name: datadog
+spec:
+  global:
+    site: us3.datadoghq.com
+    tags:
+      - env:qa
+    credentials:
+      apiSecret:
+        secretName: datadog-secret
+        keyName: api-key
+  features:
+    eventCollection:
+      collectKubernetesEvents: true
+    apm:
+      instrumentation:
+        enabled: true
+        libVersions:
+          java: 
+            v1.28.0
+          python: 
+            v2.5.1
+          js: 
+            v4.26.0 
+          # dotnet: 
+          #   v2.46.0-musl  
+      hostPortConfig:
+        enabled: true
+    npm:
+      enabled: true
+    logCollection:
+      enabled: true
+      containerCollectAll: true
