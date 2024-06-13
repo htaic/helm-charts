@@ -25,6 +25,8 @@ image:
       value: "http://anaheim-training-assets-service:3010"
     - name: CAN_RETRAIN_MINUTES
       value: "30"
+    - name: IN_TRAINING_TO_ERROR_MINUTES
+      value: "60"
       
 imagePullSecrets:
   - name: dockerconfigjson-github-com
