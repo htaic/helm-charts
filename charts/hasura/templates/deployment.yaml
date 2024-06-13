@@ -68,27 +68,18 @@ spec:
             - configMapRef:
                 name: "aws-account-configmap"               
           env:
-            {{- range .Values.image.env }}
-            {{- if or (and (eq .name "ENVIRONMENT") (eq .value "pvt-dev")) (and (eq .name "ENVIRONMENT") (eq .value "pvt-CI")) }}
-            - name: HASURA_GRAPHQL_DEV_MODE
-              value: "false"
+            # enable the console served by server
             - name: HASURA_GRAPHQL_ENABLE_CONSOLE
-              value: "false"
-            {{- end }}
-            {{- if or (and (eq .name "ENVIRONMENT") (eq .value "relqa")) (and (eq .name "ENVIRONMENT") (eq .value "qa")) }}
+              value: "true" # set to "false" to disable console
+              ## enable debugging mode. It is recommended to disable this in production
             - name: HASURA_GRAPHQL_DEV_MODE
-              value: "true"
-            - name: HASURA_GRAPHQL_ENABLE_CONSOLE
-              value: "true"
-            {{- end }}
-            {{- end }}
+              value: "true"     
             - name: EVENTBRIDGE_HOSTNAME
               valueFrom:
                 secretKeyRef:
                   name: "graphql-auth-secret"
                   key: AWS_EVENTBRIDGE_HOSTNAME         
           {{- if .Values.image.env }}
-          env: 
             {{- toYaml .Values.image.env | nindent 12 }}
           {{- end }}
           args: [ {{.Values.image.args}} ]
