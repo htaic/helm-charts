@@ -47,6 +47,10 @@ spec:
                 secretKeyRef:
                   name: hasura-secret
                   key: HASURA_GRAPHQL_ADMIN_SECRET
+          {{- if eq .Values.env_tag "pvt-dev" }}
+            - name: CAN_RETRAIN_MINUTES
+              value: "60"
+          {{- end }}
           {{- if .Values.image.env }}
             {{- toYaml .Values.image.env | nindent 12 }}
           {{- end }}
