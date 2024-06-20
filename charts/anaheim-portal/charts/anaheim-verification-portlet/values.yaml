@@ -3,7 +3,7 @@ image:
   repository: ghcr.io/htaic/anaheim-portal/anaheim-verification-portlet
   pullPolicy: Always
   containerPort: 3002
-  tag: "latest"
+  tag: "0.0.101-0"
   livenessProbe: livez
   livenessProbePeriodSeconds: 240
   readinessProbe: readyz
