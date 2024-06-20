@@ -68,12 +68,12 @@ spec:
             - configMapRef:
                 name: "aws-account-configmap"               
           env:
-            # enable the console served by server
-            - name: HASURA_GRAPHQL_ENABLE_CONSOLE
-              value: "true" # set to "false" to disable console
-              ## enable debugging mode. It is recommended to disable this in production
-            - name: HASURA_GRAPHQL_DEV_MODE
-              value: "true"     
+            # # enable the console served by server
+            # - name: HASURA_GRAPHQL_ENABLE_CONSOLE
+            #   value: "true" # set to "false" to disable console
+            #   ## enable debugging mode. It is recommended to disable this in production
+            # - name: HASURA_GRAPHQL_DEV_MODE
+            #   value: "true"     
             - name: EVENTBRIDGE_HOSTNAME
               valueFrom:
                 secretKeyRef:
