@@ -14,7 +14,6 @@ image:
   livenessProbe: healthcheck
   readinessProbe: healthcheck
   hostname: anaheim-project-service
-  env_tag: test1
   env:
     - name: ENVIRONMENT
       value: " "
