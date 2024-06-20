@@ -1884,6 +1884,17 @@ entries:
   anaheim-project-service:
   - apiVersion: v2
     appVersion: 0.0.2
+    created: "2024-06-20T21:29:33.017089897Z"
+    description: A Helm chart for Kubernetes anaheim-project-service deployed behind
+      a traefik ingress
+    digest: 6a5684e8beecdbc45a756d44fc8744afa578ee8a81d4e583cd0a485995b42794
+    name: anaheim-project-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-project-service-1.0.14/anaheim-project-service-1.0.14.tgz
+    version: 1.0.14
+  - apiVersion: v2
+    appVersion: 0.0.2
     created: "2024-06-20T21:11:49.066056192Z"
     description: A Helm chart for Kubernetes anaheim-project-service deployed behind
       a traefik ingress
@@ -6613,4 +6624,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2024-06-20T21:11:49.066773974Z"
+generated: "2024-06-20T21:29:33.017911014Z"
