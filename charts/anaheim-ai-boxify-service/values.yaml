@@ -32,21 +32,15 @@ image:
     - name: PYTHONPATH
       value: "/source/anaheim-ai-boxify-service/src:/source/anaheim-ai-boxify-service/src"
     - name: MODEL_DEST_RELATIVE_PATH
-      value: "model/FastSAM-s.pt"
+      value: "model/mobile_sam.pt"
     - name: MODEL_S3_NAME
-      value: "FastSAM-s.pt"
-    - name: MODEL_S3_INPUTS
-      value: "model-input-params.yaml"
+      value: "mobile_sam.pt"
     - name: MODEL_INPUT_DATA_DEVICE_TYPE
       value: "cpu"
-    - name: MODEL_INPUT_DATA_RETINA_MASKS
-      value: "true"
-    - name: MODEL_INPUT_DATA_IMAGE_SIZE
-      value: "1024"
-    - name: MODEL_INPUT_DATA_CONFIDENCE
-      value: "0.25"
-    - name: MODEL_INPUT_DATA_IOU
-      value: "0.7"
+    - name: MODEL_INPUT_DATA_TYPE
+      value: "vit_t"
+    - name: MODEL_INPUT_DATA_MIN_SEGMENTED_AREA_FILTER
+      value: "500"
     - name: STORAGE_BASE_PATH
       value: "/assets"
     - name: REST_ENDPOINT_PORT
