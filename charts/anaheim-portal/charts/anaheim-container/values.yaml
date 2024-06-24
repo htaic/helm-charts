@@ -3,7 +3,7 @@ image:
   repository: ghcr.io/htaic/anaheim-portal/anaheim-container
   pullPolicy: Always
   containerPort: 3000
-  tag: "latest"
+  tag: "release-1.0.0-6028"
   livenessProbe: livez
   readinessProbe: readyz
   hostname: anaheim-container
