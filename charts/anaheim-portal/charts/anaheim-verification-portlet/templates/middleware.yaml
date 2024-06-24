@@ -5,6 +5,9 @@ metadata:
   name: "{{ include ".helm.fullname" . }}-strip"
   namespace: {{ .Values.namespace }}
 spec:
+  headers:
+    customResponseHeaders:
+      X-Robots-Tag: "noindex,nofollow,nosnippet,noarchive,notranslate,noimageindex"
   stripPrefix:
     prefixes:
       - "/{{ .Values.image.domainPath }}"
