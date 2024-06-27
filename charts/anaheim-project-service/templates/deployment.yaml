@@ -7,10 +7,10 @@ metadata:
     {{- include ".helm.labels" . | nindent 4 }}
     {{- range $envVar := .Values.env }}
     {{- if eq $envVar.name "ENVIRONMENT" }}
-    ags.datadoghq.com/env: {{ quote $envVar.value }}
+    tags.datadoghq.com/env: {{ quote $envVar.value }}
     {{- end }}
     {{- end }}
-    tags.datadoghq.com/service: {{ .Release.Service }}
+    tags.datadoghq.com/service: {{ .Release.Name }}
     tags.datadoghq.com/version: {{ .Values.image.tag }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
