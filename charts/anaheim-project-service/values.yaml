@@ -27,6 +27,8 @@ image:
       value: "30"
     - name: IN_TRAINING_TO_ERROR_MINUTES
       value: "60"
+    - name: AWS_BUILD_INFO_BUCKET_NAME
+      value: "hanwha-build-info"
       
 imagePullSecrets:
   - name: dockerconfigjson-github-com
