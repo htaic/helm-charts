@@ -39,7 +39,7 @@ service:
 resources:
   requests:
     cpu: 100m
-    memory: 150Mi
+    memory: 220Mi
 
 serviceAccount:
   create: true
