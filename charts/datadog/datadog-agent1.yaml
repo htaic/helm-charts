@@ -6,7 +6,7 @@ spec:
   global:
     site: us3.datadoghq.com
     tags:
-      - env:qa
+      - env:prod
     credentials:
       apiSecret:
         secretName: datadog-secret
