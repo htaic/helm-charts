@@ -5,12 +5,8 @@ metadata:
   namespace: {{ .Values.namespace }}
   labels:
     {{- include ".helm.labels" . | nindent 4 }}
-    {{- range $envVar := .Values.env }}
-    {{- if eq $envVar.name "ENVIRONMENT" }}
-    tags.datadoghq.com/env: {{ quote $envVar.value }}
-    {{- end }}
-    {{- end }}
-    tags.datadoghq.com/service: {{ .Release.Name }}
+    tags.datadoghq.com/env: $(ENVIRONMENT)
+    tags.datadoghq.com/service: {{ include ".helm.serviceAccountName" . }}
     tags.datadoghq.com/version: {{ .Values.image.tag }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
