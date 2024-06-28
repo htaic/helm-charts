@@ -5,7 +5,9 @@ metadata:
   namespace: {{ .Values.namespace }}
   labels:
     {{- include ".helm.labels" . | nindent 4 }}
-    tags.datadoghq.com/env: $(ENVIRONMENT)
+    {{- with index .Values.environments .Values.global.environment }}
+    tags.datadoghq.com/env: {{ .projectenv | quote }}
+    {{- end }}
     tags.datadoghq.com/service: {{ include ".helm.serviceAccountName" . }}
     tags.datadoghq.com/version: {{ .Values.image.tag }}
 spec:
