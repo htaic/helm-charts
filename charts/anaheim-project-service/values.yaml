@@ -16,7 +16,7 @@ image:
   hostname: anaheim-project-service
   env:
     - name: ENVIRONMENT
-      value: " "
+      value: "anil"
     - name: GRAPHQLURL
       value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
     - name: API_ANNOTATION_SERVICE
@@ -52,3 +52,18 @@ autoscaling:
   maxReplicas: 4
   targetCPUUtilizationPercentage: 80
   targetMemoryUtilizationPercentage: 80
+
+environments:
+  prod:
+    projectenv: prod
+  qa:
+    projectenv: qa
+  relqa:
+    projectenv: relqa 
+  pvt-dev:
+    projectenv: pvt-dev
+  pvt-ci: 
+    projectenv: pvt-ci
+
+global:
+  environment: production 
