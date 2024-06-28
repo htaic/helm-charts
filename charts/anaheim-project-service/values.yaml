@@ -63,7 +63,7 @@ environments:
   pvt-dev:
     projectenv: pvt-dev
   pvt-ci: 
-    projectenv: pvt-ci
+    projectenv: pvt-CI
 
 global:
   environment: production 
