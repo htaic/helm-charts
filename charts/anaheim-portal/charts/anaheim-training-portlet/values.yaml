@@ -8,7 +8,7 @@ image:
   repository: ghcr.io/htaic/anaheim-portal/anaheim-training-portlet
   pullPolicy: Always
   containerPort: 3001
-  tag: "release-1.0.0-6028"
+  tag: "latest"
   livenessProbe: livez
   livenessProbePeriodSeconds: 240
   readinessProbe: readyz
