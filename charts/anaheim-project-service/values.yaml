@@ -62,7 +62,7 @@ environments:
     projectenv: relqa 
   pvt-dev:
     projectenv: pvt-dev
-  pvt-ci: 
+  pvt-CI: 
     projectenv: pvt-CI
 
 global:
