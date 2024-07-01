@@ -5,6 +5,11 @@ metadata:
   namespace: {{ .Values.namespace }}
   labels:
     {{- include ".helm.labels" . | nindent 4 }}
+    {{- with index .Values.environments .Values.global.environment }}
+    tags.datadoghq.com/env: {{ .projectenv | quote }}
+    {{- end }}
+    tags.datadoghq.com/service: {{ include ".helm.serviceAccountName" . }}
+    tags.datadoghq.com/version: {{ .Values.image.tag }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.image.replicaCount }}
@@ -21,6 +26,11 @@ spec:
       labels:
         date: "{{ now | unixEpoch }}"
         {{- include ".helm.selectorLabels" . | nindent 8 }}
+        {{- with index .Values.environments .Values.global.environment }}
+        tags.datadoghq.com/env: {{ .projectenv | quote }}
+        {{- end }}
+        tags.datadoghq.com/service: {{ include ".helm.serviceAccountName" . }}
+        tags.datadoghq.com/version: {{ .Values.image.tag }}
         # admission.datadoghq.com/enabled: "true"
     spec:
       hostname: {{ .Values.image.hostname }}
@@ -51,8 +61,20 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          {{- if .Values.image.env }}
           env: 
+            - name: DD_ENV
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['tags.datadoghq.com/env']
+            - name: DD_SERVICE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['tags.datadoghq.com/service']
+            - name: DD_VERSION
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['tags.datadoghq.com/version']
+          {{- if .Values.image.env }}
             {{- toYaml .Values.image.env | nindent 12 }}
           {{- end }}
           {{- if .Values.image.envFrom }}
