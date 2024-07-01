@@ -26,6 +26,11 @@ spec:
       labels:
         date: "{{ now | unixEpoch }}"
         {{- include ".helm.selectorLabels" . | nindent 8 }}
+        {{- with index .Values.environments .Values.global.environment }}
+        tags.datadoghq.com/env: {{ .projectenv | quote }}
+        {{- end }}
+        tags.datadoghq.com/service: {{ include ".helm.serviceAccountName" . }}
+        tags.datadoghq.com/version: {{ .Values.image.tag }}
     spec:
       hostname: {{ .Values.image.hostname }}
       {{- with .Values.imagePullSecrets }}
@@ -52,6 +57,18 @@ spec:
                 secretKeyRef:
                   name: hasura-secret
                   key: HASURA_GRAPHQL_ADMIN_SECRET
+            - name: DD_ENV
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['tags.datadoghq.com/env']
+            - name: DD_SERVICE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['tags.datadoghq.com/service']
+            - name: DD_VERSION
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['tags.datadoghq.com/version']
           {{- if .Values.image.env }}
             {{- toYaml .Values.image.env | nindent 12 }}
           {{- end }}

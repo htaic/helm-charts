@@ -85,3 +85,18 @@ storage:
     volumeAttributes:
       encryptInTransit: "true"
   volumeMountPath: /assets
+
+environments:
+  prod:
+    projectenv: prod
+  qa:
+    projectenv: qa
+  relqa:
+    projectenv: relqa 
+  pvt-dev:
+    projectenv: pvt-dev
+  pvt-CI: 
+    projectenv: pvt-CI
+
+global:
+  environment: production 

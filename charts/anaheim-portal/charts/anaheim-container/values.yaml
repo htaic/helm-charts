@@ -38,3 +38,20 @@ autoscaling:
   maxReplicas: 3
   targetCPUUtilizationPercentage: 80
   targetMemoryUtilizationPercentage: 80
+
+
+
+environments:
+  prod:
+    projectenv: prod
+  qa:
+    projectenv: qa
+  relqa:
+    projectenv: relqa 
+  pvt-dev:
+    projectenv: pvt-dev
+  pvt-CI: 
+    projectenv: pvt-CI
+
+global:
+  environment: production 
