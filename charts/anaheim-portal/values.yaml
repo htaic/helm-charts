@@ -5,7 +5,7 @@ anaheim-container:
     repository: ghcr.io/htaic/anaheim-portal/anaheim-container
     pullPolicy: Always
     containerPort: 3000
-    tag: "latest"
+    tag: latest
     hostname: anaheim-container
     envFrom:
       secretRefs:
@@ -48,7 +48,7 @@ anaheim-training-portlet:
     repository: ghcr.io/htaic/anaheim-portal/anaheim-training-portlet
     pullPolicy: Always
     containerPort: 3001
-    tag: "latest"
+    tag: latest
     livenessProbe: livez
     livenessProbePeriodSeconds: 240
     readinessProbe: readyz
@@ -92,7 +92,7 @@ anaheim-verification-portlet:
     repository: ghcr.io/htaic/anaheim-portal/anaheim-verification-portlet
     pullPolicy: Always
     containerPort: 3002
-    tag: "latest"
+    tag: latest
     livenessProbe: livez
     livenessProbePeriodSeconds: 240
     readinessProbe: readyz
@@ -130,18 +130,17 @@ anaheim-verification-portlet:
     maxReplicas: 3
     targetCPUUtilizationPercentage: 80
 
-
 environments:
   prod:
     projectenv: prod
   qa:
     projectenv: qa
   relqa:
-    projectenv: relqa 
+    projectenv: relqa
   pvt-dev:
     projectenv: pvt-dev
-  pvt-CI: 
+  pvt-CI:
     projectenv: pvt-CI
 
 global:
-  environment: production 
+  environment: production

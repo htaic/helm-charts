@@ -3,7 +3,7 @@ image:
   repository: ghcr.io/htaic/anaheim-portal/anaheim-verification-portlet
   pullPolicy: Always
   containerPort: 3002
-  tag: "latest"
+  tag: latest
   livenessProbe: livez
   livenessProbePeriodSeconds: 240
   readinessProbe: readyz
@@ -42,18 +42,17 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   targetMemoryUtilizationPercentage: 80
 
-
 environments:
   prod:
     projectenv: prod
   qa:
     projectenv: qa
   relqa:
-    projectenv: relqa 
+    projectenv: relqa
   pvt-dev:
     projectenv: pvt-dev
-  pvt-CI: 
+  pvt-CI:
     projectenv: pvt-CI
 
 global:
-  environment: production 
+  environment: production
