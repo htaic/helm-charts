@@ -46,6 +46,12 @@ serviceAccount:
   annotations: {}
   name: ""
 
+securityContext:
+  capabilities:
+    drop:
+    - NET_RAW
+
+
 autoscaling:
   enabled: true
   minReplicas: 1
