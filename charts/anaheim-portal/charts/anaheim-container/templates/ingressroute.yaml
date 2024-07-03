@@ -4,7 +4,7 @@ metadata:
   name: "{{ include ".helm.fullname" . }}-ingress"
   namespace: {{ .Values.namespace }}
   annotations:
-    kubernetes.io/ingress.class: "traefik"
+    kubernetes.io/ingressClassName: "traefik"
     traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
   rules:
