@@ -1,0 +1,29 @@
+{{ if and (ne .Values.image.domainPath "") (not (hasKey .Values.image "noStripPath")) }}
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: "{{ include ".helm.fullname" . }}-strip"
+  namespace: {{ .Values.namespace }}
+spec:
+  # headers:
+  #   customResponseHeaders:
+  #     X-Robots-Tag: noindex, nofollow
+  stripPrefix:
+    prefixes:
+      - "/training"
+      - "/license"
+      #- "/help"
+      - "/project/:id"
+{{ end }}
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: app-redirect
+  namespace: {{ .Values.namespace }}
+spec:
+  redirectRegex:
+    regex: .*\/help$
+    replacement: https://support.hanwhavisionamerica.com/hc/en-us/articles/21707499681947-Welcome-Guide-for-Flex-AI/${1}
+    permanent: true
