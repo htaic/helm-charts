@@ -30,9 +30,9 @@ anaheim-portal:
       memory: 300Mi
 
   serviceAccount:
-  create: true
-  annotations: {}
-  name: ""
+    create: true
+    annotations: {}
+    name: ""
 
   autoscaling:
     enabled: false
