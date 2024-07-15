@@ -1,44 +1,45 @@
-fullnameOverride: "anaheim-portal"
-anaheim-portal:
-  image:
-    replicaCount: 1
-    repository: ghcr.io/htaic/anaheim-portal
-    pullPolicy: Always
-    containerPort: 3000
-    tag: latest
-    hostname: anaheim-portal
-    envFrom:
-      secretRefs:
-        - hasura-secret
-    env:
-      - name: ENVIRONMENT
-        value: " "
-      - name: GRAPHQLURL
-        value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
-      - name: GRAPHQLWSURL
-        value: "wss://anaheim-graphql-service-hasura:8080/v1/graphql"
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/anaheim-portal/anaheim-portal
+  pullPolicy: Always
+  containerPort: 3000
+  tag: latest
+  livenessProbe: livez
+  readinessProbe: readyz
+  hostname: anaheim-portal
+  envFrom:
+    secretRefs:
+      - hasura-secret
+  env:
+    - name: ENVIRONMENT
+      value: " "
+    - name: GRAPHQLURL
+      value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
+    - name: GRAPHQLWSURL
+      value: "wss://anaheim-graphql-service-hasura:8080/v1/graphql"
 
-  imagePullSecrets:
-    - name: dockerconfigjson-github-com
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
 
-  service:
-    type: ClusterIP
+service:
+  type: ClusterIP
 
-  resources:
-    requests:
-      cpu: 100m
-      memory: 300Mi
+resources:
+  requests:
+    cpu: 100m
+    memory: 300Mi
 
-  serviceAccount:
-    create: true
-    annotations: {}
-    name: ""
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
 
-  autoscaling:
-    enabled: false
-    minReplicas: 1
-    maxReplicas: 100
-    targetCPUUtilizationPercentage: 80
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
 
 environments:
   prod:
