@@ -1,6 +1,6 @@
 image:
   replicaCount: 1
-  repository: ghcr.io/htaic/anaheim-portal/anaheim-portal
+  repository: ghcr.io/htaic/anaheim-portal
   pullPolicy: Always
   containerPort: 3000
   tag: latest
