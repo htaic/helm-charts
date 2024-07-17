@@ -19,10 +19,8 @@ spec:
       {{- include ".helm.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
       annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+        ad.datadoghq.com/{{ include ".helm.serviceAccountName" . }}.logs: '[{"source": "nodejs", "service": "{{ include ".helm.serviceAccountName" . }}"}]'
       labels:
         date: "{{ now | unixEpoch }}"
         {{- include ".helm.selectorLabels" . | nindent 8 }}
