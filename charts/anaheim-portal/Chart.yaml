@@ -1,5 +1,5 @@
 apiVersion: v2
-name: anaheim-dev-portal
+name: anaheim-portal
 description: A Helm chart for Kubernetes anaheim-portal deployed behind a traefik ingress
 
 # A chart can be either an 'application' or a 'library' chart.
@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 1.1.42
+version: 1.1.43
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
