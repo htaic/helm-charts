@@ -14,6 +14,9 @@ spec:
   features:
     eventCollection:
       collectKubernetesEvents: true
+    logCollection:
+       enabled: true
+       containerCollectAll: true
     apm:
       instrumentation:
         enabled: true
