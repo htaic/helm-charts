@@ -72,7 +72,20 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: "graphql-auth-secret"
-                  key: AWS_EVENTBRIDGE_HOSTNAME         
+                  key: AWS_EVENTBRIDGE_HOSTNAME
+           {{ if or (eq .Values.global.environment "wprod") (eq .Values.global.environment "wqa") }}
+            - name: HASURA_GRAPHQL_ENABLE_CONSOLE
+              value: "false" # set to "false" to disable console
+              ## enable debugging mode. It is recommended to disable this in production
+            - name: HASURA_GRAPHQL_DEV_MODE
+              value: "false"
+          {{ else }}
+            - name: HASURA_GRAPHQL_ENABLE_CONSOLE
+              value: "true" # set to "false" to disable console
+              ## enable debugging mode. It is recommended to disable this in production
+            - name: HASURA_GRAPHQL_DEV_MODE
+              value: "true"
+          {{- end }}
           {{- if .Values.image.env }}
             {{- toYaml .Values.image.env | nindent 12 }}
           {{- end }}
