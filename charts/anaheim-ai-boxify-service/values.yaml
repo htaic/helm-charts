@@ -58,7 +58,7 @@ service:
 
 resources:
   requests:
-    cpu: 4000m
+    cpu: 2000m
     memory: 8Gi
 
 serviceAccount:
@@ -92,11 +92,11 @@ environments:
   wqa:
     projectenv: wqa
   wrelqa:
-    projectenv: wrelqa 
+    projectenv: wrelqa
   wdev:
     projectenv: wdev
-  wci: 
+  wci:
     projectenv: wci
 
 global:
-  environment: production 
+  environment: production
