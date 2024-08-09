@@ -1,0 +1,74 @@
+namespace: "hanwha"
+fullnameOverride: anaheim-flexai-devices-service
+domainPath: "flexai-devices"
+
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/anaheim-flexai-devices-service
+  containerPort: 3018
+  tag: "latest"
+  livenessProbe: healthcheck
+  readinessProbe: healthcheck
+  hostname: anaheim-flexai-devices-service
+  env:
+    - name: ENVIRONMENT
+      value: " "
+    - name: GRAPHQLURL
+      value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
+    - name: FEATURE_FLAGS_API_URL
+      value: "http://anaheim-feature-flags-service:3020"
+    - name: WAVESYNC_BASE_URL
+      value: "https://sync.wavevms.com"
+    - name: WAVESYNC_API_URL
+      value: "relay.vmsproxy.com"
+    - name: NODE_ENV
+      value: "production"
+    - name: TRAINING_ASSETS_SERVICE_URL
+      value: "http://anaheim-training-assets-service:3010"
+    - name: DD_LOGS_INJECTION
+      value: "true"
+    - name: DD_AGENT_HOST
+      valueFrom:
+        fieldRef:
+          fieldPath: status.hostIP
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 150Mi
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations:
+  admission.datadoghq.com/js-lib.version: v3.6.0
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 4
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
+
+environments:
+  wprod:
+    projectenv: wprod
+  wqa:
+    projectenv: wqa
+  wrelqa:
+    projectenv: wrelqa 
+  wdev:
+    projectenv: wdev
+  wci: 
+    projectenv: wci
+
+global:
+  environment: production
+
