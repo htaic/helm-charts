@@ -1,0 +1,113 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include ".helm.fullname" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include ".helm.labels" . | nindent 4 }}
+    {{- with index .Values.environments .Values.global.environment }}
+    tags.datadoghq.com/env: {{ .projectenv | quote }}
+    {{- end }}
+    tags.datadoghq.com/service: {{ include ".helm.serviceAccountName" . }}
+    tags.datadoghq.com/version: {{ .Values.image.tag }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.image.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include ".helm.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        ad.datadoghq.com/{{ include ".helm.serviceAccountName" . }}.logs: '[{"source": "nodejs", "service": "{{ include ".helm.serviceAccountName" . }}"}]'
+      labels:
+        date: "{{ now | unixEpoch }}"
+        {{- include ".helm.selectorLabels" . | nindent 8 }}
+        admission.datadoghq.com/enabled: "true"
+        {{- with index .Values.environments .Values.global.environment }}
+        tags.datadoghq.com/env: {{ .projectenv | quote }}
+        {{- end }}
+        tags.datadoghq.com/service: {{ include ".helm.serviceAccountName" . }}
+        tags.datadoghq.com/version: {{ .Values.image.tag }}
+    spec:
+      hostname: {{ .Values.image.hostname }}
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include ".helm.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        {{- if .Values.sidecarimage }}
+        - name: "{{ .Values.sidecarimage.name }}"
+          image: "{{ .Values.sidecarimage.repository }}:{{ .Values.sidecarimage.tag }}"
+          imagePullPolicy: {{ .Values.sidecarimage.pullPolicy }}
+        {{- end }}      
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          envFrom: 
+            - secretRef:
+                name: "flexai-secret"
+          env: 
+            - name: GRAPHQLSERVERTOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: hasura-secret
+                  key: HASURA_GRAPHQL_ADMIN_SECRET
+            - name: DD_ENV
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['tags.datadoghq.com/env']
+            - name: DD_SERVICE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['tags.datadoghq.com/service']
+            - name: DD_VERSION
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['tags.datadoghq.com/version']
+          {{- if .Values.image.env }}
+            {{- toYaml .Values.image.env | nindent 12 }}
+          {{- end }}
+          args: [ {{.Values.image.args}} ]
+          ports:
+            - name: http
+              containerPort: {{ .Values.image.containerPort }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /{{ .Values.image.livenessProbe }}
+              port: http
+            {{- if .Values.image.livenessProbePeriodSeconds }}
+            periodSeconds: {{ .Values.image.livenessProbePeriodSeconds }}
+            {{- end }}
+          readinessProbe:
+            httpGet:
+              path: /{{ .Values.image.readinessProbe }}
+              port: http
+            {{- if .Values.image.readinessProbePeriodSeconds }}
+            periodSeconds: {{ .Values.image.readinessProbePeriodSeconds }}
+            {{- end }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}          
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.topologySpreadConstraints }}
+      topologySpreadConstraints:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
