@@ -5,7 +5,7 @@ domainPath: "flexai-devices"
 image:
   replicaCount: 1
   repository: ghcr.io/htaic/anaheim-flexai-devices-service
-  containerPort: 3018
+  containerPort: 3026
   tag: "latest"
   livenessProbe: healthcheck
   readinessProbe: healthcheck
