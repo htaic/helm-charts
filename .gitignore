@@ -3,7 +3,7 @@
 **/*.tgz
 **/*.key
 **/*.crt
-**/.values*
-**/values.yaml*
+##**/.values*
+##**/values.yaml*
 # etc
 *.DS_Store
