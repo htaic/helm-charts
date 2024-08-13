@@ -1365,6 +1365,18 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/anaheim-licensing-adapter-0.0.1/anaheim-licensing-adapter-0.0.1.tgz
     version: 0.0.1
+  anaheim-oncloud-clip-service:
+  - apiVersion: v2
+    appVersion: 0.0.6
+    created: "2024-08-13T16:33:57.24321135Z"
+    description: A Helm chart for Kubernetes anaheim-oncloud-clip-service deployed
+      behind a traefik ingress
+    digest: 59f032991529cdfa14e29c6f23196e1d9f6679f5cbc235eff236d0e65b8a632c
+    name: anaheim-oncloud-clip-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-oncloud-clip-service-1.0.0/anaheim-oncloud-clip-service-1.0.0.tgz
+    version: 1.0.0
   anaheim-portal:
   - apiVersion: v2
     appVersion: 4.0.3
@@ -7297,4 +7309,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2024-08-13T15:29:49.626061258Z"
+generated: "2024-08-13T16:33:57.244103386Z"
