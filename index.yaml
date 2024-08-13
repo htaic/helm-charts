@@ -5811,6 +5811,17 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/faux-auth-service-0.0.1/faux-auth-service-0.0.1.tgz
     version: 0.0.1
+  flexai-devices-service:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2024-08-13T15:29:49.625225542Z"
+    description: Helm chart for flexai-devices-service
+    digest: 4559dd3f56a172e68bff47a13b12b0d24efaff1b6695a5daf7b986dabd57e5f5
+    name: flexai-devices-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/flexai-devices-service-0.0.3/flexai-devices-service-0.0.3.tgz
+    version: 0.0.3
   foundationweb:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -7286,4 +7297,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2024-07-22T22:46:40.879515372Z"
+generated: "2024-08-13T15:29:49.626061258Z"
