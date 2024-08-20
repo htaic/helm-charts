@@ -1198,6 +1198,17 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/anaheim-feature-flags-service-0.0.1/anaheim-feature-flags-service-0.0.1.tgz
     version: 0.0.1
+  anaheim-flexai-devices-service:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2024-08-20T15:31:17.986379579Z"
+    description: Helm chart for flexai-devices-service
+    digest: 417a3f8cb98575da17d066a6cf5451d4a892ed9fac58058dcc84b257ef63dad5
+    name: anaheim-flexai-devices-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-flexai-devices-service-0.0.5/anaheim-flexai-devices-service-0.0.5.tgz
+    version: 0.0.5
   anaheim-gatekeeper-service:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -7319,4 +7330,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2024-08-20T15:30:18.513046534Z"
+generated: "2024-08-20T15:31:17.987069392Z"
