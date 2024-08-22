@@ -60,6 +60,16 @@ spec:
                 secretKeyRef:
                   name: hasura-secret
                   key: HASURA_GRAPHQL_ADMIN_SECRET
+            - name: VITE_DATADOG_CLIENT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: "dd-secret"
+                  key: VITE_DATADOG_CLIENT_TOKEN
+            - name: VITE_DATADOG_URL
+              valueFrom:
+                secretKeyRef:
+                  name: "dd-secret"
+                  key: VITE_DATADOG_URL
             - name: DD_ENV
               valueFrom:
                 fieldRef:
