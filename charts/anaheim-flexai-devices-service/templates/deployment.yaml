@@ -53,7 +53,19 @@ spec:
           envFrom: 
             - secretRef:
                 name: "flexai-secret"
+            - configMapRef:
+                name: duclo-configmap
           env: 
+            - name: DUCLOXAPIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: "duclo-api-key-secret"
+                  key: DUCLO_API_KEY
+            - name: DUCLO_PARTNER_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: duclo-configmap
+                  key: DUCLO_PARTNER_LICENSE_URL
             - name: GRAPHQLSERVERTOKEN
               valueFrom:
                 secretKeyRef:
