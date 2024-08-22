@@ -52,7 +52,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom: 
             - secretRef:
-                name: "flexai-secret"
+                name: "hasura-secret"
             - configMapRef:
                 name: duclo-configmap
           env: 
