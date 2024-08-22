@@ -1411,6 +1411,17 @@ entries:
   anaheim-portal:
   - apiVersion: v2
     appVersion: 4.0.3
+    created: "2024-08-22T20:05:32.258882866Z"
+    description: A Helm chart for Kubernetes anaheim-portal deployed behind a traefik
+      ingress
+    digest: 6863fe84a19c729fc567421f164522815e1588c3bb3bd91fe9862089c29559d4
+    name: anaheim-portal
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-portal-1.1.45/anaheim-portal-1.1.45.tgz
+    version: 1.1.45
+  - apiVersion: v2
+    appVersion: 4.0.3
     created: "2024-07-17T20:45:11.015942945Z"
     description: A Helm chart for Kubernetes anaheim-portal deployed behind a traefik
       ingress
@@ -7350,4 +7361,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2024-08-22T18:37:56.165781848Z"
+generated: "2024-08-22T20:05:32.259731735Z"
