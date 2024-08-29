@@ -53,6 +53,8 @@ spec:
           envFrom: 
             - secretRef:
                 name: "wavesync-secret"
+            - configMapRef:
+                name: duclo-configmap
           env: 
             - name: GRAPHQLSERVERTOKEN
               valueFrom:
@@ -71,6 +73,21 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.labels['tags.datadoghq.com/version']
+            - name: DUCLOXAPIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: "duclo-api-key-secret"
+                  key: DUCLO_API_KEY 
+            - name: DUCLO_PARTNER_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: duclo-configmap
+                  key: DUCLO_PARTNER_LICENSE_URL
+            - name: DUCLO_AUTH_CERTS_URL_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: duclo-configmap
+                  key: DUCLO_AUTH_CERTS_URL
           {{- if .Values.image.env }}
             {{- toYaml .Values.image.env | nindent 12 }}
           {{- end }}
