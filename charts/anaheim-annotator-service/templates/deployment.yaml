@@ -67,6 +67,13 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.labels['tags.datadoghq.com/version']
+            {{- if eq .Values.environment "wprod" }}
+            - name: NODE_ENV
+              value: "production"
+            {{ else }}
+            - name: NODE_ENV
+              value: "development"
+          {{- end }}
           {{- if .Values.image.env }}
             {{- toYaml .Values.image.env | nindent 12 }}
           {{- end }}
