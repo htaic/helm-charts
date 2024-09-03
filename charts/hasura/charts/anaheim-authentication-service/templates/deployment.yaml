@@ -76,6 +76,8 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.labels['tags.datadoghq.com/version']
+            - name: DD_TRACE_ENABLED
+              value: "false"
             {{ if or (eq .Values.global.environment "wprod") (eq .Values.global.environment "wqa") }}
             - name: NODE_ENV
               value: "production"
