@@ -11,6 +11,8 @@ image:
   readinessProbe: healthcheck
   hostname: anaheim-flexai-devices-service
   env:
+    - name: PROJECT_SERVICE_API_URL
+      value: " "
     - name: ENVIRONMENT
       value: " "
     - name: GRAPHQLURL
