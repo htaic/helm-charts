@@ -20,7 +20,9 @@ image:
       - hasura-secret
   env:
     - name: ENVIRONMENT
-      value: " "  
+      value: " " 
+    - name: NODE_ENV
+      value: "production"
     - name: GRAPHQLURL
       value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
     - name: APIURLASSETS
