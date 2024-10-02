@@ -258,6 +258,17 @@ entries:
   anaheim-annotator-service:
   - apiVersion: v2
     appVersion: 0.0.2
+    created: "2024-10-02T17:46:28.347938979Z"
+    description: A Helm chart for Kubernetes anaheim-annotator-service deployed behind
+      a traefik ingress
+    digest: 20c422e38943e0ee3a47896f41301d84613dd8a702e739065bec25a6f34ececd
+    name: anaheim-annotator-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-annotator-service-1.0.17/anaheim-annotator-service-1.0.17.tgz
+    version: 1.0.17
+  - apiVersion: v2
+    appVersion: 0.0.2
     created: "2024-08-30T16:32:21.635748438Z"
     description: A Helm chart for Kubernetes anaheim-annotator-service deployed behind
       a traefik ingress
@@ -1077,6 +1088,17 @@ entries:
     - https://github.com/htaic/helm-charts/releases/download/anaheim-eventbridge-0.0.1/anaheim-eventbridge-0.0.1.tgz
     version: 0.0.1
   anaheim-feature-flags-service:
+  - apiVersion: v2
+    appVersion: 0.0.2
+    created: "2024-10-02T17:46:28.511219587Z"
+    description: A Helm chart for Kubernetes anaheim-feature-flags-service deployed
+      behind a traefik ingress
+    digest: c449e41ec2ad504c5b0bd24632a2314d5bb5cc620de4167081e87d4d8b66cd4f
+    name: anaheim-feature-flags-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-feature-flags-service-1.0.12/anaheim-feature-flags-service-1.0.12.tgz
+    version: 1.0.12
   - apiVersion: v2
     appVersion: 0.0.2
     created: "2024-08-30T17:23:04.678333528Z"
@@ -2458,6 +2480,17 @@ entries:
   anaheim-project-service:
   - apiVersion: v2
     appVersion: 0.0.2
+    created: "2024-10-02T17:46:28.818323182Z"
+    description: A Helm chart for Kubernetes anaheim-project-service deployed behind
+      a traefik ingress
+    digest: 7762737b96bdb42d0a1dd66a62c81bc7df35e99ad0ec820733dc48d93d508023
+    name: anaheim-project-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-project-service-1.0.26/anaheim-project-service-1.0.26.tgz
+    version: 1.0.26
+  - apiVersion: v2
+    appVersion: 0.0.2
     created: "2024-08-30T17:23:05.692910151Z"
     description: A Helm chart for Kubernetes anaheim-project-service deployed behind
       a traefik ingress
@@ -2842,6 +2875,17 @@ entries:
     - https://github.com/htaic/helm-charts/releases/download/anaheim-project-service-0.0.1/anaheim-project-service-0.0.1.tgz
     version: 0.0.1
   anaheim-training-assets-service:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2024-10-02T17:46:28.987637557Z"
+    description: A Helm chart for Kubernetes anaheim-training-assets-service deployed
+      behind a traefik ingress
+    digest: 56bd2d02ac81d6bddd6c1e594a96db15608d11568506de735139296a598dd447
+    name: anaheim-training-assets-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-training-assets-service-1.1.17/anaheim-training-assets-service-1.1.17.tgz
+    version: 1.1.17
   - apiVersion: v2
     appVersion: 0.0.1
     created: "2024-08-30T17:23:05.885724795Z"
@@ -7470,4 +7514,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2024-08-30T17:23:06.308725974Z"
+generated: "2024-10-02T17:46:29.133643621Z"
