@@ -69,7 +69,7 @@ serviceAccount:
 autoscaling:
   enabled: true
   minReplicas: 1
-  maxReplicas: 4
+  maxReplicas: 1
   targetCPUUtilizationPercentage: 80
   targetMemoryUtilizationPercentage: 80
 
