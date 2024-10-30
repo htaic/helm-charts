@@ -22,6 +22,8 @@ image:
       value: "production"
     - name: AWS_REGION
       value: "us-west-2"
+    - name: APIURLPROJECTS
+      value: "http://anaheim-project-service:3014"
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
@@ -46,20 +48,17 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   targetMemoryUtilizationPercentage: 80
 
-
-
-
 environments:
   wprod:
     projectenv: wprod
   wqa:
     projectenv: wqa
   wrelqa:
-    projectenv: wrelqa 
+    projectenv: wrelqa
   wdev:
     projectenv: wdev
-  wci: 
+  wci:
     projectenv: wci
 
 global:
-  environment: production 
+  environment: production
