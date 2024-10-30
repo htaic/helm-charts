@@ -57,7 +57,17 @@ spec:
                 name: "aws-eventbridge-secret"
             - configMapRef: 
                 name: "aws-account-configmap"
-          env: 
+          env:
+            - name: AWS_SQS_URL
+              valueFrom:
+                secretKeyRef:
+                  name: aws-sqs-secret
+                  key: AWS_SQS_URL
+            - name: AWS_SQS_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: aws-sqs-secret
+                  key: AWS_SQS_NAME
             - name: GRAPHQLSERVERTOKEN
               valueFrom:
                 secretKeyRef:
