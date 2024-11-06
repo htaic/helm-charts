@@ -55,6 +55,16 @@ spec:
                 secretKeyRef:
                   name: hasura-secret
                   key: HASURA_GRAPHQL_ADMIN_SECRET
+            - name: AWS_PROJECT_SQS_URL
+              valueFrom:
+                secretKeyRef:
+                  name: aws-sqs-secret
+                  key: AWS_PROJECT_SQS_URL
+            - name: AWS_PROJECT_SQS_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: aws-sqs-secret
+                  key: AWS_PROJECT_SQS_NAME
             - name: AUTHENTICATION_HOSTNAME
               valueFrom:
                 secretKeyRef:
