@@ -55,6 +55,11 @@ spec:
                 secretKeyRef:
                   name: hasura-secret
                   key: HASURA_GRAPHQL_ADMIN_SECRET
+            - name: AWS_REGION
+              valueFrom:
+                configMapKeyRef:
+                  name: aws-account-configmap
+                  key: AWS_REGION    
             - name: AWS_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
