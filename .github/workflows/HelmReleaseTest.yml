@@ -22,7 +22,7 @@ jobs:
         run: |
           for d in */ ; do
               echo "Running on directory $d"
-              helm lint $d -f ${d}values.yaml.Example
+              helm lint $d -f ${d}values.yaml
           done
 
   release:
