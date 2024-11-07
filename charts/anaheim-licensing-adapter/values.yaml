@@ -20,8 +20,6 @@ image:
       value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
     - name: NODE_ENV
       value: "production"
-    - name: AWS_REGION
-      value: "us-west-2"
     - name: APIURLPROJECTS
       value: "http://anaheim-project-service:3014"
 
