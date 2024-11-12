@@ -1300,6 +1300,16 @@ entries:
   anaheim-flexai-devices-service:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2024-11-12T09:10:23.785217088Z"
+    description: Helm chart for flexai-devices-service
+    digest: ad4fbea62f40a87ceaa29a1dab04f9274c5d62ddc5086a5bebc5b1ab009d0227
+    name: anaheim-flexai-devices-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-flexai-devices-service-0.0.11/anaheim-flexai-devices-service-0.0.11.tgz
+    version: 0.0.11
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2024-11-12T08:45:32.502337514Z"
     description: Helm chart for flexai-devices-service
     digest: 40712b2b37935d46716af40407b4e2ac343f1b599d7b070662fea170fb6beac9
@@ -7677,4 +7687,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2024-11-12T08:51:31.838454766Z"
+generated: "2024-11-12T09:10:23.785962161Z"
