@@ -46,7 +46,7 @@ image:
     - name: REST_ENDPOINT_PORT
       value: "3022"
     - name: REVERSE_PROXY_ORIGIN
-      value: ""
+      value: "{{ template "getReverseProxyOrigin" . }}"
     # - name: DD_LOGS_INJECTION
     #   value: "true"
 
@@ -98,5 +98,14 @@ environments:
   wci:
     projectenv: wci
 
+reverseProxyOrigins:
+  wdev: "http://10.16.52.87:8000"
+  wci: "http://10.16.65.78:8000"
+  wqa: "http://10.16.101.216:8000"
+  wprod: "https://10.17.145.32:8000"
+  wrelqa: "http://10.20.72.254:8000"
+
 global:
   environment: production
+
+
