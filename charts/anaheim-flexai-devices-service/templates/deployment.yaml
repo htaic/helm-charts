@@ -53,6 +53,8 @@ spec:
           envFrom: 
             - secretRef:
                 name: "hasura-secret"
+            - secretRef:
+                name: "hasura-postgresql-secret"
             - configMapRef:
                 name: duclo-configmap
           env: 
