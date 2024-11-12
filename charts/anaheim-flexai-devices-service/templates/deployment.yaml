@@ -91,7 +91,7 @@ spec:
             {{ else }}
             - name: NODE_ENV
               value: "development"
-          {{- end }}
+            {{- end }}
           {{- if .Values.image.env }}
             {{- toYaml .Values.image.env | nindent 12 }}
           {{- end }}
