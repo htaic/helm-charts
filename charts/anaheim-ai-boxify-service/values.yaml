@@ -45,10 +45,6 @@ image:
       value: "/assets"
     - name: REST_ENDPOINT_PORT
       value: "3022"
-    - name: REVERSE_PROXY_ORIGIN
-      value: "{{ template "getReverseProxyOrigin" . }}"
-    # - name: DD_LOGS_INJECTION
-    #   value: "true"
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com

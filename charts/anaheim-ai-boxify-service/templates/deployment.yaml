@@ -74,6 +74,8 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.labels['tags.datadoghq.com/version']
+            - name: REVERSE_PROXY_ORIGIN
+              value: "{{ template "getReverseProxyOrigin" . }}"
           {{- if .Values.image.env }}
             {{- toYaml .Values.image.env | nindent 12 }}
           {{- end }}
