@@ -11,10 +11,10 @@ image:
   readinessProbe: healthcheck
   hostname: anaheim-flexai-devices-service
   env:
-    - name: PROJECT_SERVICE_API_URL
-      value: "http://anaheim-project-service:3014"
     - name: ENVIRONMENT
       value: " "
+    - name: PROJECT_SERVICE_API_URL
+      value: "http://anaheim-project-service:3014"
     - name: GRAPHQLURL
       value: "http://anaheim-graphql-service-hasura:8080/v1/graphql"
     - name: FEATURE_FLAGS_API_URL
