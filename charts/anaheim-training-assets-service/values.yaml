@@ -31,6 +31,8 @@ image:
       value: "http://anaheim-feature-flags-service:3020"
     - name: PROJECTS_API_URL
       value: "http://anaheim-project-service:3014"
+    - name: LICENSING_ADAPTER_API_URL
+      value: "http://anaheim-licensing-adapter:3029"
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
