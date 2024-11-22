@@ -16,6 +16,8 @@ AWS:
   duclo_auth_certs_url: YOUR_DUCLO_AUTH_CERTS_URL
   aws_project_sqs_name: YOUR_AWS_PROJECT_SQS_NAME
   aws_project_sqs_url: YOUR_AWS_PROJECT_SQS_URL
+  aws_license_sqs_name: YOUR_AWS_LICENSE_SQS_NAME
+  aws_license_sqs_url: YOUR_AWS_LICENSE_SQS_URL
   aws_model_s3_uri_path: YOUR_AWS_MODEL_S3_URI_PATH
   duclo_api_key: YOUR_DUCLO_API_KEY
   vite_datadog_client_token : YOUR_DATADOG_CLIENT_TOKEN
