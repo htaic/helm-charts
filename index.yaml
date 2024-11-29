@@ -1401,6 +1401,18 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/anaheim-gatekeeper-service-0.0.1/anaheim-gatekeeper-service-0.0.1.tgz
     version: 0.0.1
+  anaheim-job-scheduler:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2024-11-29T07:14:36.539995Z"
+    description: A Helm chart for Kubernetes anaheim-job-scheduler deployed behind
+      a traefik ingress
+    digest: f8ccbc81f579043362eeb7a99b868951df70d5b6546558fbe09243655a5d47a4
+    name: anaheim-job-scheduler
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-job-scheduler-1.0.0/anaheim-job-scheduler-1.0.0.tgz
+    version: 1.0.0
   anaheim-licensing-adapter:
   - apiVersion: v2
     appVersion: 0.0.1
@@ -7752,4 +7764,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2024-11-22T17:22:11.382233075Z"
+generated: "2024-11-29T07:14:36.540720548Z"
