@@ -1,0 +1,44 @@
+namespace: "hanwha"
+fullnameOverride: anaheim-job-scheduler
+trustForwardHeader: true
+image:
+  replicaCount: 1
+  repository: ghcr.io/htaic/anaheim-job-scheduler
+  pullPolicy: Always
+  containerPort: 3041
+  tag: "latest"
+  hostname: anaheim-job-scheduler
+  env:
+    - name: ENVIRONMENT
+      value: " "
+    - name: NODE_ENV
+      value: "production"
+
+imagePullSecrets:
+  - name: dockerconfigjson-github-com
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 150Mi
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+
+environments:
+  wprod:
+    projectenv: wprod
+  wqa:
+    projectenv: wqa
+  wrelqa:
+    projectenv: wrelqa
+  wdev:
+    projectenv: wdev
+  wci:
+    projectenv: wci
+
+global:
+  environment: production
