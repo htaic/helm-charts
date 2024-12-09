@@ -51,6 +51,7 @@ serviceAccount:
 eksiamrole:
   wdev: arn:aws:iam::918169021225:role/role-wddl-dev-flexai-device-sa
   wci: arn:aws:iam::040054290357:role/role-wddl-ci-flexai-device-sa
+  wqa: arn:aws:iam::547990419648:role/role-wddl-qa-flexai-device-sa
 
 podAnnotations:
   admission.datadoghq.com/js-lib.version: v3.6.0
