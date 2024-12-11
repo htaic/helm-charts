@@ -91,6 +91,8 @@ spec:
               - secretRef:
                   name: hasura-secret
               - secretRef:
+                  name: hasura-postgresql-secret
+              - secretRef:
                   name: aws-eventbridge-secret
               - secretRef:
                   name: aws-sqs-secret
