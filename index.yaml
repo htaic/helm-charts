@@ -1458,6 +1458,17 @@ entries:
   anaheim-licensing-adapter:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2024-12-20T00:59:16.056283569Z"
+    description: A Helm chart for Kubernetes anaheim-licensing-adapter deployed behind
+      a traefik ingress
+    digest: e08d6dfcf1d4937056ec2e3271e9d753455c613d8a506daf0180d24ba9ecd2dc
+    name: anaheim-licensing-adapter
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-licensing-adapter-1.1.8/anaheim-licensing-adapter-1.1.8.tgz
+    version: 1.1.8
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2024-11-22T17:22:11.381571913Z"
     description: A Helm chart for Kubernetes anaheim-licensing-adapter deployed behind
       a traefik ingress
@@ -2737,6 +2748,17 @@ entries:
     - https://github.com/htaic/helm-charts/releases/download/anaheim-portal-0.0.1/anaheim-portal-0.0.1.tgz
     version: 0.0.1
   anaheim-project-service:
+  - apiVersion: v2
+    appVersion: 0.0.2
+    created: "2024-12-20T00:59:16.288305285Z"
+    description: A Helm chart for Kubernetes anaheim-project-service deployed behind
+      a traefik ingress
+    digest: 16806b4a77840435ef1de2c7ca59c90bcc19d54868bd22db8e330f5d5b12f660
+    name: anaheim-project-service
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-project-service-1.0.29/anaheim-project-service-1.0.29.tgz
+    version: 1.0.29
   - apiVersion: v2
     appVersion: 0.0.2
     created: "2024-12-11T03:29:07.256745829Z"
@@ -7817,4 +7839,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2024-12-11T03:29:07.257624162Z"
+generated: "2024-12-20T00:59:16.289323625Z"
