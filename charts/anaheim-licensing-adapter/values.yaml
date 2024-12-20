@@ -22,6 +22,8 @@ image:
       value: "production"
     - name: APIURLPROJECTS
       value: "http://anaheim-project-service:3014"
+    - name: API_JOB_SCHEDULER_SERVICE
+      value: "http://anaheim-job-scheduler:3041"
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com

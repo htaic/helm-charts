@@ -31,6 +31,8 @@ image:
       value: "60"
     - name: AWS_BUILD_INFO_BUCKET_NAME
       value: "hanwha-build-info"
+    - name: API_JOB_SCHEDULER_SERVICE
+      value: "http://anaheim-job-scheduler:3041"
       
 imagePullSecrets:
   - name: dockerconfigjson-github-com
