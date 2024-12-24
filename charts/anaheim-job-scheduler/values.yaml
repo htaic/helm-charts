@@ -1,5 +1,8 @@
 namespace: "hanwha"
 fullnameOverride: anaheim-job-scheduler
+domainPath: "job-scheduler"
+forwardAuthaddress: http://anaheim-graphql-service-anaheim-authentication-service:9876/api/v1/validate
+authResponseHeadersRegex Regex: ^X-
 trustForwardHeader: true
 image:
   replicaCount: 1
