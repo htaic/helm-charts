@@ -50,9 +50,9 @@ spec:
           env: 
             - name: GRAPHQLSERVERTOKEN
               valueFrom:
-              secretKeyRef:
-                name: hasura-secret
-                key: HASURA_GRAPHQL_ADMIN_SECRET
+                secretKeyRef:
+                  name: hasura-secret
+                  key: HASURA_GRAPHQL_ADMIN_SECRET
             - name: AWS_REGION
               valueFrom:
                 configMapKeyRef:
