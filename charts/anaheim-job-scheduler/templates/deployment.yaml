@@ -48,6 +48,11 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env: 
+            - name: GRAPHQLSERVERTOKEN
+            valueFrom:
+              secretKeyRef:
+                name: hasura-secret
+                key: HASURA_GRAPHQL_ADMIN_SECRET
             - name: AWS_REGION
               valueFrom:
                 configMapKeyRef:
