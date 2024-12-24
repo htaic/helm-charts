@@ -1424,6 +1424,17 @@ entries:
   anaheim-job-scheduler:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2024-12-24T14:35:58.990996996Z"
+    description: A Helm chart for Kubernetes anaheim-job-scheduler deployed behind
+      a traefik ingress
+    digest: 1d7d106a96117f62df1cad12eb081915b5db617fd7a1b10dd77258a1a80508ea
+    name: anaheim-job-scheduler
+    type: application
+    urls:
+    - https://github.com/htaic/helm-charts/releases/download/anaheim-job-scheduler-1.0.5/anaheim-job-scheduler-1.0.5.tgz
+    version: 1.0.5
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2024-12-24T12:32:35.468912211Z"
     description: A Helm chart for Kubernetes anaheim-job-scheduler deployed behind
       a traefik ingress
@@ -7861,4 +7872,4 @@ entries:
     urls:
     - https://github.com/htaic/helm-charts/releases/download/video-connection-manager-0.0.1/video-connection-manager-0.0.1.tgz
     version: 0.0.1
-generated: "2024-12-24T12:32:35.46964463Z"
+generated: "2024-12-24T14:35:58.991883751Z"
