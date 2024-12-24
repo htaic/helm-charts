@@ -10,15 +10,22 @@ image:
   pullPolicy: Always
   containerPort: 3041
   tag: "latest"
+  livenessProbe: healthcheck
+  readinessProbe: healthcheck
   hostname: anaheim-job-scheduler
   env:
     - name: ENVIRONMENT
       value: " "
     - name: NODE_ENV
       value: "production"
+    - name: APIURLPROJECTS
+      value: "http://anaheim-project-service:3014"
 
 imagePullSecrets:
   - name: dockerconfigjson-github-com
+
+service:
+  type: ClusterIP
 
 resources:
   requests:
@@ -30,6 +37,12 @@ serviceAccount:
   annotations: {}
   name: ""
 
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 1
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
 
 environments:
   wprod:
